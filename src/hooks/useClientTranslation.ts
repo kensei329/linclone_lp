@@ -8,6 +8,7 @@ function getNestedValue(obj: any, key: string): string {
 }
 
 export function useClientTranslation() {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const { t, i18n } = useTranslation();
   const [isClient, setIsClient] = useState(false);
 
