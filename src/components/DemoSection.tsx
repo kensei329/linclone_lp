@@ -2,26 +2,12 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { PaperAirplaneIcon } from '@heroicons/react/24/solid';
 import { useClientTranslation } from '@/hooks/useClientTranslation';
 
 export default function DemoSection() {
   const { t } = useClientTranslation();
   const [message, setMessage] = useState('');
   const [messages, setMessages] = useState<Array<{ type: 'user' | 'ai'; text: string }>>([]);
-
-  const handleSendMessage = () => {
-    if (!message.trim()) return;
-
-    const newMessages = [
-      ...messages,
-      { type: 'user' as const, text: message },
-      { type: 'ai' as const, text: t('demo.aiResponse') },
-    ];
-
-    setMessages(newMessages);
-    setMessage('');
-  };
 
   return (
     <section id="demo-section" className="py-20 bg-white">
