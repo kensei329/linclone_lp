@@ -1,0 +1,42 @@
+{
+    "hero": {
+      "title": "The era has arrived where your AI clone connects with fans.",
+      "subtitle": "Easily create your AI clone and open up a whole new way to engage with your followers.",
+      "getStarted": "Request Early Access",
+      "watchDemo": "Watch the Demo"
+    },
+    "features": {
+      "title": "What is LinClone?",
+      "subtitle": "",
+      "aiClone": {
+        "title": "Create your own AI clone effortlessly",
+        "description": "No complicated setup required. In just a few simple steps, you can generate a clone that sounds, thinks, and speaks just like you."
+      },
+      "realtime": {
+        "title": "The creation process becomes content",
+        "description": "Your AI clone is born through a video conversation. Turn that behind-the-scenes moment into exclusive content your fans will love."
+      },
+      "analytics": {
+        "title": "Engage 24/7 and monetize effortlessly",
+        "description": "Your AI clone can handle video calls and react to trends in real time. Turn it into a subscription-based fan club that drives ongoing revenue."
+      }
+    },
+    "demo": {
+      "title": "Experience the Demo",
+      "subtitle": "See how LinClone works in action",
+      "inputPlaceholder": "Type your message...",
+      "send": "Send",
+      "aiResponse": "Your AI clone's response will appear here. Enjoy natural and lifelike conversations."
+    },
+    "beta": {
+      "title": "Apply for Access",
+      "subtitle": "Access is currently limited to a small number of early users.",
+      "emailPlaceholder": "Enter your email address",
+      "joinBeta": "Apply",
+      "success": "Thank you! We'll contact you with access details shortly."
+    },
+    "footer": {
+      "copyright": "©2025 LinClone. All rights reserved."
+    }
+  }
+  

@@ -1,0 +1,41 @@
+{
+  "hero": {
+    "title": "あなたの「分身」が、\nファンと交流する時代へ",
+    "subtitle": "あなたのAIクローンを簡単に作成し、ファンとの新たな交流の場をつくります",
+    "getStarted": "利用を申し込む",
+    "watchDemo": "デモをチェック"
+  },
+  "features": {
+    "title": "LinCloneとは？",
+    "subtitle": "",
+    "aiClone": {
+      "title": "簡単に自分のAIクローンが作れる",
+      "description": "面倒な準備や難しい操作は不要。声や話し方、性格まで、あなたらしさをそのまま再現したAIクローンが手軽に作れます。"
+    },
+    "realtime": {
+      "title": "制作工程が動画コンテンツになる",
+      "description": "AIとのビデオ通話を通じてクローンが誕生。そのプロセス自体を動画やライブとして発信すれば、ファンにとっても貴重な体験に"
+    },
+    "analytics": {
+      "title": "ファンと24時間交流・収益化も可能",
+      "description": "AIクローンは自動でビデオ通話、ニュースやトレンドに反応。ファンクラブとして運用し、継続的な収益にもつなげられます。"
+    }
+  },
+  "demo": {
+    "title": "デモをご覧ください",
+    "subtitle": "LinCloneの全貌を体感できます",
+    "inputPlaceholder": "メッセージを入力してください",
+    "send": "送信",
+    "aiResponse": "ここにAIクローンの返答が表示されます。あなたらしい自然な会話が可能です。"
+  },
+  "beta": {
+    "title": "ご利用はこちらから",
+    "subtitle": "現在ご利用人数を制限させていただいております。",
+    "emailPlaceholder": "メールアドレスを入力",
+    "joinBeta": "申し込む",
+    "success": "ありがとうございます！ご案内をメールでお送りします。"
+  },
+  "footer": {
+    "copyright": "© 2025 LinClone. All rights reserved."
+  }
+}
