@@ -6,8 +6,6 @@ import { useClientTranslation } from '@/hooks/useClientTranslation';
 
 export default function DemoSection() {
   const { t } = useClientTranslation();
-  const [message, setMessage] = useState('');
-  const [messages, setMessages] = useState<Array<{ type: 'user' | 'ai'; text: string }>>([]);
 
   return (
     <section id="demo-section" className="py-20 bg-white">
