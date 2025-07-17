@@ -1,83 +1,456 @@
 'use client';
 
 import { useState } from 'react';
-import { motion } from 'framer-motion';
-import { EnvelopeIcon } from '@heroicons/react/24/outline';
+import { motion, AnimatePresence } from 'framer-motion';
+import { EnvelopeIcon, CheckCircleIcon, RocketLaunchIcon } from '@heroicons/react/24/outline';
+import { SparklesIcon, StarIcon } from '@heroicons/react/24/solid';
 import { useClientTranslation } from '@/hooks/useClientTranslation';
+
+interface FormState {
+  email: string;
+  name: string;
+  company: string;
+  useCase: string;
+}
+
+type SubmissionState = 'idle' | 'loading' | 'success' | 'error';
+
+// Floating elements for background decoration
+const FloatingElement = ({ children, delay = 0, duration = 4 }: { children: React.ReactNode; delay?: number; duration?: number }) => (
+  <motion.div
+    animate={{
+      y: [-10, 10, -10],
+      rotate: [-5, 5, -5],
+      scale: [1, 1.05, 1],
+    }}
+    transition={{
+      duration,
+      repeat: Infinity,
+      delay,
+      ease: "easeInOut",
+    }}
+  >
+    {children}
+  </motion.div>
+);
+
+// Success confetti component
+const SuccessConfetti = () => {
+  const confettiElements = Array.from({ length: 12 }, (_, i) => (
+    <motion.div
+      key={i}
+      className="absolute w-2 h-2 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full"
+      initial={{ 
+        x: 0, 
+        y: 0, 
+        opacity: 1,
+        scale: 0
+      }}
+      animate={{
+        x: (Math.random() - 0.5) * 200,
+        y: (Math.random() - 0.5) * 200,
+        opacity: 0,
+        scale: [0, 1, 0],
+        rotate: 360
+      }}
+      transition={{
+        duration: 1.5,
+        delay: i * 0.1,
+        ease: "easeOut"
+      }}
+      style={{
+        left: '50%',
+        top: '50%',
+      }}
+    />
+  ));
+
+  return (
+    <div className="absolute inset-0 pointer-events-none overflow-hidden">
+      {confettiElements}
+    </div>
+  );
+};
+
+// Loading spinner component
+const LoadingSpinner = () => (
+  <motion.div
+    className="w-6 h-6 border-2 border-white border-t-transparent rounded-full"
+    animate={{ rotate: 360 }}
+    transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+  />
+);
+
+// Form field component
+const FormField = ({ 
+  icon: Icon, 
+  type = "text", 
+  placeholder, 
+  value, 
+  onChange, 
+  required = false,
+  error = false 
+}: {
+  icon: React.ComponentType<{ className?: string }>;
+  type?: string;
+  placeholder: string;
+  value: string;
+  onChange: (value: string) => void;
+  required?: boolean;
+  error?: boolean;
+}) => (
+  <motion.div
+    className="relative"
+    whileFocus={{ scale: 1.02 }}
+    transition={{ type: "spring", stiffness: 300 }}
+  >
+    <div className="relative">
+      <Icon className={`absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 transition-colors duration-300 ${
+        error ? 'text-red-400' : 'text-gray-400'
+      }`} />
+      <motion.input
+        type={type}
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+        placeholder={placeholder}
+        required={required}
+        className={`w-full pl-12 pr-4 py-4 bg-white/10 backdrop-blur-md border-2 rounded-2xl text-white placeholder-gray-300 focus:outline-none focus:ring-0 transition-all duration-300 ${
+          error 
+            ? 'border-red-400 focus:border-red-300' 
+            : 'border-white/20 focus:border-purple-400 hover:border-white/30'
+        }`}
+        whileFocus={{ 
+          boxShadow: error 
+            ? "0 0 0 3px rgba(239, 68, 68, 0.1)" 
+            : "0 0 0 3px rgba(147, 51, 234, 0.1)"
+        }}
+      />
+    </div>
+    <AnimatePresence>
+      {error && (
+        <motion.div
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -10 }}
+          className="absolute -bottom-6 left-0 text-red-300 text-sm"
+        >
+          This field is required
+        </motion.div>
+      )}
+    </AnimatePresence>
+  </motion.div>
+);
 
 export default function BetaSection() {
   const { t } = useClientTranslation();
-  const [email, setEmail] = useState('');
-  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [formData, setFormData] = useState<FormState>({
+    email: '',
+    name: '',
+    company: '',
+    useCase: ''
+  });
+  const [submissionState, setSubmissionState] = useState<SubmissionState>('idle');
+  const [errors, setErrors] = useState<Record<string, boolean>>({});
+  const [showConfetti, setShowConfetti] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!email.trim()) return;
+  const updateField = (field: keyof FormState) => (value: string) => {
+    setFormData(prev => ({ ...prev, [field]: value }));
+    if (errors[field]) {
+      setErrors(prev => ({ ...prev, [field]: false }));
+    }
+  };
 
-    // シミュレート
-    setIsSubmitted(true);
-    setEmail('');
+  const validateForm = () => {
+    const newErrors: Record<string, boolean> = {};
     
+    if (!formData.email.trim() || !/\S+@\S+\.\S+/.test(formData.email)) {
+      newErrors.email = true;
+    }
+    if (!formData.name.trim()) {
+      newErrors.name = true;
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    if (!validateForm()) {
+      return;
+    }
+
+    setSubmissionState('loading');
+
+    // Simulate API call
+    await new Promise(resolve => setTimeout(resolve, 2000));
+
+    setSubmissionState('success');
+    setShowConfetti(true);
+    
+    // Reset form after success
     setTimeout(() => {
-      setIsSubmitted(false);
-    }, 3000);
+      setFormData({ email: '', name: '', company: '', useCase: '' });
+      setSubmissionState('idle');
+      setShowConfetti(false);
+    }, 4000);
+  };
+
+  const resetForm = () => {
+    setSubmissionState('idle');
+    setErrors({});
+    setShowConfetti(false);
   };
 
   return (
-    <section id="beta-section" className="py-20 bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900">
-      <div className="max-w-4xl mx-auto px-6 text-center">
+    <section id="beta-section" className="relative py-32 bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900 overflow-hidden">
+      {/* Background decorations */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {/* Floating elements */}
+        <FloatingElement delay={0} duration={6}>
+          <div className="absolute top-20 left-10 w-4 h-4 bg-purple-400/30 rounded-full blur-sm" />
+        </FloatingElement>
+        <FloatingElement delay={2} duration={8}>
+          <div className="absolute top-1/3 right-20 w-6 h-6 bg-pink-400/20 rounded-full blur-sm" />
+        </FloatingElement>
+        <FloatingElement delay={4} duration={5}>
+          <StarIcon className="absolute bottom-1/4 left-1/4 w-8 h-8 text-yellow-400/30" />
+        </FloatingElement>
+        <FloatingElement delay={1} duration={7}>
+          <SparklesIcon className="absolute top-1/2 right-10 w-6 h-6 text-purple-400/40" />
+        </FloatingElement>
+        
+        {/* Background gradients */}
+        <div className="absolute top-0 left-0 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-0 right-0 w-96 h-96 bg-pink-500/10 rounded-full blur-3xl" />
+      </div>
+
+      <div className="relative max-w-4xl mx-auto px-6 text-center">
+        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
+          className="mb-16"
         >
-          <h2 className="text-3xl sm:text-6xl md:text-6xl font-bold text-white mb-6 leading-tight whitespace-pre-line tracking-tight">
-            {t('beta.title')}
-          </h2>
-          <p className="text-xs sm:text-sm text-red-400 italic mb-8 text-center">
-            {t('beta.subtitle')}
-            <span className="block text-left sm:text-center">&nbsp;</span>
-          </p>
+          <motion.div
+            className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-6 py-3 mb-8 mt-10"
+            whileHover={{ scale: 1.05 }}
+            transition={{ type: "spring", stiffness: 300 }}
+          >
+            <RocketLaunchIcon className="w-5 h-5 text-purple-300" />
+            <span className="text-white/90 text-sm font-semibold">
+              Limited Beta Access
+            </span>
+          </motion.div>
 
-          {isSubmitted ? (
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              className="bg-green-500/20 border border-green-500/30 rounded-lg p-6 max-w-md mx-auto"
-            >
-              <p className="text-green-200 text-lg">
-                {t('beta.success')}
-              </p>
-            </motion.div>
-          ) : (
-            <motion.form
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              viewport={{ once: true }}
-              onSubmit={handleSubmit}
-              className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto"
-            >
-              <div className="relative flex-1">
-                <EnvelopeIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
-                <input
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder={t('beta.emailPlaceholder')}
-                  required
-                  className="w-full pl-10 pr-4 py-3 bg-white/10 backdrop-blur-md border border-white/20 rounded-full text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
-                />
-              </div>
-              <button
-                type="submit"
-                className="px-8 py-3 bg-gradient-to-r from-purple-600 to-pink-600 text-white font-semibold rounded-full hover:from-purple-700 hover:to-pink-700 transition-all duration-300 transform hover:scale-105 shadow-xl"
+          <h2 className="text-4xl sm:text-6xl md:text-7xl font-bold text-white mb-8 leading-tight tracking-tight">
+            <span className="bg-gradient-to-r from-white via-purple-200 to-pink-200 bg-clip-text text-transparent">
+              {t('beta.title')}
+            </span>
+          </h2>
+          
+          <p className="text-lg text-purple-100 mb-4 max-w-2xl mx-auto leading-relaxed">
+            {t('beta.subtitle')}
+          </p>
+          
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.5 }}
+            className="text-yellow-300 text-sm font-medium"
+          >
+            ⚡ Early adopters get 50% off for life + exclusive features
+          </motion.p>
+        </motion.div>
+
+        {/* Form Container */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          viewport={{ once: true }}
+          className="relative"
+        >
+          <AnimatePresence mode="wait">
+            {submissionState === 'success' ? (
+              // Success State
+              <motion.div
+                key="success"
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.8 }}
+                className="relative bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl p-12"
               >
-                {t('beta.joinBeta')}
-              </button>
-            </motion.form>
-          )}
+                {showConfetti && <SuccessConfetti />}
+                
+                <motion.div
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  transition={{ type: "spring", delay: 0.2 }}
+                  className="w-20 h-20 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-6"
+                >
+                  <CheckCircleIcon className="w-12 h-12 text-white" />
+                </motion.div>
+                
+                <motion.h3
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.4 }}
+                  className="text-2xl font-bold text-white mb-4"
+                >
+                  Welcome to the future! 🚀
+                </motion.h3>
+                
+                <motion.p
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.6 }}
+                  className="text-green-200 text-lg mb-6"
+                >
+                  {t('beta.success')}
+                </motion.p>
+
+                <motion.button
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 1 }}
+                  onClick={resetForm}
+                  className="text-purple-300 hover:text-purple-200 transition-colors duration-300 text-sm"
+                >
+                  Submit another application →
+                </motion.button>
+              </motion.div>
+            ) : (
+              // Form State
+              <motion.div
+                key="form"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                className="bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-8 md:p-12"
+              >
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <FormField
+                      icon={EnvelopeIcon}
+                      type="email"
+                      placeholder="Your email address *"
+                      value={formData.email}
+                      onChange={updateField('email')}
+                      required
+                      error={errors.email}
+                    />
+                    
+                    <FormField
+                      icon={EnvelopeIcon}
+                      placeholder="Your full name *"
+                      value={formData.name}
+                      onChange={updateField('name')}
+                      required
+                      error={errors.name}
+                    />
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <FormField
+                      icon={EnvelopeIcon}
+                      placeholder="Company/Organization (optional)"
+                      value={formData.company}
+                      onChange={updateField('company')}
+                    />
+                    
+                    <FormField
+                      icon={EnvelopeIcon}
+                      placeholder="Primary use case (optional)"
+                      value={formData.useCase}
+                      onChange={updateField('useCase')}
+                    />
+                  </div>
+
+                  {/* Submit Button */}
+                  <motion.button
+                    type="submit"
+                    disabled={submissionState === 'loading'}
+                    className="group relative w-full md:w-auto mx-auto px-12 py-4 bg-gradient-to-r from-purple-600 to-pink-600 text-white font-semibold rounded-full shadow-2xl hover:shadow-purple-500/25 transition-all duration-300 disabled:opacity-70 disabled:cursor-not-allowed overflow-hidden"
+                    whileHover={{ 
+                      scale: submissionState === 'loading' ? 1 : 1.05,
+                      boxShadow: "0 25px 50px -12px rgba(147, 51, 234, 0.5)"
+                    }}
+                    whileTap={{ scale: submissionState === 'loading' ? 1 : 0.95 }}
+                  >
+                    {/* Button background animation */}
+                    <motion.div
+                      className="absolute inset-0 bg-gradient-to-r from-purple-500 to-pink-500"
+                      initial={{ x: "100%" }}
+                      whileHover={{ x: submissionState === 'loading' ? "100%" : "0%" }}
+                      transition={{ duration: 0.3 }}
+                    />
+                    
+                    <span className="relative z-10 flex items-center justify-center gap-3">
+                      {submissionState === 'loading' ? (
+                        <>
+                          <LoadingSpinner />
+                          Processing...
+                        </>
+                      ) : (
+                        <>
+                          <RocketLaunchIcon className="w-5 h-5 group-hover:rotate-12 transition-transform duration-300" />
+                          {t('beta.joinBeta')}
+                        </>
+                      )}
+                    </span>
+                  </motion.button>
+
+                  {/* Additional info */}
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 0.8 }}
+                    className="text-center text-purple-200 text-sm mt-6"
+                  >
+                    <p>✅ No spam, ever  •  ✅ Exclusive updates  •  ✅ Early access guaranteed</p>
+                  </motion.div>
+                </form>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </motion.div>
+
+        {/* Stats/Social Proof */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+          viewport={{ once: true }}
+          className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16"
+        >
+          {[
+            { number: "500+", label: "Beta Testers" },
+            { number: "50+", label: "AI Clones Created" },
+            { number: "10K+", label: "Messages Processed" },
+            { number: "98%", label: "Satisfaction Rate" }
+          ].map((stat, index) => (
+            <motion.div
+              key={index}
+              className="text-center"
+              whileHover={{ scale: 1.05 }}
+              transition={{ type: "spring", stiffness: 300 }}
+            >
+              <motion.div
+                className="text-2xl md:text-3xl font-bold text-white mb-2"
+                initial={{ opacity: 0, scale: 0 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ delay: index * 0.1, type: "spring" }}
+                viewport={{ once: true }}
+              >
+                {stat.number}
+              </motion.div>
+              <div className="text-purple-200 text-sm">{stat.label}</div>
+            </motion.div>
+          ))}
         </motion.div>
       </div>
     </section>

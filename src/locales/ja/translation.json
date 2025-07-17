@@ -3,7 +3,8 @@
     "title": "あなたの「分身」が、\nファンと交流する時代へ",
     "subtitle": "あなたのAIクローンを簡単に作成し、ファンとの新たな交流の場をつくります",
     "getStarted": "利用を申し込む",
-    "watchDemo": "デモをチェック"
+    "watchDemo": "デモをチェック",
+    "downloadApp": "アプリをダウンロード"
   },
   "features": {
     "title": "LinCloneとは？",
@@ -36,6 +37,45 @@
     "success": "ありがとうございます！ご案内をメールでお送りします。"
   },
   "footer": {
-    "copyright": "© 2025 LinClone. All rights reserved."
+    "copyright": "© 2025 LinClone. All rights reserved.",
+    "privacyPolicy": "プライバシーポリシー",
+    "appStore": "App Storeからダウンロード",
+    "playStore": "Google Playで手に入れよう"
+  },
+  "download": {
+    "title": "LinCloneをダウンロード",
+    "subtitle": "iOS・Android対応",
+    "appStore": "App Storeからダウンロード",
+    "playStore": "Google Playで手に入れよう"
+  },
+  "privacy": {
+    "title": "プライバシーポリシー",
+    "lastUpdated": "最終更新日: {date}",
+    "sections": {
+      "introduction": {
+        "title": "はじめに",
+        "content": "LinCloneは、お客様のプライバシーを保護することをお約束いたします。本プライバシーポリシーでは、当社のサービスをご利用いただく際に、お客様の情報をどのように収集、使用、保護するかについて説明します。"
+      },
+      "dataCollection": {
+        "title": "収集する情報",
+        "content": "アカウント作成時、AIクローンサービスのご利用時、またはサポートへのお問い合わせ時など、お客様から直接提供していただく情報を収集します。"
+      },
+      "dataUse": {
+        "title": "情報の使用方法",
+        "content": "収集した情報は、サービスの提供、維持、改善、取引の処理、およびお客様とのコミュニケーションのために使用します。"
+      },
+      "dataSharing": {
+        "title": "情報の共有",
+        "content": "本ポリシーに記載された場合を除き、お客様の同意なしに個人情報を第三者に販売、取引、または譲渡することはありません。"
+      },
+      "security": {
+        "title": "データセキュリティ",
+        "content": "お客様の個人情報を不正アクセス、改変、開示、破壊から保護するため、適切なセキュリティ対策を実施しています。"
+      },
+      "contact": {
+        "title": "お問い合わせ",
+        "content": "本プライバシーポリシーについてご質問がございましたら、privacy@linclone.com までお問い合わせください。"
+      }
+    }
   }
 }

@@ -3,7 +3,8 @@
       "title": "The era has arrived where your AI clone connects with fans.",
       "subtitle": "Easily create your AI clone and open up a whole new way to engage with your followers.",
       "getStarted": "Request Early Access",
-      "watchDemo": "Watch the Demo"
+      "watchDemo": "Watch the Demo",
+      "downloadApp": "Download the App"
     },
     "features": {
       "title": "What is LinClone?",
@@ -36,7 +37,46 @@
       "success": "Thank you! We'll contact you with access details shortly."
     },
     "footer": {
-      "copyright": "©2025 LinClone. All rights reserved."
+      "copyright": "©2025 LinClone. All rights reserved.",
+      "privacyPolicy": "Privacy Policy",
+      "appStore": "Download on the App Store",
+      "playStore": "Get it on Google Play"
+    },
+    "download": {
+      "title": "Download LinClone",
+      "subtitle": "Available on iOS and Android",
+      "appStore": "Download on the App Store",
+      "playStore": "Get it on Google Play"
+    },
+    "privacy": {
+      "title": "Privacy Policy",
+      "lastUpdated": "Last Updated: {date}",
+      "sections": {
+        "introduction": {
+          "title": "Introduction",
+          "content": "LinClone is committed to protecting your privacy. This Privacy Policy explains how we collect, use, and safeguard your information when you use our services."
+        },
+        "dataCollection": {
+          "title": "Information We Collect",
+          "content": "We collect information that you provide directly to us, such as when you create an account, use our AI clone services, or contact us for support."
+        },
+        "dataUse": {
+          "title": "How We Use Your Information",
+          "content": "We use the information we collect to provide, maintain, and improve our services, process transactions, and communicate with you."
+        },
+        "dataSharing": {
+          "title": "Information Sharing",
+          "content": "We do not sell, trade, or otherwise transfer your personal information to third parties without your consent, except as described in this policy."
+        },
+        "security": {
+          "title": "Data Security",
+          "content": "We implement appropriate security measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction."
+        },
+        "contact": {
+          "title": "Contact Us",
+          "content": "If you have any questions about this Privacy Policy, please contact us at privacy@linclone.com"
+        }
+      }
     }
   }
   
