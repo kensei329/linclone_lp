@@ -16,7 +16,7 @@ export default function DeleteUserPage() {
       await new Promise((res) => setTimeout(res, 1500));
       // Simulate success
       setDeleted(true);
-    } catch (e) {
+    } catch {
       setError("Failed to delete user. Please try again.");
     } finally {
       setLoading(false);

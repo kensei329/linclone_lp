@@ -48,7 +48,6 @@ export default function LanguageToggle() {
               type="button"
               onClick={() => handleLanguageChange('ja')}
               className="w-full px-4 py-3 text-left text-gray-700 hover:bg-gray-100 transition-colors duration-200 text-sm cursor-pointer"
-              aria-selected={currentLanguage === 'ja'}
             >
               日本語
             </button>
@@ -56,7 +55,6 @@ export default function LanguageToggle() {
               type="button"
               onClick={() => handleLanguageChange('en')}
               className="w-full px-4 py-3 text-left text-gray-700 hover:bg-gray-100 transition-colors duration-200 text-sm cursor-pointer"
-              aria-selected={currentLanguage === 'en'}
             >
               English
             </button>
