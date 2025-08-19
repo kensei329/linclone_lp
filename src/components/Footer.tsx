@@ -46,14 +46,14 @@ export default function Footer() {
         { name: "About", href: "/about" },
         { name: "Blog", href: "/blog" },
         { name: "Careers", href: "/careers" },
-        { name: "Contact", href: "/contact" }
+        { name: "Support", href: "/support" }
       ]
     },
     {
       title: "Resources",
       links: [
         { name: "Documentation", href: "/docs" },
-        { name: "Help Center", href: "/help" },
+        { name: "Help Center", href: "/support" },
         { name: "Community", href: "/community" },
         { name: "Status", href: "/status" }
       ]
