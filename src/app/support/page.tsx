@@ -8,7 +8,6 @@ import {
   ChevronDownIcon, 
   ChevronUpIcon,
   EnvelopeIcon,
-  PhoneIcon,
   ChatBubbleLeftRightIcon,
   QuestionMarkCircleIcon,
   ExclamationTriangleIcon,
@@ -183,10 +182,10 @@ export default function SupportPage() {
               <h3 className="text-xl font-semibold text-white mb-2">Email Support</h3>
               <p className="text-gray-300 mb-4">Get help via email within 24 hours</p>
               <a 
-                href="mailto:support@linclone.com"
+                href="mailto:info@linclone.com"
                 className="inline-flex items-center text-purple-400 hover:text-purple-300 transition-colors"
               >
-                support@linclone.com
+                info@linclone.com
               </a>
             </motion.div>
 
