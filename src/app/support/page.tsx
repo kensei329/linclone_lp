@@ -172,7 +172,7 @@ export default function SupportPage() {
       {/* Quick Contact Cards */}
       <section className="py-12 px-6">
         <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+          <div className="grid gap-6 mb-16">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -190,41 +190,7 @@ export default function SupportPage() {
               </a>
             </motion.div>
 
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-6 text-center hover:bg-white/15 transition-all duration-300"
-            >
-              <PhoneIcon className="w-12 h-12 text-green-400 mx-auto mb-4" />
-              <h3 className="text-xl font-semibold text-white mb-2">Phone Support</h3>
-              <p className="text-gray-300 mb-4">Call us for urgent issues</p>
-              <a 
-                href="tel:+1-555-123-4567"
-                className="inline-flex items-center text-green-400 hover:text-green-300 transition-colors"
-              >
-                +1 (555) 123-4567
-              </a>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-6 text-center hover:bg-white/15 transition-all duration-300"
-            >
-              <svg className="w-12 h-12 text-blue-400 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-              </svg>
-              <h3 className="text-xl font-semibold text-white mb-2">Our Office</h3>
-              <p className="text-gray-300 mb-4">Visit us at our headquarters</p>
-              <address className="text-blue-400 not-italic leading-relaxed">
-                123 Tech Street<br />
-                Innovation District<br />
-                San Francisco, CA 94105
-              </address>
-            </motion.div>
+         
           </div>
                
         </div>
