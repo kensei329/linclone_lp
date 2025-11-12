@@ -8,6 +8,14 @@ function getNestedValue(obj: any, key: string): string {
   return key.split('.').reduce((o, k) => (o && o[k] !== undefined ? o[k] : key), obj);
 }
 
+function applyInterpolation(template: string, options?: Record<string, string | number>): string {
+  if (!options) return template;
+  return template.replace(/\{([^}]+)\}/g, (_, match) => {
+    const value = options[match.trim()];
+    return value !== undefined ? String(value) : `{${match}}`;
+  });
+}
+
 export function useClientTranslation() {
   const { t, i18n } = useTranslation();
   const [isClient, setIsClient] = useState(false);
@@ -16,11 +24,12 @@ export function useClientTranslation() {
     setIsClient(true);
   }, []);
 
-  const clientT = (key: string): string => {
+  const clientT = (key: string, options?: Record<string, string | number>): string => {
     if (!isClient) {
-      return getNestedValue(ja, key);
+      const template = getNestedValue(ja, key);
+      return applyInterpolation(template, options);
     }
-    return t(key);
+    return options ? t(key, options) : t(key);
   };
 
   return {
@@ -28,4 +37,4 @@ export function useClientTranslation() {
     i18n,
     isClient,
   };
-} 
+}

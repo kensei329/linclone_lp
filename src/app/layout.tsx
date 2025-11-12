@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import ClientProvider from "@/components/ClientProvider";
+import { cookies } from "next/headers";
 
 export const metadata: Metadata = {
   title: "LinClone - AI Clone Technology",
@@ -14,13 +15,17 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const cookieStore = await cookies();
+  const cookieLang = cookieStore.get('i18next')?.value;
+  const lang = cookieLang === 'en' ? 'en' : 'ja';
+
   return (
-    <html lang="ja">
+    <html lang={lang}>
       <body>
         <ClientProvider>
           {children}

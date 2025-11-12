@@ -108,14 +108,6 @@ const FeatureCard = ({ feature, index }: { feature: Feature; index: number }) =>
             {feature.description}
           </motion.p>
           
-          {/* Learn more button */}
-          <motion.div
-            className="flex items-center text-purple-600 font-semibold opacity-0 group-hover:opacity-100 transition-all duration-300"
-            whileHover={{ x: 5 }}
-          >
-            <span className="mr-2">Learn more</span>
-            <ArrowRightIcon className="w-4 h-4" />
-          </motion.div>
         </div>
         
         {/* Card border animation */}
@@ -224,7 +216,7 @@ export default function FeaturesSection() {
           >
             <SparklesIcon className="w-5 h-5 text-purple-600" />
             <span className="text-purple-800 text-sm font-semibold">
-              Key Features
+              {t('features.headerBadge')}
             </span>
           </motion.div>
           
@@ -247,7 +239,7 @@ export default function FeaturesSection() {
             viewport={{ once: true }}
             className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed"
           >
-            Discover how LinClone revolutionizes digital interaction through cutting-edge AI technology
+            {t('features.subtitleText')}
           </motion.p>
         </motion.div>
 
@@ -278,7 +270,7 @@ export default function FeaturesSection() {
               if (el) el.scrollIntoView({ behavior: 'smooth' });
             }}
           >
-            <span>Experience LinClone</span>
+            <span>{t('features.cta')}</span>
             <motion.div
               className="flex items-center justify-center w-6 h-6 bg-white/20 rounded-full"
               whileHover={{ rotate: 90 }}

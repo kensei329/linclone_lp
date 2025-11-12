@@ -2,9 +2,9 @@
 
 import { motion, AnimatePresence } from 'framer-motion';
 import { useClientTranslation } from '@/hooks/useClientTranslation';
-import { useState, useEffect, useRef } from 'react';
-import { PaperAirplaneIcon, PlayIcon, UserIcon, SparklesIcon } from '@heroicons/react/24/solid';
-import { ChatBubbleLeftRightIcon, MicrophoneIcon } from '@heroicons/react/24/outline';
+import { useState, useEffect, useRef, useMemo, useCallback } from 'react';
+import { PlayIcon, UserIcon, SparklesIcon, PaperAirplaneIcon } from '@heroicons/react/24/solid';
+import { ChatBubbleLeftRightIcon } from '@heroicons/react/24/outline';
 
 interface Message {
   id: number;
@@ -14,8 +14,23 @@ interface Message {
   typing?: boolean;
 }
 
+type FAQOption = {
+  id: string;
+  question: string;
+  answer: string;
+};
+
+const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
+
+const createMessage = (text: string, isUser: boolean): Message => ({
+  id: Date.now() + Math.floor(Math.random() * 1000),
+  text,
+  isUser,
+  timestamp: new Date(),
+});
+
 // Typing indicator component
-const TypingIndicator = () => (
+const TypingIndicator = ({ message }: { message: string }) => (
   <div className="flex items-center space-x-1 p-4">
     <div className="flex space-x-1">
       <motion.div
@@ -34,7 +49,7 @@ const TypingIndicator = () => (
         transition={{ repeat: Infinity, duration: 1, delay: 0.4 }}
       />
     </div>
-    <span className="text-gray-500 text-sm ml-2">AI Clone is typing...</span>
+    <span className="text-gray-500 text-sm ml-2">{message}</span>
   </div>
 );
 
@@ -126,92 +141,184 @@ const MessageBubble = ({ message, index }: { message: Message; index: number }) 
   );
 };
 
+const pickRandom = <T,>(items: T[], count: number): T[] => {
+  if (items.length <= count) {
+    return [...items];
+  }
+
+  const pool = [...items];
+  const selection: T[] = [];
+
+  while (selection.length < count && pool.length > 0) {
+    const index = Math.floor(Math.random() * pool.length);
+    selection.push(pool.splice(index, 1)[0]);
+  }
+
+  return selection;
+};
+
 export default function DemoSection() {
-  const { t } = useClientTranslation();
+  const { t, i18n } = useClientTranslation();
+  const language = i18n.language;
   const [messages, setMessages] = useState<Message[]>([]);
   const [inputValue, setInputValue] = useState('');
   const [isTyping, setIsTyping] = useState(false);
   const [demoStarted, setDemoStarted] = useState(false);
-  const messagesEndRef = useRef<HTMLDivElement>(null);
+  const [showOptions, setShowOptions] = useState(false);
+  const [askedQuestionIds, setAskedQuestionIds] = useState<string[]>([]);
+  const [faqOptions, setFaqOptions] = useState<FAQOption[]>([]);
+  const [displayOptions, setDisplayOptions] = useState<FAQOption[]>([]);
+  const messagesContainerRef = useRef<HTMLDivElement>(null);
+
+  const introConversation = useMemo(
+    () => [
+      { text: t('demo.intro.user'), isUser: true },
+      { text: t('demo.intro.ai'), isUser: false },
+    ],
+    [t]
+  );
+
+  const dynamicResponses = useMemo(() => {
+    const resource = i18n.getResource(language, 'translation', 'demo.dynamicResponses');
+    if (Array.isArray(resource)) {
+      return resource as string[];
+    }
+    return [];
+  }, [language, i18n]);
+
+  const getNextOptions = useCallback(
+    (askedIds: string[]) => {
+      if (!faqOptions.length) return [];
+      const unused = faqOptions.filter(option => !askedIds.includes(option.id));
+      const source = unused.length > 0 ? unused : faqOptions;
+      return pickRandom(source, Math.min(3, source.length));
+    },
+    [faqOptions]
+  );
+
+  const getAiResponse = useCallback(
+    (userMessage: string) => {
+      const pool = dynamicResponses.length ? dynamicResponses : [t('demo.faq.completed')];
+      if (!pool.length) return '';
+
+      const lower = userMessage.toLowerCase();
+      const heuristics = [
+        { matches: ['process', 'flow', 'create', '作り方', '流れ'], index: 0 },
+        { matches: ['voice', 'tone', 'personality', 'character', '個性', '声'], index: 1 },
+        { matches: ['fan', 'follower', 'engage', 'community', 'ファン', 'フォロワー'], index: 2 },
+      ];
+
+      for (const rule of heuristics) {
+        if (dynamicResponses[rule.index] && rule.matches.some((keyword) => lower.includes(keyword))) {
+          return dynamicResponses[rule.index];
+        }
+      }
+
+      const randomIndex = Math.floor(Math.random() * pool.length);
+      return pool[randomIndex];
+    },
+    [dynamicResponses, t]
+  );
 
   const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+    const container = messagesContainerRef.current;
+    if (container) {
+      container.scrollTo({
+        top: container.scrollHeight,
+        behavior: 'smooth',
+      });
+    }
   };
 
   useEffect(() => {
     scrollToBottom();
   }, [messages, isTyping]);
 
-  // Demo conversation flow
-  const demoConversation = [
-    { text: "Hello! I'm excited to try LinClone. How does it work?", isUser: true },
-    { text: "Hi there! Welcome to LinClone! I'm your AI clone demo. I can understand and respond just like a real person. What would you like to know about creating your own AI clone?", isUser: false },
-    { text: "That's amazing! Can you really sound like me?", isUser: true },
-    { text: "Absolutely! With just a few voice samples, I can learn your speaking patterns, tone, and even your personality quirks. I'll be able to engage with your fans 24/7, just as you would!", isUser: false },
-    { text: "How do I get started?", isUser: true },
-    { text: "It's super simple! Just record a 10-minute conversation with me, and I'll learn everything I need to become your digital twin. Ready to begin your journey?", isUser: false }
-  ];
+  useEffect(() => {
+    setAskedQuestionIds([]);
+    setDisplayOptions([]);
+    setShowOptions(false);
+    const resource = i18n.getResource(language, 'translation', 'demo.faq.options');
+    if (Array.isArray(resource)) {
+      setFaqOptions(resource as FAQOption[]);
+    } else {
+      setFaqOptions([]);
+    }
+  }, [language, i18n]);
+
+  useEffect(() => {
+    if (faqOptions.length) {
+      setDisplayOptions(getNextOptions([]));
+    } else {
+      setDisplayOptions([]);
+    }
+  }, [faqOptions, getNextOptions]);
 
   const startDemo = async () => {
+    if (demoStarted) return;
+
     setDemoStarted(true);
     setMessages([]);
-    
-    for (let i = 0; i < demoConversation.length; i++) {
-      const message = demoConversation[i];
-      
-      // Add delay between messages
-      await new Promise(resolve => setTimeout(resolve, i === 0 ? 500 : 2000));
-      
-      if (!message.isUser) {
+    setAskedQuestionIds([]);
+    setShowOptions(false);
+
+    for (let i = 0; i < introConversation.length; i++) {
+      const step = introConversation[i];
+      await delay(i === 0 ? 500 : 1600);
+
+      if (step.isUser) {
+        setMessages(prev => [...prev, createMessage(step.text, true)]);
+      } else {
         setIsTyping(true);
-        await new Promise(resolve => setTimeout(resolve, 1000));
+        await delay(900);
+        setMessages(prev => [...prev, createMessage(step.text, false)]);
         setIsTyping(false);
       }
-      
-      setMessages(prev => [...prev, {
-        id: Date.now() + i,
-        text: message.text,
-        isUser: message.isUser,
-        timestamp: new Date()
-      }]);
     }
+
+    setDisplayOptions(getNextOptions([]));
+    setShowOptions(true);
   };
 
-  const handleSendMessage = () => {
-    if (!inputValue.trim()) return;
+  const handleOptionSelect = async (option: FAQOption) => {
+    if (isTyping || askedQuestionIds.includes(option.id)) return;
+    const updatedAsked = [...askedQuestionIds, option.id];
 
-    const newMessage: Message = {
-      id: Date.now(),
-      text: inputValue,
-      isUser: true,
-      timestamp: new Date()
-    };
+    setAskedQuestionIds(updatedAsked);
+    setMessages(prev => [...prev, createMessage(option.question, true)]);
+    setShowOptions(true);
+    setDisplayOptions(getNextOptions(updatedAsked));
 
-    setMessages(prev => [...prev, newMessage]);
+    await delay(400);
+    setIsTyping(true);
+    await delay(1100);
+    setMessages(prev => [...prev, createMessage(option.answer, false)]);
+    setIsTyping(false);
+  };
+
+  const handleShowMoreQuestions = useCallback(() => {
+    setDisplayOptions(getNextOptions(askedQuestionIds));
+    setShowOptions(true);
+  }, [askedQuestionIds, getNextOptions]);
+
+  const handleSendMessage = useCallback(async () => {
+    const trimmed = inputValue.trim();
+    if (!trimmed || isTyping || !demoStarted) return;
+
+    setMessages(prev => [...prev, createMessage(trimmed, true)]);
     setInputValue('');
+    setShowOptions(true);
 
-    // Simulate AI response
-    setTimeout(() => {
-      setIsTyping(true);
-      setTimeout(() => {
-        setIsTyping(false);
-        const responses = [
-          "That's a great question! I'm designed to learn from your unique communication style.",
-          "I can help you engage with your audience even when you're not available!",
-          "The more we chat, the better I become at mimicking your personality.",
-          "Would you like to know more about any specific feature?"
-        ];
-        const randomResponse = responses[Math.floor(Math.random() * responses.length)];
-        
-        setMessages(prev => [...prev, {
-          id: Date.now(),
-          text: randomResponse,
-          isUser: false,
-          timestamp: new Date()
-        }]);
-      }, 1500);
-    }, 500);
-  };
+    await delay(400);
+    setIsTyping(true);
+    await delay(1100);
+    const response = getAiResponse(trimmed);
+    if (response) {
+      setMessages(prev => [...prev, createMessage(response, false)]);
+    }
+    setDisplayOptions(getNextOptions(askedQuestionIds));
+    setIsTyping(false);
+  }, [askedQuestionIds, demoStarted, getAiResponse, inputValue, isTyping, getNextOptions]);
 
   return (
     <section id="demo-section" className="py-32 bg-gradient-to-br from-white via-purple-50 to-pink-50">
@@ -231,7 +338,7 @@ export default function DemoSection() {
           >
             <ChatBubbleLeftRightIcon className="w-5 h-5 text-purple-600" />
             <span className="text-purple-800 text-sm font-semibold">
-              Interactive Demo
+              {t('demo.headerBadge')}
             </span>
           </motion.div>
           
@@ -264,8 +371,8 @@ export default function DemoSection() {
                     <SparklesIcon className="w-6 h-6 text-white" />
                   </div>
                   <div>
-                    <h3 className="text-white font-semibold">LinClone AI Demo</h3>
-                    <p className="text-purple-100 text-sm">Your AI Clone • Always Online</p>
+                  <h3 className="text-white font-semibold">{t('demo.chatHeader.title')}</h3>
+                  <p className="text-purple-100 text-sm">{t('demo.chatHeader.subtitle')}</p>
                   </div>
                 </div>
                 <div className="flex items-center space-x-2">
@@ -274,13 +381,16 @@ export default function DemoSection() {
                     animate={{ scale: [1, 1.2, 1] }}
                     transition={{ repeat: Infinity, duration: 2 }}
                   />
-                  <span className="text-white text-sm">Online</span>
+                <span className="text-white text-sm">{t('demo.chatHeader.online')}</span>
                 </div>
               </div>
             </div>
 
             {/* Messages Area */}
-            <div className="h-96 overflow-y-auto p-6 space-y-4 bg-gradient-to-b from-gray-50 to-white">
+            <div
+              ref={messagesContainerRef}
+              className="h-96 overflow-y-auto p-6 space-y-4 bg-gradient-to-b from-gray-50 to-white"
+            >
               {!demoStarted ? (
                 <motion.div
                   initial={{ opacity: 0 }}
@@ -295,10 +405,10 @@ export default function DemoSection() {
                     <PlayIcon className="w-8 h-8 text-white ml-1" />
                   </motion.div>
                   <h3 className="text-xl font-semibold text-gray-800 mb-2">
-                    Ready to see LinClone in action?
+                    {t('demo.readyTitle')}
                   </h3>
                   <p className="text-gray-600 mb-6 max-w-md">
-                    Experience a real conversation with an AI clone. See how natural and engaging it can be!
+                    {t('demo.readySubtitle')}
                   </p>
                   <motion.button
                     className="px-8 py-3 bg-gradient-to-r from-purple-600 to-pink-600 text-white font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
@@ -306,7 +416,7 @@ export default function DemoSection() {
                     whileTap={{ scale: 0.95 }}
                     onClick={startDemo}
                   >
-                    Start Demo Conversation
+                    {t('demo.startButton')}
                   </motion.button>
                 </motion.div>
               ) : (
@@ -316,45 +426,86 @@ export default function DemoSection() {
                       <MessageBubble key={message.id} message={message} index={index} />
                     ))}
                   </AnimatePresence>
-                  {isTyping && <TypingIndicator />}
-                  <div ref={messagesEndRef} />
+                  {isTyping && <TypingIndicator message={t('demo.typing')} />}
                 </>
               )}
             </div>
 
-            {/* Input Area */}
+            {showOptions && (
+              <div className="border-t border-gray-200 p-6 bg-white/70 space-y-4">
+                <p className="text-gray-700 text-sm">
+                  {displayOptions.length > 0 ? t('demo.faq.prompt') : t('demo.faq.completed')}
+                </p>
+                {displayOptions.length > 0 && (
+                  <div className="flex flex-col sm:flex-row sm:flex-wrap gap-3">
+                    {displayOptions.map((option) => (
+                      <motion.button
+                        key={option.id}
+                        type="button"
+                        whileHover={{ scale: isTyping ? 1 : 1.03 }}
+                        whileTap={{ scale: isTyping ? 1 : 0.97 }}
+                        onClick={() => handleOptionSelect(option)}
+                        disabled={isTyping}
+                        className={`px-4 py-3 rounded-2xl text-sm font-medium transition-all duration-300 ${
+                          isTyping
+                            ? 'bg-gray-200 text-gray-400 cursor-not-allowed'
+                            : 'bg-purple-100 text-purple-700 hover:bg-purple-200'
+                        }`}
+                      >
+                        {option.question}
+                      </motion.button>
+                    ))}
+                  </div>
+                )}
+                <div className="flex justify-center">
+                  <motion.button
+                    type="button"
+                    whileHover={{ scale: isTyping ? 1 : 1.02 }}
+                    whileTap={{ scale: isTyping ? 1 : 0.98 }}
+                    onClick={handleShowMoreQuestions}
+                    disabled={isTyping || !faqOptions.length}
+                    className={`px-4 py-2 rounded-full text-xs font-semibold transition-all duration-300 ${
+                      isTyping || !faqOptions.length
+                        ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
+                        : 'bg-white text-purple-700 border border-purple-200 hover:bg-purple-100'
+                    }`}
+                  >
+                    {t('demo.faq.more')}
+                  </motion.button>
+                </div>
+              </div>
+            )}
+
             {demoStarted && (
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 1 }}
-                className="border-t border-gray-200 p-4"
+                transition={{ delay: 0.2 }}
+                className="border-t border-gray-200 p-4 bg-white/80"
               >
-                <div className="flex items-center space-x-3">
-                  <div className="flex-1 relative">
-                    <input
-                      type="text"
-                      value={inputValue}
-                      onChange={(e) => setInputValue(e.target.value)}
-                      onKeyPress={(e) => e.key === 'Enter' && handleSendMessage()}
-                      placeholder="Type your message..."
-                      className="w-full px-4 py-3 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
-                    />
-                  </div>
+                <div className="flex items-center gap-3">
+                  <textarea
+                    value={inputValue}
+                    onChange={(e) => setInputValue(e.target.value)}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter' && !e.shiftKey) {
+                        e.preventDefault();
+                        handleSendMessage();
+                      }
+                    }}
+                    rows={1}
+                    placeholder={t('demo.inputPlaceholder')}
+                    className="flex-1 resize-none px-4 py-3 rounded-2xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent text-sm text-gray-900 placeholder:text-gray-900"
+                  />
                   <motion.button
-                    className="flex items-center justify-center w-12 h-12 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.9 }}
+                    type="button"
+                    className="flex items-center justify-center w-12 h-12 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 disabled:opacity-60"
+                    whileHover={{ scale: inputValue.trim() && !isTyping ? 1.1 : 1 }}
+                    whileTap={{ scale: inputValue.trim() && !isTyping ? 0.9 : 1 }}
                     onClick={handleSendMessage}
+                    disabled={!inputValue.trim() || isTyping}
                   >
                     <PaperAirplaneIcon className="w-5 h-5" />
-                  </motion.button>
-                  <motion.button
-                    className="flex items-center justify-center w-12 h-12 bg-gray-100 text-gray-600 rounded-full hover:bg-gray-200 transition-colors duration-300"
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.9 }}
-                  >
-                    <MicrophoneIcon className="w-5 h-5" />
                   </motion.button>
                 </div>
               </motion.div>
@@ -370,9 +521,9 @@ export default function DemoSection() {
             className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12"
           >
             {[
-              { icon: "🎯", title: "Natural Responses", desc: "Human-like conversation flow" },
-              { icon: "⚡", title: "Instant Replies", desc: "No waiting, immediate engagement" },
-              { icon: "🧠", title: "Learning AI", desc: "Gets better with every interaction" }
+              { icon: "💬", title: t('demo.cards.natural.title'), desc: t('demo.cards.natural.desc') },
+              { icon: "⚡", title: t('demo.cards.instant.title'), desc: t('demo.cards.instant.desc') },
+              { icon: "🎧", title: t('demo.cards.learning.title'), desc: t('demo.cards.learning.desc') }
             ].map((feature, index) => (
               <motion.div
                 key={index}

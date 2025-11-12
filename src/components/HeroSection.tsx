@@ -1,17 +1,19 @@
-'use client';
+"use client";
 
-import { motion } from 'framer-motion';
-import { PlayIcon, SparklesIcon } from '@heroicons/react/24/solid';
-import LanguageToggle from './LanguageToggle';
-import { useClientTranslation } from '@/hooks/useClientTranslation';
-import { Montserrat } from 'next/font/google';
-import { useState, useEffect } from 'react';
+import { motion } from "framer-motion";
+import { PlayIcon, SparklesIcon } from "@heroicons/react/24/solid";
+import LanguageToggle from "./LanguageToggle";
+import { useClientTranslation } from "@/hooks/useClientTranslation";
+import { Montserrat } from "next/font/google";
+import { useState, useEffect } from "react";
 
-const montserrat = Montserrat({ subsets: ['latin'], weight: '700' });
+const montserrat = Montserrat({ subsets: ["latin"], weight: "700" });
 
 // Floating particles component
 const FloatingParticles = () => {
-  const [particles, setParticles] = useState<Array<{ id: number; x: number; y: number; delay: number }>>([]);
+  const [particles, setParticles] = useState<
+    Array<{ id: number; x: number; y: number; delay: number }>
+  >([]);
 
   useEffect(() => {
     const newParticles = Array.from({ length: 20 }, (_, i) => ({
@@ -51,7 +53,13 @@ const FloatingParticles = () => {
 };
 
 // Interactive orb component
-const InteractiveOrb = ({ className, delay = 0 }: { className: string; delay?: number }) => {
+const InteractiveOrb = ({
+  className,
+  delay = 0,
+}: {
+  className: string;
+  delay?: number;
+}) => {
   return (
     <motion.div
       className={`absolute rounded-full ${className}`}
@@ -73,6 +81,7 @@ const InteractiveOrb = ({ className, delay = 0 }: { className: string; delay?: n
 export default function HeroSection() {
   const { t } = useClientTranslation();
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [isVideoOpen, setIsVideoOpen] = useState(false);
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -82,21 +91,21 @@ export default function HeroSection() {
       });
     };
 
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => window.removeEventListener("mousemove", handleMouseMove);
   }, []);
 
   return (
     <section className="relative min-h-screen bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900 flex items-center justify-center overflow-hidden">
       {/* Dynamic Background */}
       <div className="absolute inset-0">
-        <div 
+        <div
           className="absolute inset-0 bg-gradient-to-r from-purple-800/30 to-pink-800/30 transition-all duration-1000 ease-out"
           style={{
             backgroundPosition: `${mousePosition.x}% ${mousePosition.y}%`,
           }}
         />
-        
+
         {/* Animated mesh gradient */}
         <motion.div
           className="absolute inset-0 opacity-50"
@@ -113,38 +122,42 @@ export default function HeroSection() {
 
       {/* Floating Particles */}
       <FloatingParticles />
-      
+
       {/* Interactive Orbs */}
-      <InteractiveOrb 
-        className="top-1/4 left-1/4 w-32 h-32 bg-purple-500/20 blur-xl" 
+      <InteractiveOrb
+        className="top-1/4 left-1/4 w-32 h-32 bg-purple-500/20 blur-xl"
         delay={0}
       />
-      <InteractiveOrb 
-        className="bottom-1/4 right-1/4 w-24 h-24 bg-pink-500/20 blur-xl" 
+      <InteractiveOrb
+        className="bottom-1/4 right-1/4 w-24 h-24 bg-pink-500/20 blur-xl"
         delay={2}
       />
-      <InteractiveOrb 
-        className="top-1/3 right-1/3 w-40 h-40 bg-blue-500/15 blur-2xl" 
+      <InteractiveOrb
+        className="top-1/3 right-1/3 w-40 h-40 bg-blue-500/15 blur-2xl"
         delay={4}
       />
 
       {/* Header */}
       <div className="absolute top-0 left-0 right-0 z-50">
         <div className="flex items-center justify-between p-6">
-          {/* Logo with glassmorphism */}
-          <motion.div 
-            className="bg-white/10 backdrop-blur-md rounded-2xl px-4 py-2 border border-white/20"
+          <motion.div
+            className=" rounded-2xl px-4 py-2  flex items-center gap-1 sm:gap-2"
             whileHover={{ scale: 1.05 }}
             transition={{ type: "spring", stiffness: 300 }}
           >
-            <span className={`${montserrat.className} text-2xl sm:text-3xl font-bold text-white tracking-widest`}>
+            <div className="bg-gradient-to-r from-purple-500 to-pink-500 rounded-2xl p-3 mr-4">
+              <SparklesIcon className="w-8 h-8 text-white" />
+            </div>
+            <span
+              className={`${montserrat.className} text-2xl sm:text-3xl font-bold text-white tracking-widest`}
+            >
               LinClone
             </span>
           </motion.div>
 
           {/* Language Toggle with glassmorphism */}
-          <motion.div 
-            className="bg-white/10 backdrop-blur-md rounded-2xl p-2 border border-white/20"
+          <motion.div
+            className="rounded-2xl p-2 "
             whileHover={{ scale: 1.05 }}
             transition={{ type: "spring", stiffness: 300 }}
           >
@@ -164,7 +177,7 @@ export default function HeroSection() {
         >
           <SparklesIcon className="w-5 h-5 text-yellow-300" />
           <span className="text-white/90 text-sm font-medium">
-            Now in Beta • Experience the Future
+            {t('hero.betaBadge')}
           </span>
           <SparklesIcon className="w-5 h-5 text-yellow-300" />
         </motion.div>
@@ -175,6 +188,7 @@ export default function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: "easeOut" }}
           className="text-4xl sm:text-6xl md:text-6xl font-bold text-white mb-8 leading-tight tracking-tight"
+          style={{ whiteSpace: "pre-line" }}
         >
           <motion.span
             className="inline-block bg-gradient-to-r from-white via-purple-200 to-pink-200 bg-clip-text text-transparent"
@@ -184,7 +198,7 @@ export default function HeroSection() {
             transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
             style={{ backgroundSize: "200% 200%" }}
           >
-            {t('hero.title')}
+            {t("hero.title")}
           </motion.span>
         </motion.h1>
 
@@ -193,132 +207,79 @@ export default function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.3 }}
           className="text-lg md:text-2xl text-gray-200 mb-12 leading-relaxed max-w-3xl mx-auto"
+          style={{ whiteSpace: "pre-line" }}
         >
-          {t('hero.subtitle')}
+          {t("hero.subtitle")}
         </motion.p>
 
-        {/* Enhanced Button Group */}
+        {/* CTA Buttons */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.5 }}
-          className="flex flex-col lg:flex-row gap-6 items-center justify-center mb-16"
+          className="flex flex-col sm:flex-row gap-5 items-center justify-center mb-16"
         >
           {/* Primary CTA */}
           <motion.button
-            className="group relative px-10 py-4 bg-gradient-to-r from-purple-600 to-pink-600 text-white font-semibold rounded-full overflow-hidden shadow-2xl"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
+            className="group relative flex items-center gap-3 px-8 py-4 bg-white text-purple-700 font-semibold rounded-3xl shadow-2xl hover:shadow-[0_20px_40px_-12px_rgba(168,85,247,0.5)] transition-all duration-300"
+            whileHover={{ translateY: -4 }}
+            whileTap={{ scale: 0.96 }}
             onClick={() => {
-              const el = document.getElementById('beta-section');
-              if (el) el.scrollIntoView({ behavior: 'smooth' });
+              const el = document.getElementById("beta-section");
+              if (el) el.scrollIntoView({ behavior: "smooth" });
             }}
           >
-            <motion.div
-              className="absolute inset-0 bg-gradient-to-r from-purple-500 to-pink-500"
-              initial={{ x: "100%" }}
-              whileHover={{ x: "0%" }}
-              transition={{ duration: 0.3 }}
-            />
-            <span className="relative z-10 flex items-center gap-2">
+            <motion.span
+              className="flex items-center justify-center w-10 h-10 rounded-2xl bg-gradient-to-br from-purple-500 to-pink-500 text-white shadow-lg"
+              whileHover={{ rotate: 10 }}
+            >
               <SparklesIcon className="w-5 h-5" />
-              {t('hero.getStarted')}
-            </span>
+            </motion.span>
+            <span className="whitespace-nowrap">{t("hero.getStarted")}</span>
           </motion.button>
-          
+
           {/* Secondary CTA */}
           <motion.button
-            className="group flex items-center gap-3 px-8 py-4 bg-white/10 backdrop-blur-md border border-white/20 text-white font-semibold rounded-full hover:bg-white/20 transition-all duration-300"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
+            className="group flex items-center gap-3 px-8 py-4 bg-white/15 backdrop-blur-xl border border-white/30 text-white font-semibold rounded-3xl hover:bg-white/25 transition-all duration-300"
+            whileHover={{ translateY: -4 }}
+            whileTap={{ scale: 0.96 }}
             onClick={() => {
-              const el = document.getElementById('demo-section');
-              if (el) el.scrollIntoView({ behavior: 'smooth' });
+              const el = document.getElementById("demo-section");
+              if (el) el.scrollIntoView({ behavior: "smooth" });
             }}
           >
-            <motion.div
-              className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center"
+            <motion.span
+              className="flex items-center justify-center w-10 h-10 rounded-2xl bg-white/20 text-white"
               whileHover={{ rotate: 360 }}
-              transition={{ duration: 0.5 }}
+              transition={{ duration: 0.6 }}
             >
-              <PlayIcon className="w-6 h-6 text-white ml-1" />
-            </motion.div>
-            <span>{t('hero.watchDemo')}</span>
+              <PlayIcon className="w-6 h-6" />
+            </motion.span>
+            <span className="whitespace-nowrap">{t("hero.tryDemo")}</span>
           </motion.button>
         </motion.div>
-
-        {/* Enhanced Download Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.7 }}
-          className="bg-white/5 backdrop-blur-md rounded-3xl p-8 border border-white/10 max-w-md mx-auto mb-8"
-        >
-          <h3 className="text-white text-xl font-semibold mb-6 flex items-center justify-center gap-2">
-            <motion.div
-              animate={{ rotate: 360 }}
-              transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-            >
-              📱
-            </motion.div>
-            {t('download.title')}
-          </h3>
-          
-          <div className="flex flex-col gap-4">
-            {/* App Store Button */}
-            <motion.button
-              className="group flex items-center justify-center px-6 py-4 bg-black/80 backdrop-blur-sm text-white rounded-2xl hover:bg-black transition-all duration-300 border border-white/10"
-              whileHover={{ scale: 1.02, y: -2 }}
-              whileTap={{ scale: 0.98 }}
-              onClick={() => window.open('https://apps.apple.com/app/linclone', '_blank')}
-            >
-              <div className="flex items-center space-x-4">
-                <svg className="w-10 h-10" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
-                </svg>
-                <div className="text-left">
-                  <div className="text-xs opacity-75">Download on the</div>
-                  <div className="text-lg font-semibold">App Store</div>
-                </div>
-                <motion.div
-                  className="opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                  initial={{ x: -10 }}
-                  whileHover={{ x: 0 }}
-                >
-                  →
-                </motion.div>
-              </div>
-            </motion.button>
-
-            {/* Google Play Button */}
-            <motion.button
-              className="group flex items-center justify-center px-6 py-4 bg-black/80 backdrop-blur-sm text-white rounded-2xl hover:bg-black transition-all duration-300 border border-white/10"
-              whileHover={{ scale: 1.02, y: -2 }}
-              whileTap={{ scale: 0.98 }}
-              onClick={() => window.open('https://play.google.com/store/apps/details?id=com.linclone.app', '_blank')}
-            >
-              <div className="flex items-center space-x-4">
-                <svg className="w-10 h-10" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.53,12.9 20.18,13.18L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z"/>
-                </svg>
-                <div className="text-left">
-                  <div className="text-xs opacity-75">Get it on</div>
-                  <div className="text-lg font-semibold">Google Play</div>
-                </div>
-                <motion.div
-                  className="opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                  initial={{ x: -10 }}
-                  whileHover={{ x: 0 }}
-                >
-                  →
-                </motion.div>
-              </div>
-            </motion.button>
-          </div>
-        </motion.div>
-
-
       </div>
+
+      {isVideoOpen && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/70 p-4">
+          <div className="relative w-full max-w-4xl aspect-video bg-black rounded-xl overflow-hidden shadow-2xl">
+            <button
+              aria-label="Close video"
+              className="absolute -top-10 right-0 text-white/80 hover:text-white"
+              onClick={() => setIsVideoOpen(false)}
+            >
+              ✕
+            </button>
+            <iframe
+              className="w-full h-full"
+              src={t("demo.videoUrl")}
+              title="LinClone Demo Video"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen
+            />
+          </div>
+        </div>
+      )}
     </section>
   );
-} 
+}

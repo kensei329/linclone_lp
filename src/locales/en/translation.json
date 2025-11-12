@@ -4,49 +4,160 @@
       "subtitle": "Easily create your AI clone and open up a whole new way to engage with your followers.",
       "getStarted": "Request Early Access",
       "watchDemo": "Watch the Demo",
-      "downloadApp": "Download the App"
+      "downloadApp": "Download the App",
+      "tryDemo": "Try the Demo",
+      "betaBadge": "Now in Beta • Experience the Future"
     },
     "features": {
       "title": "What is LinClone?",
-      "subtitle": "",
+    "subtitle": "LinClone uses advanced AI technology to create a new relationship between you and your fans.",
       "aiClone": {
         "title": "Create your own AI clone effortlessly",
-        "description": "No complicated setup required. In just a few simple steps, you can generate a clone that sounds, thinks, and speaks just like you."
+      "description": "Create your AI clone in just a 3-minute simple interview. No complicated setup or difficult steps required."
       },
       "realtime": {
         "title": "The creation process becomes content",
-        "description": "Your AI clone is born through a video conversation. Turn that behind-the-scenes moment into exclusive content your fans will love."
+        "description": "Your clone is born through a video call with AI, and the process itself can be shared as a video or live stream with fans and followers."
       },
       "analytics": {
         "title": "Engage 24/7 and monetize effortlessly",
-        "description": "Your AI clone can handle video calls and react to trends in real time. Turn it into a subscription-based fan club that drives ongoing revenue."
-      }
+      "description": "Your AI clone stays connected with fans 24/7 and reacts to trends instantly. Turn it into a subscription-based fan club that drives ongoing revenue."
+      },
+      "headerBadge": "Key Features",
+    "subtitleText": "LinClone uses advanced AI technology to create a new relationship between you and your fans.",
+      "cta": "Experience LinClone",
+      "learnMore": "Learn more"
+    },
+    "cloneProcess": {
+      "title": "Clone Creation Process",
+      "subtitle": "Your clone is born through a video call with AI, and the process itself can be shared as a video or live stream with fans and followers.",
+      "videoTitle": "Watch the Clone Creation Demo",
+      "videoUrl": "https://www.youtube.com/embed/VIDEO_ID_EN"
     },
     "demo": {
       "title": "Experience the Demo",
       "subtitle": "See how LinClone works in action",
       "inputPlaceholder": "Type your message...",
       "send": "Send",
-      "aiResponse": "Your AI clone's response will appear here. Enjoy natural and lifelike conversations."
+      "aiResponse": "Your AI clone's response will appear here. Enjoy natural and lifelike conversations.",
+      "headerBadge": "Interactive Demo",
+      "typing": "AI Clone is typing...",
+      "readyTitle": "Ready to see LinClone in action?",
+      "readySubtitle": "Experience a real conversation with an AI clone. See how natural and engaging it can be!",
+      "startButton": "Start Demo Conversation",
+      "videoUrl": "https://www.youtube.com/embed/VIDEO_ID_EN",
+      "chatHeader": {
+        "title": "LinClone AI Demo",
+        "subtitle": "Your AI Clone • Always Online",
+        "online": "Online"
+      },
+    "intro": {
+      "user": "Hi! I'm curious about LinClone. How does cloning myself work?",
+      "ai": "Welcome! I'm your LinClone demo. I'll walk you through how creators turn a short conversation into a 24/7 AI presence. Ready to explore?"
+    },
+    "faq": {
+      "prompt": "Choose a question to learn how LinClone supports your creator journey.",
+      "completed": "That covers the essentials. Reach out anytime for a personalised onboarding walkthrough!",
+      "more": "Show other questions",
+      "options": [
+        {
+          "id": "process",
+          "question": "How does the clone creation process work?",
+          "answer": "We guide you through a focused 3-minute interview. The recording teaches LinClone how you speak, react, and welcome your fans, so your AI double is ready by the end of the session."
+        },
+        {
+          "id": "personality",
+          "question": "How do you capture my personality and tone?",
+          "answer": "LinClone studies your voice, expressions, and phrasing from the interview, then lets you review everything before launch. You decide the boundaries, tone, and topics."
+        },
+        {
+          "id": "engagement",
+          "question": "How do fans and followers interact with the clone?",
+          "answer": "Fans can chat, leave voice notes, and receive personalised shout-outs. The clone stays online 24/7, keeps conversations on-brand, and unlocks premium experiences for your community."
+        }
+      ]
+    },
+    "dynamicResponses": [
+      "Your AI clone can greet fans with your exact tone—and you set boundaries before launch. Want to refine onboarding or monetization?",
+      "We turn a single interview into a 24/7 host that mirrors your reactions. I can explain training, safety, or premium fan experiences.",
+      "Creators love that LinClone remembers fan history, keeps conversations clean, and schedules shout-outs automatically. Curious how we tune it to you?",
+      "Great question! I can walk you through licensing, customization controls, or how we keep your brand consistent in every interaction."
+    ],
+      "cards": {
+      "natural": {
+        "title": "Natural responses",
+        "desc": "Surprisingly human reactions tailored to your voice and style."
+      },
+      "instant": {
+        "title": "Instant replies with media integration",
+        "desc": "Share images, clips, and links on the fly while keeping the conversation flowing."
+      },
+      "learning": {
+        "title": "Listening AI",
+        "desc": "Understands context, remembers preferences, and keeps fans and followers engaged."
+      }
+      }
     },
     "beta": {
       "title": "Apply for Access",
       "subtitle": "Access is currently limited to a small number of early users.",
       "emailPlaceholder": "Enter your email address",
       "joinBeta": "Apply",
-      "success": "Thank you! We'll contact you with access details shortly."
+      "success": "Thank you! We'll contact you with access details shortly.",
+      "headerBadge": "Limited β Access",
+      "requiredField": "This field is required",
+      "successTitle": "Welcome to the future! 🚀",
+      "submitAnother": "Submit another application →",
+      "processing": "Processing...",
+      "extraInfo": "✅ No spam, ever  •  ✅ Exclusive updates  •  ✅ Early access guaranteed",
+      "namePlaceholder": "Your full name *",
+      "companyPlaceholder": "Company/Organization (optional)",
+      "useCasePlaceholder": "Primary use case (optional)",
+      "labels": {
+        "email": "Your Email Address",
+        "name": "Full Name",
+        "company": "Company / Organization (optional)",
+        "useCase": "Primary Use Case (optional)"
+      },
+      "stats": {
+        "betaTesters": "Beta Testers",
+        "aiClonesCreated": "AI Clones Created",
+        "messagesProcessed": "Messages Processed",
+        "satisfactionRate": "Satisfaction Rate"
+      }
     },
     "footer": {
       "copyright": "©2025 LinClone. All rights reserved.",
       "privacyPolicy": "Privacy Policy",
       "appStore": "Download on the App Store",
-      "playStore": "Get it on Google Play"
+      "playStore": "Get it on Google Play",
+    "description": "Revolutionizing digital interaction through advanced AI clone technology. Keep your fans and followers engaged anytime.",
+    "notice": "This app is for fans only.\nIf you wish to use LinClone as an influencer, please contact us via the inquiry form.",
+    "product": "Product",
+    "company": "Company",
+    "resources": "Resources",
+    "legal": "Legal",
+    "links": {
+      "privacy": "Privacy Policy",
+      "terms": "Terms of Service",
+      "cookies": "Cookie Policy"
+    },
+      "getApp": {
+        "title": "Download the Fan App",
+        "subtitle": "Stay close to your favorite creators with the LinClone fan experience"
+      },
+      "madeWith": "Made with",
+      "byTeam": "by the LinClone team"
     },
     "download": {
       "title": "Download LinClone",
       "subtitle": "Available on iOS and Android",
       "appStore": "Download on the App Store",
-      "playStore": "Get it on Google Play"
+      "playStore": "Get it on Google Play",
+      "appStoreTop": "Download on the",
+      "appStoreBottom": "App Store",
+      "playStoreTop": "Get it on",
+      "playStoreBottom": "Google Play"
     },
     "privacy": {
       "title": "Privacy Policy",
@@ -77,6 +188,56 @@
           "content": "If you have any questions about this Privacy Policy, please contact us at privacy@linclone.com"
         }
       }
+  },
+  "terms": {
+    "title": "Terms of Service",
+    "lastUpdated": "Last Updated: {date}",
+    "back": "Back to Home",
+    "sections": {
+      "introduction": {
+        "title": "Introduction",
+        "content": "These Terms of Service govern your use of LinClone's services. By accessing or using the platform, you agree to comply with these terms."
+      },
+      "usage": {
+        "title": "Acceptable Use",
+        "content": "You agree not to misuse the service, attempt unauthorized access, or engage in activities that interfere with the experience of other users."
+      },
+      "payments": {
+        "title": "Subscriptions & Payments",
+        "content": "Paid plans will be billed in accordance with the terms presented during checkout. All fees are non-refundable unless required by law."
+      },
+      "contact": {
+        "title": "Contact",
+        "content": "If you have any questions about these terms, please reach out to us at legal@linclone.com."
+      }
+    }
+  },
+  "cookies": {
+    "title": "Cookie Policy",
+    "lastUpdated": "Last Updated: {date}",
+    "back": "Back to Home",
+    "sections": {
+      "overview": {
+        "title": "Overview",
+        "content": "This Cookie Policy explains how LinClone uses cookies and similar technologies to recognize you when you visit our platform."
+      },
+      "whatAreCookies": {
+        "title": "What Are Cookies?",
+        "content": "Cookies are small data files that are placed on your device. They help us remember your preferences and improve your experience."
+      },
+      "howWeUse": {
+        "title": "How We Use Cookies",
+        "content": "We use cookies for authentication, remembering language preferences, analytics, and to ensure the platform works as intended."
+      },
+      "manage": {
+        "title": "Managing Cookies",
+        "content": "You can control cookies through your browser settings. Disabling cookies may affect certain features of the service."
+      },
+      "contact": {
+        "title": "Contact",
+        "content": "If you have any questions about this policy, please contact privacy@linclone.com."
+      }
+    }
     }
   }
   

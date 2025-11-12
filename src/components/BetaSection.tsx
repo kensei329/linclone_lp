@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { EnvelopeIcon, CheckCircleIcon, RocketLaunchIcon } from '@heroicons/react/24/outline';
+import { EnvelopeIcon, CheckCircleIcon, RocketLaunchIcon, UserIcon, BuildingOfficeIcon, DocumentTextIcon } from '@heroicons/react/24/outline';
 import { SparklesIcon, StarIcon } from '@heroicons/react/24/solid';
 import { useClientTranslation } from '@/hooks/useClientTranslation';
 
@@ -89,7 +89,10 @@ const FormField = ({
   value, 
   onChange, 
   required = false,
-  error = false 
+  error = false,
+  label,
+  id,
+  errorMessage
 }: {
   icon: React.ComponentType<{ className?: string }>;
   type?: string;
@@ -98,17 +101,24 @@ const FormField = ({
   onChange: (value: string) => void;
   required?: boolean;
   error?: boolean;
+  label: string;
+  id: string;
+  errorMessage?: string;
 }) => (
   <motion.div
     className="relative"
     whileFocus={{ scale: 1.02 }}
     transition={{ type: "spring", stiffness: 300 }}
   >
+    <label htmlFor={id} className="block text-left text-white font-semibold mb-2">
+      {label}
+    </label>
     <div className="relative">
       <Icon className={`absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 transition-colors duration-300 ${
         error ? 'text-red-400' : 'text-gray-400'
       }`} />
       <motion.input
+        id={id}
         type={type}
         value={value}
         onChange={(e) => onChange(e.target.value)}
@@ -134,7 +144,7 @@ const FormField = ({
           exit={{ opacity: 0, y: -10 }}
           className="absolute -bottom-6 left-0 text-red-300 text-sm"
         >
-          This field is required
+          {errorMessage}
         </motion.div>
       )}
     </AnimatePresence>
@@ -242,7 +252,7 @@ export default function BetaSection() {
           >
             <RocketLaunchIcon className="w-5 h-5 text-purple-300" />
             <span className="text-white/90 text-sm font-semibold">
-              Limited Beta Access
+              {t('beta.headerBadge')}
             </span>
           </motion.div>
 
@@ -256,14 +266,6 @@ export default function BetaSection() {
             {t('beta.subtitle')}
           </p>
           
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.5 }}
-            className="text-yellow-300 text-sm font-medium"
-          >
-            ⚡ Early adopters get 50% off for life + exclusive features
-          </motion.p>
         </motion.div>
 
         {/* Form Container */}
@@ -301,7 +303,7 @@ export default function BetaSection() {
                   transition={{ delay: 0.4 }}
                   className="text-2xl font-bold text-white mb-4"
                 >
-                  Welcome to the future! 🚀
+                  {t('beta.successTitle')}
                 </motion.h3>
                 
                 <motion.p
@@ -320,7 +322,7 @@ export default function BetaSection() {
                   onClick={resetForm}
                   className="text-purple-300 hover:text-purple-200 transition-colors duration-300 text-sm"
                 >
-                  Submit another application →
+                  {t('beta.submitAnother')}
                 </motion.button>
               </motion.div>
             ) : (
@@ -337,36 +339,46 @@ export default function BetaSection() {
                     <FormField
                       icon={EnvelopeIcon}
                       type="email"
-                      placeholder="Your email address *"
+                      placeholder={t('beta.emailPlaceholder')}
                       value={formData.email}
                       onChange={updateField('email')}
                       required
                       error={errors.email}
+                      label={t('beta.labels.email')}
+                      id="beta-email"
+                      errorMessage={t('beta.requiredField')}
                     />
                     
                     <FormField
-                      icon={EnvelopeIcon}
-                      placeholder="Your full name *"
+                      icon={UserIcon}
+                      placeholder={t('beta.namePlaceholder')}
                       value={formData.name}
                       onChange={updateField('name')}
                       required
                       error={errors.name}
+                      label={t('beta.labels.name')}
+                      id="beta-name"
+                      errorMessage={t('beta.requiredField')}
                     />
                   </div>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <FormField
-                      icon={EnvelopeIcon}
-                      placeholder="Company/Organization (optional)"
+                      icon={BuildingOfficeIcon}
+                      placeholder={t('beta.companyPlaceholder')}
                       value={formData.company}
                       onChange={updateField('company')}
+                      label={t('beta.labels.company')}
+                      id="beta-company"
                     />
                     
                     <FormField
-                      icon={EnvelopeIcon}
-                      placeholder="Primary use case (optional)"
+                      icon={DocumentTextIcon}
+                      placeholder={t('beta.useCasePlaceholder')}
                       value={formData.useCase}
                       onChange={updateField('useCase')}
+                      label={t('beta.labels.useCase')}
+                      id="beta-use-case"
                     />
                   </div>
 
@@ -393,7 +405,7 @@ export default function BetaSection() {
                       {submissionState === 'loading' ? (
                         <>
                           <LoadingSpinner />
-                          Processing...
+                          {t('beta.processing')}
                         </>
                       ) : (
                         <>
@@ -404,54 +416,12 @@ export default function BetaSection() {
                     </span>
                   </motion.button>
 
-                  {/* Additional info */}
-                  <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 0.8 }}
-                    className="text-center text-purple-200 text-sm mt-6"
-                  >
-                    <p>✅ No spam, ever  •  ✅ Exclusive updates  •  ✅ Early access guaranteed</p>
-                  </motion.div>
                 </form>
               </motion.div>
             )}
           </AnimatePresence>
         </motion.div>
 
-        {/* Stats/Social Proof */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          viewport={{ once: true }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16"
-        >
-          {[
-            { number: "500+", label: "Beta Testers" },
-            { number: "50+", label: "AI Clones Created" },
-            { number: "10K+", label: "Messages Processed" },
-            { number: "98%", label: "Satisfaction Rate" }
-          ].map((stat, index) => (
-            <motion.div
-              key={index}
-              className="text-center"
-              whileHover={{ scale: 1.05 }}
-              transition={{ type: "spring", stiffness: 300 }}
-            >
-              <motion.div
-                className="text-2xl md:text-3xl font-bold text-white mb-2"
-                initial={{ opacity: 0, scale: 0 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ delay: index * 0.1, type: "spring" }}
-                viewport={{ once: true }}
-              >
-                {stat.number}
-              </motion.div>
-              <div className="text-purple-200 text-sm">{stat.label}</div>
-            </motion.div>
-          ))}
-        </motion.div>
       </div>
     </section>
   );

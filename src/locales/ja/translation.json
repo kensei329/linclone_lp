@@ -1,52 +1,163 @@
 {
   "hero": {
-    "title": "あなたの「分身」が、\nファンと交流する時代へ",
-    "subtitle": "あなたのAIクローンを簡単に作成し、ファンとの新たな交流の場をつくります",
+    "title": "あなたの分身が\nファンと交流する時代へ",
+    "subtitle": "あなたのAIクローンを簡単に作成し\nファンとの新たな交流の場を作ります",
     "getStarted": "利用を申し込む",
     "watchDemo": "デモをチェック",
-    "downloadApp": "アプリをダウンロード"
+    "downloadApp": "アプリをダウンロード",
+    "tryDemo": "デモを体験する",
+    "betaBadge": "ベータ版公開中 • 未来を体験"
   },
   "features": {
     "title": "LinCloneとは？",
-    "subtitle": "",
+    "subtitle": "LinCloneは最先端のAI技術で、あなたとファンの新しい関係を創ります。",
     "aiClone": {
       "title": "簡単に自分のAIクローンが作れる",
-      "description": "面倒な準備や難しい操作は不要。声や話し方、性格まで、あなたらしさをそのまま再現したAIクローンが手軽に作れます。"
+      "description": "3分の簡単なインタビューで、自分のAIクローンを作成できます。面倒な準備や難しい操作は不要です。"
     },
     "realtime": {
       "title": "制作工程が動画コンテンツになる",
-      "description": "AIとのビデオ通話を通じてクローンが誕生。そのプロセス自体を動画やライブとして発信すれば、ファンにとっても貴重な体験に"
+      "description": "AIとのビデオ通話を通じてクローンが誕生。その過程自体を動画やライブでファン・フォロワーと共有できます。"
     },
     "analytics": {
       "title": "ファンと24時間交流・収益化も可能",
-      "description": "AIクローンは自動でビデオ通話、ニュースやトレンドに反応。ファンクラブとして運用し、継続的な収益にもつなげられます。"
-    }
+      "description": "AIクローンは24時間ファンと交流し、トレンドにも瞬時に反応。サブスク型のファンクラブ運営も可能です。"
+    },
+    "headerBadge": "主な機能",
+    "subtitleText": "LinCloneは最先端のAI技術で、あなたとファンの新しい関係を創ります。",
+    "cta": "LinCloneを体験",
+    "learnMore": "詳細を見る"
+  },
+  "cloneProcess": {
+    "title": "クローン生成プロセス",
+    "subtitle": "AIとのビデオ通話を通じてクローンが誕生。その過程自体を動画やライブでファン・フォロワーと共有できます。",
+    "videoTitle": "クローン生成デモをチェック",
+    "videoUrl": "https://www.youtube.com/embed/VIDEO_ID_JA"
   },
   "demo": {
     "title": "デモをご覧ください",
     "subtitle": "LinCloneの全貌を体感できます",
     "inputPlaceholder": "メッセージを入力してください",
     "send": "送信",
-    "aiResponse": "ここにAIクローンの返答が表示されます。あなたらしい自然な会話が可能です。"
+    "aiResponse": "ここにAIクローンの返答が表示されます。あなたらしい自然な会話が可能です。",
+    "headerBadge": "インタラクティブデモ",
+    "typing": "AIクローンが入力中…",
+    "readyTitle": "LinCloneの実力を体験してみませんか？",
+    "readySubtitle": "AIクローンとのリアルな会話を体験。どれだけ自然で魅力的か実感できます。",
+    "startButton": "デモ会話を開始",
+    "videoUrl": "https://www.youtube.com/embed/VIDEO_ID_JA",
+    "chatHeader": {
+      "title": "LinClone AI デモ",
+      "subtitle": "あなたのAIクローン • いつでもオンライン",
+      "online": "オンライン"
+    },
+    "intro": {
+      "user": "こんにちは！LinCloneについて知りたいです。クローン化はどのように進むのでしょうか？",
+      "ai": "ようこそ！私はLinCloneデモです。短い会話から24時間対応のAIクローンが生まれる仕組みをお見せします。さっそく体験してみましょう！"
+    },
+    "faq": {
+      "prompt": "気になる質問を選んで、LinCloneの仕組みをチェックしましょう。",
+      "completed": "主なポイントは以上です。導入のご相談はお気軽にお問い合わせください！",
+      "more": "別の質問を表示する",
+      "options": [
+        {
+          "id": "process",
+          "question": "クローン生成の流れを教えてください。",
+          "answer": "ガイド付きの約3分間のインタビューを録音するだけです。その声とリアクションからLinCloneが話し方を学習し、その場でAIクローンが完成します。"
+        },
+        {
+          "id": "personality",
+          "question": "どうやって私の個性や話し方を再現するの？",
+          "answer": "声色や言葉遣い、間合いまで細かく分析し、公開前に仕上がりをチェックできます。キャラクターの範囲やNGトピックも自分で設定できます。"
+        },
+        {
+          "id": "engagement",
+          "question": "ファンやフォロワーはどんな体験ができますか？",
+          "answer": "チャットやボイスメッセージで交流したり、パーソナライズされたリアクションを受け取れます。AIクローンは24時間オンラインで、ファン・フォロワー向けのプレミアム体験も提供できます。"
+        }
+      ]
+    },
+    "dynamicResponses": [
+      "あなたの声・言葉遣い・表情を細かく学習してから公開するので、安心してファンとの会話を任せられます。特に気になる設定はありますか？",
+      "LinCloneは24時間オンラインで、ファンの質問にあなたらしく応答します。収益化プランやプレミアム体験についてもご案内できます。",
+      "クローンの権限や禁止トピックはすべて管理パネルで変更可能です。運用方法や安全面について詳しく知りたいですか？",
+      "ファンとの距離感を保ちながら自然なリアクションを返す仕組みがあります。ライブ配信やキャンペーンとの連携も相談できますよ。"
+    ],
+    "cards": {
+      "natural": {
+        "title": "自然なレスポンス",
+        "desc": "あなたの話し方に合わせた自然なリアクションを再現します。"
+      },
+      "instant": {
+        "title": "メディア連携にも対応した即時返信",
+        "desc": "画像・動画・リンクも会話の流れを止めずにその場で共有できます。"
+      },
+      "learning": {
+        "title": "リスニングAI",
+        "desc": "文脈を理解し、ファン・フォロワーの声に寄り添う聞き上手な応答を届けます。"
+      }
+    }
   },
   "beta": {
     "title": "ご利用はこちらから",
     "subtitle": "現在ご利用人数を制限させていただいております。",
     "emailPlaceholder": "メールアドレスを入力",
     "joinBeta": "申し込む",
-    "success": "ありがとうございます！ご案内をメールでお送りします。"
+    "success": "ありがとうございます！ご案内をメールでお送りします。",
+    "headerBadge": "限定βアクセス",
+    "requiredField": "必須項目です",
+    "successTitle": "未来へようこそ！🚀",
+    "submitAnother": "別の申請を送る →",
+    "processing": "処理中…",
+    "extraInfo": "✅ 迷惑メールなし  •  ✅ 限定アップデート  •  ✅ 先行アクセス保証",
+    "namePlaceholder": "お名前（必須）",
+    "companyPlaceholder": "会社名／所属（任意）",
+    "useCasePlaceholder": "主な利用用途（任意）",
+    "labels": {
+      "email": "メールアドレス",
+      "name": "氏名",
+      "company": "会社・団体名（任意）",
+      "useCase": "主な利用目的（任意）"
+    },
+    "stats": {
+      "betaTesters": "ベータテスター",
+      "aiClonesCreated": "作成されたAIクローン",
+      "messagesProcessed": "処理済みメッセージ",
+      "satisfactionRate": "満足度"
+    }
   },
   "footer": {
-    "copyright": "© 2025 LinClone. All rights reserved.",
+    "copyright": "© 2025 LinClone. 無断転載を禁じます。",
     "privacyPolicy": "プライバシーポリシー",
     "appStore": "App Storeからダウンロード",
-    "playStore": "Google Playで手に入れよう"
+    "playStore": "Google Playで手に入れよう",
+    "description": "最先端のAIクローン技術で、ファンとのコミュニケーションを常につなぎます。あなたの世界観を24時間届けましょう。",
+    "notice": "このアプリはファン専用です。\nインフルエンサーとしてLinCloneを利用したい場合は、お問い合わせフォームからご連絡ください。",
+    "product": "プロダクト",
+    "company": "会社情報",
+    "resources": "リソース",
+    "legal": "法務",
+    "links": {
+      "privacy": "プライバシーポリシー",
+      "terms": "利用規約",
+      "cookies": "クッキーポリシー"
+    },
+    "getApp": {
+      "title": "ファン向けアプリをダウンロード",
+      "subtitle": "お気に入りのクリエイターとより近くでつながるファンアプリ体験をどうぞ"
+    },
+    "madeWith": "作られた",
+    "byTeam": "LinCloneチーム"
   },
   "download": {
     "title": "LinCloneをダウンロード",
     "subtitle": "iOS・Android対応",
     "appStore": "App Storeからダウンロード",
-    "playStore": "Google Playで手に入れよう"
+    "playStore": "Google Playで手に入れよう",
+    "appStoreTop": "App Storeで",
+    "appStoreBottom": "ダウンロード",
+    "playStoreTop": "Google Playで",
+    "playStoreBottom": "手に入れる"
   },
   "privacy": {
     "title": "プライバシーポリシー",
@@ -75,6 +186,56 @@
       "contact": {
         "title": "お問い合わせ",
         "content": "本プライバシーポリシーについてご質問がございましたら、privacy@linclone.com までお問い合わせください。"
+      }
+    }
+  },
+  "terms": {
+    "title": "利用規約",
+    "lastUpdated": "最終更新日: {date}",
+    "back": "ホームに戻る",
+    "sections": {
+      "introduction": {
+        "title": "はじめに",
+        "content": "本利用規約は、LinCloneのサービス利用に関する条件を定めるものです。サービスを利用することで、本規約に同意したものとみなします。"
+      },
+      "usage": {
+        "title": "サービスの利用について",
+        "content": "サービスの不正利用や不正アクセス、他の利用者の体験を妨げる行為を禁じます。健全なコミュニティ運営にご協力ください。"
+      },
+      "payments": {
+        "title": "料金と支払い",
+        "content": "有料プランは、表示された条件に従って課金されます。法令で義務付けられている場合を除き、料金は原則返金いたしません。"
+      },
+      "contact": {
+        "title": "お問い合わせ",
+        "content": "本規約に関するご質問は legal@linclone.com までご連絡ください。"
+      }
+    }
+  },
+  "cookies": {
+    "title": "クッキーポリシー",
+    "lastUpdated": "最終更新日: {date}",
+    "back": "ホームに戻る",
+    "sections": {
+      "overview": {
+        "title": "概要",
+        "content": "本クッキーポリシーでは、LinCloneがプラットフォーム上でクッキーや類似技術をどのように使用しているかを説明します。"
+      },
+      "whatAreCookies": {
+        "title": "クッキーとは",
+        "content": "クッキーは、利用者の端末に保存される小さなデータファイルです。これにより、設定の記憶や利用体験の向上が可能になります。"
+      },
+      "howWeUse": {
+        "title": "クッキーの利用目的",
+        "content": "言語設定の保持、認証、分析など、サービスを適切に提供するためにクッキーを利用しています。"
+      },
+      "manage": {
+        "title": "クッキーの管理",
+        "content": "ブラウザの設定からクッキーの受け入れ可否を管理できます。ただし、一部機能が利用できなくなる場合があります。"
+      },
+      "contact": {
+        "title": "お問い合わせ",
+        "content": "本ポリシーについてご質問がございましたら privacy@linclone.com までお問い合わせください。"
       }
     }
   }
