@@ -34,6 +34,13 @@
     "videoTitle": "クローン生成デモをチェック",
     "videoUrl": "https://www.youtube.com/embed/VIDEO_ID_JA"
   },
+  "productIntro": {
+    "badge": "製品紹介",
+    "title": "LinCloneをご紹介",
+    "subtitle": "最先端のAI技術で、クリエイターとファンのつながりを革新するLinClone。24時間対応の自然な交流、本物のようなエンゲージメントで、あなたとオーディエンスの距離を縮めます。",
+    "videoTitle": "LinClone製品紹介",
+    "videoUrl": "/showcase.mp4"
+  },
   "demo": {
     "title": "デモをご覧ください",
     "subtitle": "LinCloneの全貌を体感できます",

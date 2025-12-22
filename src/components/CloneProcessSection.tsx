@@ -29,13 +29,13 @@ export default function CloneProcessSection() {
           viewport={{ once: true }}
         >
           <span className="inline-flex items-center px-4 py-2 rounded-full bg-purple-100 text-purple-700 font-semibold text-xs uppercase tracking-wider">
-            {t('cloneProcess.title')}
+            {t('productIntro.badge')}
           </span>
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mt-6 mb-4 leading-tight">
-            {t('features.realtime.title')}
+            {t('productIntro.title')}
           </h2>
           <p className="text-lg text-gray-600 leading-relaxed">
-            {t('cloneProcess.subtitle')}
+            {t('productIntro.subtitle')}
           </p>
         </motion.div>
 
@@ -49,15 +49,13 @@ export default function CloneProcessSection() {
           <div className="w-full aspect-video">
             <iframe
               className="w-full h-full"
-              src={t('cloneProcess.videoUrl')}
-              title={t('cloneProcess.videoTitle')}
+              src={t('productIntro.videoUrl')}
+              title={t('productIntro.videoTitle')}
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               allowFullScreen
             />
           </div>
-          <div className="px-6 py-4 bg-white/90 text-gray-700 text-sm">
-            {t('cloneProcess.videoTitle')}
-          </div>
+        
         </motion.div>
       </div>
     </section>
