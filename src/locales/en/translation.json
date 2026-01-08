@@ -32,14 +32,14 @@
       "title": "Clone Creation Process",
       "subtitle": "Your clone is born through a video call with AI, and the process itself can be shared as a video or live stream with fans and followers.",
       "videoTitle": "Watch the Clone Creation Demo",
-      "videoUrl": "/showcase.MP4"
+      "videoUrl": "/showcase.mp4"
     },
     "productIntro": {
       "badge": "Product Introduction",
       "title": "Introducing LinClone",
       "subtitle": "Discover how LinClone revolutionizes the way creators connect with their fans through advanced AI technology. Experience seamless interactions, 24/7 availability, and authentic engagement that brings you closer to your audience.",
       "videoTitle": "LinClone Product Introduction",
-      "videoUrl": "/showcase.MP4"
+      "videoUrl": "/showcase.mp4"
     },
     "demo": {
       "title": "Experience the Demo",
@@ -52,7 +52,7 @@
       "readyTitle": "Ready to see LinClone in action?",
       "readySubtitle": "Experience a real conversation with an AI clone. See how natural and engaging it can be!",
       "startButton": "Start Demo Conversation",
-      "videoUrl": "/showcase.MP4",
+      "videoUrl": "/showcase.mp4",
       "chatHeader": {
         "title": "LinClone AI Demo",
         "subtitle": "Your AI Clone • Always Online",
