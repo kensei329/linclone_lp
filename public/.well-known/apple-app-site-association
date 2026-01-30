@@ -4,7 +4,7 @@
     "details": [
       {
         "appID": "984HXYKS34.com.linclone.app",
-        "paths": [ "*" ]
+        "paths": [ "/share/clone/*", "/share/post/*" ]
       }
     ]
   }
