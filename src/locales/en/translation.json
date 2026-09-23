@@ -245,6 +245,18 @@
         "content": "If you have any questions about this policy, please contact privacy@linclone.com."
       }
     }
-  }
+  },
+    "invite": {
+      "metaTitle": "LinClone invite",
+      "metaDescription": "A friend invited you to LinClone. Install the app and enter the invite code.",
+      "title": "You've been invited to LinClone",
+      "subtitle": "A friend invited you to LinClone. Install the app and enter the invite code.",
+      "codeLabel": "Invite code",
+      "copy": "Copy",
+      "copied": "Copied",
+      "steps": "Install the app, open the quest board, and enter this code.",
+      "noCode": "We couldn't find an invite code. Ask the friend who invited you to send the link again.",
+      "phoneHint": "On a phone, this link opens the app directly.",
+      "redirecting": "Taking you to the store…"
+    }
 }
-  
