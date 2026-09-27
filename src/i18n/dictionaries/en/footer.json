@@ -1,0 +1,27 @@
+{
+  "tagline": "Closer than ever",
+  "columns": {
+    "app": "App",
+    "creators": "Creators",
+    "support": "Support",
+    "legal": "Legal"
+  },
+  "links": {
+    "call": "Calls",
+    "morning": "Morning calls",
+    "chat": "Chat",
+    "live": "LIVE",
+    "grow": "Grow",
+    "faq": "FAQ",
+    "fanApp": "The LinClone app",
+    "studio": "LC Studio",
+    "requestInvite": "Request an invitation",
+    "support": "Support",
+    "deleteUser": "Delete your account",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "cookies": "Cookie Policy",
+    "childSafety": "Child Protection Policy"
+  },
+  "copyright": "© LinClone K.K."
+}

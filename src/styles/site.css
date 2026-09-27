@@ -1,0 +1,133 @@
+/* (site) stylesheet: Tailwind v4 entry, tokens from spec §3.1.
+   WP0a ships the tokens, keyframes and a minimal base; WP0b adds the
+   component layer (glass, buttons, type scale, surfaces, fills). */
+@import "tailwindcss";
+@custom-variant dark (&:where([data-surface="dark"], [data-surface="dark"] *));
+
+@theme {
+  /* ── ink ── */
+  --color-ink: #28273b;          /* text on light */
+  --color-ink-2: #5b5970;        /* secondary text: MINIMUM for any text on cream (≈6:1) */
+  --color-ink-muted: #8d8ba0;    /* decoration/icons ONLY (3.0:1 on cream, fails for text) */
+  --color-ink-faint: #9a98ab;    /* fill "dim" state, dividers */
+  --color-ink-disabled: #b7b5c6; /* studio disabled, studio fill dim */
+  /* ── cream ── */
+  --color-cream: #f7f3ec;  --color-cream-raised: #fbf7f0;  --color-cream-pressed: #eceae4;
+  --color-studio-intro: #f5f4f8;
+  /* ── teal (action) ── */
+  --color-teal: #00c4d8;  --color-teal-deep: #00afc4;  --color-teal-mid: #00b0c2;
+  --color-teal-text: #0096a8;   /* text only ≥24px bold or icons */
+  --color-teal-dark: #00808e;   /* white text on this = 4.7:1 */
+  --color-teal-ink: #00636e;
+  --color-teal-bright: #00e2f4; --color-teal-neon: #7df4ff; --color-teal-wash: #d8f2f5;
+  --color-studio-accent-deep: #006e7a;
+  /* ── pink (LIVE / love) ── */
+  --color-pink: #e14b81; --color-pink-deep: #d0417a; --color-pink-wash: #ffe0eb; --color-red: #d6455a;
+  /* ── purple (stories / quests / grow) ── */
+  --color-purple: #8b55d6; --color-purple-bright: #a97fe0; --color-purple-deep: #6f3fb8;
+  --color-purple-wash: #f0e6fb; --color-purple-wash-bright: #e5d5ff; --color-lavender: #f2ecfb;
+  --color-violet-hover: #7a46c4;
+  /* ── gold (coins) ── */
+  --color-gold: #e8a33d; --color-gold-bright: #ffd166; --color-gold-text: #a86f1d; --color-gold-on-dark: #f7c66a;
+  /* ── night ── */
+  --color-night: #15161e; --color-night-deep: #0f1018;
+  /* ── logo only (never UI) ── */
+  --color-logo-red: #e83942; --color-logo-blue: #3b6ceb;
+  /* ── persona メンカラ (mock.ts accents) ── */
+  --color-p-rose: #e14b81; --color-p-teal: #00afc4; --color-p-lavender: #a97fe0;
+  --color-p-amber: #f0a53a; --color-p-sky: #5b8def; --color-p-mint: #3fb98a;
+  --color-success: #1e9e6e;
+
+  /* ── type families (vars set by next/font in lib/fonts.ts) ── */
+  --font-sans: var(--font-pjs), var(--font-noto-jp), "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic", Meiryo, system-ui, sans-serif;
+  --font-display: var(--font-pjs), "LC JP Headline", var(--font-noto-jp), "Hiragino Sans", "Yu Gothic", sans-serif;
+  --font-label: var(--font-sg), var(--font-noto-jp), system-ui, sans-serif;
+  --font-wordmark: var(--font-poppins), system-ui, sans-serif;
+
+  /* ── radii ── */
+  --radius-xs: 4px; --radius-sm: 10px; --radius-md: 14px; --radius-lg: 16px; --radius-xl: 20px;
+  --radius-2xl: 28px; --radius-band: 40px; --radius-bubble: 18px; --radius-phone: 52px; --radius-screen: 44px;
+
+  /* ── shadows (tokens.ts CSS originals) ── */
+  --shadow-card: 0 24px 60px rgba(60,55,90,.16);
+  --shadow-chip: 0 8px 24px rgba(60,55,90,.15);
+  --shadow-dark: 0 16px 40px rgba(15,16,24,.25);
+  --shadow-teal-glow: 0 0 15px rgba(0,175,196,.45);
+  --shadow-violet-glow: 0 0 18px rgba(139,85,214,.35);
+  --shadow-phone: 0 0 0 11px #0f1018, 0 0 0 12px rgba(255,255,255,.14), 0 40px 80px rgba(15,16,24,.35);
+
+  /* ── easing (GSAP equivalents in lib/motion/tokens.ts) ── */
+  --ease-reveal: cubic-bezier(.215,.61,.355,1);   /* power3.out */
+  --ease-pop: cubic-bezier(.34,1.56,.64,1);        /* ≈ back.out(1.6) */
+  --ease-inout: cubic-bezier(.645,.045,.355,1);    /* power3.inOut */
+  --ease-sine: cubic-bezier(.37,0,.63,1);          /* sine.inOut */
+  --ease-hero: cubic-bezier(.2,.7,.2,1);
+  --ease-burst: cubic-bezier(.7,0,.84,0);          /* splash burst */
+
+  /* ── keyframe animations (CSS-only motion) ── */
+  --animate-rise: rise .7s var(--ease-hero) both;
+  --animate-pop: pop .45s var(--ease-pop) both;
+  --animate-breathe: breathe 1s var(--ease-sine) infinite alternate;
+  --animate-pulse-soft: pulseSoft .9s var(--ease-sine) infinite alternate;
+  --animate-marquee: marquee 40s linear infinite;
+  --animate-shimmer: shimmer 1.3s var(--ease-inout) infinite;
+  --animate-live-dot: liveDot 1.4s var(--ease-sine) infinite;
+  --animate-wave: wave .45s var(--ease-sine) infinite alternate;
+}
+
+:root {
+  --dur-fast: 160ms; --dur-base: 260ms; --dur-fluid: 420ms; --stagger: 60ms;
+  --oshi: var(--color-p-rose);            /* 推し色 picker writes this (never affects CTA teal) */
+  --header-h: 56px; --sticky-bar-h: 64px;
+  --gutter: 16px; --container: 1312px;
+  --section-y: clamp(88px, 4.5rem + 5vw, 160px);
+  --grad-cta: linear-gradient(135deg, #00c4d8, #00afc4);
+  --grad-story: conic-gradient(from 0deg, #a97fe0, #e14b81, #e8a33d, #a97fe0);
+  --grad-live: linear-gradient(135deg, #e14b81, #8b55d6);
+  --grad-purple: linear-gradient(135deg, #a97fe0, #8b55d6);
+  --grad-lavender: linear-gradient(180deg, #f2ecfb, #f7f3ec);
+  --grad-studio-headline: linear-gradient(90deg, #8b55d6, #0096a8);
+  --grad-studio-logo: linear-gradient(135deg, #8b55d6, #00b0c2);
+  --grad-logo-burst: radial-gradient(circle, #e83942 0%, #3b6ceb 70%);
+  --grad-dawn: linear-gradient(180deg, #0f1018 0%, #6f3fb8 25%, #e14b81 50%, #ffd166 75%, #f7f3ec 100%);
+  --grad-fan-glow: radial-gradient(closest-side, rgba(0,226,244,.95), rgba(0,175,196,.6) 45%, rgba(0,175,196,.26) 70%, transparent);
+  --grad-avatar-glow: radial-gradient(closest-side, rgba(0,226,244,.62), rgba(0,196,216,.25) 55%, transparent);
+  --grad-photo-fade: linear-gradient(180deg, rgba(15,16,24,.12), rgba(15,16,24,.88));
+}
+@media (min-width: 1024px) { :root { --header-h: 64px; --gutter: 24px; } }
+
+@keyframes rise { from { transform: translateY(var(--rise-y, 24px)); } to { transform: none; } }
+@keyframes pop { from { transform: scale(.9) rotate(-10deg); } to { transform: scale(1) rotate(var(--tilt, 0deg)); } }
+@keyframes breathe { to { transform: scale(1.08); } }
+@keyframes pulseSoft { from { transform: scale(.96); } to { transform: scale(1.06); } }
+@keyframes marquee { to { transform: translate3d(-50%, 0, 0); } }
+@keyframes shimmer { from { transform: translateX(-100%); } to { transform: translateX(100%); } }
+@keyframes liveDot { 50% { transform: scale(.97); opacity: .7; } }
+@keyframes wave { from { transform: scaleY(.72); } to { transform: scaleY(1.45); } }
+
+/* Loops run only while their section is in view (JS present). */
+html[data-js] [data-loop] { animation-play-state: paused; }
+html[data-js] .is-inview [data-loop] { animation-play-state: running; }
+
+@layer base {
+  html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--color-cream);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+  main { overflow-x: clip; }
+  :lang(ja) :is(h1, h2, h3) { word-break: auto-phrase; }
+  [data-u] { word-break: keep-all; overflow-wrap: anywhere; }
+  a:focus-visible, button:focus-visible, summary:focus-visible {
+    outline: 3px solid var(--color-ink);
+    outline-offset: 3px;
+  }
+  [data-surface="dark"] :is(a, button, summary):focus-visible { outline-color: #fff; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition-duration: 0s !important; }
+}

@@ -1,0 +1,36 @@
+{
+  "yuzu": {
+    "name": "Yuzu",
+    "genre": "Idol",
+    "tags": "Dance · Sweets"
+  },
+  "ren": {
+    "name": "Ren",
+    "genre": "Athlete",
+    "tags": "Morning runs · Training"
+  },
+  "kai": {
+    "name": "Kai",
+    "genre": "Singer",
+    "tags": "Rainy-day songs · Piano"
+  },
+  "sora": {
+    "name": "Sora",
+    "genre": "Actor & voice actor",
+    "tags": "Board games · Hojicha"
+  },
+  "nagi": {
+    "name": "Nagi",
+    "genre": "Gaming streamer",
+    "tags": "Puzzles · Chit-chat"
+  },
+  "aoi": {
+    "name": "Aoi",
+    "genre": "Singer-songwriter",
+    "tags": "Cafés · Songwriting"
+  },
+  "fan": {
+    "name": "Hinata",
+    "nickname": "Hina"
+  }
+}

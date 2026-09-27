@@ -1,0 +1,19 @@
+{
+  "homeLabel": "LinClone home",
+  "navLabel": "Chapters on this page",
+  "nav": {
+    "call": "Calls",
+    "morning": "Morning calls",
+    "chat": "Chat",
+    "live": "LIVE",
+    "grow": "Grow",
+    "faq": "FAQ"
+  },
+  "forCreators": "For creators",
+  "getApp": "Get the app",
+  "getAppShort": "Get",
+  "menuOpen": "Open menu",
+  "menuClose": "Close menu",
+  "qrPopoverTitle": "Get it on your phone",
+  "qrPopoverBody": "Scan with your camera to open the store page."
+}

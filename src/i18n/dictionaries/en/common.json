@@ -1,0 +1,44 @@
+{
+  "brand": "LinClone",
+  "studioBrand": "LC Studio",
+  "tagline": "Closer than ever",
+  "disclosure": "All creator profiles are AI clones",
+  "disclosureOfficial": "All creator profiles are official AI clones",
+  "screenNote": "Screens and conversations are illustrative. Creators shown are fictional.",
+  "devNote": "Screens are illustrative and may include features in development.",
+  "freeWithIap": "Free to download · In-app purchases",
+  "friction": {
+    "freeDownload": "Free to download",
+    "first60": "First 60 seconds free",
+    "trialBeforeSignup": "Try a call before signing up",
+    "noPassword": "No password needed"
+  },
+  "store": {
+    "appStoreBadgeAlt": "Download on the App Store",
+    "googlePlayBadgeAlt": "Get it on Google Play",
+    "appStoreName": "App Store",
+    "googlePlayName": "Google Play",
+    "otherStoreFromIos": "On Android? Get it here",
+    "otherStoreFromAndroid": "On iPhone? Get it here",
+    "qrCaption": "Scan with your phone camera to get the app",
+    "qrAlt": "QR code to download the LinClone app",
+    "comingSoonSuffix": "Coming soon"
+  },
+  "skip": {
+    "stage": "Skip this animation",
+    "toDownload": "Skip to download",
+    "toContent": "Skip to content"
+  },
+  "lang": {
+    "ja": "日本語",
+    "en": "English",
+    "switchLabel": "Change language",
+    "englishAvailable": "English available",
+    "japaneseAvailable": "日本語で見る",
+    "dismiss": "Dismiss"
+  },
+  "demo": "Demo",
+  "copy": "Copy",
+  "copied": "Copied",
+  "close": "Close"
+}

@@ -1,0 +1,57 @@
+{
+  "eyebrow": {
+    "num": "",
+    "label": "FAQ"
+  },
+  "title": "Frequently asked questions",
+  "lead": "Anything else? Contact us from the support page.",
+  "supportLink": "Support page",
+  "items": {
+    "what": {
+      "q": "What is LinClone?",
+      "a": "LinClone is an AI clone app for fans: AI chat, AI voice calls, morning calls and LIVE shows with official AI clones of your favorite creators. It works on iPhone and Android, in Japanese and English."
+    },
+    "real": {
+      "q": "Am I talking to the real creator?",
+      "a": "No. All creator profiles are AI clones. You talk with an official AI clone approved by the creator, and LIVE shows and Stories are marked as AI-generated."
+    },
+    "free": {
+      "q": "Is it free?",
+      "a": "The app is free to download and your first 60 seconds of calling are free. For more, you can buy coins or a plan in the app. See pricing in the app."
+    },
+    "account": {
+      "q": "Do I need an account?",
+      "a": "You can try your first call before creating an account. After that, just continue with Apple or Google. No password needed."
+    },
+    "video": {
+      "q": "Can I video call?",
+      "a": "No. Calls are voice-only, and LIVE shows are audio shows too."
+    },
+    "morning": {
+      "q": "Will a morning call always ring?",
+      "a": "It rings on your lock screen like a phone call, but your phone’s Focus or Do Not Disturb settings may stop it. The app shows you how to let it through."
+    },
+    "memory": {
+      "q": "Can I delete what they remember?",
+      "a": "Yes. In “Our bond & memories” you can see, edit or delete what they remember, anytime."
+    },
+    "payment": {
+      "q": "How do payments work?",
+      "a": "Only through App Store or Google Play in-app purchase. Every spend asks you to confirm first, and coins for failed generations are refunded automatically."
+    },
+    "oshikatsu": {
+      "q": "How does it fit into being a fan?",
+      "a": "A morning call to start the day, chat in the gaps, calls and LIVE at night. With Grow, you can even help their AI learn who they really are."
+    },
+    "delete": {
+      "q": "How do I delete my account?",
+      "a": "You can delete it from Settings in the app. See the account deletion page for details.",
+      "linkLabel": "Delete your account"
+    },
+    "creator": {
+      "q": "I’m a creator. How do I join?",
+      "a": "See the page for LC Studio, our app for creators.",
+      "linkLabel": "LC Studio"
+    }
+  }
+}

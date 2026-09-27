@@ -1,0 +1,10 @@
+{
+  "phoneMockup": "アプリ画面のイメージ",
+  "carouselPrev": "前へ",
+  "carouselNext": "次へ",
+  "carouselPosition": "{current}枚目・全{total}枚",
+  "pageProgress": "ページの進み具合",
+  "opensStore": "ストアのページが開きます",
+  "opensMail": "メールアプリが開きます",
+  "decorative": "装飾"
+}

@@ -1,0 +1,23 @@
+{
+  "home": {
+    "title": "LinClone｜推しのAIクローンと話せる推し活アプリ",
+    "description": "推しの公式AIクローンと、AI通話・AIチャット・モーニングコール・LIVE配信。最初の60秒は無料で話せます。ダウンロード無料、iPhone・Android対応。クリエイターのプロフィールはすべてAIクローンです。",
+    "ogTitle": "推しと、声で話そう｜LinClone",
+    "ogDescription": "公式のAIクローンと、通話・チャット・LIVE配信。最初の60秒は無料で話せます。",
+    "ogImageAlt": "LinClone「推しと、声で話そう」。公式AIクローンのオーラポートレートと、最初の60秒は無料の案内。"
+  },
+  "creators": {
+    "title": "LC Studio｜公認AIクローンをつくるクリエイターアプリ",
+    "description": "自分の声と言葉から、公認のAIクローンを作成・管理。フォロワーとのチャット・通話・LIVE配信・育成・収益をスマホひとつで。LC Studioは招待制です。",
+    "ogTitle": "自分の公認AIクローンを、スマホでつくる｜LC Studio",
+    "ogDescription": "クリエイター向けアプリ LC Studio。いまは招待制でご案内しています。",
+    "ogImageAlt": "LC Studio「自分の公認AIクローンを、スマホでつくる」。紫のリングが満ちていくクローン作成画面のイメージ。",
+    "breadcrumbHome": "LinClone",
+    "breadcrumbCreators": "クリエイターの方へ"
+  },
+  "notFound": {
+    "title": "ページが見つかりません",
+    "body": "お探しのページは移動したか、削除された可能性があります。",
+    "home": "LinCloneのトップへ"
+  }
+}

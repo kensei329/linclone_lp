@@ -1,0 +1,19 @@
+{
+  "homeLabel": "LinClone トップ",
+  "navLabel": "ページ内の章",
+  "nav": {
+    "call": "通話",
+    "morning": "モーニングコール",
+    "chat": "チャット",
+    "live": "LIVE配信",
+    "grow": "育成",
+    "faq": "よくある質問"
+  },
+  "forCreators": "クリエイターの方へ",
+  "getApp": "アプリを入手",
+  "getAppShort": "入手",
+  "menuOpen": "メニューを開く",
+  "menuClose": "メニューを閉じる",
+  "qrPopoverTitle": "スマホで入手",
+  "qrPopoverBody": "カメラで読み取ると、ストアのページが開きます。"
+}

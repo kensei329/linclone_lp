@@ -1,0 +1,328 @@
+{
+  "common": {
+    "brand": "LC STUDIO",
+    "tabs": {
+      "chat": "Chat",
+      "grow": "Grow",
+      "home": "Home",
+      "earnings": "Earnings",
+      "me": "My Page"
+    },
+    "next": "Next",
+    "back": "Back",
+    "step": "CLONE SETUP"
+  },
+  "building": {
+    "building": "BUILDING",
+    "title": "Your clone is being born",
+    "sub": "Voice cloning and personality tuning take a little while — usually a few minutes. This screen updates by itself.",
+    "tourLabel": "MEANWHILE — A QUICK TOUR",
+    "tour": {
+      "reply": {
+        "title": "Reply as yourself",
+        "body": "Join any follower chat with an official badge"
+      },
+      "curate": {
+        "title": "Curate what followers teach",
+        "body": "Approve or hide Grow submissions anytime"
+      },
+      "voice": {
+        "title": "Home voice, AI-drafted",
+        "body": "Your first one publishes automatically; after that, only what you confirm"
+      }
+    },
+    "readyTitle": "Your clone is ready",
+    "readySub": "Your voice clone and personality are set.",
+    "cta": "Enter LC Studio",
+    "alt": "Illustration of a ring showing a clone being created."
+  },
+  "home": {
+    "welcome": "Welcome back",
+    "status": "Clone active",
+    "stats": {
+      "coins": "Coins consumed today",
+      "chats": "Chats today",
+      "callTime": "Call time today",
+      "estMonth": "Est. this month"
+    },
+    "checkTitle": "Check your AI clone",
+    "checkSub": "Chat and call it yourself, exactly as followers see it",
+    "tiles": {
+      "publicProfile": "Public profile",
+      "fanContent": "Follower content",
+      "live": "LIVE",
+      "homeVoice": "Home voice",
+      "morningCall": "Morning call",
+      "fillers": "Fillers",
+      "analytics": "Analytics"
+    },
+    "alt": "Illustration of LC Studio’s Home."
+  },
+  "picks": {
+    "title": "Who you are",
+    "sub": "Quick picks — tap what fits. You’ll write in your own words next.",
+    "pronounLabel": "How do you refer to yourself?",
+    "pronouns": {
+      "p1": "I",
+      "p2": "We",
+      "p3": "By my name"
+    },
+    "dialectLabel": "Dialect · speech style",
+    "dialects": {
+      "standard": "Standard",
+      "kansai": "Kansai",
+      "hakata": "Hakata",
+      "tsugaru": "Tsugaru",
+      "okinawa": "Okinawa",
+      "hokkaido": "Hokkaido"
+    },
+    "hobbyLabel": "Hobbies",
+    "hobbies": {
+      "game": "Gaming",
+      "music": "Music",
+      "karaoke": "Karaoke",
+      "cooking": "Cooking",
+      "travel": "Travel",
+      "anime": "Anime",
+      "sports": "Sports",
+      "reading": "Reading"
+    },
+    "alt": "Illustration of picking pronoun, dialect and hobbies."
+  },
+  "words": {
+    "title": "In your own words",
+    "coverTitle": "Good things to cover",
+    "cover": {
+      "c1": "Stories behind your picks on the last screen",
+      "c2": "What you do, and your latest activities",
+      "c3": "Catchphrases, what you’re great at"
+    },
+    "sample": "Casual, no formal speech. On days off I write songs in cafés. My catchphrase: “that’s the best.”",
+    "linksTitle": "Links about you",
+    "linkWiki": "Wikipedia",
+    "linkYoutube": "YouTube",
+    "analyzing": "Analyzing…",
+    "analyzed": "Analyzed ✓",
+    "proposalNote": "What we read comes back as suggestions. You decide what stays.",
+    "reassurance": "Don’t aim for perfect. You can change everything later.",
+    "alt": "Illustration of writing about yourself for your clone."
+  },
+  "photos": {
+    "title": "Official photos",
+    "main": "MAIN",
+    "guide": "Portrait photos look best",
+    "alt": "Illustration of choosing official photos."
+  },
+  "modes": {
+    "title": "Relationship modes",
+    "sub": "The ways followers can have you talk",
+    "alt": "Illustration of choosing relationship modes."
+  },
+  "ng": {
+    "title": "Topics your clone won’t touch",
+    "sub": "Applied with top priority in chat, calls, Stories and LIVE.",
+    "presets": {
+      "politics": {
+        "label": "Politics & religion",
+        "detail": "Deflects gently and changes the topic"
+      },
+      "romance": {
+        "label": "Real romance & relationships",
+        "detail": "Never confirms or denies"
+      },
+      "sexual": {
+        "label": "Sexual content",
+        "detail": "Blocked in every mode"
+      },
+      "war": {
+        "label": "War & conflicts",
+        "detail": "No takes on wars or conflicts"
+      },
+      "others": {
+        "label": "Other members & agencies",
+        "detail": "No comments on third parties"
+      }
+    },
+    "ngBadge": "NG",
+    "customLabel": "Custom NG topics",
+    "customChip": "My old band",
+    "nickname": "Auto-reject inappropriate nicknames",
+    "alt": "Illustration of setting NG topics."
+  },
+  "record": {
+    "title": "Record your voice",
+    "hint": "The best material is a real conversation",
+    "chip": "Talk with someone",
+    "recording": "Recording",
+    "alt": "Illustration of recording your voice in the app."
+  },
+  "check": {
+    "title": "{name} · your clone",
+    "online": "Online — answers like it does for followers",
+    "preview": "Preview mode — nothing here is shown to followers or counted in analytics.",
+    "clone1": "Hey, it’s me. Ask me anything, just like a follower would",
+    "me1": "How should we open today’s LIVE?",
+    "clone2": "Maybe start with the rain. And a tiny hint about the new song",
+    "voiceCall": "Voice call",
+    "morningCall": "Try a morning call",
+    "composer": "Message your clone…",
+    "alt": "Illustration of chatting with your own AI clone in preview mode."
+  },
+  "selfCall": {
+    "label": "On a call with your clone",
+    "state": "speaking",
+    "alt": "Illustration of a preview call with your own AI clone."
+  },
+  "thread": {
+    "handle": "@momo_pk",
+    "follower1": "Today’s LIVE was amazing",
+    "ai1": "Thank you for coming. I saw all your comments",
+    "aiLabel": "AI clone",
+    "follower2": "I’m definitely coming to the next one",
+    "officialLabel": "You · official reply",
+    "official": "Thank you for always showing up. From the real me",
+    "officialFoot": "Official replies appear to the follower with a verified badge",
+    "composer": "Reply as yourself — shown apart from AI replies",
+    "pauseTitle": "Clone replies in this chat",
+    "pauseOn": "Your clone answers this follower",
+    "pauseOff": "Paused. You can reply yourself",
+    "alt": "Illustration of an official reply in a follower chat."
+  },
+  "grow": {
+    "title": "Grow",
+    "sub": "Follower-submitted facts — you get the final say",
+    "pending": "Pending review",
+    "category": "FOOD",
+    "handle": "@yuki_nn",
+    "fact": "Always drinks honey lemon before a stream",
+    "aiReview": "Passed AI review",
+    "approve": "Approve",
+    "reject": "Reject",
+    "approved": "✓ Approved — now public",
+    "alt": "Illustration of approving a follower-submitted fact."
+  },
+  "profile": {
+    "title": "Public profile",
+    "licensed": "Officially licensed AI clone",
+    "bio": "A singer-songwriter who loves rainy days. Writes songs in cafés.",
+    "factsTitle": "Profile facts — grown by followers, curated by you",
+    "facts": {
+      "f1": {
+        "cat": "LIKES",
+        "text": "Honey lemon"
+      },
+      "f2": {
+        "cat": "MUSIC",
+        "text": "Often writes songs on rainy days"
+      }
+    },
+    "aiImages": "Allow AI images of you",
+    "aiImagesSub": "Turn this off and followers can’t make new AI images of you",
+    "alt": "Illustration of editing the profile followers see."
+  },
+  "homeVoice": {
+    "title": "Home voice",
+    "sub": "Your first one publishes automatically. After that, only what you confirm is synthesized and heard",
+    "draftsLabel": "AI drafts · from your persona + latest Grow",
+    "draft": "Thanks for coming by today. Let’s talk for a bit while we listen to the rain",
+    "pipeline": {
+      "draft": "Draft",
+      "synth": "Voice synthesized",
+      "published": "Published"
+    },
+    "confirm": "Confirm this text",
+    "publish": "Publish",
+    "alt": "Illustration of reviewing an AI-drafted voice message."
+  },
+  "morning": {
+    "title": "Morning call",
+    "sub": "Your clone’s first lines",
+    "gentle": "Gentle",
+    "casual": "Casual",
+    "linesGentle": {
+      "l1": "Good morning. It’s me — time to open your eyes",
+      "l2": "A new day is here. Let’s make it a good one",
+      "l3": "Good morning. Did you sleep well?"
+    },
+    "linesCasual": {
+      "l1": "Mornin’! Up, up, up",
+      "l2": "It’s morning. Let’s do our best today",
+      "l3": "Open the curtains. It’s a nice day out"
+    },
+    "alt": "Illustration of editing morning-call first lines per tone."
+  },
+  "fillers": {
+    "title": "Fillers",
+    "intro": "Fillers are the sounds that cover the moment your clone is thinking",
+    "gentle": "Gentle",
+    "gentleSample": "“Hmm, let me think”",
+    "casual": "Casual",
+    "casualSample": "“Mm-hm, got it”",
+    "alt": "Illustration of choosing the tone of in-call fillers."
+  },
+  "live": {
+    "title": "LIVE",
+    "liveNow": "LIVE NOW",
+    "autoHosting": "Auto-hosting",
+    "segment": "First rainy-day song",
+    "chat1": "Love this song",
+    "chat2": "Perfect for a rainy day",
+    "dropIn": "Drop in as the real you…",
+    "realLabel": "{name} (real)",
+    "dropInLine": "It’s really me. Thanks for being here today",
+    "settings": {
+      "readAloud": "Read viewer comments aloud",
+      "autoArchive": "Auto-save archives",
+      "acceptRequests": "Accept follower-requested shows"
+    },
+    "archivesTitle": "Archives",
+    "archiveItem": "Rainy-day playlist",
+    "download": "DL",
+    "alt": "Illustration of managing a LIVE show your clone hosts."
+  },
+  "analytics": {
+    "title": "Analytics",
+    "ranges": {
+      "d7": "7 days",
+      "d30": "30 days",
+      "d90": "90 days"
+    },
+    "metrics": {
+      "chats": "Chats",
+      "images": "Images",
+      "voices": "Voices",
+      "callTime": "Call time",
+      "coins": "Coins received",
+      "live": "LIVE"
+    },
+    "chartTitle": "Coins consumed this week",
+    "topTitle": "Top followers by Coins",
+    "topNote": "Handles visible in LC Studio only",
+    "privacy": "Individual follower data is shown inside LC Studio only and never disclosed in the LinClone app.",
+    "alt": "Illustration of Analytics. No figures are shown."
+  },
+  "earnings": {
+    "title": "Earnings",
+    "sub": "Coin-based",
+    "months": {
+      "prev": "Last month",
+      "current": "This month"
+    },
+    "calculatingTitle": "Calculating this month…",
+    "calculatingBody": "No figures are shown while calculation runs.",
+    "csv": "Statement (CSV)",
+    "bank": "Payout bank account",
+    "alt": "Illustration of earnings while the month is being calculated."
+  },
+  "content": {
+    "title": "Follower content",
+    "tabs": {
+      "images": "Images",
+      "voices": "Voices",
+      "stories": "Stories"
+    },
+    "labelNote": "Every image shared outside LinClone carries an “AI-generated / not the real person” label.",
+    "labelChip": "AI label on",
+    "alt": "Illustration of content followers made with your clone."
+  }
+}

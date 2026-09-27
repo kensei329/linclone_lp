@@ -1,0 +1,375 @@
+{
+  "common": {
+    "tabHome": "Home",
+    "tabChat": "Chat",
+    "tabGrow": "Grow",
+    "tabLive": "LIVE",
+    "tabMyPage": "My Page",
+    "verified": "Official",
+    "aiGenerated": "AI-generated",
+    "newBadge": "NEW",
+    "follow": "Follow",
+    "following": "Following",
+    "callNow": "Call now",
+    "chat": "Chat",
+    "liveBadge": "LIVE"
+  },
+  "firstCall": {
+    "sub": "Try a free 60-second call",
+    "tapToTalk": "Tap to talk with {name}",
+    "later": "Maybe later",
+    "freeLabel": "FREE",
+    "alt": "Illustration of the free first call screen."
+  },
+  "call": {
+    "connecting": "Connecting…",
+    "listening": "listening",
+    "thinking": "thinking…",
+    "speaking": "speaking",
+    "freeLabel": "FREE",
+    "mute": "Mute microphone",
+    "end": "End call",
+    "speaker": "Speaker",
+    "alt": "Illustration of a voice call with a creator’s AI clone."
+  },
+  "incoming": {
+    "weekday": "Wednesday",
+    "kicker": "Incoming call",
+    "subtitle": "Morning call",
+    "decline": "Decline",
+    "accept": "Accept",
+    "alt": "Illustration of a morning call ringing on a lock screen."
+  },
+  "morningSetup": {
+    "title": "Morning call",
+    "timeHint": "Tap to change the time",
+    "dateLabel": "DATE",
+    "dateValue": "Tomorrow",
+    "dateHint": "Tap to change the first morning",
+    "repeatLabel": "REPEAT",
+    "once": {
+      "title": "Once",
+      "sub": "Rings one morning"
+    },
+    "daily": {
+      "title": "Every day",
+      "sub": "Rings each morning"
+    },
+    "weekdays": {
+      "title": "Weekdays",
+      "sub": "Mon – Fri"
+    },
+    "weekends": {
+      "title": "Weekends",
+      "sub": "Sat & Sun"
+    },
+    "ringTitle": "Rings like a phone call",
+    "ringBody": "It won’t ring if Focus or Do Not Disturb blocks it.",
+    "seeHow": "See how",
+    "cta": "Schedule",
+    "alt": "Illustration of setting a morning call time and repeat."
+  },
+  "home": {
+    "greeting": "Good morning",
+    "followingLabel": "Following",
+    "seeAll": "See all",
+    "followNew": "Follow new",
+    "readyToTalk": "Available for calls",
+    "morningTitle": "Morning call",
+    "morningScheduled": "Calling at 7:00",
+    "morningRepeat": "Every day · Tap to change",
+    "voiceTitle": "Play their latest voice message",
+    "voiceQuote": "“Good work today. You did great.”",
+    "alt": "Illustration of Home with a morning call and the latest voice message."
+  },
+  "conversation": {
+    "dayLabel": "TODAY 12:30",
+    "callEnded": "Call ended",
+    "creator1": "Welcome back, Hina. Tell me how the rest of your morning went",
+    "fan1": "Test’s done. I think it went pretty well",
+    "creator2": "So proud of you. You were up studying so late last night",
+    "read": "Read",
+    "chipImage": "Image",
+    "chipVoice": "Voice",
+    "composer": "Message",
+    "alt": "Illustration of a chat with a creator’s AI clone."
+  },
+  "story": {
+    "generating": "Generating image…",
+    "postBoth": "Post image & voice to Story",
+    "posted": "Posted to Story ✓",
+    "chatTitle": "Chat",
+    "reactionsRow": "Story reactions",
+    "fanMade": "FAN-MADE WITH AI",
+    "replyPlaceholder": "Reply to Story…",
+    "storyTitle": "After-school treat",
+    "alt": "Illustration of making an image and voice from a reply and posting it as a Story."
+  },
+  "memory": {
+    "title": "Our bond & memories",
+    "nickHeading": "What {name} calls you",
+    "modesHeading": "Our relationship",
+    "modes": {
+      "standard": "Standard",
+      "gentle": "Gentle",
+      "bestFriend": "Best friend",
+      "cheerleader": "Cheerleader",
+      "toughLove": "Tough love",
+      "tsundere": "Tsundere"
+    },
+    "recentHeading": "Recent memories",
+    "memories": {
+      "m1": "Not a morning person",
+      "m2": "Exam week this week",
+      "m3": "Loves strawberry sweets"
+    },
+    "lock": "Lock",
+    "edit": "Edit",
+    "delete": "Delete",
+    "alt": "Illustration of the bond & memories screen: nickname, relationship mode and recent memories."
+  },
+  "liveFeed": {
+    "title": "LIVE",
+    "onAir": "On air",
+    "theme": "Theme: Rainy-day playlist",
+    "join": "Join LIVE",
+    "alt": "Illustration of the LIVE feed."
+  },
+  "livePlayer": {
+    "follow": "FOLLOW",
+    "onAir": "On air",
+    "theme": "Theme: Rainy-day playlist",
+    "disclaimer": "LINCLONE AI · AI-GENERATED CONTENT",
+    "readOnAir": "Read on air",
+    "superChat": "Super Chat",
+    "superChatText": "Thank you for playing my request",
+    "comments": {
+      "c1": {
+        "user": "mocha",
+        "text": "I’ve had this song on repeat"
+      },
+      "c2": {
+        "user": "rin.rin",
+        "text": "Perfect with the rain sounds…"
+      },
+      "c3": {
+        "user": "hinata",
+        "text": "Next time I want to request something upbeat"
+      },
+      "c4": {
+        "user": "sakura",
+        "text": "Kai’s voice is so calming"
+      }
+    },
+    "gifts": {
+      "rose": "Magic Rose",
+      "star": "Neon Star",
+      "gem": "Cyber Gem",
+      "fireworks": "Fireworks",
+      "guitar": "Neon Guitar",
+      "nova": "Supernova"
+    },
+    "composer": "Add a comment…",
+    "gift": "Gift",
+    "alt": "Illustration of listening to an audio LIVE show."
+  },
+  "liveRequest": {
+    "title": "Request a LIVE show from your favorite",
+    "body": "Pick a theme and the show starts as soon as it’s ready. If it can’t start, your ticket is returned.",
+    "cta": "Request a LIVE show",
+    "alt": "Illustration of the card for requesting a LIVE show."
+  },
+  "liveSetup": {
+    "title": "Request a LIVE show",
+    "hostLabel": "HOST",
+    "hostRole": "Host · AI",
+    "topicLabel": "Show theme",
+    "topicValue": "Songs for a rainy day",
+    "commentsLabel": "Read comments aloud",
+    "commentsSub": "The AI may read comments aloud during the show",
+    "bgLabel": "Choose a background",
+    "next": "Next",
+    "alt": "Illustration of entering a theme for a LIVE show."
+  },
+  "showPreview": {
+    "title": "Show preview",
+    "showTitle": "{name}: Songs for a rainy day",
+    "rundown": "Rundown",
+    "segments": {
+      "s1": {
+        "title": "Opening",
+        "desc": "Hellos and today’s theme"
+      },
+      "s2": {
+        "title": "First rainy-day song",
+        "desc": "A mellow pick from Kai"
+      },
+      "s3": {
+        "title": "Comments & Super Chats",
+        "desc": "Your song recommendations, read aloud"
+      },
+      "s4": {
+        "title": "Ending",
+        "desc": "What’s next, and a good-night message"
+      }
+    },
+    "flowTitle": "How the show flows",
+    "flow1": "{name} keeps talking, so there’s no dead air",
+    "flow2": "When a comment arrives, the show pauses",
+    "flow3": "They read it, answer, then return to the rundown",
+    "start": "Start the show",
+    "alt": "Illustration of an AI-written rundown for a LIVE show."
+  },
+  "archive": {
+    "tag": "ARCHIVE",
+    "title": "Rainy-day playlist",
+    "play": "Play",
+    "recording": "Recording",
+    "alt": "Illustration of a LIVE archive."
+  },
+  "growPicker": {
+    "title": "Grow",
+    "subtitle": "Help your favorites learn who they really are.",
+    "cta": "Grow",
+    "alt": "Illustration of choosing a creator to grow."
+  },
+  "growProfile": {
+    "factSheet": "Fact sheet",
+    "rows": {
+      "drink": {
+        "label": "Favorite drink",
+        "value": "Hojicha latte"
+      },
+      "hobby": {
+        "label": "Into lately",
+        "value": "Board games"
+      },
+      "style": {
+        "label": "Speaking style",
+        "value": "Calm and polite"
+      },
+      "season": {
+        "label": "Favorite season",
+        "value": "Autumn. Going to see the autumn leaves is a yearly ritual"
+      }
+    },
+    "creatorBadge": "Creator",
+    "addedByCreator": "Added by {name}",
+    "cta": "Grow",
+    "alt": "Illustration of a creator’s fact sheet."
+  },
+  "growReview": {
+    "title": "Your submission",
+    "fact": "Favorite season is autumn. Going to see the autumn leaves is a yearly ritual",
+    "source": "Source URL",
+    "statusAi": "AI review",
+    "statusCommunity": "Community review",
+    "statusApproved": "Approved",
+    "note": "Submissions are reviewed by AI and the community",
+    "prohibitedTitle": "Topics you can’t submit",
+    "prohibited": {
+      "politics": "Politics",
+      "religion": "Religion",
+      "family": "Family privacy",
+      "address": "Address · Whereabouts",
+      "unannounced": "Unannounced plans",
+      "sexual": "Sexual content"
+    },
+    "alt": "Illustration of a Grow submission under review."
+  },
+  "welcome": {
+    "title": "Talk with your favorites,\nout loud",
+    "sub": "With official AI clones.\nYour first 60 seconds are free.",
+    "valueCalls": "Calls",
+    "valueChat": "Chat",
+    "valueLive": "LIVE",
+    "getStarted": "Get started",
+    "footnote": "ALL CREATOR PROFILES ARE AI CLONES",
+    "alt": "Illustration of the app’s welcome screen."
+  },
+  "reel": {
+    "tooltipTitle": "Follow a creator you like",
+    "tooltipSub": "Swipe up and down to see more",
+    "voiceQuote": "Can I tell you about dance practice today?",
+    "callCta": "Call {name}",
+    "alt": "Illustration of hearing a creator’s voice on the Reel."
+  },
+  "done": {
+    "title": "You’re all set",
+    "messageRow": "Message {name}",
+    "messageSub": "Pick up where the call left off",
+    "questsRow": "Earn coins with quests",
+    "questsSub": "Login bonuses and rewards",
+    "goHome": "Go to Home",
+    "alt": "Illustration of the “you’re all set” screen after the first call."
+  },
+  "gate": {
+    "title": "Welcome to LinClone",
+    "sub": "Your favorite is waiting",
+    "apple": "Continue with Apple",
+    "google": "Continue with Google",
+    "noPassword": "No password needed",
+    "alt": "Illustration of signing in with Apple or Google."
+  },
+  "quests": {
+    "title": "Quests",
+    "board": "Quest board",
+    "daily": "Daily quests",
+    "login": "Login bonus",
+    "shareX": "Share on X",
+    "invite": "Invite a friend",
+    "done": "Done",
+    "go": "GO",
+    "reward": "Quest complete!",
+    "chapters": {
+      "c1": "Chapter 1 · First contact",
+      "c2": "Chapter 2 · Chat & Stories",
+      "c3": "Chapter 3 · Closer by call",
+      "c4": "Chapter 4 · Our bond & memories",
+      "c5": "Chapter 5 · LIVE together"
+    },
+    "alt": "Illustration of the quest board."
+  },
+  "bonus": {
+    "title": "Login bonus",
+    "today": "Today",
+    "claim": "Claim",
+    "alt": "Illustration of the login bonus."
+  },
+  "invite": {
+    "title": "Invite a friend",
+    "codeLabel": "Invite code: ",
+    "code": "YUZUHINA",
+    "copy": "Copy",
+    "copied": "Copied",
+    "alt": "Illustration of an invite code."
+  },
+  "confirm": {
+    "title": "Generate an image?",
+    "body": "You always see what you’re spending on first",
+    "confirm": "Generate",
+    "cancel": "Cancel",
+    "refund": "Refunded automatically if it fails",
+    "alt": "Illustration of the confirm step before spending coins."
+  },
+  "myPage": {
+    "title": "My Page",
+    "tabs": {
+      "image": "IMAGE",
+      "stories": "STORIES",
+      "voice": "VOICE",
+      "archive": "LIVE ARCHIVE"
+    },
+    "alt": "Illustration of the My Page library."
+  },
+  "sleep": {
+    "title": "Notification settings",
+    "row": "Mute during sleep hours",
+    "sub": "Mute notifications while you sleep",
+    "morningStill": "Morning calls still come through",
+    "alt": "Illustration of notification settings."
+  },
+  "modeSampler": {
+    "alt": "Sample lines showing how each relationship mode changes the way they talk."
+  }
+}

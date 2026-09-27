@@ -1,0 +1,14 @@
+{
+  "ci": {
+    "collect": {
+      "startServerCommand": "npx next start -p 3200",
+      "url": ["http://localhost:3200/", "http://localhost:3200/en", "http://localhost:3200/creators", "http://localhost:3200/en/creators"],
+      "numberOfRuns": 3
+    },
+    "assert": {
+      "assertions": {
+        "categories:seo": ["error", { "minScore": 1 }]
+      }
+    }
+  }
+}

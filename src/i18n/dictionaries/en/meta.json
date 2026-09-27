@@ -1,0 +1,23 @@
+{
+  "home": {
+    "title": "LinClone – The AI clone app for talking to your favorites",
+    "description": "Call, chat, get morning calls and join audio LIVE shows with official AI clones of the creators you love. Your first 60 seconds are free. iPhone & Android.",
+    "ogTitle": "Talk with your favorites, out loud | LinClone",
+    "ogDescription": "Call, chat and join LIVE shows with official AI clones. Your first 60 seconds are free.",
+    "ogImageAlt": "LinClone: “Talk with your favorites, out loud.” Aura portraits of official AI clones and a note that your first 60 seconds are free."
+  },
+  "creators": {
+    "title": "LC Studio – Build and run your official AI clone",
+    "description": "Create and manage an official AI clone from your own voice and words. Chats, calls, LIVE, Grow and earnings in one creator app. LC Studio is invite-only.",
+    "ogTitle": "Build your official AI clone, right from your phone | LC Studio",
+    "ogDescription": "LC Studio, the creator app from LinClone. Invitation only for now.",
+    "ogImageAlt": "LC Studio: “Build your official AI clone, right from your phone.” A violet ring filling up as a clone is created.",
+    "breadcrumbHome": "LinClone",
+    "breadcrumbCreators": "For creators"
+  },
+  "notFound": {
+    "title": "Page not found",
+    "body": "The page you’re looking for may have moved or been removed.",
+    "home": "Back to LinClone"
+  }
+}
