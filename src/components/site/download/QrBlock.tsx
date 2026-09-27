@@ -4,6 +4,7 @@ import type { Locale } from '@/i18n/config';
 import type { Placement } from '@/lib/site-config';
 import { getAbsUrl } from '@/lib/store-links';
 import { qrSvg } from '@/lib/qr';
+import { Units } from '@/lib/units';
 
 type QrBlockProps = { d: Dictionary; lang: Locale; placement: Placement; size?: number; caption?: string };
 
@@ -18,7 +19,11 @@ export async function QrBlock({ d, lang, placement, size = 132, caption }: QrBlo
   return (
     <figure className="qr-block">
       <div role="img" aria-label={d.common.store.qrAlt} className="qr-card" style={{ '--qr': `${size}px` } as CSSProperties} dangerouslySetInnerHTML={{ __html: svg }} />
-      {caption === '' ? null : <figcaption className="t-small">{caption ?? d.common.store.qrCaption}</figcaption>}
+      {caption === '' ? null : (
+        <figcaption className="t-small">
+          <Units text={caption ?? d.common.store.qrCaption} lang={lang} mode="phrase" />
+        </figcaption>
+      )}
     </figure>
   );
 }

@@ -426,7 +426,8 @@ html.lenis, html.lenis body { height: auto; }
   .qr-block { display: flex; flex-direction: column; align-items: center; gap: 8px; margin: 0; max-width: 200px; }
   .qr-card { background: #fff; padding: 10px; border-radius: 16px; line-height: 0; box-shadow: var(--shadow-chip); }
   .qr-card svg { display: block; width: var(--qr); height: var(--qr); }
-  .qr-block figcaption { text-align: center; }
+  /* phrase units + keep-all: the caption never breaks inside a JA word */
+  .qr-block figcaption { text-align: center; word-break: keep-all; overflow-wrap: anywhere; text-wrap: balance; }
 
   /* ── mailto / copy ── */
   .mailto-btn[data-variant="compact"] { min-height: 44px; padding-inline: 18px; font-size: 14px; }

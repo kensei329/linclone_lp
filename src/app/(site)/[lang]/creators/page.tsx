@@ -41,7 +41,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       locale: lang === 'ja' ? 'ja_JP' : 'en_US',
       alternateLocale: [lang === 'ja' ? 'en_US' : 'ja_JP'],
     },
-    twitter: { title: d.meta.creators.ogTitle, description: d.meta.creators.ogDescription },
+    twitter: { card: 'summary_large_image', title: d.meta.creators.ogTitle, description: d.meta.creators.ogDescription },
   };
 }
 

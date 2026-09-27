@@ -44,7 +44,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       locale: lang === 'ja' ? 'ja_JP' : 'en_US',
       alternateLocale: [lang === 'ja' ? 'en_US' : 'ja_JP'],
     },
-    twitter: { title: d.meta.home.ogTitle, description: d.meta.home.ogDescription },
+    // A page-level `twitter` replaces the layout's, so the card type is repeated here.
+    twitter: { card: 'summary_large_image', title: d.meta.home.ogTitle, description: d.meta.home.ogDescription },
     // Smart App Banner: fan pages only (spec §8.5).
     itunes: { appId: FAN_APP.appStoreId, appArgument: `${SITE.origin}${canonical}` },
   };
