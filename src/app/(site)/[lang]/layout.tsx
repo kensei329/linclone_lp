@@ -6,6 +6,7 @@ import { fontVariables } from '@/lib/fonts';
 import { LOCALES, isLocale } from '@/i18n/config';
 import { SmoothScroll } from '@/lib/motion/smooth-scroll';
 import { InViewObserver } from '@/components/site/InViewObserver.client';
+import { AnalyticsDelegate } from '@/components/site/AnalyticsDelegate.client';
 
 // Root layout #2 for the marketing pages (spec §2.2, §8.1). Fully static:
 // no cookies()/headers(); the locale comes from the [lang] segment only.
@@ -49,7 +50,8 @@ var o=null;try{o=localStorage.getItem('lc.oshi')}catch(e){}if(o&&/^#[0-9a-f]{6}$
 export default async function SiteLayout({ children, params }: { children: ReactNode; params: Promise<{ lang: string }> }) {
   const { lang } = await params;
   if (!isLocale(lang)) notFound();
-  // WP0b: ReactDOM.preload of the JA headline subset goes here once it exists (lang === 'ja' only).
+  // The JA headline subset (§3.6) is not built yet (owner decision), so there is
+  // no `ReactDOM.preload` of it here; CJK headlines use Noto Sans JP 800.
   return (
     <html lang={lang} className={fontVariables} suppressHydrationWarning>
       <head>
@@ -59,6 +61,7 @@ export default async function SiteLayout({ children, params }: { children: React
         {children}
         <InViewObserver />
         <SmoothScroll />
+        <AnalyticsDelegate />
       </body>
     </html>
   );

@@ -1,7 +1,7 @@
-/** Pink LIVE tag (spec §4.8). STUB (WP0a). */
+/** Pink LIVE tag, radius 6, PJS 700 10 (spec §4.8). `pulse` runs the live-dot loop while in view. */
 export function LiveBadge({ pulse = false }: { pulse?: boolean }) {
   return (
-    <span className="live-badge" data-loop={pulse ? '' : undefined} style={{ background: '#e14b81', color: '#fff', borderRadius: 6, font: '700 10px var(--font-pjs)', letterSpacing: '.6px', padding: '2px 6px' }}>
+    <span className="live-badge" data-loop={pulse ? '' : undefined}>
       LIVE
     </span>
   );

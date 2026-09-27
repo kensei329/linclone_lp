@@ -7,7 +7,7 @@ type Common = { variant: Variant; size?: 'md' | 'lg'; icon?: IconName; iconEnd?:
 const cls = (variant: Variant, size: 'md' | 'lg', extra?: string) =>
   [`btn-${variant}`, size === 'lg' ? 'btn-lg' : null, extra].filter(Boolean).join(' ');
 
-/** §3.4 button styles. WP0b owns the CSS. */
+/** §3.4 buttons: pill, ≥44px target, ink label on the teal gradient. */
 export function Button({ variant, size = 'md', icon, iconEnd, className, children, type = 'button', ...rest }: Common & ButtonHTMLAttributes<HTMLButtonElement>) {
   return (
     <button type={type} className={cls(variant, size, className)} {...rest}>

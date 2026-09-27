@@ -8,18 +8,10 @@ type GlassMockCardProps = {
   children?: ReactNode;
 };
 
-/** In-mockup glass card; never uses backdrop-filter (spec §4.8). STUB (WP0a). */
+/** In-mockup glass card: white .72 + 1px white .9 edge. Never uses backdrop-filter (spec §4.8). */
 export function GlassMockCard({ radius = 16, tone, className, children }: GlassMockCardProps) {
   return (
-    <div
-      className={className}
-      data-tone={tone}
-      style={{
-        borderRadius: radius,
-        background: tone === 'night' ? 'rgba(15,16,24,.55)' : 'rgba(255,255,255,.72)',
-        border: `1px solid ${tone === 'night' ? 'rgba(255,255,255,.14)' : 'rgba(255,255,255,.9)'}`,
-      }}
-    >
+    <div className={['glass-mock', className].filter(Boolean).join(' ')} data-tone={tone} style={{ borderRadius: radius }}>
       {children}
     </div>
   );

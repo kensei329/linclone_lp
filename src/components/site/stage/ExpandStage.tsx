@@ -28,12 +28,16 @@ export type ExpandStageProps = {
 };
 
 /**
- * Scroll-expand stage shell with the §4.4 DOM contract. STUB (WP0a): renders
- * the SSR final state structure without the stage CSS; WP0b completes it.
+ * Scroll-expand stage shell (spec §4.4). A CSS sticky stage inside a section
+ * whose svh height is reserved in CSS: no GSAP pin and no pin-spacer. The
+ * server/CSS state is the FINAL state (expand: full-bleed media, bezel hidden;
+ * collapse: media clipped to the phone rect in pure CSS). Section animators
+ * call `useExpandStage` to scrub from the start state.
  */
 export function ExpandStage({ id, labelledBy, height, direction, phone, intro, media, bezelScreen, skip, surfaceStart, surfaceEnd = 'night' }: ExpandStageProps) {
+  const mobileH = Math.min(height.mobile, 200);
   const style = {
-    '--h-m': `${height.mobile}svh`,
+    '--h-m': `${mobileH}svh`,
     '--h-d': `${height.desktop}svh`,
     '--pw-d': `${phone.desktop.width}px`,
     '--pw-m': phone.mobile.width,
@@ -46,9 +50,11 @@ export function ExpandStage({ id, labelledBy, height, direction, phone, intro, m
       id={id}
       aria-labelledby={labelledBy}
       data-stage={direction}
+      data-direction={direction}
       data-immersive=""
       data-surface={surfaceEnd === 'studio' ? 'light' : 'dark'}
       data-surface-start={surfaceStart}
+      data-surface-end={surfaceEnd}
       data-phone-side={phone.desktop.side}
       style={style}
     >

@@ -4,10 +4,14 @@ import { useEffect, useRef, useState } from 'react';
 import type { StudioPlacement } from '@/lib/site-config';
 import { SITE } from '@/lib/site-config';
 import { track } from '@/lib/analytics';
+import { Glyph } from '../icons/Glyph';
 
 type CopyEmailProps = { label: string; copiedLabel: string; placement: StudioPlacement; variant?: 'text' | 'chip' };
 
-/** Copies info@linclone.com; falls back to selecting the visible address (spec §4.2). */
+/**
+ * Copies info@linclone.com; if the clipboard is unavailable it selects the
+ * visible address instead. The label swaps to `copiedLabel` for 1.6s (spec §4.2).
+ */
 export function CopyEmail({ label, copiedLabel, placement, variant = 'text' }: CopyEmailProps) {
   const [copied, setCopied] = useState(false);
   const addr = useRef<HTMLSpanElement>(null);
@@ -35,8 +39,11 @@ export function CopyEmail({ label, copiedLabel, placement, variant = 'text' }: C
 
   return (
     <button type="button" className="copy-email" data-variant={variant} onClick={onClick}>
-      <span aria-live="polite">{copied ? copiedLabel : label}</span>
-      <span ref={addr} className="sr-only">
+      <Glyph name={copied ? 'check' : 'content_copy'} size={18} />
+      <span className="copy-email-label" aria-live="polite">
+        {copied ? copiedLabel : label}
+      </span>
+      <span ref={addr} className="copy-email-addr">
         {SITE.contactEmail}
       </span>
     </button>

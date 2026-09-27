@@ -3,7 +3,7 @@ import { Icon } from '../icons/Icon';
 
 type FrictionKey = 'freeDownload' | 'first60' | 'trialBeforeSignup' | 'noPassword';
 
-/** Inline chips that remove download friction (spec §4.2). */
+/** Inline chips that remove download friction: `check` 14px + `.t-small` ink-2 (spec §4.2). */
 export function FrictionList({ d, items = ['freeDownload', 'first60', 'noPassword'] }: { d: Dictionary; items?: FrictionKey[] }) {
   return (
     <ul className="friction-list">

@@ -11,12 +11,18 @@ type StickerProps = {
   index?: number;
 };
 
-/** Vinyl-edge glass sticker (spec §4.3). STUB: WP0b adds the pop entrance styling. */
+/**
+ * Vinyl-edge glass sticker with a CSS pop entrance (spec §4.3). Budget: at most
+ * 4 per desktop viewport and 2 on mobile, heroes and chapter openers only.
+ */
 export function Sticker({ icon, label, tilt = 0, tone = 'teal', dark = false, index = 0 }: StickerProps) {
-  const style = { '--tilt': `${tilt}deg`, '--i': index } as CSSProperties;
+  const t = Math.max(-6, Math.min(6, tilt));
+  const style = { '--tilt': `${t}deg`, '--i': index } as CSSProperties;
   return (
     <span className="glass-fake sticker t-label" data-tone={tone} data-dark={dark ? '' : undefined} style={style}>
-      <Icon name={icon} filled size={14} />
+      <span className="sticker-disc" aria-hidden="true">
+        <Icon name={icon} filled size={15} />
+      </span>
       {label}
     </span>
   );

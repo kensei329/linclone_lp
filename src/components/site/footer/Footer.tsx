@@ -1,75 +1,115 @@
+import type { ReactNode } from 'react';
 import type { Dictionary } from '@/i18n/dictionaries';
 import type { Locale } from '@/i18n/config';
 import { localePath } from '@/i18n/paths';
 import { mailtoStudio } from '@/lib/store-links';
 import { SOCIAL } from '@/lib/site-config';
+import { Icon } from '../icons/Icon';
 import { StoreBadges } from '../download/StoreBadges';
 import { StudioStoreCTA } from '../download/StudioStoreCTA';
 import { LangPill } from '../header/LangPill';
 
+type Link = { href: string; label: string; analytics?: string };
+
+function Column({ title, links }: { title: string; links: Link[] }): ReactNode {
+  return (
+    <details className="footer-col">
+      <summary>
+        {title}
+        <Icon name="expand_more" size={20} />
+      </summary>
+      <nav aria-label={title}>
+        <ul>
+          {links.map((l) => (
+            <li key={l.href + l.label}>
+              <a href={l.href} data-analytics={l.analytics}>
+                {l.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+    </details>
+  );
+}
+
 /**
- * Site footer (spec §4.1). STUB (WP0a): every link and the disclosure are in
- * place; WP0b adds the night-deep surface, watermark and accordions.
- * Legacy pages are plain <a> (different root layout → full load).
+ * Site footer (spec §4.1, §5.14): night-deep with a 4% watermark wordmark;
+ * four link columns on desktop, <details> accordions on mobile. Legacy pages
+ * are plain <a> (different root layout, so always a full load).
  */
 export function Footer({ d, lang, page }: { d: Dictionary; lang: Locale; page: 'home' | 'creators' }) {
   const L = d.footer.links;
   const anchor = (hash: string) => (page === 'home' ? hash : localePath(lang, 'home', hash));
+  const home = page === 'home';
   return (
-    <footer className="site-footer" data-surface="dark">
-      <div>
-        {/* eslint-disable-next-line @next/next/no-img-element -- brand mark */}
-        <img src="/brand/mark-white-256.png" alt={d.common.brand} width={40} height={40} />
-        <p className="wordmark">{d.common.brand}</p>
-        <p>{d.footer.tagline}</p>
-        {page === 'home' ? <StoreBadges d={d} lang={lang} placement="footer" /> : <StudioStoreCTA d={d} lang={lang} compact />}
-      </div>
-      <nav aria-label={d.footer.columns.app}>
-        <p>{d.footer.columns.app}</p>
-        <ul>
-          <li><a href={anchor('#call')}>{L.call}</a></li>
-          <li><a href={anchor('#morning-call')}>{L.morning}</a></li>
-          <li><a href={anchor('#chat')}>{L.chat}</a></li>
-          <li><a href={anchor('#live')}>{L.live}</a></li>
-          <li><a href={anchor('#grow')}>{L.grow}</a></li>
-          <li><a href={anchor('#faq')}>{L.faq}</a></li>
-          <li><a href={localePath(lang, 'home')}>{L.fanApp}</a></li>
-        </ul>
-      </nav>
-      <nav aria-label={d.footer.columns.creators}>
-        <p>{d.footer.columns.creators}</p>
-        <ul>
-          <li><a href={localePath(lang, 'creators')}>{L.studio}</a></li>
-          <li><a href={mailtoStudio(lang, d)} data-analytics="studio_mailto:footer">{L.requestInvite}</a></li>
-        </ul>
-      </nav>
-      <nav aria-label={d.footer.columns.support}>
-        <p>{d.footer.columns.support}</p>
-        <ul>
-          <li><a href="/support">{L.support}</a></li>
-          <li><a href="/delete-user">{L.deleteUser}</a></li>
-        </ul>
-      </nav>
-      <nav aria-label={d.footer.columns.legal}>
-        <p>{d.footer.columns.legal}</p>
-        <ul>
-          <li><a href="/privacy">{L.privacy}</a></li>
-          <li><a href="/terms">{L.terms}</a></li>
-          <li><a href="/cookies">{L.cookies}</a></li>
-          <li><a href="/policies/child-protection-policy">{L.childSafety}</a></li>
-        </ul>
-      </nav>
-      {SOCIAL.length ? (
-        <ul>
-          {SOCIAL.map((s) => (
-            <li key={s.url}><a href={s.url} rel="me noopener">{s.name}</a></li>
-          ))}
-        </ul>
-      ) : null}
-      <div>
-        <LangPill lang={lang} page={page} d={d} />
-        <p className="t-small">{d.footer.copyright}</p>
-        <p className="t-small">{d.common.disclosure}</p>
+    <footer className="site-footer" data-surface="dark" data-page={page} data-download-block={home ? '' : undefined}>
+      <span className="footer-watermark" aria-hidden="true">
+        {d.common.brand}
+      </span>
+      <div className="container-site">
+        <div className="footer-grid">
+          <div className="footer-brand">
+            {/* eslint-disable-next-line @next/next/no-img-element -- brand mark */}
+            <img src="/brand/mark-white-256.png" alt="" width={36} height={36} />
+            <p className="wordmark">{d.common.brand}</p>
+            <p className="footer-tagline t-small">{d.footer.tagline}</p>
+            {home ? <StoreBadges d={d} lang={lang} placement="footer" /> : <StudioStoreCTA d={d} lang={lang} compact />}
+          </div>
+          <div className="footer-cols">
+            <Column
+              title={d.footer.columns.app}
+              links={[
+                { href: anchor('#call'), label: L.call },
+                { href: anchor('#morning-call'), label: L.morning },
+                { href: anchor('#chat'), label: L.chat },
+                { href: anchor('#live'), label: L.live },
+                { href: anchor('#grow'), label: L.grow },
+                { href: anchor('#faq'), label: L.faq },
+                { href: localePath(lang, 'home'), label: L.fanApp },
+              ]}
+            />
+            <Column
+              title={d.footer.columns.creators}
+              links={[
+                { href: localePath(lang, 'creators'), label: L.studio, analytics: home ? 'creators_nav:footer' : undefined },
+                { href: mailtoStudio(lang, d), label: L.requestInvite, analytics: 'studio_mailto:footer' },
+              ]}
+            />
+            <Column
+              title={d.footer.columns.support}
+              links={[
+                { href: '/support', label: L.support },
+                { href: '/delete-user', label: L.deleteUser },
+              ]}
+            />
+            <Column
+              title={d.footer.columns.legal}
+              links={[
+                { href: '/privacy', label: L.privacy },
+                { href: '/terms', label: L.terms },
+                { href: '/cookies', label: L.cookies },
+                { href: '/policies/child-protection-policy', label: L.childSafety },
+              ]}
+            />
+          </div>
+        </div>
+        {SOCIAL.length ? (
+          <ul className="footer-social">
+            {SOCIAL.map((s) => (
+              <li key={s.url}>
+                <a href={s.url} rel="me noopener">
+                  {s.name}
+                </a>
+              </li>
+            ))}
+          </ul>
+        ) : null}
+        <div className="footer-bottom">
+          <LangPill lang={lang} page={page} d={d} />
+          <p className="t-small">{d.footer.copyright}</p>
+          <p className="t-small">{d.common.disclosure}</p>
+        </div>
       </div>
     </footer>
   );

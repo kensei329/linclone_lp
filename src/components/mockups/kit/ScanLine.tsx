@@ -1,4 +1,4 @@
-/** Scanning line for the generation card (spec §4.8). STUB (WP0a). */
+/** 3px teal scan line with glow, ±60px sine yoyo over 1.4s, in view only (spec §4.8). */
 export function ScanLine() {
-  return <span className="scan-line" data-loop="" style={{ display: 'block', height: 3, background: '#00c4d8', boxShadow: '0 0 12px #00e2f4' }} />;
+  return <span className="scan-line" data-loop="" />;
 }

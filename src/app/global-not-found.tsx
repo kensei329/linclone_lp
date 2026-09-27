@@ -15,23 +15,31 @@ export default function GlobalNotFound() {
   return (
     <html lang="ja" className={fontVariables}>
       <body>
-        <main id="main" style={{ minHeight: '100svh', display: 'grid', placeContent: 'center', gap: 24, padding: 16, textAlign: 'center' }}>
-          <p className="wordmark">LinClone</p>
-          <div>
-            <h1 className="t-h2">{jaMeta.notFound.title}</h1>
-            <p className="t-body">{jaMeta.notFound.body}</p>
-            <p>
-              <a href="/">{jaMeta.notFound.home}</a>
+        <main id="main" className="surface-dawn not-found">
+          <div className="container-site not-found-inner">
+            <p className="not-found-brand">
+              {/* eslint-disable-next-line @next/next/no-img-element -- brand mark */}
+              <img src="/brand/mark-128.png" alt="" width={36} height={36} />
+              <span className="wordmark">LinClone</span>
             </p>
-          </div>
-          <div lang="en">
-            <p className="t-h3">{enMeta.notFound.title}</p>
-            <p className="t-body">{enMeta.notFound.body}</p>
-            <p>
-              <a href="/en" hrefLang="en">
-                {enMeta.notFound.home}
-              </a>
-            </p>
+            <div className="not-found-copy">
+              <h1 className="t-h2">{jaMeta.notFound.title}</h1>
+              <p className="t-body ink-2">{jaMeta.notFound.body}</p>
+              <p>
+                <a href="/" className="btn-primary">
+                  {jaMeta.notFound.home}
+                </a>
+              </p>
+            </div>
+            <div className="not-found-copy" lang="en">
+              <p className="t-h3">{enMeta.notFound.title}</p>
+              <p className="t-body ink-2">{enMeta.notFound.body}</p>
+              <p>
+                <a href="/en" hrefLang="en" className="btn-ghost">
+                  {enMeta.notFound.home}
+                </a>
+              </p>
+            </div>
           </div>
         </main>
       </body>

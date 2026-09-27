@@ -8,19 +8,24 @@ type ScreenSliceProps = {
   children: ReactNode;
 };
 
-/** Cropped window onto a 390×844 screen; keep width.mobile ≥ 292 (spec §4.8). STUB (WP0a). */
+/**
+ * Cropped window onto a 390×844 screen (spec §4.8): `crop.y`/`crop.h` are in
+ * screen px, the figure is `width` px wide. Keep the effective scale ≥0.75
+ * when the slice carries meaning (so `width.mobile` ≥ 292).
+ */
 export function ScreenSlice({ label, width, crop, radius = 28, children }: ScreenSliceProps) {
   const style = {
-    '--sw-m': `${width.mobile}px`,
-    '--sw-d': `${width.desktop ?? width.mobile}px`,
+    '--sw-m': width.mobile,
+    '--sw-d': width.desktop ?? width.mobile,
     '--crop-y': crop.y,
     '--crop-h': crop.h,
     borderRadius: radius,
-    overflow: 'hidden',
   } as CSSProperties;
   return (
     <figure role="img" aria-label={label} className="screen-slice" style={style}>
-      <div aria-hidden="true">{children}</div>
+      <div className="screen-slice-inner" aria-hidden="true">
+        {children}
+      </div>
     </figure>
   );
 }

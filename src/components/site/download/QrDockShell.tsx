@@ -7,7 +7,7 @@ import { QrDock } from './QrDock.client';
 export function QrDockShell({ d, lang }: { d: Dictionary; lang: Locale }) {
   return (
     <QrDock d={{ qrDock: d.qrDock }}>
-      <QrBlock d={d} lang={lang} placement="qr_dock" caption={d.qrDock.caption} />
+      <QrBlock d={d} lang={lang} placement="qr_dock" size={132} caption={d.qrDock.caption} />
     </QrDock>
   );
 }

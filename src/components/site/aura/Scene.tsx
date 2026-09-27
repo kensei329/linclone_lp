@@ -3,7 +3,11 @@ type SceneProps = {
   className?: string;
 };
 
-/** Token-only background composition (spec §4.7). STUB (WP0a). */
+/**
+ * Token-only CSS composition standing in for AI images and LIVE backgrounds
+ * (spec §4.7). No people, no stars motif, no filters. Fills its positioned
+ * container (absolute, inset 0).
+ */
 export function Scene({ kind, className }: SceneProps) {
-  return <span aria-hidden="true" data-scene={kind} className={className} />;
+  return <span aria-hidden="true" data-scene={kind} className={['scene', className].filter(Boolean).join(' ')} />;
 }

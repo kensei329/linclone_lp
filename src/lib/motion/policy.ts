@@ -40,3 +40,14 @@ export function useLite(): boolean {
 export function isInAppBrowser(): boolean {
   return typeof document !== 'undefined' && document.documentElement.hasAttribute('data-inapp');
 }
+
+export type Platform = 'ios' | 'android' | 'desktop';
+
+/** `html[data-platform]` from the head script; null during SSR and hydration. */
+export function usePlatform(): Platform | null {
+  return useSyncExternalStore(
+    noopSubscribe,
+    () => (document.documentElement.dataset.platform as Platform | undefined) ?? null,
+    () => null,
+  );
+}
