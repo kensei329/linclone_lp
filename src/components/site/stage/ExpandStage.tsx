@@ -25,6 +25,12 @@ export type ExpandStageProps = {
   surfaceStart: 'cream' | 'night' | 'lavender';
   /** default 'night'; 'studio' keeps the intro ink (creators command centre) */
   surfaceEnd?: 'night' | 'studio';
+  /** optional decorative layer between the stage backgrounds and the phone/media (aria-hidden) */
+  decor?: ReactNode;
+  /** optional class on the section */
+  className?: string;
+  /** optional extra attributes on the section (e.g. `{ 'data-download-block': '' }`) */
+  rootAttrs?: Record<`data-${string}`, string>;
 };
 
 /**
@@ -34,7 +40,22 @@ export type ExpandStageProps = {
  * collapse: media clipped to the phone rect in pure CSS). Section animators
  * call `useExpandStage` to scrub from the start state.
  */
-export function ExpandStage({ id, labelledBy, height, direction, phone, intro, media, bezelScreen, skip, surfaceStart, surfaceEnd = 'night' }: ExpandStageProps) {
+export function ExpandStage({
+  id,
+  labelledBy,
+  height,
+  direction,
+  phone,
+  intro,
+  media,
+  bezelScreen,
+  skip,
+  surfaceStart,
+  surfaceEnd = 'night',
+  decor,
+  className,
+  rootAttrs,
+}: ExpandStageProps) {
   const mobileH = Math.min(height.mobile, 200);
   const style = {
     '--h-m': `${mobileH}svh`,
@@ -47,7 +68,9 @@ export function ExpandStage({ id, labelledBy, height, direction, phone, intro, m
   } as CSSProperties;
   return (
     <section
+      {...rootAttrs}
       id={id}
+      className={className}
       aria-labelledby={labelledBy}
       data-stage={direction}
       data-direction={direction}
@@ -62,6 +85,11 @@ export function ExpandStage({ id, labelledBy, height, direction, phone, intro, m
       <div data-stage-sticky="">
         <div data-stage-bg="start" />
         <div data-stage-bg="end" />
+        {decor ? (
+          <div data-stage-decor="" aria-hidden="true">
+            {decor}
+          </div>
+        ) : null}
         <div data-stage-phone="" />
         <div data-stage-media="">
           <div data-stage-inner="">{media}</div>

@@ -71,6 +71,9 @@ export function HeaderBehavior() {
       surfaces.forEach((el) => io!.observe(el));
     };
     observe();
+    // Stages switch their own surface mid-way (e.g. cream → night): re-apply.
+    const mo = new MutationObserver(applyTheme);
+    surfaces.forEach((el) => mo.observe(el, { attributes: true, attributeFilter: ['data-surface'] }));
     let resizeT: ReturnType<typeof setTimeout> | undefined;
     const onResize = () => {
       clearTimeout(resizeT);
@@ -111,6 +114,7 @@ export function HeaderBehavior() {
       window.removeEventListener('scroll', onScroll);
       window.removeEventListener('resize', onResize);
       io?.disconnect();
+      mo.disconnect();
       menuBtn?.removeEventListener('click', openMenu);
       dialog?.removeEventListener('click', onDialogClick);
       dialog?.removeEventListener('close', closeMenu);

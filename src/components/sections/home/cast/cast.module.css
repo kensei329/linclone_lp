@@ -1,0 +1,73 @@
+/* #cast (spec §5.2): can-badge marquee between the dawn hero and cream #about. */
+
+.cast {
+  padding-block: 12px 20px;
+  /* soft top edge so the dawn hero melts into cream */
+  --blend-from: #fbf7f0;
+}
+
+.cast :global(.marquee) {
+  /* fade the rows out at both screen edges */
+  -webkit-mask: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+  mask: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+}
+/* room for the vinyl edge + chip shadow inside the clipped rows */
+.cast :global(.marquee-row) { padding-block: 10px 22px; }
+.cast :global(.marquee-track) { gap: 14px; padding-right: 14px; }
+.cast :global(.marquee-row + .marquee-row) { margin-top: -12px; }
+
+.card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 8px 22px 8px 8px;
+  border-radius: 9999px;
+  color: var(--color-ink);
+}
+
+.badge {
+  /* the aura monogram is 2.4em: 40% of the badge */
+  position: relative;
+  display: block;
+  flex: none;
+  width: 72px;
+  padding: 5px;
+  font-size: 12px;
+}
+.badge :global(.aura) { display: block; }
+
+.text { display: flex; flex-direction: column; align-items: flex-start; gap: 2px; min-width: 0; }
+.name { font: 700 14px/1.2 var(--font-sans); letter-spacing: -.005em; }
+.genre { margin: 0; line-height: 1.35; white-space: nowrap; }
+.official {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 4px;
+  height: 20px;
+  padding: 0 8px 0 5px;
+  border-radius: 9999px;
+  background: rgba(0, 196, 216, .12);
+  color: var(--color-teal-ink);
+  font: 700 10.5px/1 var(--font-sans);
+  white-space: nowrap;
+}
+.official svg { color: var(--color-teal-deep); flex: none; }
+
+.note {
+  margin: 8px auto 0;
+  text-align: right;
+}
+
+@media (min-width: 1024px) {
+  .cast { padding-block: 28px 36px; }
+  .card { gap: 16px; padding: 10px 28px 10px 10px; }
+  .badge { width: 96px; font-size: 16px; padding: 6px; }
+  .name { font-size: 16px; }
+  .official { font-size: 11px; height: 22px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cast :global(.marquee) { -webkit-mask: none; mask: none; }
+  .cast :global(.marquee-track) { gap: 12px; padding-inline: var(--gutter); }
+}

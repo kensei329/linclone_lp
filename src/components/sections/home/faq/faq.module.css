@@ -1,0 +1,41 @@
+/* #faq (spec §5.11): two columns on desktop, sticky heading column. */
+
+.section { content-visibility: auto; contain-intrinsic-size: auto 1100px; }
+
+.grid { display: grid; gap: 32px; }
+.sticky { display: grid; gap: 16px; }
+.title { margin: 0; }
+.lead { margin: 0; color: var(--color-ink-2); max-width: 26em; }
+.support {
+  display: inline-flex; align-items: center; gap: 4px; min-height: 44px; vertical-align: middle;
+  color: var(--color-ink); font-weight: 700; text-decoration: underline 2px var(--color-teal); text-underline-offset: 4px;
+}
+.support svg { color: var(--color-teal-ink); transition: translate var(--dur-base) var(--ease-reveal); }
+.support:hover svg { translate: 4px 0; }
+
+/* the shared FaqList, tuned for this page */
+.list :global(.faq-list) { gap: 10px; }
+.list :global(.faq-item) { transition: box-shadow var(--dur-base) var(--ease-reveal), background-color var(--dur-base); }
+.list :global(.faq-item > summary) { padding: 16px 20px; gap: 20px; }
+.list :global(.faq-item > summary h3) { line-height: 1.5; }
+.list :global(.faq-item[open]) { background: rgba(255, 255, 255, .9); }
+.list :global(.faq-item[open] .faq-plus) { background: var(--grad-cta); color: var(--color-ink); }
+.list :global(.faq-answer) { padding: 0 20px 20px; }
+.list :global(.faq-answer p) { max-width: 36em; }
+@media (hover: hover) and (pointer: fine) {
+  .list :global(.faq-item:hover) { box-shadow: inset 0 1px 0 rgba(255, 255, 255, .9), 0 14px 34px rgba(60, 55, 90, .14); }
+}
+
+@media (min-width: 1024px) {
+  .grid { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; }
+  .aside { grid-column: 1 / span 4; }
+  .sticky { position: sticky; top: 120px; }
+  .list { grid-column: 6 / span 7; }
+  .list :global(.faq-item > summary) { padding: 20px 24px; min-height: 64px; }
+  .list :global(.faq-answer) { padding: 0 24px 24px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .list :global(.faq-item[open] .faq-plus) { transform: none; }
+  .support:hover svg { translate: none; }
+}

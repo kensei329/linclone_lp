@@ -1,0 +1,23 @@
+// LC Studio mockups barrel (WP5, spec §7.2). Server components.
+export { S09Building } from './S09Building';
+export { D01Home } from './D01Home';
+export { D01Bento, type TileId } from './D01Bento';
+export { S04QuickPicks } from './S04QuickPicks';
+export { S04aOwnWords } from './S04aOwnWords';
+export { S05Photos } from './S05Photos';
+export { S06ModesFree } from './S06ModesFree';
+export { S07NgTopics } from './S07NgTopics';
+export { S08bRecord } from './S08bRecord';
+export { D01bCloneCheck } from './D01bCloneCheck';
+export { SelfCallStage } from './SelfCallStage';
+export { D06GrowCard } from './D06GrowCard';
+export { D08ProfileCard } from './D08ProfileCard';
+export { D04GalleryCard } from './D04GalleryCard';
+export { D02bThread } from './D02bThread';
+export { D05Live } from './D05Live';
+export { D07HomeVoiceCard } from './D07HomeVoiceCard';
+export { D07bMorningCard } from './D07bMorningCard';
+export { D07cFillersCard } from './D07cFillersCard';
+export { D09Analytics } from './D09Analytics';
+export { D10EarningsCalculating } from './D10EarningsCalculating';
+export { STUDIO_CROPS, TILE_ORDER } from './tiles';

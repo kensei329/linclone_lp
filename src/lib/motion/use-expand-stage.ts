@@ -13,8 +13,12 @@ export type ExpandStageOptions = {
   scrub?: number;
   /** default [0.06, 0.30]; false keeps colours (surfaceEnd 'studio' or already night) */
   introToNight?: [number, number] | false;
-  /** section beats, positioned by progress (timeline duration = 1) */
-  extend?: (tl: gsap.core.Timeline, ctx: SceneCtx) => void;
+  /**
+   * Section beats, positioned by progress (timeline duration = 1). May return
+   * a cleanup, run whenever the scene is torn down (unmount, breakpoint or
+   * reduced-motion change) before the hook's own cleanup.
+   */
+  extend?: (tl: gsap.core.Timeline, ctx: SceneCtx) => void | (() => void);
 };
 
 export type StageEventDetail = { id: string; active: boolean };
@@ -70,6 +74,18 @@ export function useExpandStage(scope: RefObject<HTMLElement | null>, opts: Expan
     const emit = (active: boolean) =>
       window.dispatchEvent(new CustomEvent<StageEventDetail>('lc:stage', { detail: { id: root.id, active } }));
 
+    // Header surface: an expand stage that starts on a light surface (cream /
+    // lavender) reads as light until the background crossfade's midpoint, then
+    // as its end surface. HeaderBehavior watches `data-surface` changes.
+    const startLight = root.dataset.surfaceStart === 'cream' || root.dataset.surfaceStart === 'lavender';
+    const endSurface = root.dataset.surfaceEnd === 'studio' ? 'light' : 'dark';
+    const surfaceSwitch = expand && introWin && startLight && endSurface === 'dark' ? (introWin[0] + introWin[1]) / 2 : null;
+    const syncSurface = (p: number) => {
+      if (surfaceSwitch === null) return;
+      const surf = p < surfaceSwitch ? 'light' : 'dark';
+      if (root.dataset.surface !== surf) root.dataset.surface = surf;
+    };
+
     const tl = gsap.timeline({
       defaults: { ease: 'none' },
       scrollTrigger: {
@@ -79,16 +95,24 @@ export function useExpandStage(scope: RefObject<HTMLElement | null>, opts: Expan
         scrub: opts.scrub ?? 0.5,
         invalidateOnRefresh: true,
         onToggle: (self) => emit(self.isActive),
+        onUpdate: (self) => syncSurface(self.progress),
+        onRefresh: (self) => syncSurface(self.progress),
       },
     });
     tl.to({}, { duration: 1 }, 0); // fixes the timeline length at 1
 
     if (lite) {
-      // Simple reveal instead of clip-path repaints.
-      gsap.set(media, { clipPath: 'none' });
-      if (expand) tl.fromTo(media, { autoAlpha: 0, scale: 1.05 }, { autoAlpha: 1, scale: 1, duration: span }, c0);
-      else tl.fromTo(media, { autoAlpha: 1 }, { autoAlpha: 0, duration: span }, c0);
-      if (bezel) tl.fromTo(bezel, { autoAlpha: expand ? 1 : 0 }, { autoAlpha: expand ? 0 : 1, duration: span }, c0);
+      // Simple reveal instead of clip-path repaints, sequenced so the two
+      // screens never sit half-transparent on top of each other.
+      if (expand) {
+        gsap.set(media, { clipPath: 'none' });
+        if (bezel) tl.fromTo(bezel, { autoAlpha: 1 }, { autoAlpha: 0, duration: span * 0.45 }, c0);
+        tl.fromTo(media, { autoAlpha: 0, scale: 1.05 }, { autoAlpha: 1, scale: 1, duration: span * 0.55 }, c0 + span * 0.45);
+      } else if (bezel) {
+        // Collapse: the media keeps its CSS final clip (the phone rect) and
+        // stays visible; only the bezel arrives around it.
+        tl.fromTo(bezel, { autoAlpha: 0 }, { autoAlpha: 1, duration: span * 0.5 }, c0 + span * 0.5);
+      }
     } else {
       tl.fromTo(media, { clipPath: expand ? atPhone : FULL }, { clipPath: expand ? FULL : atPhone, duration: span }, c0);
       if (inner) tl.fromTo(inner, { scale: expand ? 1.15 : 1 }, { scale: expand ? 1 : 0.9, duration: span }, c0);
@@ -115,12 +139,23 @@ export function useExpandStage(scope: RefObject<HTMLElement | null>, opts: Expan
       }
     }
 
-    opts.extend?.(tl, ctx);
+    const extCleanup = opts.extend?.(tl, ctx);
+
+    // Refreshes re-render scrubbed timelines with callbacks suppressed:
+    // re-run the timeline's onUpdate (section beats derived from progress).
+    const resync = () => {
+      const cb = tl.eventCallback('onUpdate') as ((...args: unknown[]) => void) | undefined;
+      cb?.call(tl);
+    };
+    ctx.ScrollTrigger.addEventListener('refresh', resync);
 
     void document.fonts?.ready.then(requestRefresh);
     return () => {
+      ctx.ScrollTrigger.removeEventListener('refresh', resync);
+      if (typeof extCleanup === 'function') extCleanup();
       ro?.disconnect();
       root.style.removeProperty('--intro-h');
+      if (surfaceSwitch !== null) root.dataset.surface = endSurface;
     };
   });
 }

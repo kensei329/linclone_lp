@@ -1,22 +1,95 @@
+import type { CSSProperties } from 'react';
 import type { SectionProps } from '@/i18n/types';
-import { Section } from '@/components/site/Section';
-import { Eyebrow } from '@/components/site/Eyebrow';
-import { StoreBadges } from '@/components/site/download/StoreBadges';
-import { Disclosure } from '@/components/site/Disclosure';
+import { Section, Eyebrow, StoreBadges, Disclosure, ScreenNote, Sticker, Icon, type IconName } from '@/components/site';
+import { PhoneFrame } from '@/components/mockups/kit';
+import { FirstCall00c } from '@/components/mockups/fan/FirstCall00c';
 import { Units } from '@/lib/units';
+import { HeroAnimator } from './HeroAnimator.client';
+import s from './hero.module.css';
 
-/** #hero: the page's single H1 and first download point (spec §5.1). STUB (WP0a), owned by WP1: replace wholesale. */
+type ChipKey = 'call' | 'morning' | 'voice' | 'chat' | 'live' | 'grow';
+const CHIPS: { key: ChipKey; href: string; icon: IconName }[] = [
+  { key: 'call', href: '#call', icon: 'call' },
+  { key: 'morning', href: '#morning-call', icon: 'alarm' },
+  { key: 'voice', href: '#voice-message', icon: 'graphic_eq' },
+  { key: 'chat', href: '#chat', icon: 'forum' },
+  { key: 'live', href: '#live', icon: 'podcasts' },
+  { key: 'grow', href: '#grow', icon: 'psychiatry' },
+];
+
+type StickerKey = 'official' | 'first60' | 'call' | 'live';
+/** Orbit around the phone (§5.1). `depth` scales cursor parallax and scroll-away; `mobile` = one of the two shown <1024. */
+const STICKERS: { key: StickerKey; icon: IconName; tone: 'teal' | 'gold' | 'pink'; tilt: number; depth: number; mobile: boolean }[] = [
+  { key: 'official', icon: 'verified', tone: 'teal', tilt: -5, depth: 1.2, mobile: true },
+  { key: 'first60', icon: 'timer', tone: 'gold', tilt: 4, depth: 0.8, mobile: true },
+  { key: 'call', icon: 'call', tone: 'teal', tilt: -3, depth: 1, mobile: false },
+  { key: 'live', icon: 'podcasts', tone: 'pink', tilt: 6, depth: 0.6, mobile: false },
+];
+
+/**
+ * #hero (spec §5.1): the 5-second proposition and the page's single H1.
+ * Server-rendered final state; the entrance is CSS transform-only (every
+ * element is visible on the first frame, the H1 is the LCP element). The
+ * animator island adds the caption marker after idle and, on desktop, cursor
+ * parallax plus a transform-only scroll-away.
+ */
 export function HomeHero({ d, lang }: SectionProps) {
   const t = d.home.hero;
   return (
-    <Section id="hero" surface="dawn" labelledBy="hero-title">
-      <Eyebrow label={t.eyebrow} />
-      <h1 id="hero-title" className="t-display-xl">
-        <Units text={t.title} lang={lang} mode="phrase" />
-      </h1>
-      <p className="t-lead">{t.lead}</p>
-      <StoreBadges d={d} lang={lang} placement="hero" size="lg" qr showFriction />
-      <Disclosure d={d} variant="line" />
+    <Section id="hero" surface="dawn" labelledBy="hero-title" className={s.hero}>
+      <div className={`container-site ${s.grid}`}>
+        <div className={s.copy}>
+          <div className={s.enter} style={{ '--d': '0ms' } as CSSProperties}>
+            <Eyebrow label={t.eyebrow} />
+          </div>
+          <h1 id="hero-title" className={`t-display-xl ${s.title}`}>
+            <Units text={t.title} lang={lang} mode="phrase" />
+          </h1>
+          <p className={`t-lead ${s.lead} ${s.enter}`} style={{ '--d': '80ms' } as CSSProperties}>
+            {t.lead}
+          </p>
+          <div className={`${s.badges} ${s.enter}`} style={{ '--d': '140ms' } as CSSProperties}>
+            <StoreBadges d={d} lang={lang} placement="hero" size="lg" qr showFriction />
+          </div>
+          <div className={`${s.disclosure} ${s.enter}`} style={{ '--d': '180ms' } as CSSProperties}>
+            <Disclosure d={d} variant="line" />
+          </div>
+          <nav aria-label={t.chipsLabel} className={`${s.chips} ${s.enter}`} style={{ '--d': '220ms' } as CSSProperties} data-lenis-prevent="">
+            <ul>
+              {CHIPS.map((c) => (
+                <li key={c.key}>
+                  <a href={c.href} className={`glass-fake ${s.chip}`}>
+                    <span className={s.chipIcon} aria-hidden="true">
+                      <Icon name={c.icon} filled size={16} />
+                    </span>
+                    {t.chips[c.key]}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        </div>
+
+        <div className={s.visual}>
+          <div className={s.orb} data-hero-orb="" aria-hidden="true" />
+          <div className={s.phoneSlot} data-hero-phone="">
+            <div className={s.phoneRise}>
+              <PhoneFrame size={{ mobile: 300, desktop: 360 }} label={t.phoneAlt} theme="night">
+                <FirstCall00c d={d} lang={lang} persona="oshi" />
+              </PhoneFrame>
+            </div>
+            {STICKERS.map((st, i) => (
+              <span key={st.key} className={s.sticker} data-slot={st.key} data-mobile={st.mobile ? '' : undefined} data-depth={st.depth} aria-hidden="true">
+                <Sticker icon={st.icon} label={t.stickers[st.key]} tone={st.tone} tilt={st.tilt} index={i + 1} />
+              </span>
+            ))}
+          </div>
+          <div className={s.note}>
+            <ScreenNote d={d} />
+          </div>
+        </div>
+      </div>
+      <HeroAnimator />
     </Section>
   );
 }

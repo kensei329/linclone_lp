@@ -15,7 +15,8 @@ export function StickyStepsAnimator({ sectionId, stepIds }: { sectionId: string;
   useScrollScene(scope, ({ ScrollTrigger, scope: root, isDesktop }) => {
     if (!isDesktop) return;
     const screens = Array.from(root.querySelectorAll<HTMLElement>('.ss-phone [data-screen]'));
-    let current = 0;
+    // -1 so the first step's activation also dispatches `lc:step`.
+    let current = -1;
     const activate = (i: number) => {
       if (i === current || !screens[i]) return;
       screens.forEach((s, j) => {

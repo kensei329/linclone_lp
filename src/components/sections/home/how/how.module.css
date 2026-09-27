@@ -1,0 +1,142 @@
+/* #how-it-works (spec §5.10): cream + sunrise, sticky phone → app icon morph. */
+
+.section { overflow: clip; }
+
+/* sunrise: the fan glow rising behind the CTA, faded out before the section edge */
+.sunrise {
+  --sun-lift: 200px;
+  position: absolute; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; opacity: .4;
+  -webkit-mask-image: linear-gradient(to top, transparent 0, #000 180px); mask-image: linear-gradient(to top, transparent 0, #000 180px);
+}
+.sunrise :global([data-fan-glow]) { bottom: calc(160vw * -.5 + var(--sun-lift)); }
+@media (min-width: 1024px) {
+  .sunrise { --sun-lift: 60px; opacity: .34; }
+  .sunrise :global([data-fan-glow]) { width: 120vw; bottom: calc(120vw * -.5 + var(--sun-lift)); left: 30%; }
+}
+
+/* WP0's Ring root uses the class "ring", which Tailwind also emits as its 1px
+   ring utility (box-shadow); cancel it here. */
+
+/* ── layout ── */
+.grid { display: grid; grid-template-columns: minmax(0, 1fr); row-gap: 40px; }
+.phoneCol, .padCol { display: none; }
+@media (min-width: 1024px) {
+  .grid { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; row-gap: 0; }
+  .phoneCol { display: block; grid-column: 1 / span 5; grid-row: 1; }
+  .main { grid-column: 7 / span 6; grid-row: 1; }
+  .padCol { display: grid; place-items: center; grid-column: 1 / span 5; grid-row: 2; }
+  .cta { grid-column: 7 / span 6; grid-row: 2; }
+}
+
+/* ── header ── */
+.head { display: grid; gap: 14px; margin-bottom: 40px; }
+.title { margin: 0; }
+.lead { margin: 0; color: var(--color-ink-2); }
+@media (min-width: 1024px) { .head { margin-bottom: 8svh; padding-top: 4svh; } }
+
+/* ── sticky phone ── */
+.phoneSticky { position: sticky; top: 12svh; display: flex; justify-content: center; padding-bottom: 40px; }
+.phoneScale { transform-origin: 50% 0; }
+@media (min-width: 1024px) and (max-height: 860px) { .phoneScale { scale: .86; } .phoneSticky { top: 10svh; } }
+@media (min-width: 1024px) and (max-height: 740px) { .phoneScale { scale: .74; } }
+.morph { position: relative; width: 330px; height: calc(330px * 844 / 390); transform-origin: 50% 50%; will-change: transform; }
+.phone { position: relative; z-index: 1; }
+
+.ring {
+  position: absolute; z-index: 0; left: 50%; top: 50%; translate: -50% -50%; line-height: 0;
+  transition: opacity var(--dur-fluid) var(--ease-reveal), scale var(--dur-fluid) var(--ease-reveal);
+}
+.ring::before {
+  content: ""; position: absolute; inset: -40px; border-radius: 50%; z-index: -1;
+  background: radial-gradient(closest-side, rgba(0, 226, 244, .22), rgba(0, 196, 216, .08) 60%, transparent);
+}
+.ringChip {
+  position: absolute; z-index: 2; right: -92px; top: 36%;
+  display: inline-flex; align-items: center; gap: 10px; padding: 10px 16px 10px 12px; border-radius: 20px;
+  color: var(--color-teal-ink);
+  background: linear-gradient(145deg, rgba(255, 255, 255, .96), rgba(255, 255, 255, .86));
+  border: 1px solid rgba(255, 255, 255, .9); box-shadow: 0 0 0 3px #fff, var(--shadow-chip);
+  transition: opacity var(--dur-fluid) var(--ease-reveal), translate var(--dur-fluid) var(--ease-reveal);
+}
+.ringTimer { display: grid; gap: 2px; text-align: left; }
+.ringTimerLabel { font: 700 10px/1.2 var(--font-label); letter-spacing: .14em; text-transform: uppercase; color: var(--color-ink-2); }
+.ringTimerLabel:lang(ja) { font: 700 11px/1.3 var(--font-sans); letter-spacing: .04em; text-transform: none; }
+.ringTimerTime { font: 700 28px/1 var(--font-label); font-variant-numeric: tabular-nums; color: var(--color-ink); letter-spacing: -.01em; }
+.ringTimer[data-size="sm"] { text-align: center; gap: 0; }
+.ringTimer[data-size="sm"] .ringTimerLabel { font-size: 9px; letter-spacing: .1em; }
+.ringTimer[data-size="sm"] .ringTimerLabel:lang(ja) { font-size: 10px; }
+.ringTimer[data-size="sm"] .ringTimerTime { font-size: 22px; }
+
+/* When the animator is live (desktop, motion allowed), the ring shows on the call step only. */
+.section[data-how-live] .ring { opacity: 0; scale: .92; }
+.section[data-how-live] .ringChip { opacity: 0; translate: -12px 0; }
+.section[data-how-live] .morph[data-ring-on] .ring { opacity: 1; scale: 1; }
+.section[data-how-live] .morph[data-ring-on] .ringChip { opacity: 1; translate: 0 0; }
+
+.morphIcon {
+  position: absolute; z-index: 3; left: 0; top: 50%; width: 330px; height: 330px; translate: 0 -50%;
+  border-radius: 22.5%; opacity: 0; pointer-events: none;
+  box-shadow: 0 30px 60px rgba(0, 99, 110, .28), 0 0 0 1px rgba(255, 255, 255, .6);
+}
+
+/* ── icon pad ── */
+.padCol { padding-block: 24px; }
+.pad {
+  position: relative; display: block; width: 120px; height: 120px; border-radius: 27px;
+  background: rgba(255, 255, 255, .45); box-shadow: inset 0 0 0 1.5px rgba(0, 150, 168, .22);
+  transition: box-shadow var(--dur-fluid) var(--ease-reveal);
+}
+.pad::before {
+  content: ""; position: absolute; inset: -18px; border-radius: 40px; z-index: -1;
+  background: radial-gradient(closest-side, rgba(0, 226, 244, .32), transparent); opacity: .7;
+  transition: opacity var(--dur-fluid) var(--ease-reveal), scale var(--dur-fluid) var(--ease-reveal);
+}
+.pad img { display: block; width: 120px; height: 120px; border-radius: 27px; box-shadow: 0 18px 40px rgba(0, 99, 110, .22); transition: opacity var(--dur-base); }
+.section[data-how-live] .pad img { opacity: 0; }
+.section[data-how-live] .pad::before { opacity: 0; scale: .7; }
+.section[data-how-live] .pad[data-landed] img { opacity: 1; }
+.section[data-how-live] .pad[data-landed]::before { opacity: 1; scale: 1.15; }
+
+/* ── steps ── */
+.stepsWrap { position: relative; }
+.steps { margin: 0; padding: 0; list-style: none; }
+.line { position: absolute; left: 15px; top: 18px; bottom: 18px; width: 2px; border-radius: 2px; background: rgba(40, 39, 59, .1); }
+.lineFill { position: absolute; inset: 0; border-radius: inherit; background: linear-gradient(180deg, #00c4d8, #00afc4); transform-origin: 50% 0; }
+.step { position: relative; display: grid; grid-template-columns: 32px minmax(0, 1fr); align-content: start; column-gap: 20px; padding-bottom: 44px; }
+.step:last-child { padding-bottom: 0; }
+.dot {
+  position: relative; z-index: 1; display: grid; place-items: center; width: 32px; height: 32px; border-radius: 50%;
+  background: #fff; color: rgba(40, 39, 59, .28); box-shadow: inset 0 0 0 1.5px rgba(40, 39, 59, .14), 0 0 0 6px #f7f3ec;
+  transition: background var(--dur-base) var(--ease-reveal), color var(--dur-base), box-shadow var(--dur-base);
+}
+.step[data-done] .dot { background: var(--grad-cta); color: var(--color-ink); box-shadow: 0 0 0 6px #f7f3ec, var(--shadow-teal-glow); }
+.stepCopy { display: grid; gap: 6px; align-content: start; padding-top: 2px; }
+.stepTitle { margin: 0; }
+.stepBody { margin: 0; color: var(--color-ink-2); }
+.slice { grid-column: 2; position: relative; margin-top: 18px; justify-self: start; }
+.miniRing {
+  position: absolute; top: -18px; right: -4px; display: grid; place-items: center; padding: 6px; border-radius: 50%;
+}
+@media (max-width: 359.98px) { .miniRing { right: 0; } }
+@media (min-width: 1024px) {
+  .step { min-height: 45svh; padding-bottom: 0; }
+  .slice { display: none; }
+  .line { top: 18px; bottom: calc(45svh - 34px); }
+}
+
+/* ── CTA ── */
+.cta { display: grid; gap: 18px; align-content: center; padding: 28px 20px; border-radius: 28px; background: rgba(255, 255, 255, .55); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .9), var(--shadow-chip); }
+.ctaHead { display: flex; align-items: center; gap: 16px; }
+.ctaIcon { width: 72px; height: 72px; border-radius: 16px; flex: none; box-shadow: 0 12px 28px rgba(0, 99, 110, .22); }
+.ctaTitle { margin: 0; }
+@media (min-width: 1024px) {
+  .cta { padding: 48px 0; background: none; box-shadow: none; border-radius: 0; }
+  .ctaIcon { display: none; }
+  .cta :global(.store-badges) { align-items: flex-start; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  /* final state: the phone rests on the sign-in gate */
+  .phone :global([data-screen]) { opacity: 0; visibility: hidden; }
+  .phone :global([data-screen="3"]) { opacity: 1; visibility: visible; translate: 0 0; }
+}

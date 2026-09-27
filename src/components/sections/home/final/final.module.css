@@ -1,0 +1,98 @@
+/* #download (spec §5.13): stage #3, the reverse collapse. The CSS state is the
+   collapsed final state; FinalStageAnimator scrubs from the full-bleed call. */
+
+/* Anchors (#download, the skip link) land at the end of the stage, i.e. on the
+   collapsed CTA, not on the full-bleed start. Lenis honours scroll-margin. */
+.stage { scroll-margin-top: calc(100svh - var(--h-m) - var(--header-h) - 8px); }
+@media (min-width: 1024px) { .stage { scroll-margin-top: calc(100svh - var(--h-d) - var(--header-h) - 8px); } }
+
+/* ── mobile phone rect: between the intro and the download block ── */
+@media (max-width: 1023.98px) {
+  .stage {
+    --fi: var(--final-intro-h, clamp(190px, 34svh, 300px));
+    --dl-h: 220px;
+    --avail: calc(100svh - var(--fi) - 16px - var(--dl-h) - 24px - env(safe-area-inset-bottom));
+    --ph: clamp(150px, var(--avail), 440px);
+    --pw: calc(var(--ph) * 390 / 844);
+    --pt: calc(var(--fi) + 8px + max(0px, (var(--avail) - var(--ph)) / 2));
+    --pb: calc(100svh - var(--pt) - var(--ph));
+    --pl: calc((100% - var(--pw)) / 2);
+    --pr: var(--pl);
+  }
+}
+
+/* ── desktop phone rect: 300px, smaller on short viewports, centred below the header ── */
+@media (min-width: 1024px) {
+  .stage {
+    --pw: min(300px, (100svh - var(--header-h) - 96px) * 390 / 844);
+    --pt: calc((100% - var(--ph)) / 2 + var(--header-h) / 2);
+    --pb: calc(100% - var(--pt) - var(--ph));
+  }
+}
+
+/* ── layers ── */
+/* the hook scales the media 1→.9 while it collapses: scale toward the phone
+   centre so the call composition stays centred in the phone */
+.stage :global([data-stage-inner]) { transform-origin: calc(var(--pl) + var(--pw) / 2) calc(var(--pt) + var(--ph) / 2); }
+.decor { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
+.media { position: absolute; inset: 0; }
+
+/* logo burst behind the phone: final state scale 2.2 at .12 (never above .5) */
+.burst {
+  position: absolute; left: calc(var(--pl) + var(--pw) / 2); top: calc(var(--pt) + var(--ph) / 2);
+  width: calc(var(--ph) * .6); aspect-ratio: 1; translate: -50% -50%; border-radius: 50%;
+  background: var(--grad-logo-burst);
+  -webkit-mask-image: radial-gradient(closest-side, #000 30%, transparent); mask-image: radial-gradient(closest-side, #000 30%, transparent);
+  transform: scale(2.2); opacity: .12;
+}
+
+/* sunrise: the fan glow rising behind the phone */
+.sunrise { position: absolute; inset: 0; overflow: hidden; }
+.sunrise :global([data-fan-glow]) { opacity: .6; }
+@media (max-width: 1023.98px) {
+  .sunrise {
+    bottom: auto; height: calc(var(--pt) + var(--ph) + 48px);
+    -webkit-mask-image: linear-gradient(to top, transparent, #000 140px); mask-image: linear-gradient(to top, transparent, #000 140px);
+  }
+  .sunrise :global([data-fan-glow]) { bottom: calc(160vw * -.5 + 48px); }
+}
+@media (min-width: 1024px) {
+  .sunrise :global([data-fan-glow]) { left: 75%; width: 120vw; bottom: calc(120vw * -.54); }
+}
+
+/* ── intro ── */
+.intro { display: grid; gap: 0; }
+.lede { display: grid; gap: 14px; }
+.title { margin: 0; }
+.sub { margin: 0; font: 500 clamp(1rem, .93rem + .286vw, 1.1875rem)/1.6 var(--font-sans); color: rgba(255, 255, 255, .78); max-width: 30em; }
+
+.dl { display: grid; gap: 16px; }
+.dlRow { display: flex; align-items: center; gap: 28px; }
+.badges { display: grid; gap: 12px; min-width: 0; }
+.badges :global(.badges-meta) { color: rgba(255, 255, 255, .78); }
+.qr { display: none; }
+.qr :global(.qr-block) { gap: 6px; }
+.qr :global(figcaption) { color: rgba(255, 255, 255, .72); font-size: 12px; }
+.fine { display: grid; gap: 6px; max-width: 34em; }
+.fine :global(.screen-note) { margin: 0; }
+
+@media (max-width: 1023.98px) {
+  .dl {
+    position: absolute; left: 0; right: 0; top: calc(100svh - 72px - 16px - env(safe-area-inset-bottom)); translate: 0 -100%;
+    gap: 12px;
+  }
+  .badges :global(.friction-list) { display: none; }
+  .badges :global(.store-badges) { gap: 8px 16px; }
+  .fine :global(:is(.disclosure-line, .screen-note)) { font-size: 11.5px; line-height: 1.55; }
+}
+
+@media (min-width: 1024px) {
+  .intro { gap: 36px; }
+  .lede { gap: 18px; }
+  .dl { gap: 22px; }
+  .qr { display: block; flex: none; }
+}
+@media (min-width: 1024px) and (max-height: 820px) {
+  .intro { gap: 24px; }
+  .qr { display: none; }
+}
