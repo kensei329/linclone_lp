@@ -13,7 +13,9 @@ const KEY = 'lc.qrDock';
 const ROOMY = '(min-width: 1760px)';
 
 /**
- * Desktop QR dock (spec §4.1): ≥1024 and home only (CSS). Appears once #hero
+ * Desktop QR dock (spec §4.1): ≥1424 and home only (CSS); below 1760px the
+ * collapsed dock is a 44px icon button in the page's right margin, so it never
+ * sits on the content column. Appears once #hero
  * has left the viewport and hides while any [data-download-block] is in view,
  * while an immersive stage spans the viewport middle, and during the call demo.
  * The collapsed state is remembered for the session. Not rendered without JS.
@@ -107,7 +109,7 @@ export function QrDock({ d, children }: QrDockProps) {
       {collapsed ? (
         <button type="button" className="qr-dock-chip glass-live" aria-label={t.expand} onClick={() => set(false)}>
           <Glyph name="qr_code_2" size={20} />
-          {t.title}
+          <span className="qr-dock-chip-label">{t.title}</span>
         </button>
       ) : (
         <div className="qr-dock-card glass-live">

@@ -7,15 +7,24 @@ import { useScrollScene } from '@/lib/motion/use-scroll-scene';
 
 type FillTarget = HTMLElement & { __fill?: (progress: number) => void };
 
-const FILL: [number, number] = [0.42, 0.7];
-const READ_AT = 0.55;
+/** Beats by progress over the 180svh desktop / 160svh mobile stage. */
+const INTRO_OUT: [number, number] = [0.04, 0.16];
+const CLIP: [number, number] = [0.14, 0.52];
+const FILL: [number, number] = [0.54, 0.82];
+const READ_AT = 0.68;
+/** Phone landscape and other very short viewports: no expansion, the static end frame. */
+const MIN_STAGE_H = 500;
 
 /**
- * #live-stage (spec §5.7): the LIVE feed card in the bezel presses "join",
- * then the clip expands (0.08 → 0.40) into the full-bleed audio player; the
- * fill line reads (0.42 → 0.70), the theme progress runs (0.30 → 0.80) and
- * the Super Chat is marked read on air at 0.55. Also: the bezel screen scale
- * and the intro's giant "LIVE" parallax (desktop, ±12px).
+ * #live-stage (spec §5.7): on desktop the section intro (a sticky layer over
+ * the first frame, copy left and phone right) fades out (0.04 → 0.16) while
+ * the LIVE feed card in the bezel presses "join", then the clip expands
+ * (0.14 → 0.52) into the full-bleed audio player; the fill line reads
+ * (0.54 → 0.82), the theme progress runs (0.42 → 0.87) and the Super Chat
+ * is marked read on air at 0.68. Also: the bezel screen scale and the
+ * intro's giant "LIVE" parallax (desktop, ±12px).
+ * Below 500px of viewport height (phones in landscape) the stage renders its
+ * end frame without scrubbing, like the reduced-motion path.
  * Rendered inside the stage's intro slot, so it anchors to `[data-stage]`.
  */
 export function LiveStageAnimator() {
@@ -40,21 +49,27 @@ export function LiveStageAnimator() {
 
   useExpandStage(scope, {
     direction: 'expand',
-    clip: [0.08, 0.4],
+    clip: CLIP,
     introToNight: false,
-    extend: (tl, { gsap, scope: root }) => {
+    extend: (tl, { gsap, scope: root, isDesktop }) => {
       const one = (sel: string) => root.querySelector<HTMLElement>(sel);
+      const introEl = root.parentElement?.querySelector<HTMLElement>('[data-live-intro]') ?? null;
       const join = one('[data-stage-bezel] [data-m="join"]');
       const fill = one('#live-fill') as FillTarget | null;
       const superchat = one('[data-stage-media] [data-m="superchat"]');
       const themeEl = one('[data-stage-media] [data-theme-progress]');
       const theme = themeEl && themeEl.firstElementChild instanceof HTMLElement ? themeEl.firstElementChild : themeEl;
 
-      if (join) {
-        tl.fromTo(join, { scale: 1 }, { scale: 0.96, duration: 0.025, ease: 'power2.out' }, 0.03);
-        tl.to(join, { scale: 1, duration: 0.025, ease: 'power2.out' }, 0.055);
+      // The sticky intro (desktop CSS, motion allowed) gives way before the clip opens.
+      // Opacity only: the H2 labels the section, so it stays in the accessibility tree.
+      if (isDesktop && introEl && getComputedStyle(introEl).position === 'sticky') {
+        tl.fromTo(introEl, { opacity: 1, y: 0 }, { opacity: 0, y: -48, duration: INTRO_OUT[1] - INTRO_OUT[0], ease: 'power1.in' }, INTRO_OUT[0]);
       }
-      if (theme) tl.fromTo(theme, { scaleX: 0.2, transformOrigin: '0% 50%' }, { scaleX: 0.65, duration: 0.5 }, 0.3);
+      if (join) {
+        tl.fromTo(join, { scale: 1 }, { scale: 0.96, duration: 0.025, ease: 'power2.out' }, CLIP[0] - 0.06);
+        tl.to(join, { scale: 1, duration: 0.025, ease: 'power2.out' }, CLIP[0] - 0.035);
+      }
+      if (theme) tl.fromTo(theme, { scaleX: 0.2, transformOrigin: '0% 50%' }, { scaleX: 0.65, duration: 0.45 }, 0.42);
 
       let lastFill = -1;
       let read: boolean | null = null;
@@ -72,6 +87,12 @@ export function LiveStageAnimator() {
         }
       };
       tl.eventCallback('onUpdate', onUpdate);
+
+      // Too short to scrub a full-bleed expansion: freeze on the end frame.
+      if (!isDesktop && window.innerHeight < MIN_STAGE_H) {
+        tl.scrollTrigger?.disable(false);
+        tl.progress(1);
+      }
       onUpdate();
       // The fill animator may initialise after this timeline: resync shortly after.
       gsap.delayedCall(0.4, () => {

@@ -29,7 +29,7 @@ export function CreatorsFinal({ d, lang }: SectionProps) {
         <p className="t-lead ink-2 cr-final-sub">{t.sub}</p>
         <div className="cr-final-cta">
           <MailtoButton d={d} lang={lang} variant="primary" placement="final" />
-          <CopyEmail label={d.creators.hero.copyEmail} copiedLabel={d.creators.hero.copied} placement="final" />
+          <CopyEmail label={d.creators.hero.copyEmail} copiedLabel={d.creators.hero.copied} selectedLabel={d.common.copySelected} placement="final" />
         </div>
         <StudioStoreCTA d={d} lang={lang} />
         <p className="t-small cr-fanlink cr-final-home">

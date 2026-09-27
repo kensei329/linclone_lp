@@ -122,7 +122,8 @@ html[data-js] :global(.is-inview) .stars > span { animation-play-state: running;
   position: relative;
   background: #f7f3ec;
   color: var(--color-ink);
-  padding-block: 48px var(--section-y);
+  /* bottom: #chat continues on the same cream, so it only needs half a gap here */
+  padding-block: 48px calc(var(--section-y) * .5);
 }
 .gridInner {
   display: flex;
@@ -137,6 +138,7 @@ html[data-js] :global(.is-inview) .stars > span { animation-play-state: running;
   margin: 16px 0 0;
   max-width: 34em;
 }
+.note + .note { margin-top: 8px; }
 .note svg { flex: none; margin-top: .2em; color: var(--color-teal-text); }
 
 .setupPhone { display: none; }
@@ -229,6 +231,14 @@ html[data-js] :global(.is-inview) .stars > span { animation-play-state: running;
   .clock { font-size: clamp(6rem, 2.5rem + 14vw, 10rem); margin: 12px 0 4px; }
   .caption { max-width: 12em; }
   .caption:lang(en) { max-width: 10em; }
+
+  /* Dawn scrub (MorningStageAnimator): each copy element steps white → ink at
+     its own luminance crossover; the short transition reads as a swap. */
+  .copy > [data-tone-state='night'] { --m-fg: #fff; --m-fg2: rgba(255, 255, 255, .72); }
+  .copy > [data-tone-state='day'] { --m-fg: var(--color-ink); --m-fg2: var(--color-ink); }
+  .title,
+  .clock,
+  .eyebrow :global(.eyebrow) { transition: color .16s linear; }
   .caption[data-fill-tone] { --fill-off: rgba(154, 152, 171, .35); --fill-on: #28273b; }
 
   .phoneCol {
@@ -238,7 +248,7 @@ html[data-js] :global(.is-inview) .stars > span { animation-play-state: running;
   }
   .ringSlice { display: none; }
 
-  .grid { padding-block: clamp(40px, 6vw, 96px) var(--section-y); }
+  .grid { padding-block: clamp(40px, 6vw, 96px) calc(var(--section-y) * .5); }
   .gridInner {
     display: grid;
     grid-template-columns: repeat(12, minmax(0, 1fr));

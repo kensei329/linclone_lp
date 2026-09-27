@@ -1,6 +1,8 @@
 /* #faq (spec §5.11): two columns on desktop, sticky heading column. */
 
 .section { content-visibility: auto; contain-intrinsic-size: auto 1100px; }
+/* #how-it-works above is cream too: one gap between them, not two full ones */
+.section { padding-top: calc(var(--section-y) * .5); }
 
 .grid { display: grid; gap: 32px; }
 .sticky { display: grid; gap: 16px; }

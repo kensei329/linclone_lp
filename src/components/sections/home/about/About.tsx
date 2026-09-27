@@ -11,6 +11,7 @@ import {
   Aura,
   Scene,
   Icon,
+  ScreenNote,
   type IconName,
 } from '@/components/site';
 import { ScreenSlice, LiveBadge, VerifiedMark } from '@/components/mockups/kit';
@@ -43,8 +44,8 @@ const CARDS: { key: CardKey; icon: IconName; tone: 'teal' | 'purple' }[] = [
 /**
  * #about (spec §5.3): trust before features. The AI disclosure becomes the
  * page's biggest statement (a clip fill, the only fill in this viewport),
- * three proof cards with small app crops, the official disclosure bar and the
- * 推し色 picker, which re-tints every `oshi` aura on the page.
+ * three proof cards with small app crops (and their screen note), the official
+ * disclosure bar and the 推し色 picker, which re-tints every `oshi` aura on the page.
  */
 export function About({ d, lang }: SectionProps) {
   const t = d.home.about;
@@ -120,6 +121,10 @@ export function About({ d, lang }: SectionProps) {
         <RevealGroup selector=".carousel-track > li">
           <Carousel label={t.eyebrow.label} items={cards} itemWidth="80vw" d={d} />
         </RevealGroup>
+        {/* The cards carry app crops (Yuzu's memory screen, Kai's LIVE card): §4.2 note. */}
+        <div className={`container-site ${s.note}`}>
+          <ScreenNote d={d} />
+        </div>
       </div>
 
       <div className={`container-site ${s.trust}`}>

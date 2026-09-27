@@ -20,7 +20,10 @@
 
 /* Links back to the fan app: ink with a violet underline (creators accent). */
 .cr-fanlink { margin: 0; display: inline-flex; align-items: center; gap: 6px; }
+/* 44px hit area without moving anything: padding grows the box, the equal
+   negative margin gives the space back to the line. */
 .cr-fanlink a {
+  display: inline-block; padding-block: 12px; margin-block: -12px;
   color: #28273b; font-weight: 600; text-decoration: underline 2px #8b55d6; text-underline-offset: 5px;
   transition: text-decoration-color var(--dur-fast), color var(--dur-fast);
 }
@@ -44,7 +47,6 @@
 .cr-hero-actions { display: flex; flex-direction: column; gap: 10px; margin-top: 4px; }
 .cr-cta-row { display: flex; flex-wrap: wrap; align-items: center; gap: 2px 18px; }
 .cr-hero .cr-cta-row .mailto-btn { width: 100%; }
-.cr-hero .copy-email { min-height: 40px; }
 .cr-hero .studio-store { display: grid; grid-template-columns: repeat(2, minmax(0, max-content)); gap: 8px; }
 .cr-hero .pill-disabled { min-height: 36px; padding: 0 10px; gap: 5px; font-size: 12px; white-space: nowrap; justify-content: center; }
 .cr-hero .studio-store:lang(en) { display: flex; flex-wrap: wrap; }
@@ -106,6 +108,20 @@
 .cr-hero-halo:nth-child(3) { --s: 92%; --a: .09; --t: 54s; }
 html[data-lite] .cr-hero-halo { animation: none; }
 .cr-hero-phone { z-index: 1; }
+/* §1.2.8 screen note under the hero phone (the phone's width, centred).
+   Desktop: out of flow, so it never grows the grid row and shifts the
+   vertically centred copy; the hero's bottom padding makes room for it. */
+.cr-hero-note { z-index: 1; width: min(100%, 340px); text-align: center; }
+.cr-hero-note .screen-note { margin-top: 14px; text-wrap: balance; }
+@media (min-width: 1024px) {
+  .cr-hero { --note-room: 76px; padding-bottom: calc(48px + var(--note-room)); }
+  .cr-hero-note { position: absolute; left: 50%; top: calc(100% - 8px); translate: -50% 0; }
+}
+@media (min-width: 1024px) and (max-height: 820px) {
+  /* the .84-scaled phone leaves 8% of its 736px box empty below it */
+  .cr-hero { --note-room: 20px; }
+  .cr-hero-note { top: calc(100% - 8px - 59px); }
+}
 
 /* ─────────────────────────── #about statement ─────────────────────────── */
 .cr-statement { text-align: center; }
@@ -118,14 +134,22 @@ html[data-lite] .cr-hero-halo { animation: none; }
 /* ─────────────────────────── stages (#how, #check) ─────────────────────────── */
 .cr-stage-intro { display: flex; flex-direction: column; gap: 14px; }
 .cr-stage-intro > * { margin: 0; }
+.cr-stage-intro .screen-note { text-wrap: pretty; }
 @media (max-width: 1023.98px) {
   .cr-stage-intro { gap: 10px; }
   .cr-stage-intro .t-lead { font-size: 15px; line-height: 1.7; }
 }
 @media (min-width: 1024px) {
   #how [data-stage-intro] { width: min(36vw, 500px); }
-  #check [data-stage-intro] { width: min(38vw, 520px); }
+  /* wide enough for 「フォロワーより先に、」 on one line from 1024px */
+  #check [data-stage-intro] { width: min(46vw, 520px); }
   .cr-stage-intro { gap: 20px; }
+}
+
+/* Landscape phones: the intro keeps the left half (the self-call column
+   takes the right half, see SelfCallStage). */
+@media (max-width: 1023.98px) and (orientation: landscape) and (max-height: 540px) {
+  #check [data-stage-intro] { right: 50%; }
 }
 
 /* A 390×844 screen scaled to the bezel (unitless ratio from two lengths). */

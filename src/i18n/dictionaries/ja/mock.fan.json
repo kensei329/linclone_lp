@@ -131,26 +131,26 @@
   "liveFeed": {
     "title": "LIVE配信",
     "onAir": "配信中",
-    "theme": "テーマ：雨の日プレイリスト",
+    "theme": "テーマ：雨の日の曲トーク",
     "join": "LIVEに参加",
     "alt": "LIVE配信のフィード画面のイメージ。"
   },
   "livePlayer": {
     "follow": "フォロー",
     "onAir": "配信中",
-    "theme": "テーマ：雨の日プレイリスト",
+    "theme": "テーマ：雨の日に聴きたい曲の話",
     "disclaimer": "LINCLONE AI・AI生成コンテンツ",
     "readOnAir": "読み上げ済み",
     "superChat": "スーパーチャット",
-    "superChatText": "リクエストに応えてくれてありがとう",
+    "superChatText": "わたしのリクエスト、話してくれてありがとう",
     "comments": {
       "c1": {
         "user": "mocha",
-        "text": "この曲ずっと聴いてる"
+        "text": "その曲、わたしも好き"
       },
       "c2": {
         "user": "rin.rin",
-        "text": "雨の音と合う…"
+        "text": "雨の夜にぴったりの話…"
       },
       "c3": {
         "user": "hinata",
@@ -193,7 +193,7 @@
   },
   "showPreview": {
     "title": "番組のプレビュー",
-    "showTitle": "{name}と雨の日に聴きたい曲",
+    "showTitle": "{name}と、雨の日に聴きたい曲の話",
     "rundown": "進行表",
     "segments": {
       "s1": {
@@ -201,8 +201,8 @@
         "desc": "あいさつと、今日のテーマ"
       },
       "s2": {
-        "title": "雨の日の一曲目",
-        "desc": "Kaiが選ぶ、しっとり系の曲"
+        "title": "雨の日の一曲トーク",
+        "desc": "Kaiが好きな曲を語る"
       },
       "s3": {
         "title": "コメントとスーパーチャットの読み上げ",
@@ -222,7 +222,7 @@
   },
   "archive": {
     "tag": "アーカイブ",
-    "title": "雨の日プレイリスト",
+    "title": "雨の日の曲トーク",
     "play": "再生",
     "recording": "録音",
     "alt": "LIVE配信のアーカイブのイメージ。"

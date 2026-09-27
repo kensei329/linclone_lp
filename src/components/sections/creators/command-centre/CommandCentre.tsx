@@ -1,5 +1,5 @@
 import type { SectionProps } from '@/i18n/types';
-import { ExpandStage, Eyebrow, ScrollFillText } from '@/components/site';
+import { ExpandStage, Eyebrow, ScreenNote, ScrollFillText } from '@/components/site';
 import { D01Home } from '@/components/mockups/studio/D01Home';
 import { D01Bento, type TileId } from '@/components/mockups/studio/D01Bento';
 import { BezelScreen } from '../_shared/BezelScreen';
@@ -58,6 +58,8 @@ export function CommandCentre({ d, lang }: SectionProps) {
             className="t-h2"
           />
           <p className="t-lead">{t.lead}</p>
+          {/* In the intro, clear of the clip/bezel layers (stays ink: surfaceEnd studio). */}
+          <ScreenNote d={d} />
           <CommandCentreStage />
         </div>
       }

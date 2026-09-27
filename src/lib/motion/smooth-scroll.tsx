@@ -2,7 +2,7 @@
 
 import { useEffect, useSyncExternalStore } from 'react';
 import type Lenis from 'lenis';
-import { loadMotion } from './load';
+import { loadMotion, motionRequested, requestRefresh } from './load';
 
 // Lenis smooth scroll (spec §4.5). Created lazily on the first interaction or
 // on idle, so neither Lenis nor GSAP is in the initial JS. Never created under
@@ -29,8 +29,30 @@ const subscribe = (fn: () => void) => {
 
 const START_EVENTS = ['wheel', 'pointerdown', 'keydown', 'touchstart'] as const;
 
+/**
+ * ScrollTrigger positions go stale whenever the page above a trigger changes
+ * height without a resize: an opened FAQ <details>, content-visibility
+ * intrinsic-size corrections, late images. One observer on <main> requests
+ * the (debounced) refresh. It never loads GSAP by itself.
+ */
+function useRefreshOnLayoutChange(): void {
+  useEffect(() => {
+    const main = document.querySelector('main') ?? document.body;
+    if (typeof ResizeObserver === 'undefined') return;
+    let last = -1;
+    const ro = new ResizeObserver(([entry]) => {
+      const h = Math.round(entry.contentRect.height);
+      if (last >= 0 && Math.abs(h - last) > 1 && motionRequested()) requestRefresh();
+      last = h;
+    });
+    ro.observe(main);
+    return () => ro.disconnect();
+  }, []);
+}
+
 /** Mounted once in the (site) layout. */
 export function SmoothScroll(): null {
+  useRefreshOnLayoutChange();
   useEffect(() => {
     const html = document.documentElement;
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || html.hasAttribute('data-lite')) return;
@@ -56,7 +78,8 @@ export function SmoothScroll(): null {
           lerp: 0.1,
           smoothWheel: true,
           syncTouch: false,
-          anchors: { offset: -72 },
+          // Lenis subtracts the html scroll-padding-top (header + 8px) itself.
+          anchors: true,
           stopInertiaOnNavigate: true,
         });
         lenis.on('scroll', ScrollTrigger.update);
@@ -99,6 +122,6 @@ export function scrollToId(id: string): void {
   const el = document.getElementById(id.replace(/^#/, ''));
   if (!el) return;
   const lenis = window.__lcLenis;
-  if (lenis) lenis.scrollTo(el, { offset: -72 });
+  if (lenis) lenis.scrollTo(el); // honours scroll-padding-top, like the native path
   else el.scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
 }

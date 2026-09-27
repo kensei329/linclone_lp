@@ -15,13 +15,13 @@ export function LangPill({ lang, page, d }: { lang: Locale; page: PageKey; d: Di
     <a
       href={localePath(other, page)}
       hrefLang={other}
-      lang={other}
       aria-label={`${d.common.lang.switchLabel}: ${d.common.lang[other]}`}
       className="lang-pill"
       data-analytics={`lang_switch:${other}`}
     >
       <Icon name="language" size={16} />
-      {d.common.lang[other]}
+      {/* the other language's own name, marked up in that language (glyph shapes, font stack) */}
+      <span lang={other}>{d.common.lang[other]}</span>
     </a>
   );
 }

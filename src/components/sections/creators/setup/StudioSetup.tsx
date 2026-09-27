@@ -14,14 +14,18 @@ import '../creators.css';
 
 type StepKey = 'picks' | 'words' | 'photos' | 'modes' | 'ng' | 'voice';
 
-/** Step → icon, mobile crop (§7.2, in 390×844 screen px) and its mockup alt key. */
+/**
+ * Step → icon, mobile crop (§7.2, in 390×844 screen px) and its mockup alt key.
+ * Crops end just under each screen's last meaningful row (no empty tail), so
+ * the six stacked phone cards stay short; desktop shows the full screens.
+ */
 const STEPS: { key: StepKey; icon: IconName; crop: { y: number; h: number }; alt: 'picks' | 'words' | 'photos' | 'modes' | 'ng' | 'record' }[] = [
-  { key: 'picks', icon: 'badge', crop: { y: 100, h: 600 }, alt: 'picks' },
-  { key: 'words', icon: 'edit_note', crop: { y: 100, h: 620 }, alt: 'words' },
-  { key: 'photos', icon: 'photo_library', crop: { y: 100, h: 420 }, alt: 'photos' },
-  { key: 'modes', icon: 'favorite', crop: { y: 100, h: 520 }, alt: 'modes' },
-  { key: 'ng', icon: 'do_not_disturb_on', crop: { y: 100, h: 600 }, alt: 'ng' },
-  { key: 'voice', icon: 'mic', crop: { y: 100, h: 560 }, alt: 'record' },
+  { key: 'picks', icon: 'badge', crop: { y: 100, h: 400 }, alt: 'picks' },
+  { key: 'words', icon: 'edit_note', crop: { y: 100, h: 470 }, alt: 'words' },
+  { key: 'photos', icon: 'photo_library', crop: { y: 100, h: 330 }, alt: 'photos' },
+  { key: 'modes', icon: 'favorite', crop: { y: 100, h: 395 }, alt: 'modes' },
+  { key: 'ng', icon: 'do_not_disturb_on', crop: { y: 100, h: 465 }, alt: 'ng' },
+  { key: 'voice', icon: 'mic', crop: { y: 118, h: 450 }, alt: 'record' },
 ];
 
 /**

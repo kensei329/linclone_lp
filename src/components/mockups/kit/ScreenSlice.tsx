@@ -22,7 +22,7 @@ export function ScreenSlice({ label, width, crop, radius = 28, children }: Scree
     borderRadius: radius,
   } as CSSProperties;
   return (
-    <figure role="img" aria-label={label} className="screen-slice" style={style}>
+    <figure role="img" aria-label={label} className="screen-slice" style={style} data-nosnippet="">
       <div className="screen-slice-inner" aria-hidden="true">
         {children}
       </div>

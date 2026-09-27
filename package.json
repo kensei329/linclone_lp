@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "prebuild": "node scripts/lint-copy.mjs",
+    "prebuild": "node scripts/lint-copy.mjs && node scripts/build-ja-headline-font.mjs --check && node scripts/build-og-fonts.mjs --check",
     "build": "next build",
     "start": "next start",
     "lint": "eslint .",
@@ -12,6 +12,8 @@
     "dict:split": "node scripts/split-dictionaries.mjs",
     "icons": "node scripts/build-icons.mjs",
     "brand": "node scripts/build-brand-assets.mjs",
+    "font:ja": "node scripts/build-ja-headline-font.mjs",
+    "font:og": "node scripts/build-og-fonts.mjs",
     "test:e2e": "playwright test"
   },
   "dependencies": {

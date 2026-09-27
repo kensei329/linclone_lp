@@ -1,6 +1,8 @@
 /* #chat (spec §5.6): `day` surface, teal band behind the steps. */
 
 .section { padding-bottom: calc(var(--section-y) * .6); }
+/* #morning-call's cream grid runs straight into this cream surface: one gap, not two. */
+.section { padding-top: calc(var(--section-y) * .5); }
 
 .head {
   display: flex;

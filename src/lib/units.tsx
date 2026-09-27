@@ -38,9 +38,20 @@ function renderLine(line: string, lang: Locale, mode: UnitsProps['mode'], keyBas
       out.push(u);
       return;
     }
+    // EN: a word's trailing . , ! ? sits in its own span (inside the unit, so
+    // fills and the caption marker still end after it) that display CSS pulls
+    // in against Plus Jakarta Sans 800's wide right bearing.
+    const p = lang === 'en' && mode !== 'char' ? /^([^]*[^.,!?])([.,!?]+)$/.exec(u) : null;
     out.push(
       <span data-u="" key={`${keyBase}-${i}`}>
-        {u}
+        {p ? (
+          <>
+            {p[1]}
+            <span className="punct">{p[2]}</span>
+          </>
+        ) : (
+          u
+        )}
       </span>,
     );
     // Allowed break between JA phrases (EN already breaks at spaces).

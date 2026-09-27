@@ -17,6 +17,8 @@ type CardKey = 'homeVoice' | 'morning' | 'fillers';
  * (2 rows desktop, 1 mobile; the centre of each row is brightened by a mask)
  * and three night-glass cards whose micro-interactions play in view. Reduced
  * motion: the marquee wraps as a static list; cards show their final state.
+ * The marquee's waveform tags stay static (see `items`); only the card
+ * waveforms loop, and every loop pauses out of view (`data-loop`, §4.3).
  */
 export function StudioVoice({ d, lang }: SectionProps) {
   const t = d.creators.voice;
@@ -26,7 +28,10 @@ export function StudioVoice({ d, lang }: SectionProps) {
     <span key={k} className="cr-vline">
       <span className="cr-vtag" aria-hidden="true">
         <Aura persona="aoi" shape="avatar" size={28} theme="night" monogram={false} />
-        <Waveform tone="neon" size="sm" bars={7} seed={i * 2} playing />
+        {/* Static on purpose: the marquee duplicates each line 4x, and 140 looping
+            bars under the velocity-skewed, masked rows dropped ~half the frames
+            on mid-range CPUs. The row's own travel carries the motion. */}
+        <Waveform tone="neon" size="sm" bars={7} seed={i * 2} />
       </span>
       <span className="t-display-l cr-vline-text">{t.lines[k]}</span>
     </span>

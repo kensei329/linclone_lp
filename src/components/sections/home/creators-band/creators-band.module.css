@@ -33,7 +33,9 @@
 .link:hover { background: rgba(139, 85, 214, .08); }
 .link:hover svg { translate: 4px 0; }
 
-.cardCol { display: flex; justify-content: center; }
+.cardCol { display: flex; flex-direction: column; align-items: center; }
+.note { width: min(100%, 420px); }
+.note :global(.screen-note) { margin-top: 14px; text-align: center; text-wrap: balance; word-break: keep-all; overflow-wrap: anywhere; }
 .card {
   position: relative; display: flex; flex-direction: column; align-items: center; gap: 18px;
   width: min(100%, 340px); padding: 28px 24px 30px;
@@ -68,6 +70,7 @@
   .linkRow { grid-column: 1 / span 6; grid-row: 2; align-self: start; }
   .cardCol { grid-column: 8 / span 4; grid-row: 1 / span 2; }
   .card { width: 360px; padding: 32px 28px 34px; }
+  .note { width: 420px; }
 }
 
 @media (prefers-reduced-motion: reduce) {

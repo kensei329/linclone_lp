@@ -12,16 +12,20 @@ const OSHI_ACCENT = { ja: '聞かせて', en: 'Tell me everything' } as const;
  * recomposition of AICalls 05. Absolutely fills its positioned parent.
  *
  * SSR is the final state: `data-state="speaking"`, both captions filled,
- * meter `0:60`, toast visible, avatar glow lit, fan glow off.
+ * meter `1:00` (the app's clock format), toast visible, avatar glow lit, fan glow off.
  *
  * DOM hooks (section animators drive these):
  * - root `[data-state]` = connecting | listening | thinking | speaking; CSS shows the matching `[data-call-state] [data-s]`
  * - `[data-caption="fan"]`, `[data-caption="oshi"]`: ScrollFillText driver="external" (`[data-fill-id]` = call-caption-fan / call-caption-oshi)
- * - `[data-meter]`: the `0:60` value text · `[data-toast]` · `[data-wave]` (Waveform, `--amp`)
+ * - `[data-meter]`: the `1:00` value text · `[data-toast]` · `[data-wave]` (Waveform, `--amp`)
  * - `[data-avatar-glow]` (SSR opacity 1) · `[data-fan-glow]` (SSR opacity 0)
  * - `[data-demo-root]`: sits OUTSIDE the aria-hidden layer so its link stays focusable
  *
- * Variant `final`: portrait, name, state and the breathing glow only.
+ * The state line is the state word only (driven by `data-state`): no elapsed
+ * clock that would sit still while the free meter counts down.
+ *
+ * Variant `final`: portrait, name, state and the breathing glow only, centred
+ * in the phone rect the reverse collapse ends on.
  */
 export function CallStageMedia({ d, lang, persona = 'oshi', variant, className }: CallStageMediaProps) {
   const p = personaOf(d, persona);
@@ -41,7 +45,7 @@ export function CallStageMedia({ d, lang, persona = 'oshi', variant, className }
               <div className="fm-meter fm-call-meter glass-night">
                 <span className="fm-meter-label">{c.freeLabel}</span>
                 <span className="fm-meter-value" data-meter="">
-                  0:60
+                  1:00
                 </span>
               </div>
               <div className="fm-call-toast glass-night" data-toast="">
@@ -77,7 +81,6 @@ export function CallStageMedia({ d, lang, persona = 'oshi', variant, className }
 
             <div className="fm-call-name">{p.name}</div>
             <div className="fm-call-state" data-call-state="">
-              <span className="fm-call-clock">00:08 · </span>
               <span data-s="connecting">{c.connecting}</span>
               <span data-s="listening">{c.listening}</span>
               <span data-s="thinking">{c.thinking}</span>

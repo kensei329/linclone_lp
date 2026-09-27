@@ -22,6 +22,7 @@
     "otherStoreFromAndroid": "iPhoneの方はこちら",
     "qrCaption": "スマホのカメラで読み取って、アプリをダウンロード",
     "qrAlt": "LinCloneアプリのダウンロード用QRコード",
+    "studioComingSoon": "LC Studioは近日公開",
     "comingSoonSuffix": "近日公開"
   },
   "skip": {
@@ -39,6 +40,7 @@
   },
   "demo": "デモ",
   "copy": "コピー",
+  "copySelected": "アドレスを選択しました（⌘C・長押しでコピー）",
   "copied": "コピーしました",
   "close": "閉じる"
 }

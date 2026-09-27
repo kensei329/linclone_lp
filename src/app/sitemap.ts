@@ -5,7 +5,8 @@ import { SITE, SITE_LAST_MODIFIED } from '@/lib/site-config';
 // (spec §8.4). /invite, /share/*, /get and /delete-user are deliberately absent.
 export default function sitemap(): MetadataRoute.Sitemap {
   const O = SITE.origin;
-  const UPDATED = new Date(SITE_LAST_MODIFIED);
+  // Never a future lastmod (a mis-typed constant would make crawlers distrust it).
+  const UPDATED = new Date(Math.min(Date.parse(SITE_LAST_MODIFIED), Date.now()));
   const pages = [
     { ja: '/', en: '/en' },
     { ja: '/creators', en: '/en/creators' },

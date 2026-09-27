@@ -41,7 +41,11 @@ export function FillAnimator({ mode, start, end, scrub, driver, hasAccent }: Fil
       const off = cs.getPropertyValue('--fill-off').trim();
       const on = cs.getPropertyValue('--fill-on').trim();
       const each = 1 / units.length;
-      tl.fromTo(units, { color: off }, { color: on, duration: each, stagger: each });
+      // Every unit starts dim; the staggered `to` never immediate-renders, so
+      // units the playhead has not reached keep the dim colour (a fromTo with
+      // a refresh-time invalidate could leave them unset, i.e. fully inked).
+      gsap.set(units, { color: off });
+      tl.to(units, { color: on, duration: each, stagger: each, immediateRender: false });
     }
     tl.eventCallback('onUpdate', () => setAccent(tl.progress()));
 
@@ -63,7 +67,7 @@ export function FillAnimator({ mode, start, end, scrub, driver, hasAccent }: Fil
       tl.progress(1);
       return;
     }
-    ScrollTrigger.create({ trigger: el, start, end, scrub, animation: tl, invalidateOnRefresh: true });
+    ScrollTrigger.create({ trigger: el, start, end, scrub, animation: tl });
     return () => target.removeAttribute('data-accent-off');
   });
   return <span ref={anchor} hidden />;

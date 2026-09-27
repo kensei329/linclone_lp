@@ -15,7 +15,7 @@
     "requestShort": "Request"
   },
   "hero": {
-    "eyebrow": "LC Studio · The creator app · Invitation only",
+    "eyebrow": "LC Studio · The creator app · Invitation-only",
     "title": "Build your official AI clone, right from your phone.",
     "lead": "Create and manage an official AI clone from your own voice and words. Then look after its chats, calls, morning calls and LIVE shows from one app.",
     "audience": "For creators, talent, voice actors, athletes, singers, and their agencies.",
@@ -31,7 +31,7 @@
   },
   "statement": {
     "fill": "The you that never goes offline.",
-    "sub": "Chats, calls, morning calls and LIVE shows. Your clone answers in your voice."
+    "sub": "Chats in your words. Calls, morning calls and LIVE shows in your voice."
   },
   "home": {
     "eyebrow": {
@@ -121,7 +121,7 @@
         "body": "Edit or hide anything on your public profile. You can turn off AI images of you made by followers."
       },
       "labels": {
-        "title": "Clearly labelled as AI",
+        "title": "Clearly labeled as AI",
         "body": "Every image shared outside LinClone carries an “AI-generated / not the real person” label."
       }
     }
@@ -143,7 +143,7 @@
       "num": "06",
       "label": "Voice"
     },
-    "title": "Your voice, part of your followers’ every day.",
+    "title": "Your voice, in your followers’ every day.",
     "lead": "Voice messages on Home, morning-call first lines, even the little “hmm”s in a call. All in your clone’s voice.",
     "lines": {
       "l1": "Hmm, let me think",
@@ -173,10 +173,10 @@
       "label": "Insights & earnings"
     },
     "title": "Know your community.",
-    "analyticsBody": "See chats, images, voices, call time, Coins received and LIVE shows charted over time.",
+    "analyticsBody": "See chats, images, voices, call time, coins received and LIVE shows charted over time.",
     "privacy": "Individual follower data is shown inside LC Studio only and is never made public in the LinClone app.",
     "earningsTitle": "Coin-based earnings.",
-    "earningsBody": "Each month’s earnings are finalized from the Coins followers spend on your clone. No figures are shown while a month is being calculated. Statements come as CSV, and payouts go to your registered bank account. We’ll explain the details when we’re in touch."
+    "earningsBody": "Each month’s earnings are finalized from the coins followers spend on your clone. No figures are shown while a month is being calculated. Statements come as CSV, and payouts go to your registered bank account. We’ll explain the details when we’re in touch."
   },
   "join": {
     "eyebrow": {
@@ -227,7 +227,7 @@
       },
       "cost": {
         "q": "What does it cost?",
-        "a": "We’ll explain invitation details when we’re in touch."
+        "a": "We’ll go over costs and terms individually when we’re in touch."
       },
       "studio": {
         "q": "Do I need a recording studio?",
@@ -242,7 +242,7 @@
         "a": "Set NG topics, approve or reject Grow facts, and check everything in preview mode. NG topics get top priority, so your clone is set to steer clear of them."
       },
       "label": {
-        "q": "Is it labelled as AI?",
+        "q": "Is it labeled as AI?",
         "a": "Yes. Every creator profile on LinClone is shown as an AI clone, and images shared outside LinClone carry an “AI-generated / not the real person” label."
       },
       "agency": {

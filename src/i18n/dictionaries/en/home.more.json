@@ -38,7 +38,7 @@
     "plans": {
       "title": "For days you want more.",
       "body": "You can start free. Plans add more chats, monthly coins and LIVE tickets.",
-      "note": "See pricing in the app through the App Store or Google Play.",
+      "note": "Prices are shown in the app. Payment is through the App Store or Google Play.",
       "cards": {
         "free": {
           "name": "Free",
@@ -63,8 +63,8 @@
       "points": {
         "confirm": "A confirm step before every spend",
         "refund": "Coins for failed generations come back automatically",
-        "heard": "Calls are charged only for the time you could hear them",
-        "noConnect": "No charge if a call doesn’t connect",
+        "heard": "Calls you place are charged only for the time you could hear them",
+        "noConnect": "No charge if a call fails to connect",
         "store": "Payments only through the App Store or Google Play"
       }
     },
@@ -82,7 +82,7 @@
     }
   },
   "indexTitle": "Everything in the app",
-  "indexToggle": "Show all",
+  "indexToggle": "See all",
   "index": {
     "call": "Voice calls",
     "chat": "Chat",

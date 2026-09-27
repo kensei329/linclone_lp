@@ -174,7 +174,7 @@
   }
   .giant { right: 0; bottom: 24px; }
 
-  .request { padding: 64px 0 96px; }
+  .request { padding: 64px 0 64px; }
   .flow {
     display: block;
     position: relative;
@@ -226,11 +226,67 @@
     grid-template-columns: repeat(12, minmax(0, 1fr));
     column-gap: 24px;
     align-items: center;
-    margin-top: 88px;
+    margin-top: 64px;
   }
   .archiveDesk { display: block; grid-column: 1 / span 5; }
   .archiveText { grid-column: 7 / span 6; }
-  .notes { margin-top: 64px; }
+  .notes { margin-top: 48px; }
+}
+
+/* Phones in landscape (and other very short viewports): the player has no
+   room for the display line over the host, comments and composer, and the
+   section H2 already carries it, so the line is visually hidden (still read
+   by screen readers). The animator shows the end frame without scrubbing. */
+@media (max-width: 1023.98px) and (max-height: 500px) {
+  .section :global(.fm-lp-fill) {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+  /* the host (avatar + waveform) moves to the free lower right, clear of the
+     comments, the AI disclosure chip and the composer */
+  .section :global(.fm-lp-centre) {
+    top: auto;
+    bottom: 68px;
+    left: auto;
+    right: var(--lp-x, 24px);
+    translate: none;
+    scale: .6;
+    transform-origin: 100% 100%;
+  }
+}
+
+/* ── desktop with motion: the intro rides over the stage's first frame ──
+   The intro is a sticky, full-viewport layer above the stage (copy left, the
+   phone on the right), pulled over the stage start so both pin together; the
+   stage animator fades it out as the clip opens. Reduced motion / no JS keep
+   the intro in flow above the final full-bleed player. */
+.stageWrap { position: relative; }
+@media (min-width: 1024px) and (prefers-reduced-motion: no-preference) {
+  :global(html[data-js]) .section { padding-top: 0; }
+  :global(html[data-js]) .intro {
+    position: sticky;
+    top: 0;
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    height: 100svh;
+    padding: var(--header-h) 0 0;
+    pointer-events: none;
+  }
+  :global(html[data-js]) .introInner > * { max-width: min(740px, 52vw); }
+  :global(html[data-js]) .stageWrap > :global([data-stage]) { margin-top: -100svh; }
+  /* the phone owns the right half: the glow and the outlined word move left */
+  :global(html[data-js]) .glow { right: auto; left: -20%; }
+  :global(html[data-js]) .giant {
+    right: auto;
+    left: max(24px, (100vw - var(--container)) / 2 - .06em);
+    bottom: 6svh;
+    font-size: min(20vw, 240px);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

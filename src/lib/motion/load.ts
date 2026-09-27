@@ -10,6 +10,11 @@ export type Motion = { gsap: typeof GsapType; ScrollTrigger: typeof ScrollTrigge
 
 let pending: Promise<Motion> | null = null;
 
+/** True once some scene has asked for GSAP (never triggers the import itself). */
+export function motionRequested(): boolean {
+  return pending !== null;
+}
+
 export function loadMotion(): Promise<Motion> {
   pending ??= Promise.all([import('gsap'), import('gsap/ScrollTrigger')]).then(([g, st]) => {
     const { gsap } = g;

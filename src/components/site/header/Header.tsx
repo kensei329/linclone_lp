@@ -59,7 +59,7 @@ export function Header({ d, lang, page }: { d: Dictionary; lang: Locale; page: '
       <div className="header-inner">
         <a href={localePath(lang, page)} aria-label={creators ? d.creators.header.homeLabel : d.header.homeLabel} className="header-lockup">
           {/* eslint-disable-next-line @next/next/no-img-element -- 28px brand mark */}
-          <img src="/brand/mark-128.png" alt="" width={28} height={28} />
+          <img src="/brand/mark-56.png" alt="" width={28} height={28} />
           {creators ? <span className="lockup-studio">{d.creators.header.lockup}</span> : <span className="wordmark">{d.common.brand}</span>}
         </a>
 
@@ -123,7 +123,7 @@ export function Header({ d, lang, page }: { d: Dictionary; lang: Locale; page: '
         <div className="sheet-top">
           <a href={localePath(lang, page)} aria-label={creators ? d.creators.header.homeLabel : d.header.homeLabel} className="header-lockup">
             {/* eslint-disable-next-line @next/next/no-img-element -- 28px brand mark */}
-            <img src="/brand/mark-128.png" alt="" width={28} height={28} />
+            <img src="/brand/mark-56.png" alt="" width={28} height={28} />
             {creators ? <span className="lockup-studio">{d.creators.header.lockup}</span> : <span className="wordmark">{d.common.brand}</span>}
           </a>
           <button type="button" className="menu-btn" data-menu-close="" aria-label={d.header.menuClose} {...({ commandfor: MENU_ID, command: 'close' } as Record<string, string>)}>
@@ -148,7 +148,7 @@ export function Header({ d, lang, page }: { d: Dictionary; lang: Locale; page: '
             </a>
             <LangPill lang={lang} page={page} d={d} />
           </div>
-          {creators ? <StudioStoreCTA d={d} lang={lang} compact /> : <StoreBadges d={d} lang={lang} placement="header" />}
+          {creators ? <StudioStoreCTA d={d} lang={lang} compact labelled /> : <StoreBadges d={d} lang={lang} placement="header" />}
           <Disclosure d={d} variant="line" />
         </div>
       </dialog>

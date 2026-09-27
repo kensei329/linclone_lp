@@ -132,7 +132,7 @@
       },
       "sexual": {
         "label": "性的な内容",
-        "detail": "全モードでブロック"
+        "detail": "全モードで避けるよう設定"
       },
       "war": {
         "label": "戦争・紛争",
@@ -264,8 +264,8 @@
     "title": "LIVE",
     "liveNow": "LIVE中",
     "autoHosting": "自動配信中",
-    "segment": "雨の日の一曲目",
-    "chat1": "この曲すき",
+    "segment": "雨の日の曲トーク",
+    "chat1": "その話すき",
     "chat2": "雨の日にぴったり",
     "dropIn": "本人として飛び入り…",
     "realLabel": "{name}（本人）",
@@ -276,7 +276,7 @@
       "acceptRequests": "フォロワーからのリクエストを受け付ける"
     },
     "archivesTitle": "アーカイブ",
-    "archiveItem": "雨の日プレイリスト",
+    "archiveItem": "雨の日の曲トーク",
     "download": "DL",
     "alt": "クローンが自動で進行するLIVE配信の管理画面のイメージ。"
   },

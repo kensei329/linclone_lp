@@ -35,7 +35,7 @@ export function MorningChapter({ d, lang }: SectionProps) {
         {/* Header theme markers: dark until the sky has turned (p≈0.45), then light. */}
         <span className={s.surfDark} data-surface="dark" aria-hidden="true" />
         <span className={s.surfLight} data-surface="light" aria-hidden="true" />
-        <div className={s.sticky}>
+        <div className={s.sticky} data-morning-sticky="">
           <div className={s.dawn} data-dawn="" aria-hidden="true">
             <span className={s.sun} />
           </div>
@@ -47,13 +47,13 @@ export function MorningChapter({ d, lang }: SectionProps) {
 
           <div className={`container-site ${s.stageGrid}`}>
             <div className={s.copy} data-morning-copy="">
-              <div className={s.eyebrow}>
+              <div className={s.eyebrow} data-m-tone="eyebrow">
                 <Eyebrow num={t.eyebrow.num} label={t.eyebrow.label} tone="white" />
               </div>
-              <h2 id="morning-title" className={`t-h2 ${s.title}`}>
+              <h2 id="morning-title" className={`t-h2 ${s.title}`} data-m-tone="">
                 <Units text={t.title} lang={lang} mode="phrase" />
               </h2>
-              <p className={`t-poster-clock ${s.clock}`} aria-hidden="true">
+              <p className={`t-poster-clock ${s.clock}`} aria-hidden="true" data-m-tone="">
                 <span className={s.clockWin}>
                   {CLOCK.map((c) => (
                     <span key={c} className={s.clockDigit} data-clock="">
@@ -103,6 +103,10 @@ export function MorningChapter({ d, lang }: SectionProps) {
             <p className={`t-small ${s.note}`}>
               <Icon name="info" size={16} />
               <span>{t.note}</span>
+            </p>
+            <p className={`t-small ${s.note}`}>
+              <Icon name="paid" size={16} />
+              <span>{t.costNote}</span>
             </p>
             <div className={s.setupPhone} data-setup-root="">
               <span className={s.setupGlow} aria-hidden="true" />

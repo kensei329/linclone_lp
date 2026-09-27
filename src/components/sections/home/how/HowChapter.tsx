@@ -21,15 +21,18 @@ const CROPS: Record<StepKey, { y: number; h: number }> = {
   signin: { y: 360, h: 400 },
 };
 
-const APP_ICON = '/brand/appicon-512.png';
+const APP_ICON = '/brand/appicon-512.webp';
 
-/** The ring-60 label: `ringLabel` + a tabular `0:60` the animators count down. */
+/** Glues a number to the word after it ("60 seconds") so the pair never wraps apart. */
+const keepNumberWithUnit = (text: string) => text.replace(/(\d+) (?=\S)/g, '$1\u00a0');
+
+/** The ring-60 label: `ringLabel` + a tabular `1:00` the animators count down. */
 function RingTimer({ label, size }: { label: string; size: 'lg' | 'sm' }) {
   return (
     <span className={s.ringTimer} data-size={size}>
       <span className={s.ringTimerLabel}>{label}</span>
       <span className={s.ringTimerTime} data-ring-time="">
-        0:60
+        1:00
       </span>
     </span>
   );
@@ -42,7 +45,7 @@ function RingTimer({ label, size }: { label: string; size: 'lg' | 'sm' }) {
  * sign-in while the steps scroll on the right, then the phone morphs into
  * the LinClone app icon beside the store badges. Mobile: a vertical timeline
  * with a cropped screen per step. Server HTML is the final state: every step
- * done, ring full at 0:60, the app icon resting in its pad.
+ * done, ring full at 1:00, the app icon resting in its pad.
  */
 export function HowChapter({ d, lang }: SectionProps) {
   const t = d.home.how;
@@ -97,7 +100,7 @@ export function HowChapter({ d, lang }: SectionProps) {
           <header className={s.head}>
             <Eyebrow num={t.eyebrow.num} label={t.eyebrow.label} />
             <h2 id="how-title" className={`t-h2 ${s.title}`}>
-              <Units text={t.title} lang={lang} mode="phrase" />
+              <Units text={keepNumberWithUnit(t.title)} lang={lang} mode="phrase" />
             </h2>
             <p className={`t-lead ${s.lead}`}>{t.lead}</p>
           </header>

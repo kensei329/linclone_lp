@@ -53,6 +53,20 @@
   #call [data-stage-media] { position: relative; inset: auto; height: max(100svh, 640px); --intro-h: var(--header-h); }
 }
 
+/* ───────────── phone landscape / short phones (≤500px tall) ─────────────
+   The call column runs on under the demo CTA here. The decorative waveform
+   and the oshi caption (already below the fold at this height) would sit on
+   the required demo disclaimer, so they step out, and a night scrim behind
+   the CTA keeps its note (in normal flow under the button) fully legible. */
+@media (max-width: 1023.98px) and (max-height: 500px) {
+  #call [data-stage-media] :is(.fm-call-wave, [data-caption="oshi"]) { display: none; }
+  #call [data-demo-root]::before {
+    content: ""; position: absolute; z-index: -1; inset: -20px calc(var(--gutter, 16px) * -1) calc(-16px - env(safe-area-inset-bottom, 0px));
+    background: linear-gradient(to bottom, rgba(15, 16, 24, 0), rgba(15, 16, 24, .92) 20px); pointer-events: none;
+  }
+  #call .cd-btn { min-height: 56px !important; }
+}
+
 /* ───────────── tap-to-call demo (CallDemo.client) ───────────── */
 #call[data-demo-done] [data-stage-media] :is([data-caption], [data-toast]) { opacity: 0 !important; transition: opacity .3s var(--ease-reveal); }
 #call [data-demo-root][data-demo-enhanced] > :not(.cd) { display: none !important; }

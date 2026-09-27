@@ -1,6 +1,6 @@
 import type { SectionProps } from '@/i18n/types';
 import { Units } from '@/lib/units';
-import { ExpandStage, Eyebrow, ScrollFillText } from '@/components/site';
+import { ExpandStage, Eyebrow, ScreenNote, ScrollFillText } from '@/components/site';
 import { D01bCloneCheck } from '@/components/mockups/studio/D01bCloneCheck';
 import { SelfCallStage } from '@/components/mockups/studio/SelfCallStage';
 import { BezelScreen } from '../_shared/BezelScreen';
@@ -12,7 +12,8 @@ import '../creators.css';
  * chat in the phone expands into the full-bleed night self-call: the ring
  * changes colour teal → violet (a colour change, not a loop, as shipped), the
  * caption fills and the waveform rises. Server HTML is the final state:
- * night self-call, violet ring, fill complete, --amp 1.
+ * night self-call, violet ring, fill complete, --amp 1. The screen note sits
+ * in the intro (the stage's only static layer).
  */
 export function CloneCheck({ d, lang }: SectionProps) {
   const t = d.creators.check;
@@ -36,6 +37,9 @@ export function CloneCheck({ d, lang }: SectionProps) {
             <Units text={t.title} lang={lang} mode="phrase" />
           </h2>
           <p className="t-lead">{t.lead}</p>
+          {/* Under the intro, clear of the clip/bezel layers; as a .t-small it
+              follows the intro's ink → white scrub onto the night. */}
+          <ScreenNote d={d} />
           <CloneCheckStage />
         </div>
       }

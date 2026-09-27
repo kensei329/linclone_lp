@@ -3,7 +3,12 @@
 import { useAnchorScope } from '@/lib/motion/use-anchor-scope';
 import { useScrollScene } from '@/lib/motion/use-scroll-scene';
 
-const clock = (sec: number) => `0:${String(Math.max(0, Math.min(60, Math.round(sec)))).padStart(2, '0')}`;
+/** M:SS, so the free minute reads 1:00 → 0:00 (never 0:60). */
+const clock = (sec: number) => {
+  const s = Math.max(0, Math.min(60, Math.round(sec)));
+  return `${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')}`;
+};
+const FULL = clock(60);
 const clamp01 = (v: number) => Math.min(1, Math.max(0, v));
 /** power2.inOut */
 const ease = (p: number) => (p < 0.5 ? 2 * p * p : 1 - (-2 * p + 2) ** 2 / 2);
@@ -14,7 +19,7 @@ const win = (p: number, a: number, b: number) => clamp01((p - a) / (b - a));
  *
  * Desktop: step toggles drive the sticky phone's ScreenStack (CSS crossfade),
  * the step dots and the connector line; the 60-second ring shows on the call
- * step and counts 0:60 → 0:00 with the scroll; then, as #how-cta enters, the
+ * step and counts 1:00 → 0:00 with the scroll; then, as #how-cta enters, the
  * phone morphs into the app icon sitting in its pad beside the badges
  * (translate + scale measured every frame, phone fades, icon fades in).
  * Mobile: line + dots, and the mini ring counts down once when it enters.
@@ -62,7 +67,7 @@ export function HowAnimator() {
     }
 
     if (!isDesktop) {
-      // Mini ring: counts down once on enter, then refills to the free 0:60.
+      // Mini ring: counts down once on enter, then refills to the free 1:00.
       const mini = one('[data-ring-mini]');
       const ring = mini?.querySelector<HTMLElement>('[data-ring]');
       const time = mini?.querySelector<HTMLElement>('[data-ring-time]');
@@ -150,8 +155,8 @@ export function HowAnimator() {
       });
       cleanups.push(() => {
         ring.style.removeProperty('--p');
-        if (ringTime) ringTime.textContent = '0:60';
-        if (meter) meter.textContent = '0:60';
+        if (ringTime) ringTime.textContent = FULL;
+        if (meter) meter.textContent = FULL;
       });
     }
 

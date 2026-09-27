@@ -49,7 +49,7 @@ export function ChatChapter({ d, lang }: SectionProps) {
             side="right"
             phoneSize={{ desktop: 340 }}
             phoneLabel={t.stageAlt}
-            stepMinHeight="70svh"
+            stepMinHeight="55svh"
             transition={['fade', 'push', 'fade']}
             carouselLabel={t.title}
             d={d}

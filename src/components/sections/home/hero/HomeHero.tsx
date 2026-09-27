@@ -1,5 +1,6 @@
-import type { CSSProperties } from 'react';
+import { Fragment, type CSSProperties } from 'react';
 import type { SectionProps } from '@/i18n/types';
+import type { Locale } from '@/i18n/config';
 import { Section, Eyebrow, StoreBadges, Disclosure, ScreenNote, Sticker, Icon, type IconName } from '@/components/site';
 import { PhoneFrame } from '@/components/mockups/kit';
 import { FirstCall00c } from '@/components/mockups/fan/FirstCall00c';
@@ -26,6 +27,12 @@ const STICKERS: { key: StickerKey; icon: IconName; tone: 'teal' | 'gold' | 'pink
   { key: 'live', icon: 'podcasts', tone: 'pink', tilt: 6, depth: 0.6, mobile: false },
 ];
 
+/** Keep a numeral with the word after it ("60 seconds" never splits). */
+const glueNumerals = (text: string) => text.replace(/(\d) (?=\S)/g, '$1\u00a0');
+
+/** Lead sentences: each starts its own line (「最初の60秒は…」 / "Your first 60 seconds…"). */
+const sentences = (text: string, lang: Locale) => (lang === 'ja' ? text.split(/(?<=。)(?=.)/) : text.split(/(?<=[.!?])\s+/));
+
 /**
  * #hero (spec §5.1): the 5-second proposition and the page's single H1.
  * Server-rendered final state; the entrance is CSS transform-only (every
@@ -46,7 +53,14 @@ export function HomeHero({ d, lang }: SectionProps) {
             <Units text={t.title} lang={lang} mode="phrase" />
           </h1>
           <p className={`t-lead ${s.lead} ${s.enter}`} style={{ '--d': '80ms' } as CSSProperties}>
-            {t.lead}
+            {sentences(glueNumerals(t.lead), lang).map((line, i) => (
+              <Fragment key={i}>
+                {i > 0 && lang !== 'ja' ? ' ' : null}
+                <span className={s.leadLine}>
+                  <Units text={line} lang={lang} mode="phrase" />
+                </span>
+              </Fragment>
+            ))}
           </p>
           <div className={`${s.badges} ${s.enter}`} style={{ '--d': '140ms' } as CSSProperties}>
             <StoreBadges d={d} lang={lang} placement="hero" size="lg" qr showFriction />
@@ -54,7 +68,8 @@ export function HomeHero({ d, lang }: SectionProps) {
           <div className={`${s.disclosure} ${s.enter}`} style={{ '--d': '180ms' } as CSSProperties}>
             <Disclosure d={d} variant="line" />
           </div>
-          <nav aria-label={t.chipsLabel} className={`${s.chips} ${s.enter}`} style={{ '--d': '220ms' } as CSSProperties} data-lenis-prevent="">
+          {/* No data-lenis-prevent: the row only scrolls on x, so a vertical swipe or wheel starting on it scrolls the page. */}
+          <nav aria-label={t.chipsLabel} className={`${s.chips} ${s.enter}`} style={{ '--d': '220ms' } as CSSProperties}>
             <ul>
               {CHIPS.map((c) => (
                 <li key={c.key}>
@@ -74,13 +89,22 @@ export function HomeHero({ d, lang }: SectionProps) {
           <div className={s.orb} data-hero-orb="" aria-hidden="true" />
           <div className={s.phoneSlot} data-hero-phone="">
             <div className={s.phoneRise}>
-              <PhoneFrame size={{ mobile: 300, desktop: 360 }} label={t.phoneAlt} theme="night">
-                <FirstCall00c d={d} lang={lang} persona="oshi" />
-              </PhoneFrame>
+              {/* The mock's 「タップしてYuzuと話す」 reads as a button, so the whole phone is
+                  covered by a real link to the call demo. The link is a transparent
+                  overlay sibling (not a wrapper), so its name matches its own text and
+                  the figure keeps role="img" with its label: no nested controls. */}
+              <div className={s.phoneLink}>
+                <PhoneFrame size={{ mobile: 300, desktop: 360 }} label={t.phoneAlt} theme="night">
+                  <FirstCall00c d={d} lang={lang} persona="oshi" />
+                </PhoneFrame>
+                <a href="#call" className={s.phoneHit}>
+                  <span className={s.srOnly}>{t.phoneLink}</span>
+                </a>
+              </div>
             </div>
             {STICKERS.map((st, i) => (
               <span key={st.key} className={s.sticker} data-slot={st.key} data-mobile={st.mobile ? '' : undefined} data-depth={st.depth} aria-hidden="true">
-                <Sticker icon={st.icon} label={t.stickers[st.key]} tone={st.tone} tilt={st.tilt} index={i + 1} />
+                <Sticker icon={st.icon} label={glueNumerals(t.stickers[st.key])} tone={st.tone} tilt={st.tilt} index={i + 1} />
               </span>
             ))}
           </div>

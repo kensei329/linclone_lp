@@ -131,26 +131,26 @@
   "liveFeed": {
     "title": "LIVE",
     "onAir": "On air",
-    "theme": "Theme: Rainy-day playlist",
+    "theme": "Theme: Rainy-day song talk",
     "join": "Join LIVE",
     "alt": "Illustration of the LIVE feed."
   },
   "livePlayer": {
     "follow": "FOLLOW",
     "onAir": "On air",
-    "theme": "Theme: Rainy-day playlist",
+    "theme": "Theme: Talking rainy-day songs",
     "disclaimer": "LINCLONE AI · AI-GENERATED CONTENT",
     "readOnAir": "Read on air",
     "superChat": "Super Chat",
-    "superChatText": "Thank you for playing my request",
+    "superChatText": "Thanks for talking about my request",
     "comments": {
       "c1": {
         "user": "mocha",
-        "text": "I’ve had this song on repeat"
+        "text": "I love that song too"
       },
       "c2": {
         "user": "rin.rin",
-        "text": "Perfect with the rain sounds…"
+        "text": "Perfect talk for a rainy night…"
       },
       "c3": {
         "user": "hinata",
@@ -193,7 +193,7 @@
   },
   "showPreview": {
     "title": "Show preview",
-    "showTitle": "{name}: Songs for a rainy day",
+    "showTitle": "{name}: Talking rainy-day songs",
     "rundown": "Rundown",
     "segments": {
       "s1": {
@@ -201,8 +201,8 @@
         "desc": "Hellos and today’s theme"
       },
       "s2": {
-        "title": "First rainy-day song",
-        "desc": "A mellow pick from Kai"
+        "title": "Rainy-day song talk",
+        "desc": "Kai talks about a favorite song"
       },
       "s3": {
         "title": "Comments & Super Chats",
@@ -222,7 +222,7 @@
   },
   "archive": {
     "tag": "ARCHIVE",
-    "title": "Rainy-day playlist",
+    "title": "Rainy-day song talk",
     "play": "Play",
     "recording": "Recording",
     "alt": "Illustration of a LIVE archive."

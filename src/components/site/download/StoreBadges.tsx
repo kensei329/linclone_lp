@@ -15,16 +15,19 @@ type StoreBadgesProps = {
   showFriction?: boolean;
 };
 
-// Official artwork, unmodified (public/badges). Apple SVGs are 40 units tall
-// with no padding. The Google Play PNGs are 646×250 and include Google's own
-// clear space (JA art: visible 646×192 from y=29; EN art: 564×168 from 41,41),
-// so the image is scaled up and its padding cancelled with negative margins
-// until the visible badge matches the Apple badge height (--bh).
+// Official artwork, unaltered apart from scaling (public/badges). Apple SVGs
+// are 40 units tall with no padding. The Google Play PNGs include Google's own
+// clear space; in units of a 646×250 master (JA art: visible 646×192 from
+// y=29; EN art: 564×168 from 41,41), so the image is scaled up and its padding
+// cancelled with negative margins until the visible badge matches the Apple
+// badge height (--bh). The JA file ships at 352×136 (2× its largest display).
 const APPLE_RATIO: Record<Locale, number> = { ja: 108.85157 / 40, en: 119.66407 / 40 };
 const PLAY_VISIBLE: Record<Locale, { x: number; y: number; h: number }> = {
   ja: { x: 0, y: 29, h: 192 },
   en: { x: 41, y: 41, h: 168 },
 };
+/** Intrinsic size of each Play PNG, so width/height attributes keep its exact ratio. */
+const PLAY_FILE: Record<Locale, { w: number; h: number }> = { ja: { w: 352, h: 136 }, en: { w: 646, h: 250 } };
 
 /**
  * Both official store badges (spec §4.2). Platform ordering and the mobile
@@ -62,7 +65,7 @@ export function StoreBadges({ d, lang, placement, size = 'md', qr = false, showF
           <img
             src={`/badges/google-play-${lang}.png`}
             alt={d.common.store.googlePlayBadgeAlt}
-            width={Math.round((playImgH * 646) / 250)}
+            width={Math.round((playImgH * PLAY_FILE[lang].w) / PLAY_FILE[lang].h)}
             height={playImgH}
             fetchPriority={placement === 'hero' ? 'high' : undefined}
             decoding="async"

@@ -2,17 +2,18 @@
   "meta": {
     "home": {
       "title": "LinClone – The AI clone app for talking to your favorites",
-      "description": "Call, chat, get morning calls and join audio LIVE shows with official AI clones of the creators you love. Your first 60 seconds are free. iPhone & Android.",
+      "description": "Call, chat, get morning calls and join audio LIVE shows with official AI clones. First 60 seconds free. iPhone & Android. All creator profiles are AI clones.",
       "ogTitle": "Talk with your favorites, out loud | LinClone",
       "ogDescription": "Call, chat and join LIVE shows with official AI clones. Your first 60 seconds are free.",
       "ogImageAlt": "LinClone: “Talk with your favorites, out loud.” Aura portraits of official AI clones and a note that your first 60 seconds are free."
     },
     "creators": {
       "title": "LC Studio – Build and run your official AI clone",
-      "description": "Create and manage an official AI clone from your own voice and words. Chats, calls, LIVE, Grow and earnings in one creator app. LC Studio is invite-only.",
+      "description": "Create and manage an official AI clone from your own voice and words. Chats, calls, LIVE, Grow and earnings in one creator app. LC Studio is invitation-only.",
       "ogTitle": "Build your official AI clone, right from your phone | LC Studio",
       "ogDescription": "LC Studio, the creator app from LinClone. Invitation only for now.",
-      "ogImageAlt": "LC Studio: “Build your official AI clone, right from your phone.” A violet ring filling up as a clone is created.",
+      "ogImageAlt": "LC Studio: “Build your official AI clone, right from your phone.” An invitation-only label and a violet ring around an aura portrait.",
+      "ogPill": "Invitation-only",
       "breadcrumbHome": "LinClone",
       "breadcrumbCreators": "For creators"
     },
@@ -46,6 +47,7 @@
       "otherStoreFromAndroid": "On iPhone? Get it here",
       "qrCaption": "Scan with your phone camera to get the app",
       "qrAlt": "QR code to download the LinClone app",
+      "studioComingSoon": "LC Studio: coming soon",
       "comingSoonSuffix": "Coming soon"
     },
     "skip": {
@@ -63,6 +65,7 @@
     },
     "demo": "Demo",
     "copy": "Copy",
+    "copySelected": "Address selected: press ⌘C or long-press to copy",
     "copied": "Copied",
     "close": "Close"
   },
@@ -97,7 +100,7 @@
   },
   "stickyBar": {
     "title": "LinClone",
-    "sub": "Free to download · First 60 seconds free",
+    "sub": "First 60 seconds free",
     "cta": "Get",
     "dismiss": "Dismiss"
   },
@@ -190,7 +193,8 @@
         "live": "LIVE",
         "grow": "Grow"
       },
-      "phoneAlt": "Illustration of the free first call: Yuzu’s aura portrait and a “Tap to talk with Yuzu” button."
+      "phoneAlt": "Illustration of the free first call: Yuzu’s aura portrait and a “Tap to talk with Yuzu” button.",
+      "phoneLink": "See the call demo"
     },
     "cast": {
       "label": "Creators with official AI clones",
@@ -210,7 +214,7 @@
           "body": "Every clone is an official AI clone, approved by the creator."
         },
         "labelled": {
-          "title": "Always labelled",
+          "title": "Always labeled",
           "body": "Every creator profile is an AI clone. LIVE shows and Stories are marked as AI-generated too."
         },
         "memory": {
@@ -219,7 +223,7 @@
         }
       },
       "oshiColor": {
-        "label": "Pick your oshi color",
+        "label": "Pick their color",
         "hint": "The page glows in their color.",
         "options": {
           "rose": "Rose",
@@ -236,13 +240,13 @@
         "num": "01",
         "label": "Calls"
       },
-      "title": "Say it out loud. It’s closer.",
+      "title": "Hear their voice. Feel closer.",
       "lead": "A real-time conversation in their voice. When it’s your turn, a light rises from the bottom of the screen; when they answer, it moves to them. Each call is transcribed into your chat, too.",
       "fanCaption": "Guess what, something good happened today",
       "oshiCaption": "Wait, what? Tell me everything, Hina.",
       "routes": "Speaker · Bluetooth · CarPlay",
-      "trust": "If a call doesn’t connect, you’re not charged.",
-      "billing": "You’re only charged for the time you could hear them.",
+      "trust": "No charge if a call fails to connect.",
+      "billing": "On calls you place, you’re only charged for the time you could hear them.",
       "transcriptToast": "Transcribing your call…",
       "stageAlt": "Illustration of a voice call with a creator’s AI clone. The light moves to whoever is speaking."
     },
@@ -251,7 +255,7 @@
       "tag": "Demo",
       "startLabel": "Play the demo call (captions only, no sound)",
       "captionsLabel": "Captions",
-      "lineOne": "Hey Hina, is that you? I’m so glad you came.",
+      "lineOne": "Hey Hina, is that you? I’m so glad you called.",
       "hint": "(In the app, this is where you talk.)",
       "lineTwo": "Aw, you did great today. Let’s keep talking in the app.",
       "doneTitle": "First call, done",
@@ -271,11 +275,12 @@
       },
       "title": "Wake up to their voice.",
       "captionLine": "Morning, Hina. Time to wake up.",
-      "lead": "You pick the time and how often, and your favorite calls you then: every day, weekdays, weekends or just once. It rings on your lock screen like a real phone call.",
+      "lead": "You pick the time and how often, and their AI clone calls you then: every day, weekdays, weekends or just once. It rings on your lock screen like a real phone call.",
       "note": "Depending on your phone’s Focus or Do Not Disturb settings, it may not ring.",
+      "costNote": "Each morning call uses coins when it’s placed, even if you don’t answer.",
       "voiceEyebrow": "Voice messages",
       "voiceTitle": "Open Home to their latest voice message.",
-      "voiceBody": "Play the newest voice message your favorite has shared, right from Home. A NEW badge tells you it’s there.",
+      "voiceBody": "Play the latest voice message from their AI clone, right from Home. A NEW badge tells you it’s there.",
       "stageAlt": "Illustration of a morning call ringing on a lock screen."
     },
     "chat": {
@@ -327,7 +332,7 @@
         "num": "05",
         "label": "Grow"
       },
-      "title": "Nights are for growing them.",
+      "title": "Evenings are for Grow.",
       "fill": "Help their AI learn who they really are.",
       "lead": "Share what you know about your favorite, with a source. Submissions are reviewed by AI and the community, and the creator always has the final say.",
       "pipeline": {
@@ -380,7 +385,7 @@
         "plans": {
           "title": "For days you want more.",
           "body": "You can start free. Plans add more chats, monthly coins and LIVE tickets.",
-          "note": "See pricing in the app through the App Store or Google Play.",
+          "note": "Prices are shown in the app. Payment is through the App Store or Google Play.",
           "cards": {
             "free": {
               "name": "Free",
@@ -405,8 +410,8 @@
           "points": {
             "confirm": "A confirm step before every spend",
             "refund": "Coins for failed generations come back automatically",
-            "heard": "Calls are charged only for the time you could hear them",
-            "noConnect": "No charge if a call doesn’t connect",
+            "heard": "Calls you place are charged only for the time you could hear them",
+            "noConnect": "No charge if a call fails to connect",
             "store": "Payments only through the App Store or Google Play"
           }
         },
@@ -424,7 +429,7 @@
         }
       },
       "indexTitle": "Everything in the app",
-      "indexToggle": "Show all",
+      "indexToggle": "See all",
       "index": {
         "call": "Voice calls",
         "chat": "Chat",
@@ -521,7 +526,7 @@
           "a": "Only through App Store or Google Play in-app purchase. Every spend asks you to confirm first, and coins for failed generations are refunded automatically."
         },
         "oshikatsu": {
-          "q": "How does it fit into being a fan?",
+          "q": "How does it fit into my day?",
           "a": "A morning call to start the day, chat in the gaps, calls and LIVE at night. With Grow, you can even help their AI learn who they really are."
         },
         "delete": {
@@ -570,7 +575,7 @@
       "requestShort": "Request"
     },
     "hero": {
-      "eyebrow": "LC Studio · The creator app · Invitation only",
+      "eyebrow": "LC Studio · The creator app · Invitation-only",
       "title": "Build your official AI clone, right from your phone.",
       "lead": "Create and manage an official AI clone from your own voice and words. Then look after its chats, calls, morning calls and LIVE shows from one app.",
       "audience": "For creators, talent, voice actors, athletes, singers, and their agencies.",
@@ -586,7 +591,7 @@
     },
     "statement": {
       "fill": "The you that never goes offline.",
-      "sub": "Chats, calls, morning calls and LIVE shows. Your clone answers in your voice."
+      "sub": "Chats in your words. Calls, morning calls and LIVE shows in your voice."
     },
     "home": {
       "eyebrow": {
@@ -676,7 +681,7 @@
           "body": "Edit or hide anything on your public profile. You can turn off AI images of you made by followers."
         },
         "labels": {
-          "title": "Clearly labelled as AI",
+          "title": "Clearly labeled as AI",
           "body": "Every image shared outside LinClone carries an “AI-generated / not the real person” label."
         }
       }
@@ -698,7 +703,7 @@
         "num": "06",
         "label": "Voice"
       },
-      "title": "Your voice, part of your followers’ every day.",
+      "title": "Your voice, in your followers’ every day.",
       "lead": "Voice messages on Home, morning-call first lines, even the little “hmm”s in a call. All in your clone’s voice.",
       "lines": {
         "l1": "Hmm, let me think",
@@ -728,10 +733,10 @@
         "label": "Insights & earnings"
       },
       "title": "Know your community.",
-      "analyticsBody": "See chats, images, voices, call time, Coins received and LIVE shows charted over time.",
+      "analyticsBody": "See chats, images, voices, call time, coins received and LIVE shows charted over time.",
       "privacy": "Individual follower data is shown inside LC Studio only and is never made public in the LinClone app.",
       "earningsTitle": "Coin-based earnings.",
-      "earningsBody": "Each month’s earnings are finalized from the Coins followers spend on your clone. No figures are shown while a month is being calculated. Statements come as CSV, and payouts go to your registered bank account. We’ll explain the details when we’re in touch."
+      "earningsBody": "Each month’s earnings are finalized from the coins followers spend on your clone. No figures are shown while a month is being calculated. Statements come as CSV, and payouts go to your registered bank account. We’ll explain the details when we’re in touch."
     },
     "join": {
       "eyebrow": {
@@ -782,7 +787,7 @@
         },
         "cost": {
           "q": "What does it cost?",
-          "a": "We’ll explain invitation details when we’re in touch."
+          "a": "We’ll go over costs and terms individually when we’re in touch."
         },
         "studio": {
           "q": "Do I need a recording studio?",
@@ -797,7 +802,7 @@
           "a": "Set NG topics, approve or reject Grow facts, and check everything in preview mode. NG topics get top priority, so your clone is set to steer clear of them."
         },
         "label": {
-          "q": "Is it labelled as AI?",
+          "q": "Is it labeled as AI?",
           "a": "Yes. Every creator profile on LinClone is shown as an AI clone, and images shared outside LinClone carry an “AI-generated / not the real person” label."
         },
         "agency": {
@@ -967,26 +972,26 @@
       "liveFeed": {
         "title": "LIVE",
         "onAir": "On air",
-        "theme": "Theme: Rainy-day playlist",
+        "theme": "Theme: Rainy-day song talk",
         "join": "Join LIVE",
         "alt": "Illustration of the LIVE feed."
       },
       "livePlayer": {
         "follow": "FOLLOW",
         "onAir": "On air",
-        "theme": "Theme: Rainy-day playlist",
+        "theme": "Theme: Talking rainy-day songs",
         "disclaimer": "LINCLONE AI · AI-GENERATED CONTENT",
         "readOnAir": "Read on air",
         "superChat": "Super Chat",
-        "superChatText": "Thank you for playing my request",
+        "superChatText": "Thanks for talking about my request",
         "comments": {
           "c1": {
             "user": "mocha",
-            "text": "I’ve had this song on repeat"
+            "text": "I love that song too"
           },
           "c2": {
             "user": "rin.rin",
-            "text": "Perfect with the rain sounds…"
+            "text": "Perfect talk for a rainy night…"
           },
           "c3": {
             "user": "hinata",
@@ -1029,7 +1034,7 @@
       },
       "showPreview": {
         "title": "Show preview",
-        "showTitle": "{name}: Songs for a rainy day",
+        "showTitle": "{name}: Talking rainy-day songs",
         "rundown": "Rundown",
         "segments": {
           "s1": {
@@ -1037,8 +1042,8 @@
             "desc": "Hellos and today’s theme"
           },
           "s2": {
-            "title": "First rainy-day song",
-            "desc": "A mellow pick from Kai"
+            "title": "Rainy-day song talk",
+            "desc": "Kai talks about a favorite song"
           },
           "s3": {
             "title": "Comments & Super Chats",
@@ -1058,7 +1063,7 @@
       },
       "archive": {
         "tag": "ARCHIVE",
-        "title": "Rainy-day playlist",
+        "title": "Rainy-day song talk",
         "play": "Play",
         "recording": "Recording",
         "alt": "Illustration of a LIVE archive."
@@ -1343,7 +1348,7 @@
           },
           "sexual": {
             "label": "Sexual content",
-            "detail": "Blocked in every mode"
+            "detail": "Set to avoid in every mode"
           },
           "war": {
             "label": "War & conflicts",
@@ -1475,8 +1480,8 @@
         "title": "LIVE",
         "liveNow": "LIVE NOW",
         "autoHosting": "Auto-hosting",
-        "segment": "First rainy-day song",
-        "chat1": "Love this song",
+        "segment": "Rainy-day song talk",
+        "chat1": "Love this story",
         "chat2": "Perfect for a rainy day",
         "dropIn": "Drop in as the real you…",
         "realLabel": "{name} (real)",
@@ -1487,7 +1492,7 @@
           "acceptRequests": "Accept follower-requested shows"
         },
         "archivesTitle": "Archives",
-        "archiveItem": "Rainy-day playlist",
+        "archiveItem": "Rainy-day song talk",
         "download": "DL",
         "alt": "Illustration of managing a LIVE show your clone hosts."
       },

@@ -124,7 +124,7 @@ export function MoreBento({ d, lang }: SectionProps) {
                   small('quests', <QuestsMini d={d} lang={lang} />),
                   small('bonus', <BonusMini d={d} lang={lang} />),
                   small('invite', <InviteMini d={d} lang={lang} />),
-                  small('library', <MyPageMini d={d} lang={lang} />),
+                  small('library', <MyPageMini d={d} lang={lang} />, s.visual_library),
                   small('sleep', <SleepMini d={d} lang={lang} />),
                 ]}
               />

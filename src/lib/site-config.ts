@@ -8,7 +8,7 @@ export const SITE = {
   contactEmail: 'info@linclone.com',
   appStoreDeveloperUrl: 'https://apps.apple.com/jp/developer/linclone-k-k/id1826974719',
 } as const;
-export const SITE_LAST_MODIFIED = '2026-10-15'; // bump by hand when marketing pages change
+export const SITE_LAST_MODIFIED = '2026-09-27'; // bump by hand when marketing pages change (sitemap.ts never emits a future date)
 
 export const FAN_APP = {
   appStoreId: '6748680628',

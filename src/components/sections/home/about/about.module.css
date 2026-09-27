@@ -11,6 +11,8 @@
 .cards { margin-top: 44px; }
 .cards :global(.carousel-track) { grid-auto-rows: 1fr; }
 .cards :global(.carousel-track > li) { display: flex; }
+.note { text-align: right; }
+.note :global(.screen-note) { margin-top: 12px; }
 
 .card {
   display: flex;
@@ -192,6 +194,9 @@
   .statement { margin-top: 44px; max-width: min(100%, 22em); }
   .statement:lang(ja) { max-width: min(100%, 25em); }
   .cards { width: min(100% - 2 * var(--gutter), var(--container)); margin: 72px auto 0; }
+  /* .cards already has the container width here */
+  .note { width: auto; padding-inline: 0; }
+  .note :global(.screen-note) { margin-top: 16px; }
   .cards :global(.carousel-track) {
     grid-auto-flow: row;
     grid-template-columns: repeat(3, minmax(0, 1fr));

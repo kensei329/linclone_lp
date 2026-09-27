@@ -2,10 +2,10 @@
 // Brand rasters from assets-src/brand (the LinClone logo package) plus the
 // hero/aura noise texture. Output is committed; re-run with `npm run brand`.
 //
-//   public/brand/mark-{64,128,256,512}.png   mark on transparent, square
+//   public/brand/mark-{56,64,128,256,512}.png  mark on transparent, square
 //   public/brand/mark-white-256.png          one-colour white mark (dark surfaces)
 //   public/brand/logo-512.png                mark on white (JSON-LD Organization.logo)
-//   public/brand/appicon-{180,512}.png       store icon tile
+//   public/brand/appicon-{180,512}.png       store icon tile (+ appicon-512.webp)
 //   src/app/icon.png (512), apple-icon.png (180), favicon.ico (16/32/48)
 //   public/textures/noise-128.png            ≤2 KB grain tile
 import { mkdirSync, writeFileSync, statSync } from 'node:fs';
@@ -38,7 +38,8 @@ async function out(pipeline, file) {
   console.log(`${file.slice(ROOT.length + 1)} ${(statSync(file).size / 1024).toFixed(1)} KB`);
 }
 
-for (const size of [64, 128, 256, 512]) await out(square(MARK, size), join(BRAND, `mark-${size}.png`));
+// 56 = the 28px header mark at 2×.
+for (const size of [56, 64, 128, 256, 512]) await out(square(MARK, size), join(BRAND, `mark-${size}.png`));
 await out(square(MARK_WHITE, 256), join(BRAND, 'mark-white-256.png'));
 
 // Mark centred on white with ~12% padding, flattened (no alpha) for crawlers.
@@ -50,6 +51,8 @@ await out(
 
 await out(square(APPICON, 180), join(BRAND, 'appicon-180.png'));
 await out(square(APPICON, 512), join(BRAND, 'appicon-512.png'));
+// WebP sibling for on-page use (≈7 KB vs ≈210 KB); the PNG stays for crawlers and old links.
+await square(APPICON, 512).webp({ quality: 82 }).toFile(join(BRAND, 'appicon-512.webp'));
 await out(square(APPICON, 512), join(APP, 'icon.png'));
 await out(square(APPICON, 180), join(APP, 'apple-icon.png'));
 

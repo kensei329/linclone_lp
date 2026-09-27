@@ -58,6 +58,12 @@
 
 /* night call backdrop (F1, F2): persona aura field instead of a blurred photo */
 .fm-callbg { position: absolute; inset: 0; overflow: hidden; background: #0f1018; }
+/* top vignette to the stage night (#0f1018): while the expand clip grows, only
+   its rounded corners read, never a lighter slab with a hard vertical seam */
+.fm-callbg::after {
+  content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none;
+  background: radial-gradient(130% 100% at var(--cx, 50%) 40%, transparent 55%, #0f1018 92%);
+}
 .fm-callbg > .aura { position: absolute; left: -10%; top: -10%; width: 120% !important; height: 120% !important; opacity: .38; }
 .fm-callbg-scrim {
   position: absolute; inset: 0;
@@ -137,19 +143,27 @@
 .fm-demo-btn { min-height: 64px !important; width: 100%; }
 .fm-demo-tag {
   display: inline-flex; align-items: center; height: 24px; padding: 0 10px; border-radius: 9999px;
-  background: #ffe0eb; color: #d0417a; font: 700 12px/1 var(--font-sans); letter-spacing: .02em;
+  background: #ffe0eb; color: #a3285a; font: 700 12px/1 var(--font-sans); letter-spacing: .02em; /* 5.6:1 */
 }
 
 @media (min-width: 1024px) {
-  .fm-call { --av: clamp(120px, 20svh, 220px); --cx: calc(var(--pl, 60%) + var(--pw, 330px) / 2); }
-  .fm-call-col {
-    left: var(--cx); right: auto; translate: -50% 0; width: min(46vw, 640px); padding: 0;
-    top: calc(var(--header-h, 64px) + 76px); bottom: 188px; justify-content: center;
+  /* The column centres on the phone rect, clamped so its right edge never
+     passes the 1312px container edge (wide screens put the phone at 75%). */
+  .fm-call {
+    --av: clamp(96px, 15svh, 200px);
+    --colw: min(40vw, 560px);
+    --cx: min(calc(var(--pl, 60%) + var(--pw, 330px) / 2), calc(100vw - max(40px, (100vw - 1312px) / 2) - var(--colw) / 2));
   }
-  .fm-call-cap-fan { order: 0; margin: 0 0 20px; }
+  .fm-call-col {
+    left: var(--cx); right: auto; translate: -50% 0; width: var(--colw); padding: 0;
+    /* bottom clears the demo CTA + note (bottom 108px, ~114px tall) by ≥24px */
+    top: calc(var(--header-h, 64px) + 84px); bottom: 250px; justify-content: center;
+  }
+  /* the column's right edge sits under the meter: the right-aligned fan line stops short of it */
+  .fm-call-cap-fan { order: 0; margin: 0 0 20px; padding-right: 112px; }
   .fm-cap-fan { font-size: clamp(1.125rem, .7rem + 1vw, 1.625rem); }
   .fm-call-cap-oshi { margin-top: 18px; }
-  .fm-cap-oshi { font-size: min(4rem, 5.6svh, 1.25rem + 2.4vw) !important; }
+  .fm-cap-oshi { font-size: min(3.25rem, 5svh, 1.25rem + 2vw) !important; }
   .fm-call-meter { top: calc(var(--header-h, 64px) + 20px); right: max(40px, (100vw - 1312px) / 2); padding: 10px 22px; }
   .fm-call-meter .fm-meter-value { font-size: 26px; line-height: 30px; }
   /* beside the meter (top-right), never under it */
@@ -161,10 +175,15 @@
   .fm-call-demo { left: var(--cx); right: auto; translate: -50% 0; width: 360px; bottom: 108px; }
 }
 
-/* short desktops (1024×768, 1280×720): the column must fit between the meter and the demo CTA */
+/* short desktops (1024×768, 1280×720): the column must fit between the meter
+   and the demo CTA, with ≥24px above the CTA */
 @media (min-width: 1024px) and (max-height: 820px) {
-  .fm-call { --av: clamp(96px, 14svh, 220px); }
-  .fm-call-col { top: calc(var(--header-h, 64px) + 92px); }
+  .fm-call { --av: clamp(64px, 10svh, 200px); }
+  .fm-call-col { top: calc(var(--header-h, 64px) + 84px); bottom: 262px; }
+  .fm-call-name { margin-top: 8px; font-size: 26px; }
+  .fm-call-wave { margin-top: 10px; }
+  .fm-cap-fan { font-size: 1.25rem; }
+  .fm-call-demo { bottom: 120px; }
   .fm-call-cap-fan { margin-bottom: 12px; }
   .fm-call-cap-oshi { margin-top: 12px; }
   .fm-cap-oshi { font-size: min(4rem, 4.2svh, 1.25rem + 2.4vw) !important; }
@@ -173,14 +192,16 @@
 /* final variant: centred in the phone rect the reverse collapse ends on */
 .fm-call[data-variant="final"] { --av: calc(var(--pw, 220px) * .46); }
 .fm-call[data-variant="final"] .fm-call-col {
-  left: var(--pl, 50%); top: var(--pt, 20%); width: var(--pw, 220px); height: var(--ph, 60%); right: auto; bottom: auto; translate: none;
+  left: calc(var(--pl, 30%) + var(--pw, 220px) / 2); top: calc(var(--pt, 20%) + var(--ph, 60%) / 2);
+  width: var(--pw, 220px); height: auto; right: auto; bottom: auto; translate: -50% -50%;
   padding: 0; justify-content: center;
 }
 .fm-call[data-variant="final"] .fm-call-name { font-size: calc(var(--pw, 220px) * .11); }
 .fm-call[data-variant="final"] .fm-call-state { font-size: calc(var(--pw, 220px) * .05); }
 .fm-call[data-variant="final"] .fm-call-wave { margin-top: 12px; }
 @media (min-width: 1024px) {
-  .fm-call[data-variant="final"] .fm-call-col { left: var(--pl, 60%); translate: none; }
+  .fm-call[data-variant="final"] { --cx: calc(var(--pl, 60%) + var(--pw, 330px) / 2); }
+  .fm-call[data-variant="final"] .fm-call-col { left: calc(var(--pl, 60%) + var(--pw, 330px) / 2); translate: -50% -50%; }
 }
 
 /* ─────────────────────────── F3 IncomingRing06b ─────────────────────────── */

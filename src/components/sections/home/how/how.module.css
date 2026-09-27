@@ -1,6 +1,8 @@
 /* #how-it-works (spec §5.10): cream + sunrise, sticky phone → app icon morph. */
 
 .section { overflow: clip; }
+/* #more above is cream too: one gap between them, not two full ones */
+.section { padding-top: calc(var(--section-y) * .5); }
 
 /* sunrise: the fan glow rising behind the CTA, faded out before the section edge */
 .sunrise {
@@ -32,7 +34,7 @@
 .head { display: grid; gap: 14px; margin-bottom: 40px; }
 .title { margin: 0; }
 .lead { margin: 0; color: var(--color-ink-2); }
-@media (min-width: 1024px) { .head { margin-bottom: 8svh; padding-top: 4svh; } }
+@media (min-width: 1024px) { .head { margin-bottom: 6svh; } }
 
 /* ── sticky phone ── */
 .phoneSticky { position: sticky; top: 12svh; display: flex; justify-content: center; padding-bottom: 40px; }
@@ -119,9 +121,11 @@
 }
 @media (max-width: 359.98px) { .miniRing { right: 0; } }
 @media (min-width: 1024px) {
-  .step { min-height: 45svh; padding-bottom: 0; }
+  .step { min-height: 32svh; padding-bottom: 0; }
+  /* the last step only needs room for its own copy before the CTA */
+  .step:last-child { min-height: 20svh; }
   .slice { display: none; }
-  .line { top: 18px; bottom: calc(45svh - 34px); }
+  .line { top: 18px; bottom: calc(20svh - 34px); }
 }
 
 /* ── CTA ── */
@@ -130,9 +134,23 @@
 .ctaIcon { width: 72px; height: 72px; border-radius: 16px; flex: none; box-shadow: 0 12px 28px rgba(0, 99, 110, .22); }
 .ctaTitle { margin: 0; }
 @media (min-width: 1024px) {
-  .cta { padding: 48px 0; background: none; box-shadow: none; border-radius: 0; }
+  /* icon pad | CTA, centred on each other */
+  .padCol, .cta { align-self: center; }
+  .cta { padding: 32px 0 0; background: none; box-shadow: none; border-radius: 0; }
   .ctaIcon { display: none; }
-  .cta :global(.store-badges) { align-items: flex-start; }
+  /* the "free to download" line sits right under the badges, the QR beside both */
+  .cta :global(.store-badges) {
+    display: grid;
+    grid-template-columns: max-content max-content;
+    grid-template-rows: auto 1fr;
+    grid-template-areas: 'badges qr' 'friction qr';
+    align-items: start;
+    justify-content: start;
+    gap: 12px 40px;
+  }
+  .cta :global(.badges-row) { grid-area: badges; margin-top: 12px; }
+  .cta :global(.badges-meta) { grid-area: friction; }
+  .cta :global(.qr-block) { grid-area: qr; }
 }
 
 @media (prefers-reduced-motion: reduce) {

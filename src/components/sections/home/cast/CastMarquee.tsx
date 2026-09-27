@@ -16,16 +16,20 @@ const CAST: { id: PersonaId; aura: PersonaId | 'oshi' }[] = [
 /**
  * #cast (spec §5.2): "these are official AI clones of creators", at a glance
  * and with no faces. Each item is a vinyl-glass can badge: a メンカラ aura
- * with a spinning story ring, the name, genre and the official chip. Two rows
+ * with a story ring, the name, genre and the official chip. Two rows
  * on desktop (the second reversed), one on mobile; a static wrap under
  * reduced motion. No heading: the section is labelled.
+ *
+ * The story rings are static on purpose: 24 masked, spinning rings inside the
+ * velocity-skewed rows re-rasterised every frame and dropped ~⅓ of frames on
+ * throttled CPUs. The marquee's own drift and skew carry the motion.
  */
 export function CastMarquee({ d }: SectionProps) {
   const t = d.home.cast;
   const item = ({ id, aura }: (typeof CAST)[number]) => (
     <div className={`glass-fake ${s.card}`}>
       <span className={s.badge}>
-        <Aura persona={aura} shape="badge" ring="story" ringSpin voiceprint={false} />
+        <Aura persona={aura} shape="badge" ring="story" voiceprint={false} />
       </span>
       <span className={s.text}>
         <span className={s.name}>{d.personas[id].name}</span>

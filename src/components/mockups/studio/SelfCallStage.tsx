@@ -18,6 +18,10 @@ type SelfCallStageProps = MockProps & { fillSlot?: ReactNode };
  * - `[data-wave]` (the `Waveform`, `amp="css-var"`): `--amp` 0→1; SSR 1.
  * - `[data-fill]`: wraps `fillSlot` (`creators.check.fill`, rendered by the
  *   section), under the static controls.
+ * - `[data-self-controls]`: the call buttons; the stage fades them in once
+ *   the clip is nearly full so the clip edge never slices them.
+ * The vignette resolves every edge to the stage's night `#0f1018`, so the
+ * expanding clip never reads as a lighter slab with a hard seam.
  * Layout: the column sits at x 68% on desktop (the intro keeps the left),
  * below `var(--intro-h)` on mobile. No backdrop-filter or blur (it lives in
  * `[data-stage-media]`).
@@ -31,6 +35,7 @@ export function SelfCallStage({ d, persona, fillSlot, className }: SelfCallStage
         <Aura persona={who} shape="scene-portrait" theme="night" monogram={false} voiceprint={false} />
       </span>
       <span className={s.selfShade} aria-hidden="true" />
+      <span className={s.selfVignette} aria-hidden="true" />
       <div className={s.selfCol}>
         <span className={s.selfRing} data-self-ring="" aria-hidden="true">
           <span className={s.selfAvatar}>
@@ -45,7 +50,7 @@ export function SelfCallStage({ d, persona, fillSlot, className }: SelfCallStage
         <span className={s.selfWave} aria-hidden="true">
           <Waveform tone="neon" amp="css-var" playing bars={14} />
         </span>
-        <span className={s.selfControls} aria-hidden="true">
+        <span className={s.selfControls} data-self-controls="" aria-hidden="true">
           <span className={s.selfBtn}>
             <Icon name="mic" filled size={24} />
           </span>

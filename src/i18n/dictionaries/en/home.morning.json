@@ -5,10 +5,11 @@
   },
   "title": "Wake up to their voice.",
   "captionLine": "Morning, Hina. Time to wake up.",
-  "lead": "You pick the time and how often, and your favorite calls you then: every day, weekdays, weekends or just once. It rings on your lock screen like a real phone call.",
+  "lead": "You pick the time and how often, and their AI clone calls you then: every day, weekdays, weekends or just once. It rings on your lock screen like a real phone call.",
   "note": "Depending on your phone’s Focus or Do Not Disturb settings, it may not ring.",
+  "costNote": "Each morning call uses coins when it’s placed, even if you don’t answer.",
   "voiceEyebrow": "Voice messages",
   "voiceTitle": "Open Home to their latest voice message.",
-  "voiceBody": "Play the newest voice message your favorite has shared, right from Home. A NEW badge tells you it’s there.",
+  "voiceBody": "Play the latest voice message from their AI clone, right from Home. A NEW badge tells you it’s there.",
   "stageAlt": "Illustration of a morning call ringing on a lock screen."
 }

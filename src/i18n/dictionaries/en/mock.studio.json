@@ -132,7 +132,7 @@
       },
       "sexual": {
         "label": "Sexual content",
-        "detail": "Blocked in every mode"
+        "detail": "Set to avoid in every mode"
       },
       "war": {
         "label": "War & conflicts",
@@ -264,8 +264,8 @@
     "title": "LIVE",
     "liveNow": "LIVE NOW",
     "autoHosting": "Auto-hosting",
-    "segment": "First rainy-day song",
-    "chat1": "Love this song",
+    "segment": "Rainy-day song talk",
+    "chat1": "Love this story",
     "chat2": "Perfect for a rainy day",
     "dropIn": "Drop in as the real you…",
     "realLabel": "{name} (real)",
@@ -276,7 +276,7 @@
       "acceptRequests": "Accept follower-requested shows"
     },
     "archivesTitle": "Archives",
-    "archiveItem": "Rainy-day playlist",
+    "archiveItem": "Rainy-day song talk",
     "download": "DL",
     "alt": "Illustration of managing a LIVE show your clone hosts."
   },

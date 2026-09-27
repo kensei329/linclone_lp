@@ -21,7 +21,7 @@ function phrases(text: string, lang: Locale): string[] {
  * #call (spec §5.4): stage #1. The hero's first-call phone (00c) expands into
  * a full-bleed night call (05) while the light moves from the fan to 推し
  * and both captions fill. Server HTML is the final state (full-bleed, intro
- * in white, captions filled, `speaking`, meter 0:60, demo button visible).
+ * in white, captions filled, `speaking`, meter 1:00, demo button visible).
  * The captions-only tap-to-call demo mounts lazily into `[data-demo-root]`,
  * and the checkpoint download block follows the stage.
  */
@@ -84,7 +84,7 @@ export function CallChapter({ d, lang }: SectionProps) {
       <ExpandStage
         id="call"
         labelledBy="call-title"
-        height={{ mobile: 180, desktop: 260 }}
+        height={{ mobile: 180, desktop: 220 }}
         direction="expand"
         phone={{
           desktop: { side: 'right', width: 330 },

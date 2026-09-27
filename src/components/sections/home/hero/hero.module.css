@@ -42,6 +42,9 @@
   margin: 14px 0 0;
   color: var(--color-ink-2);
 }
+/* each sentence starts its own line; JA breaks only between BudouX phrases */
+.leadLine { display: inline-block; text-wrap: balance; }
+.lead:lang(ja) { word-break: keep-all; overflow-wrap: anywhere; }
 
 .badges { margin-top: 20px; width: 100%; }
 .badges :global(.store-badges) { gap: 10px 24px; }
@@ -49,7 +52,9 @@
 
 .disclosure { margin-top: 6px; }
 
-/* ── section chips: x-scroll on mobile (bleeds to the screen edge), wrap on desktop ── */
+/* ── section chips: x-scroll on mobile (bleeds to the screen edge), 3 + 3 on desktop ──
+   No data-lenis-prevent (and so no overscroll containment on y): the row only
+   scrolls on x, and a vertical swipe or wheel that starts on it scrolls the page. */
 .chips {
   margin: 18px calc(var(--gutter) * -1) 0;
   width: calc(100% + var(--gutter) * 2);
@@ -74,8 +79,8 @@
   align-items: center;
   gap: 8px;
   position: relative;
-  height: 36px;
-  padding: 0 16px 0 4px;
+  min-height: 44px;
+  padding: 0 16px 0 8px;
   border-radius: 9999px;
   color: var(--color-ink);
   font: 600 13.5px/1 var(--font-sans);
@@ -85,8 +90,6 @@
   transition: transform var(--dur-fast) var(--ease-reveal), box-shadow var(--dur-base) var(--ease-reveal);
 }
 .chip:lang(ja) { font-size: 13px; }
-/* the 36px pill carries a 44px hit target (§3.4) */
-.chip::after { content: ""; position: absolute; inset: -4px 0; }
 .chipIcon {
   display: inline-grid;
   place-items: center;
@@ -132,6 +135,24 @@
   z-index: 1;
 }
 .phoneRise { animation: phoneIn .7s var(--ease-hero) 80ms both; }
+/* the whole phone links to the call demo (its mock CTA looks tappable) */
+.phoneLink {
+  position: relative;
+  display: block;
+  border-radius: 52px;
+  transition: transform var(--dur-base) var(--ease-reveal);
+}
+.phoneHit {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border-radius: inherit;
+  -webkit-tap-highlight-color: transparent;
+}
+.phoneHit:focus-visible { outline: 3px solid var(--color-ink); outline-offset: 16px; }
+.srOnly { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+@media (hover: hover) { .phoneLink:has(> .phoneHit:hover) { transform: translateY(-4px); } }
+.phoneLink:has(> .phoneHit:active) { transform: scale(.985); }
 
 .sticker {
   position: absolute;
@@ -141,9 +162,10 @@
   will-change: transform;
 }
 .sticker:not([data-mobile]) { display: none; }
-/* mobile: `official` top-right of the phone, `first60` on the left, both over the top edge */
-.sticker[data-slot="official"] { right: -14px; top: 56px; }
-.sticker[data-slot="first60"] { left: -22px; top: 128px; }
+/* mobile: `official` top-right of the phone, `first60` on the left, both over the
+   top of the screen, below its header row (「あとで」 / "Maybe later" stays readable) */
+.sticker[data-slot="official"] { right: -14px; top: 88px; }
+.sticker[data-slot="first60"] { left: -22px; top: 146px; }
 
 .note {
   position: relative;
@@ -181,8 +203,18 @@
     column-gap: 20px;
     align-items: center;
   }
-  .copy { grid-column: 1 / span 6; }
+  .copy { grid-column: 1 / span 6; container-type: inline-size; }
   .title { margin-top: 20px; }
+  /* EN: two lines max (§5.1), "Talk with your favorites, / out loud.". The first
+     line is ~10.8em wide, so the H1 may run one column (+gap) past the copy
+     column (the phone and its stickers start after the next gap) and its size
+     follows that width. */
+  .title:lang(en) {
+    max-width: calc(100% + (100cqi + 20px) / 6);
+    width: max-content;
+    font-size: min(5rem, (100cqi + (100cqi + 20px) / 6) / 11.2);
+    text-wrap: wrap; /* break at the comma, not balanced into "your / favorites" */
+  }
   .lead { margin-top: 22px; }
   .badges { margin-top: 32px; }
   /* badges + meta on the left, the scan-to-download QR on the right */
@@ -215,13 +247,21 @@
     margin: 28px 0 0;
     overflow: visible;
   }
-  .chips ul { flex-wrap: wrap; width: auto; padding: 0; gap: 10px; }
+  /* two rows of three, whatever the label lengths (never 4 + 2 or 5 + 1):
+     a full-width break item is ordered between the 3rd and 4th chip */
+  .chips ul { flex-wrap: wrap; width: auto; padding: 0; gap: 0 8px; }
+  .chips li:nth-child(-n + 3) { order: 1; }
+  .chips li:nth-child(n + 4) { order: 3; }
+  .chips ul::after { content: ""; order: 2; flex-basis: 100%; height: 8px; }
+  .chip { padding: 0 14px 0 8px; }
 
   .visual { grid-column: 8 / span 4; margin-top: 0; }
   .sticker:not([data-mobile]) { display: block; }
   /* each sticker overlaps the bezel by a fixed amount and hangs outside, whatever its label length */
   .sticker[data-slot="official"] { right: calc(100% - 44px); left: auto; top: 29%; }
-  .sticker[data-slot="live"] { left: calc(100% - 52px); right: auto; top: 6%; }
+  /* out past the bezel and just under the screen's header row (「あとで」 /
+     "Maybe later" stays readable), below the language chip's corner */
+  .sticker[data-slot="live"] { left: calc(100% - 36px); right: auto; top: 14%; }
   .sticker[data-slot="first60"] { left: calc(100% - 36px); right: auto; top: 50%; }
   .sticker[data-slot="call"] { right: calc(100% - 40px); left: auto; bottom: 22%; top: auto; }
   .sticker :global(.sticker):lang(en) { letter-spacing: .06em; font-size: 13px; }
@@ -239,9 +279,21 @@
 @media (min-width: 1024px) and (max-height: 760px) {
   .phoneRise { zoom: .8; }
   .hero { padding-top: calc(var(--header-h) + 24px); }
+  /* one row that scrolls on x, faded at the end so it reads as more */
+  .chips {
+    width: 100%;
+    margin-top: 20px;
+    overflow-x: auto;
+    -webkit-mask: linear-gradient(90deg, #000 calc(100% - 40px), transparent);
+    mask: linear-gradient(90deg, #000 calc(100% - 40px), transparent);
+  }
+  .chips ul { flex-wrap: nowrap; width: max-content; padding: 0 40px 0 0; gap: 8px; }
+  .chips ul::after { content: none; }
 }
 /* narrow desktop: stickers tuck in so they never leave the viewport */
 @media (min-width: 1024px) and (max-width: 1279.98px) {
   .sticker[data-slot="first60"] { left: calc(100% - 110px); top: 64%; }
-  .sticker[data-slot="live"] { left: calc(100% - 96px); }
+  .sticker[data-slot="live"] { left: calc(100% - 72px); }
+  /* clear of the scan-to-download QR card in the copy column */
+  .sticker[data-slot="call"] { right: calc(100% - 100px); }
 }

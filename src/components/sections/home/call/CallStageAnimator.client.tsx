@@ -3,15 +3,45 @@
 import { useAnchorScope } from '@/lib/motion/use-anchor-scope';
 import { useExpandStage } from '@/lib/motion/use-expand-stage';
 import type { FillTarget } from '@/components/site/fill/FillAnimator.client';
+import { clock, FREE_SECONDS } from './clock';
 
 const MQ_DESKTOP = '(min-width: 1024px)';
 
 type CallState = 'connecting' | 'listening' | 'thinking' | 'speaking';
 
+/**
+ * Beat positions (timeline progress, duration 1). The clip opens over
+ * [0.06, 0.30] so the cropped, half-built frame is on screen briefly; every
+ * later beat starts from ~0.32 and the demo CTA lands at 0.80 with a hold.
+ */
+const B = {
+  clipDesktop: [0.06, 0.3] as [number, number],
+  clipMobile: [0.06, 0.28] as [number, number],
+  /** call controls and meter fade in once the clip edge has passed them */
+  chrome: [0.28, 0.36] as [number, number],
+  /** the fan's turn: light rises from the bottom (listening) */
+  fan: 0.32,
+  /** thinking: the fan's light drifts up and fades */
+  think: 0.445,
+  /** the light moves to 推し */
+  avatar: 0.475,
+  /** 推し speaks: beats, oshi caption fill, meter counts */
+  speak: 0.505,
+  /** the waveform settles */
+  settle: 0.63,
+  /** transcript toast and demo CTA arrive (0.80–0.86), then hold */
+  demo: 0.8,
+} as const;
+/** A finished demo resets once its (already faded) card is below the arrival point. */
+const REWIND_DONE = B.demo - 0.02;
+/** A running demo stops while its root is still half visible, never runs hidden. */
+const REWIND_RUNNING = B.demo + 0.03;
+
 const clamp01 = (v: number) => Math.min(1, Math.max(0, v));
 const span = (p: number, a: number, b: number) => clamp01((p - a) / (b - a));
-const stateAt = (p: number): CallState => (p < 0.4 ? 'connecting' : p < 0.52 ? 'listening' : p < 0.58 ? 'thinking' : 'speaking');
-const meterAt = (p: number) => `0:${String(60 - Math.round(12 * span(p, 0.58, 0.86))).padStart(2, '0')}`;
+const stateAt = (p: number): CallState => (p < B.fan ? 'connecting' : p < B.think ? 'listening' : p < B.speak ? 'thinking' : 'speaking');
+/** 1:00 → 0:48 while 推し speaks. */
+const meterAt = (p: number) => clock(FREE_SECONDS - Math.round(12 * span(p, B.speak, B.demo)));
 
 /** The external fill target of a `[data-caption]` wrapper (or the element itself). */
 function fillTarget(el: Element | null): FillTarget | null {
@@ -19,7 +49,7 @@ function fillTarget(el: Element | null): FillTarget | null {
   return (el.matches('[data-fill-driver="external"]') ? el : el.querySelector('[data-fill-driver="external"]')) as FillTarget | null;
 }
 
-/** The text element of the `0:60` meter (the hook may sit on the value or on its card). */
+/** The text element of the `1:00` meter (the hook may sit on the value or on its card). */
 function meterText(el: Element | null): HTMLElement | null {
   if (!el) return null;
   if (/^\d:\d{2}$/.test(el.textContent?.trim() ?? '') && !el.children.length) return el as HTMLElement;
@@ -29,8 +59,9 @@ function meterText(el: Element | null): HTMLElement | null {
 /**
  * Stage #1 timeline (spec §5.4). `useExpandStage` owns the clip, bezel,
  * background and intro colours; `extend` adds the call beats by progress:
- * hold → handoff (0.05) → expand → fan's turn (0.40) → thinking (0.52) →
- * 推し speaks (0.58) → transcript toast and demo CTA (0.86). Discrete state
+ * hold → handoff (0.05) → expand (0.06–0.30) → controls/meter (0.28–0.36) →
+ * fan's turn (0.32) → thinking (0.445) → 推し speaks (0.505) → transcript
+ * toast and demo CTA (0.80), see `B`. Discrete state
  * (call state, meter, caption fills) is derived from progress in one onUpdate,
  * so scrubbing backwards always lands on a consistent frame. Lite: the hook's
  * simple reveal, glows by opacity only. Reduced motion: nothing runs.
@@ -42,7 +73,7 @@ export function CallStageAnimator() {
     direction: 'expand',
     // Mobile expands sooner (§5.4); read when the scene is (re)built.
     get clip(): [number, number] {
-      return window.matchMedia(MQ_DESKTOP).matches ? [0.06, 0.4] : [0.06, 0.34];
+      return window.matchMedia(MQ_DESKTOP).matches ? B.clipDesktop : B.clipMobile;
     },
     introToNight: [0.06, 0.3],
     scrub: 0.5,
@@ -61,7 +92,10 @@ export function CallStageAnimator() {
       const wave = one('[data-wave]');
       const toast = one('[data-toast]');
       const demo = one('[data-demo-root]');
-      const meter = meterText(one('[data-meter]'));
+      const meterHook = one('[data-meter]');
+      const meter = meterText(meterHook);
+      const meterCard = meterHook?.closest<HTMLElement>('.fm-meter') ?? meterHook;
+      const controls = one('[data-call-controls]') ?? one('.fm-call-controls');
       const fanFill = fillTarget(one('[data-caption="fan"]'));
       const oshiFill = fillTarget(one('[data-caption="oshi"]'));
 
@@ -80,50 +114,61 @@ export function CallStageAnimator() {
         ro.observe(title);
       }
 
-      // 0.40–0.52 the fan's turn: light rises from the bottom.
+      // 0.28–0.36: the call chrome (end/mute/speaker, free meter) fades in
+      // after the clip edge has swept past, so it is never seen sliced.
+      const chrome = [controls, meterCard].filter((el): el is HTMLElement => Boolean(el));
+      if (chrome.length) {
+        tl.fromTo(chrome, { autoAlpha: 0 }, { autoAlpha: 1, duration: B.chrome[1] - B.chrome[0], ease: 'power1.out' }, B.chrome[0]);
+      }
+
+      // fan's turn: light rises from the bottom.
       if (fanGlow) {
         tl.fromTo(
           fanGlow,
           { yPercent: 40, y: 0, autoAlpha: 0, scale: lite ? 1 : 0.95 },
-          { yPercent: 0, autoAlpha: 1, scale: lite ? 1 : 1.1, duration: 0.12, ease: 'power2.out' },
-          0.4,
+          { yPercent: 0, autoAlpha: 1, scale: lite ? 1 : 1.1, duration: B.think - B.fan, ease: 'power2.out' },
+          B.fan,
         );
-        // 0.52–0.58 thinking: it drifts up and fades.
-        tl.to(fanGlow, { y: -140, autoAlpha: 0, duration: 0.06, ease: 'power3.inOut' }, 0.52);
+        // thinking: it drifts up and fades.
+        tl.to(fanGlow, { y: -140, autoAlpha: 0, duration: B.speak - B.think, ease: 'power3.inOut' }, B.think);
       }
 
-      // 0.55 the light moves to 推し; 0.58–0.86 it beats while they speak.
+      // The light moves to 推し, then beats while they speak.
       if (avatarGlow) {
         gsap.set(avatarGlow, { animation: 'none' });
-        tl.fromTo(avatarGlow, { autoAlpha: 0, scale: lite ? 1 : 0.82 }, { autoAlpha: 1, scale: 1, duration: 0.03 }, 0.55);
-        if (!lite) tl.to(avatarGlow, { keyframes: { scale: [1, 1.2, 0.9, 1.25, 0.95, 1.15, 1] }, duration: 0.28, ease: 'none' }, 0.58);
+        tl.fromTo(avatarGlow, { autoAlpha: 0, scale: lite ? 1 : 0.82 }, { autoAlpha: 1, scale: 1, duration: B.speak - B.avatar }, B.avatar);
+        if (!lite) tl.to(avatarGlow, { keyframes: { scale: [1, 1.2, 0.9, 1.25, 0.95, 1.15, 1] }, duration: B.demo - B.speak, ease: 'none' }, B.speak);
       }
       if (wave) {
-        tl.fromTo(wave, { '--amp': 0.2 }, { '--amp': 1.3, duration: 0.12, ease: 'power2.out' }, 0.58);
-        tl.to(wave, { '--amp': 1, duration: 0.16, ease: 'sine.inOut' }, 0.7);
+        tl.fromTo(wave, { '--amp': 0.2 }, { '--amp': 1.3, duration: B.settle - B.speak, ease: 'power2.out' }, B.speak);
+        tl.to(wave, { '--amp': 1, duration: B.demo - B.settle, ease: 'sine.inOut' }, B.settle);
       }
 
-      // 0.86–0.92 transcript toast; 0.86–1 the demo CTA arrives and holds.
-      if (toast) tl.fromTo(toast, { y: 12, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.06, ease: 'power3.out' }, 0.86);
-      if (demo) tl.fromTo(demo, { y: 16, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.06, ease: 'power3.out' }, 0.86);
+      // transcript toast and the demo CTA arrive, then hold to the end.
+      if (toast) tl.fromTo(toast, { y: 12, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.06, ease: 'power3.out' }, B.demo);
+      if (demo) tl.fromTo(demo, { y: 16, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.06, ease: 'power3.out' }, B.demo);
 
       // (The header surface — light while the stage is still cream — is
       // handled by useExpandStage from data-surface-start.)
       // Discrete beats from progress. While the demo runs it owns these.
-      let last: CallState | null = null;
+      // Scrolling back out of the demo's hold resets it (lc:call-rewind, see
+      // CallDemo): a running demo stops before its root fades out, so it
+      // never keeps playing (and holding focus) while hidden.
       const sync = () => {
-        if (tl.progress() < 0.84 && root.hasAttribute('data-demo-done')) window.dispatchEvent(new Event('lc:call-rewind'));
-        if (root.hasAttribute('data-demo')) return;
         const p = tl.progress();
+        const running = root.getAttribute('data-demo') === 'running';
+        if ((running && p < REWIND_RUNNING) || (p < REWIND_DONE && root.hasAttribute('data-demo-done'))) {
+          window.dispatchEvent(new Event('lc:call-rewind'));
+        }
+        if (root.hasAttribute('data-demo')) return;
         const s = stateAt(p);
-        if (callRoot && s !== last) callRoot.dataset.state = s;
-        last = s;
+        if (callRoot && callRoot.dataset.state !== s) callRoot.dataset.state = s;
         if (meter) {
           const m = meterAt(p);
           if (meter.textContent !== m) meter.textContent = m;
         }
-        fanFill?.__fill?.(span(p, 0.4, 0.52));
-        oshiFill?.__fill?.(span(p, 0.58, 0.86));
+        fanFill?.__fill?.(span(p, B.fan, B.think));
+        oshiFill?.__fill?.(span(p, B.speak, B.demo));
       };
       tl.eventCallback('onUpdate', sync); // useExpandStage also re-runs it after each refresh
       // The fill animators may initialise after this timeline: sync once they have.
@@ -136,7 +181,7 @@ export function CallStageAnimator() {
         ro?.disconnect();
         media.style.removeProperty('--intro-h');
         if (callRoot) callRoot.dataset.state = 'speaking';
-        if (meter) meter.textContent = '0:60';
+        if (meter) meter.textContent = clock(FREE_SECONDS);
         fanFill?.__fill?.(1);
         oshiFill?.__fill?.(1);
       };

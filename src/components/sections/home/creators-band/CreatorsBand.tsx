@@ -1,6 +1,6 @@
 import type { SectionProps } from '@/i18n/types';
 import { localePath } from '@/i18n/paths';
-import { Section, Eyebrow, ButtonLink, Ring, Aura } from '@/components/site';
+import { Section, Eyebrow, ButtonLink, Ring, Aura, ScreenNote } from '@/components/site';
 import { Units } from '@/lib/units';
 import { BandRing } from './BandRing.client';
 import s from './creators-band.module.css';
@@ -10,7 +10,8 @@ import s from './creators-band.module.css';
  * inset from the page edge: copy + a violet ghost link on one side, and on
  * the other a glass card where Aoi's clone ring fills as the band scrolls in
  * (作成中 → クローンの準備ができました). No percentage anywhere. Server HTML is
- * the final state (ring full, "ready").
+ * the final state (ring full, "ready"). Aoi is fictional: the screen note sits
+ * under the card like every other mockup cluster (spec §1.2.8).
  */
 export function CreatorsBand({ d, lang }: SectionProps) {
   const t = d.home.creatorsBand;
@@ -50,6 +51,9 @@ export function CreatorsBand({ d, lang }: SectionProps) {
               <span className={s.name} aria-hidden="true">
                 {d.personas.aoi.name}
               </span>
+            </div>
+            <div className={s.note}>
+              <ScreenNote d={d} />
             </div>
           </div>
 

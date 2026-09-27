@@ -11,7 +11,7 @@
       "body": "Every clone is an official AI clone, approved by the creator."
     },
     "labelled": {
-      "title": "Always labelled",
+      "title": "Always labeled",
       "body": "Every creator profile is an AI clone. LIVE shows and Stories are marked as AI-generated too."
     },
     "memory": {
@@ -20,7 +20,7 @@
     }
   },
   "oshiColor": {
-    "label": "Pick your oshi color",
+    "label": "Pick their color",
     "hint": "The page glows in their color.",
     "options": {
       "rose": "Rose",

@@ -7,7 +7,7 @@ import { BrandRow, CallBackdrop, cx, personaOf, vars } from './parts';
 /**
  * F1 `FirstCall00c` (spec §7.1): the free 60-second first call (V3 00c).
  * Night screen. Hooks: `[data-avatar-glow]` (breathing loop), `[data-meter]`
- * (the `0:60` value text; animators rewrite its textContent), `[data-m="cta"]`
+ * (the `1:00` value text; animators rewrite its textContent), `[data-m="cta"]`
  * (soft pulse loop). Loops only run while the host section is `.is-inview`.
  * Removed from the design: the coin reward line and the version string.
  */
@@ -36,7 +36,7 @@ export function FirstCall00c({ d, persona = 'oshi', className }: MockProps) {
         <div className="fm-meter glass-night fm-first-meter">
           <span className="fm-meter-label">{t.freeLabel}</span>
           <span className="fm-meter-value" data-meter="">
-            0:60
+            1:00
           </span>
         </div>
 

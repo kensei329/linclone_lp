@@ -56,7 +56,7 @@ export function StudioJoin({ d, lang }: SectionProps) {
             <div className="cr-invite-email">
               <span className="t-label ink-2">{t.emailLabel}</span>
               <code className="cr-email-code">{SITE.contactEmail}</code>
-              <CopyEmail label={t.copyEmail} copiedLabel={t.copied} placement="join" variant="chip" />
+              <CopyEmail label={t.copyEmail} copiedLabel={t.copied} selectedLabel={d.common.copySelected} placement="join" variant="chip" />
             </div>
             <details className="cr-template">
               <summary>

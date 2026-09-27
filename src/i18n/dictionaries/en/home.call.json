@@ -3,13 +3,13 @@
     "num": "01",
     "label": "Calls"
   },
-  "title": "Say it out loud. It’s closer.",
+  "title": "Hear their voice. Feel closer.",
   "lead": "A real-time conversation in their voice. When it’s your turn, a light rises from the bottom of the screen; when they answer, it moves to them. Each call is transcribed into your chat, too.",
   "fanCaption": "Guess what, something good happened today",
   "oshiCaption": "Wait, what? Tell me everything, Hina.",
   "routes": "Speaker · Bluetooth · CarPlay",
-  "trust": "If a call doesn’t connect, you’re not charged.",
-  "billing": "You’re only charged for the time you could hear them.",
+  "trust": "No charge if a call fails to connect.",
+  "billing": "On calls you place, you’re only charged for the time you could hear them.",
   "transcriptToast": "Transcribing your call…",
   "stageAlt": "Illustration of a voice call with a creator’s AI clone. The light moves to whoever is speaking."
 }

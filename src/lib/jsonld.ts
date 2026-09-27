@@ -25,6 +25,22 @@ function firstSentence(text: string, lang: Locale): string {
 
 const withStop = (s: string, lang: Locale) => (lang === 'ja' ? `${s}。` : `${s}.`);
 
+/**
+ * The same full Organization and WebSite nodes on every page: every WebPage
+ * points at #website via isPartOf, so each graph must define it.
+ */
+const ORGANIZATION = {
+  '@type': 'Organization',
+  '@id': ORG_ID,
+  name: SITE.name,
+  legalName: SITE.legalName,
+  url: `${O}/`,
+  logo: { '@type': 'ImageObject', url: `${O}/brand/logo-512.png`, width: 512, height: 512 },
+  email: SITE.contactEmail,
+  sameAs: [SITE.appStoreDeveloperUrl],
+} as const;
+const WEBSITE = { '@type': 'WebSite', '@id': WEBSITE_ID, name: SITE.name, url: `${O}/`, inLanguage: ['ja', 'en'], publisher: { '@id': ORG_ID } } as const;
+
 export function homeGraph(lang: Locale, d: Dictionary): object {
   const url = abs(localePath(lang, 'home'));
   const appStoreUrl = lang === 'ja' ? FAN_APP.appStoreUrlJa : FAN_APP.appStoreUrlIntl;
@@ -32,20 +48,8 @@ export function homeGraph(lang: Locale, d: Dictionary): object {
   return {
     '@context': 'https://schema.org',
     '@graph': [
-      {
-        '@type': 'Organization',
-        '@id': ORG_ID,
-        name: SITE.name,
-        legalName: SITE.legalName,
-        url: `${O}/`,
-        logo: { '@type': 'ImageObject', url: `${O}/brand/logo-512.png`, width: 512, height: 512 },
-        email: SITE.contactEmail,
-        sameAs: [SITE.appStoreDeveloperUrl],
-      },
-      // The WebSite node lives on `/` only.
-      ...(lang === 'ja'
-        ? [{ '@type': 'WebSite', '@id': WEBSITE_ID, name: SITE.name, url: `${O}/`, inLanguage: ['ja', 'en'], publisher: { '@id': ORG_ID } }]
-        : []),
+      ORGANIZATION,
+      WEBSITE,
       {
         '@type': 'WebPage',
         '@id': lang === 'ja' ? `${O}/#webpage` : `${url}#webpage`,
@@ -80,7 +84,8 @@ export function creatorsGraph(lang: Locale, d: Dictionary): object {
   return {
     '@context': 'https://schema.org',
     '@graph': [
-      { '@type': 'Organization', '@id': ORG_ID, name: SITE.name, legalName: SITE.legalName, url: `${O}/` },
+      ORGANIZATION,
+      WEBSITE,
       {
         '@type': 'WebPage',
         '@id': `${url}#webpage`,
@@ -89,7 +94,10 @@ export function creatorsGraph(lang: Locale, d: Dictionary): object {
         description: d.meta.creators.description,
         inLanguage: lang,
         isPartOf: { '@id': WEBSITE_ID },
-        about: { '@id': STUDIO_ID },
+        // LC Studio is described as an app only once it is public (verdict: no
+        // MobileApplication while unpublished); until then the page is about the company.
+        about: { '@id': STUDIO_LIVE ? STUDIO_ID : ORG_ID },
+        publisher: { '@id': ORG_ID },
         breadcrumb: { '@id': `${url}#breadcrumb` },
       },
       {
@@ -100,17 +108,22 @@ export function creatorsGraph(lang: Locale, d: Dictionary): object {
           { '@type': 'ListItem', position: 2, name: d.meta.creators.breadcrumbCreators, item: url },
         ],
       },
-      {
-        '@type': 'MobileApplication',
-        '@id': STUDIO_ID,
-        name: d.common.studioBrand,
-        applicationCategory: 'BusinessApplication',
-        operatingSystem: 'iOS, Android',
-        description: d.creators.faq.items.what.a,
-        // Never `offers`: a price of 0 would imply LC Studio is free.
-        ...(STUDIO_LIVE ? { installUrl: STUDIO_APP.appStoreUrl, downloadUrl: [STUDIO_APP.appStoreUrl, STUDIO_APP.playUrl] } : {}),
-        publisher: { '@id': ORG_ID },
-      },
+      ...(STUDIO_LIVE
+        ? [
+            {
+              '@type': 'MobileApplication',
+              '@id': STUDIO_ID,
+              name: d.common.studioBrand,
+              applicationCategory: 'BusinessApplication',
+              operatingSystem: 'iOS, Android',
+              description: d.creators.faq.items.what.a,
+              // Never `offers`: a price of 0 would imply LC Studio is free.
+              installUrl: STUDIO_APP.appStoreUrl,
+              downloadUrl: [STUDIO_APP.appStoreUrl, STUDIO_APP.playUrl],
+              publisher: { '@id': ORG_ID },
+            },
+          ]
+        : []),
     ],
   };
 }

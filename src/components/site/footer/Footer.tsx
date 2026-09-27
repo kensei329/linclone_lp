@@ -51,10 +51,10 @@ export function Footer({ d, lang, page }: { d: Dictionary; lang: Locale; page: '
         <div className="footer-grid">
           <div className="footer-brand">
             {/* eslint-disable-next-line @next/next/no-img-element -- brand mark */}
-            <img src="/brand/mark-white-256.png" alt="" width={36} height={36} />
+            <img src="/brand/mark-white-256.png" alt="" width={36} height={36} loading="lazy" decoding="async" fetchPriority="low" />
             <p className="wordmark">{d.common.brand}</p>
             <p className="footer-tagline t-small">{d.footer.tagline}</p>
-            {home ? <StoreBadges d={d} lang={lang} placement="footer" /> : <StudioStoreCTA d={d} lang={lang} compact />}
+            {home ? <StoreBadges d={d} lang={lang} placement="footer" /> : <StudioStoreCTA d={d} lang={lang} compact labelled />}
           </div>
           <div className="footer-cols">
             <Column

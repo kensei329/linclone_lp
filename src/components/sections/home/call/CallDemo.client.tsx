@@ -6,6 +6,7 @@ import type { gsap as GsapType } from 'gsap';
 import type { Locale } from '@/i18n/config';
 import { loadMotion } from '@/lib/motion/load';
 import { track } from '@/lib/analytics';
+import { clock, FREE_SECONDS } from './clock';
 
 export type CallDemoStrings = {
   button: string;
@@ -122,19 +123,27 @@ export function CallDemo({ lang, strings: t, phrases, icons, badges }: CallDemoP
   }, [host, phase]);
 
   // While the done card shows, the stage captions step back (CSS on
-  // [data-demo-done]); scrolling back into the story (lc:call-rewind, from
-  // the stage animator) resets the demo to its button.
+  // [data-demo-done]). Scrolling back into the story (lc:call-rewind, from
+  // the stage animator) resets the demo to its button: a finished demo drops
+  // its card, a running one stops (the stage animator then retakes the call
+  // state, meter and captions) so it never plays on hidden. Focus that was
+  // inside the demo returns to its button.
   useEffect(() => {
-    if (phase !== 'done') return;
+    if (phase === 'idle') return;
     const call = document.getElementById('call');
-    call?.setAttribute('data-demo-done', '');
-    const rewind = () => setPhase('idle');
+    if (phase === 'done') call?.setAttribute('data-demo-done', '');
+    const rewind = () => {
+      const hadFocus = Boolean(host?.contains(document.activeElement));
+      if (run.current) run.current.stop();
+      else setPhase('idle');
+      if (hadFocus) requestAnimationFrame(() => btnRef.current?.focus({ preventScroll: true }));
+    };
     window.addEventListener('lc:call-rewind', rewind);
     return () => {
-      call?.removeAttribute('data-demo-done');
+      if (phase === 'done') call?.removeAttribute('data-demo-done');
       window.removeEventListener('lc:call-rewind', rewind);
     };
-  }, [phase]);
+  }, [phase, host]);
 
   // The done card pops in (back.out(1.6) .45s) and takes focus.
   useEffect(() => {
@@ -192,12 +201,12 @@ export function CallDemo({ lang, strings: t, phrases, icons, badges }: CallDemoP
     if (!strip) return;
     const fx = !document.documentElement.hasAttribute('data-lite');
     const prevState = s.callRoot?.dataset.state ?? 'speaking';
-    const prevMeter = s.meter?.textContent ?? '0:60';
+    const prevMeter = s.meter?.textContent ?? clock(FREE_SECONDS);
     const setState = (v: string) => {
       if (s.callRoot) s.callRoot.dataset.state = v;
     };
     const setMeter = (sec: number) => {
-      if (s.meter) s.meter.textContent = `0:${String(sec).padStart(2, '0')}`;
+      if (s.meter) s.meter.textContent = clock(sec);
     };
     s.call?.setAttribute('data-demo', 'running');
 
@@ -227,7 +236,7 @@ export function CallDemo({ lang, strings: t, phrases, icons, badges }: CallDemoP
       // 0 · connecting: squeeze, two ripples, the meter resets.
       tl.call(() => {
         setState('connecting');
-        setMeter(60);
+        setMeter(FREE_SECONDS);
       }, [], 0);
       if (btnRef.current) tl.fromTo(btnRef.current, { scale: 1 }, { scale: 0.96, duration: 0.08, yoyo: true, repeat: 1, ease: 'power2.out' }, 0);
       if (fx) {
@@ -238,7 +247,7 @@ export function CallDemo({ lang, strings: t, phrases, icons, badges }: CallDemoP
         if (s.fanGlow) tl.to(s.fanGlow, { autoAlpha: 0, duration: 0.2 }, 0);
       }
       if (s.wave) tl.to(s.wave, { '--amp': 0.2, duration: 0.3 }, 0);
-      for (let i = 1; i <= DURATION; i++) tl.call(setMeter, [60 - i], i);
+      for (let i = 1; i <= DURATION; i++) tl.call(setMeter, [FREE_SECONDS - i], i);
 
       const say = (k: LineKey, at: number) => {
         const el = line(k);

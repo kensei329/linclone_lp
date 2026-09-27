@@ -35,8 +35,11 @@ const ITEMS: Record<IndexKey, { href: string; icon: IconName }> = {
 
 /**
  * 「アプリでできること、ぜんぶ」 (spec §5.9): 22 chip links, each to the section
- * or bento tile that shows the feature. Always rendered and always visible
- * (it is the page's feature map for search engines and for skimmers).
+ * or bento tile that shows the feature. Always in the server HTML (it is the
+ * page's feature map for search engines and for skimmers). Below 1024px the
+ * list sits in a closed <details> behind 「すべて見る」 so phones don't scroll
+ * through every chip; from 1024px it is always shown (the summary hides
+ * where `::details-content` can be styled, otherwise it stays as the toggle).
  */
 export function FeatureIndex({ d, lang }: SectionProps) {
   const t = d.home.more;
@@ -46,19 +49,25 @@ export function FeatureIndex({ d, lang }: SectionProps) {
       <h3 id="more-index-title" className={`t-h3 ${s.indexTitle}`}>
         <Units text={t.indexTitle} lang={lang} mode="phrase" />
       </h3>
-      <ul className={s.indexList}>
-        {keys.map((k) => (
-          <li key={k}>
-            <a href={ITEMS[k].href} className={s.indexChip}>
-              <span className={s.indexIcon} aria-hidden="true">
-                <Icon name={ITEMS[k].icon} filled size={16} />
-              </span>
-              <span>{t.index[k]}</span>
-              <Icon name="arrow_forward" size={16} className={s.indexArrow} />
-            </a>
-          </li>
-        ))}
-      </ul>
+      <details className={s.indexMore}>
+        <summary className={s.indexToggle}>
+          <span>{t.indexToggle}</span>
+          <Icon name="expand_more" size={20} className={s.indexToggleIcon} />
+        </summary>
+        <ul className={s.indexList}>
+          {keys.map((k) => (
+            <li key={k}>
+              <a href={ITEMS[k].href} className={s.indexChip}>
+                <span className={s.indexIcon} aria-hidden="true">
+                  <Icon name={ITEMS[k].icon} filled size={16} />
+                </span>
+                <span>{t.index[k]}</span>
+                <Icon name="arrow_forward" size={16} className={s.indexArrow} />
+              </a>
+            </li>
+          ))}
+        </ul>
+      </details>
     </nav>
   );
 }

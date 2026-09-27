@@ -2,7 +2,7 @@ import type { CSSProperties } from 'react';
 import type { SectionProps } from '@/i18n/types';
 import { localePath } from '@/i18n/paths';
 import { Units } from '@/lib/units';
-import { Section, Eyebrow, MailtoButton, CopyEmail, StudioStoreCTA, CaptionMarker, Icon } from '@/components/site';
+import { Section, Eyebrow, MailtoButton, CopyEmail, StudioStoreCTA, CaptionMarker, Icon, ScreenNote } from '@/components/site';
 import { PhoneFrame } from '@/components/mockups/kit';
 import { S09Building } from '@/components/mockups/studio/S09Building';
 import '../creators.css';
@@ -38,7 +38,7 @@ export function CreatorsHero({ d, lang }: SectionProps) {
           <div className="cr-hero-actions cr-rise" style={rise(3)}>
             <div className="cr-cta-row">
               <MailtoButton d={d} lang={lang} variant="primary" placement="hero" />
-              <CopyEmail label={t.copyEmail} copiedLabel={t.copied} placement="hero" />
+              <CopyEmail label={t.copyEmail} copiedLabel={t.copied} selectedLabel={d.common.copySelected} placement="hero" />
             </div>
             <StudioStoreCTA d={d} lang={lang} />
             <p className="t-small cr-note">
@@ -68,6 +68,9 @@ export function CreatorsHero({ d, lang }: SectionProps) {
           <PhoneFrame size={{ mobile: 300, desktop: 340 }} label={t.phoneAlt} className="cr-hero-phone">
             <S09Building d={d} lang={lang} persona="aoi" state="building" />
           </PhoneFrame>
+          <div className="cr-hero-note">
+            <ScreenNote d={d} />
+          </div>
         </div>
       </div>
     </Section>

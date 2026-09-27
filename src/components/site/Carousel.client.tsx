@@ -54,7 +54,7 @@ export function CarouselClient({ label, items, itemWidth, a11y }: CarouselClient
   };
 
   return (
-    <div className="carousel" role="region" aria-roledescription="carousel" aria-label={label} data-lenis-prevent="" onKeyDown={onKey}>
+    <div className="carousel" role="region" aria-roledescription="carousel" aria-label={label} data-lenis-prevent-horizontal="" onKeyDown={onKey}>
       <ul ref={track} className="carousel-track" style={{ '--item-w': itemWidth } as CSSProperties} tabIndex={0}>
         {items.map((item, i) => (
           <li key={i} data-active={i === 0 ? '' : undefined} aria-roledescription="slide" aria-label={fmt(a11y.carouselPosition, { current: i + 1, total: items.length })}>
@@ -64,7 +64,14 @@ export function CarouselClient({ label, items, itemWidth, a11y }: CarouselClient
       </ul>
       {items.length > 1 ? (
         <div className="carousel-controls">
-          <button type="button" className="carousel-btn" aria-label={a11y.carouselPrev} onClick={() => go(active - 1)} disabled={active === 0}>
+          {/* aria-disabled, not disabled: a disabled button drops keyboard focus to <body> at either end */}
+          <button
+            type="button"
+            className="carousel-btn"
+            aria-label={a11y.carouselPrev}
+            aria-disabled={active === 0}
+            onClick={() => active > 0 && go(active - 1)}
+          >
             <Glyph name="chevron_right" size={22} flip />
           </button>
           <ul className="carousel-dots">
@@ -80,7 +87,13 @@ export function CarouselClient({ label, items, itemWidth, a11y }: CarouselClient
               </li>
             ))}
           </ul>
-          <button type="button" className="carousel-btn" aria-label={a11y.carouselNext} onClick={() => go(active + 1)} disabled={active === items.length - 1}>
+          <button
+            type="button"
+            className="carousel-btn"
+            aria-label={a11y.carouselNext}
+            aria-disabled={active === items.length - 1}
+            onClick={() => active < items.length - 1 && go(active + 1)}
+          >
             <Glyph name="chevron_right" size={22} />
           </button>
         </div>
