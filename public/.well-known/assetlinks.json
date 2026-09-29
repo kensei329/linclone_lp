@@ -1,6 +1,7 @@
 [
   {
     "relation": [
+      "delegate_permission/common.get_login_creds",
       "delegate_permission/common.handle_all_urls"
     ],
     "target": {
@@ -8,7 +9,8 @@
       "package_name": "com.linclone.app",
       "sha256_cert_fingerprints": [
         "FA:C6:17:45:DC:09:03:78:6F:B9:ED:E6:2A:96:2B:39:9F:73:48:F0:BB:6F:89:9B:83:32:66:75:91:03:3B:9C",
-        "C6:76:9D:FC:23:91:EF:FA:F5:49:48:14:96:8B:5A:64:D3:48:BF:51:E8:33:7B:D2:C1:ED:1B:FE:CE:96:FA:7F"
+        "C6:76:9D:FC:23:91:EF:FA:F5:49:48:14:96:8B:5A:64:D3:48:BF:51:E8:33:7B:D2:C1:ED:1B:FE:CE:96:FA:7F",
+        "E6:35:FD:72:C4:72:1C:02:44:E8:31:57:9E:57:45:3A:9E:A2:D1:5B:6A:67:A8:3A:80:DF:8A:C8:14:E0:5C:66"
       ]
     }
   },
@@ -23,6 +25,45 @@
       "sha256_cert_fingerprints": [
         "55:4F:D9:05:05:24:CF:16:0B:DD:B6:FA:97:55:47:F3:35:4B:20:83:30:45:82:52:E1:5A:FB:28:8F:A0:F9:CE",
         "B0:D9:F4:00:FD:78:C0:AF:A2:5B:BD:B4:50:53:5F:86:97:1C:0B:57:EE:C7:E2:84:07:91:40:9C:2B:F7:34:42"
+      ]
+    }
+  },
+  {
+    "relation": [
+      "delegate_permission/common.get_login_creds",
+      "delegate_permission/common.handle_all_urls"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.linclone.app.dev",
+      "sha256_cert_fingerprints": [
+        "E6:35:FD:72:C4:72:1C:02:44:E8:31:57:9E:57:45:3A:9E:A2:D1:5B:6A:67:A8:3A:80:DF:8A:C8:14:E0:5C:66"
+      ]
+    }
+  },
+  {
+    "relation": [
+      "delegate_permission/common.get_login_creds",
+      "delegate_permission/common.handle_all_urls"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.linclone.app.stg",
+      "sha256_cert_fingerprints": [
+        "E6:35:FD:72:C4:72:1C:02:44:E8:31:57:9E:57:45:3A:9E:A2:D1:5B:6A:67:A8:3A:80:DF:8A:C8:14:E0:5C:66"
+      ]
+    }
+  },
+  {
+    "relation": [
+      "delegate_permission/common.get_login_creds",
+      "delegate_permission/common.handle_all_urls"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.linclone.app.qa",
+      "sha256_cert_fingerprints": [
+        "E6:35:FD:72:C4:72:1C:02:44:E8:31:57:9E:57:45:3A:9E:A2:D1:5B:6A:67:A8:3A:80:DF:8A:C8:14:E0:5C:66"
       ]
     }
   }
