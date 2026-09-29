@@ -59,5 +59,7 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ['/((?!api|_next/static|_next/image|favicon.ico).*)'],
+  // .well-known is excluded: Apple's and Google's app-association fetchers
+  // read those files, and the IP lookup and cookie are pointless there.
+  matcher: ['/((?!api|_next/static|_next/image|favicon.ico|\\.well-known/).*)'],
 }; 
