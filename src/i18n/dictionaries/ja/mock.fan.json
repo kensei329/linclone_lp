@@ -1,0 +1,375 @@
+{
+  "common": {
+    "tabHome": "ホーム",
+    "tabChat": "チャット",
+    "tabGrow": "育成",
+    "tabLive": "LIVE配信",
+    "tabMyPage": "マイページ",
+    "verified": "公式",
+    "aiGenerated": "AI生成",
+    "newBadge": "新着",
+    "follow": "フォロー",
+    "following": "フォロー中",
+    "callNow": "通話する",
+    "chat": "チャット",
+    "liveBadge": "LIVE"
+  },
+  "firstCall": {
+    "sub": "60秒の無料通話をお試しください",
+    "tapToTalk": "タップして{name}と話す",
+    "later": "あとで",
+    "freeLabel": "無料分",
+    "alt": "最初の無料通話の画面イメージ。"
+  },
+  "call": {
+    "connecting": "接続中…",
+    "listening": "聞いています",
+    "thinking": "考え中…",
+    "speaking": "発言中",
+    "freeLabel": "無料分",
+    "mute": "マイクをミュート",
+    "end": "通話を終了",
+    "speaker": "スピーカー",
+    "alt": "推しのAIクローンとの音声通話の画面イメージ。"
+  },
+  "incoming": {
+    "weekday": "水曜日",
+    "kicker": "着信中",
+    "subtitle": "モーニングコール",
+    "decline": "拒否",
+    "accept": "応答",
+    "alt": "ロック画面にモーニングコールが着信している画面イメージ。"
+  },
+  "morningSetup": {
+    "title": "モーニングコール",
+    "timeHint": "タップで時間を変える",
+    "dateLabel": "日付",
+    "dateValue": "明日",
+    "dateHint": "タップで最初の朝を変える",
+    "repeatLabel": "繰り返し",
+    "once": {
+      "title": "1回のみ",
+      "sub": "1回だけ鳴ります"
+    },
+    "daily": {
+      "title": "毎日",
+      "sub": "毎朝鳴ります"
+    },
+    "weekdays": {
+      "title": "平日",
+      "sub": "月〜金"
+    },
+    "weekends": {
+      "title": "週末",
+      "sub": "土日"
+    },
+    "ringTitle": "電話のように鳴る",
+    "ringBody": "集中モード・おやすみモードの設定次第で鳴りません。",
+    "seeHow": "設定方法を見る",
+    "cta": "予約する",
+    "alt": "モーニングコールの時間と繰り返しを設定する画面イメージ。"
+  },
+  "home": {
+    "greeting": "おはようございます",
+    "followingLabel": "フォロー中",
+    "seeAll": "すべて見る",
+    "followNew": "新しく探す",
+    "readyToTalk": "通話できます",
+    "morningTitle": "モーニングコール",
+    "morningScheduled": "7:00に着信",
+    "morningRepeat": "毎日・タップで変更",
+    "voiceTitle": "最新のボイスメッセージを聴く",
+    "voiceQuote": "「今日もおつかれさま。よくがんばったね」",
+    "alt": "ホーム画面のイメージ。モーニングコールと最新のボイスメッセージ。"
+  },
+  "conversation": {
+    "dayLabel": "今日 12:30",
+    "callEnded": "通話終了",
+    "creator1": "ひなたちゃん、おかえり。朝の話の続き、聞かせて",
+    "fan1": "テストおわった。けっこうできたかも",
+    "creator2": "えらい。ゆうべ遅くまで復習してたもんね",
+    "read": "既読",
+    "chipImage": "画像",
+    "chipVoice": "音声",
+    "composer": "メッセージ",
+    "alt": "推しのAIクローンとのチャット画面のイメージ。"
+  },
+  "story": {
+    "generating": "画像を生成中…",
+    "postBoth": "画像と音声をストーリーに投稿",
+    "posted": "ストーリーに投稿済み ✓",
+    "chatTitle": "チャット",
+    "reactionsRow": "ストーリーのリアクション",
+    "fanMade": "ファンがAIで作成",
+    "replyPlaceholder": "ストーリーに返信…",
+    "storyTitle": "放課後のごほうび",
+    "alt": "返信から画像と音声をつくり、ストーリーに投稿する画面のイメージ。"
+  },
+  "memory": {
+    "title": "2人の関係と記憶",
+    "nickHeading": "{name}からの呼び名",
+    "modesHeading": "2人の関係",
+    "modes": {
+      "standard": "ふつう",
+      "gentle": "やさしい",
+      "bestFriend": "親友",
+      "cheerleader": "応援団",
+      "toughLove": "スパルタ",
+      "tsundere": "ツンデレ"
+    },
+    "recentHeading": "最近の2人の記憶",
+    "memories": {
+      "m1": "朝が苦手",
+      "m2": "今週はテスト期間",
+      "m3": "いちごのスイーツが好き"
+    },
+    "lock": "ロック",
+    "edit": "編集",
+    "delete": "削除",
+    "alt": "2人の関係と記憶の画面イメージ。呼び名、関係モード、最近の記憶。"
+  },
+  "liveFeed": {
+    "title": "LIVE配信",
+    "onAir": "配信中",
+    "theme": "テーマ：雨の日の曲トーク",
+    "join": "LIVEに参加",
+    "alt": "LIVE配信のフィード画面のイメージ。"
+  },
+  "livePlayer": {
+    "follow": "フォロー",
+    "onAir": "配信中",
+    "theme": "テーマ：雨の日に聴きたい曲の話",
+    "disclaimer": "LINCLONE AI・AI生成コンテンツ",
+    "readOnAir": "読み上げ済み",
+    "superChat": "スーパーチャット",
+    "superChatText": "わたしのリクエスト、話してくれてありがとう",
+    "comments": {
+      "c1": {
+        "user": "mocha",
+        "text": "その曲、わたしも好き"
+      },
+      "c2": {
+        "user": "rin.rin",
+        "text": "雨の夜にぴったりの話…"
+      },
+      "c3": {
+        "user": "hinata",
+        "text": "次は元気な曲もリクエストしたい"
+      },
+      "c4": {
+        "user": "sakura",
+        "text": "Kaiの声、落ちつく"
+      }
+    },
+    "gifts": {
+      "rose": "マジックローズ",
+      "star": "ネオンスター",
+      "gem": "サイバージェム",
+      "fireworks": "花火",
+      "guitar": "ネオンギター",
+      "nova": "スーパーノヴァ"
+    },
+    "composer": "コメントする…",
+    "gift": "ギフト",
+    "alt": "音声のLIVE配信を聴いている画面のイメージ。"
+  },
+  "liveRequest": {
+    "title": "推しにLIVE配信をリクエスト",
+    "body": "テーマを選ぶと、準備ができしだい配信が始まります。配信を開始できなかった場合、チケットは返還されます。",
+    "cta": "LIVE配信をリクエスト",
+    "alt": "推しにLIVE配信をリクエストするカードのイメージ。"
+  },
+  "liveSetup": {
+    "title": "LIVE配信をリクエスト",
+    "hostLabel": "ホスト",
+    "hostRole": "ホスト・AI",
+    "topicLabel": "番組のテーマ",
+    "topicValue": "雨の日に聴きたい曲",
+    "commentsLabel": "コメントの読み上げ",
+    "commentsSub": "配信中にAIがコメントを読み上げることがあります",
+    "bgLabel": "背景を選ぶ",
+    "next": "次へ",
+    "alt": "LIVE配信のテーマを入力する画面のイメージ。"
+  },
+  "showPreview": {
+    "title": "番組のプレビュー",
+    "showTitle": "{name}と、雨の日に聴きたい曲の話",
+    "rundown": "進行表",
+    "segments": {
+      "s1": {
+        "title": "オープニング",
+        "desc": "あいさつと、今日のテーマ"
+      },
+      "s2": {
+        "title": "雨の日の一曲トーク",
+        "desc": "Kaiが好きな曲を語る"
+      },
+      "s3": {
+        "title": "コメントとスーパーチャットの読み上げ",
+        "desc": "みんなのおすすめ曲を紹介"
+      },
+      "s4": {
+        "title": "エンディング",
+        "desc": "次回の予告と、おやすみのあいさつ"
+      }
+    },
+    "flowTitle": "配信の流れ",
+    "flow1": "{name}が話し続けるので、無音になりません",
+    "flow2": "コメントが届くと番組が一旦止まります",
+    "flow3": "読んで、答えて、また進行表に戻ります",
+    "start": "配信を始める",
+    "alt": "AIがつくったLIVE配信の進行表の画面イメージ。"
+  },
+  "archive": {
+    "tag": "アーカイブ",
+    "title": "雨の日の曲トーク",
+    "play": "再生",
+    "recording": "録音",
+    "alt": "LIVE配信のアーカイブのイメージ。"
+  },
+  "growPicker": {
+    "title": "育成",
+    "subtitle": "推しのAIに、本当の姿を教えましょう",
+    "cta": "育成",
+    "alt": "育成するクリエイターを選ぶ画面のイメージ。"
+  },
+  "growProfile": {
+    "factSheet": "情報まとめ",
+    "rows": {
+      "drink": {
+        "label": "好きな飲み物",
+        "value": "ほうじ茶ラテ"
+      },
+      "hobby": {
+        "label": "最近ハマっていること",
+        "value": "ボードゲーム"
+      },
+      "style": {
+        "label": "話し方",
+        "value": "ゆったり、ていねい"
+      },
+      "season": {
+        "label": "好きな季節",
+        "value": "秋。紅葉を見に行くのが毎年の楽しみ"
+      }
+    },
+    "creatorBadge": "本人",
+    "addedByCreator": "{name}本人が追加",
+    "cta": "育成する",
+    "alt": "推しの情報まとめの画面イメージ。"
+  },
+  "growReview": {
+    "title": "投稿した内容",
+    "fact": "好きな季節は秋。紅葉を見に行くのが毎年の楽しみ",
+    "source": "情報元のURL",
+    "statusAi": "AI審査中",
+    "statusCommunity": "みんなの審査",
+    "statusApproved": "承認済み",
+    "note": "投稿はAIとみんなが審査します",
+    "prohibitedTitle": "投稿できない話題",
+    "prohibited": {
+      "politics": "政治",
+      "religion": "宗教",
+      "family": "家族のプライバシー",
+      "address": "住所・居場所",
+      "unannounced": "未公表の予定",
+      "sexual": "性的な内容"
+    },
+    "alt": "育成の投稿が審査されている画面のイメージ。"
+  },
+  "welcome": {
+    "title": "推しと、\n声で話そう",
+    "sub": "公式のAIクローンと\n最初の60秒は無料で話せます",
+    "valueCalls": "通話",
+    "valueChat": "チャット",
+    "valueLive": "LIVE",
+    "getStarted": "はじめる",
+    "footnote": "クリエイターのプロフィールはすべてAIクローンです",
+    "alt": "アプリのようこそ画面のイメージ。"
+  },
+  "reel": {
+    "tooltipTitle": "気になるクリエイターをフォロー",
+    "tooltipSub": "上下にスワイプするともっと見られます",
+    "voiceQuote": "今日のダンス練習、ちょっと聞いてほしいな",
+    "callCta": "{name}と通話する",
+    "alt": "リールで推しの声を聴く画面のイメージ。"
+  },
+  "done": {
+    "title": "これで準備完了",
+    "messageRow": "{name}にメッセージを送る",
+    "messageSub": "通話の続きから話せます",
+    "questsRow": "クエストでコインを貯める",
+    "questsSub": "ログインボーナスや報酬",
+    "goHome": "ホームへ",
+    "alt": "はじめての通話のあとの準備完了画面のイメージ。"
+  },
+  "gate": {
+    "title": "LinCloneへようこそ",
+    "sub": "推しが待っています",
+    "apple": "Appleで続ける",
+    "google": "Googleで続ける",
+    "noPassword": "パスワードは不要です",
+    "alt": "AppleかGoogleで続けるログイン画面のイメージ。"
+  },
+  "quests": {
+    "title": "クエスト",
+    "board": "クエスト一覧",
+    "daily": "デイリークエスト",
+    "login": "ログインボーナス",
+    "shareX": "Xでシェア",
+    "invite": "友だちを招待",
+    "done": "完了",
+    "go": "GO",
+    "reward": "クエスト達成",
+    "chapters": {
+      "c1": "第1章・はじめての出会い",
+      "c2": "第2章・チャットとストーリー",
+      "c3": "第3章・通話でもっと近く",
+      "c4": "第4章・2人の関係と記憶",
+      "c5": "第5章・みんなとLIVE"
+    },
+    "alt": "クエスト一覧の画面イメージ。"
+  },
+  "bonus": {
+    "title": "ログインボーナス",
+    "today": "今日",
+    "claim": "受け取る",
+    "alt": "ログインボーナスの画面イメージ。"
+  },
+  "invite": {
+    "title": "友だちを招待",
+    "codeLabel": "招待コード：",
+    "code": "YUZUHINA",
+    "copy": "コピー",
+    "copied": "コピーしました",
+    "alt": "友だちを招待する招待コードのイメージ。"
+  },
+  "confirm": {
+    "title": "画像を生成しますか？",
+    "body": "使う前に、内容を確認できます",
+    "confirm": "生成する",
+    "cancel": "キャンセル",
+    "refund": "生成に失敗したときは自動で返金",
+    "alt": "コインを使う前の確認画面のイメージ。"
+  },
+  "myPage": {
+    "title": "マイページ",
+    "tabs": {
+      "image": "画像",
+      "stories": "ストーリー",
+      "voice": "ボイス",
+      "archive": "アーカイブ"
+    },
+    "alt": "マイページで、推しとつくったものを見返す画面のイメージ。"
+  },
+  "sleep": {
+    "title": "通知設定",
+    "row": "おやすみ中はミュート",
+    "sub": "おやすみ中は通知をミュート",
+    "morningStill": "モーニングコールは届きます",
+    "alt": "通知設定の画面イメージ。"
+  },
+  "modeSampler": {
+    "alt": "関係モードごとの話し方のちがいを表示するサンプル。"
+  }
+}

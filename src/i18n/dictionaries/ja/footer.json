@@ -1,0 +1,27 @@
+{
+  "tagline": "かつてないほど近くに",
+  "columns": {
+    "app": "アプリ",
+    "creators": "クリエイター",
+    "support": "サポート",
+    "legal": "規約・ポリシー"
+  },
+  "links": {
+    "call": "通話",
+    "morning": "モーニングコール",
+    "chat": "チャット",
+    "live": "LIVE配信",
+    "grow": "育成",
+    "faq": "よくある質問",
+    "fanApp": "LinCloneアプリ",
+    "studio": "LC Studio",
+    "requestInvite": "招待をリクエスト",
+    "support": "サポート",
+    "deleteUser": "アカウント削除",
+    "privacy": "プライバシーポリシー",
+    "terms": "利用規約",
+    "cookies": "Cookieポリシー",
+    "childSafety": "児童保護方針"
+  },
+  "copyright": "© LinClone K.K."
+}

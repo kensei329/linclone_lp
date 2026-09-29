@@ -1,0 +1,36 @@
+{
+  "yuzu": {
+    "name": "Yuzu",
+    "genre": "アイドル",
+    "tags": "ダンス・スイーツ"
+  },
+  "ren": {
+    "name": "Ren",
+    "genre": "アスリート",
+    "tags": "朝ラン・筋トレ"
+  },
+  "kai": {
+    "name": "Kai",
+    "genre": "シンガー",
+    "tags": "雨の日の歌・ピアノ"
+  },
+  "sora": {
+    "name": "Sora",
+    "genre": "俳優・声優",
+    "tags": "ボードゲーム・ほうじ茶"
+  },
+  "nagi": {
+    "name": "Nagi",
+    "genre": "ゲーム配信",
+    "tags": "パズル・雑談"
+  },
+  "aoi": {
+    "name": "Aoi",
+    "genre": "シンガーソングライター",
+    "tags": "カフェ・作曲"
+  },
+  "fan": {
+    "name": "ひなた",
+    "nickname": "ひなたちゃん"
+  }
+}

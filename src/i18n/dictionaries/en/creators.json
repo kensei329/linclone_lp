@@ -1,0 +1,280 @@
+{
+  "header": {
+    "homeLabel": "LC Studio home",
+    "lockup": "LC STUDIO",
+    "navLabel": "Chapters on this page",
+    "nav": {
+      "how": "How it works",
+      "setup": "Setup",
+      "control": "Control",
+      "earnings": "Earnings",
+      "faq": "FAQ"
+    },
+    "fanApp": "The LinClone app",
+    "requestInvite": "Request an invitation",
+    "requestShort": "Request"
+  },
+  "hero": {
+    "eyebrow": "LC Studio · The creator app · Invitation-only",
+    "title": "Build your official AI clone, right from your phone.",
+    "lead": "Create and manage an official AI clone from your own voice and words. Then look after its chats, calls, morning calls and LIVE shows from one app.",
+    "audience": "For creators, talent, voice actors, athletes, singers, and their agencies.",
+    "cta": "Request an invitation",
+    "copyEmail": "Copy email address",
+    "copied": "Copied",
+    "storePillIos": "App Store · Coming soon",
+    "storePillAndroid": "Google Play · Coming soon",
+    "note": "LC Studio is invitation-only. An invite code is required to open your studio.",
+    "disclosure": "Every creator profile on LinClone is shown to followers as an AI clone.",
+    "fanLink": "Want to talk with your favorites? Get the LinClone app",
+    "phoneAlt": "Illustration of a clone being created in LC Studio. When the ring fills, it’s ready."
+  },
+  "statement": {
+    "fill": "The you that never goes offline.",
+    "sub": "Chats in your words. Calls, morning calls and LIVE shows in your voice."
+  },
+  "home": {
+    "eyebrow": {
+      "num": "01",
+      "label": "How it works"
+    },
+    "fill": "Chats, LIVE and earnings. All from your phone.",
+    "lead": "LC Studio’s Home holds everything you need to run your clone. Tap a tile to jump to how it works.",
+    "tocLabel": "LC Studio features",
+    "tiles": {
+      "publicProfile": "Edit what followers see",
+      "fanContent": "Images and voices followers made with your clone",
+      "live": "Auto-hosted shows, settings and archives",
+      "homeVoice": "Voice messages followers hear on Home",
+      "morningCall": "Your clone’s first lines",
+      "fillers": "The sounds between thoughts",
+      "analytics": "Trends over time"
+    },
+    "stageAlt": "Illustration of LC Studio’s Home: your clone’s status and its feature tiles."
+  },
+  "setup": {
+    "eyebrow": {
+      "num": "02",
+      "label": "Setup"
+    },
+    "title": "Set up your clone, right from your phone.",
+    "lead": "Pick how you talk, write in your own words, add official photos and your voice. Don’t aim for perfect; you can change everything later.",
+    "trust": "Anything we read from your Wikipedia or YouTube links, or from files you upload, comes back as a suggestion. You decide what your clone keeps.",
+    "steps": {
+      "picks": {
+        "title": "Who you are",
+        "body": "Tap to pick how you refer to yourself, your dialect and your hobbies."
+      },
+      "words": {
+        "title": "In your own words",
+        "body": "Write freely: stories, catchphrases, what you’re up to."
+      },
+      "photos": {
+        "title": "Official photos",
+        "body": "Choose the photos followers will see."
+      },
+      "modes": {
+        "title": "Relationship modes",
+        "body": "Choose the ways followers can have you talk."
+      },
+      "ng": {
+        "title": "NG topics",
+        "body": "Decide up front what your clone should never get into."
+      },
+      "voice": {
+        "title": "Your voice",
+        "body": "Record in the app or upload files. The best material is you, talking naturally with someone."
+      }
+    },
+    "readyTitle": "Your clone is ready",
+    "readyBody": "Voice cloning and personality tuning usually take a few minutes.",
+    "stageAlt": "Illustrations of clone setup in LC Studio."
+  },
+  "check": {
+    "eyebrow": {
+      "num": "03",
+      "label": "Check"
+    },
+    "title": "Talk to it before your followers do.",
+    "lead": "Chat, voice-call and try a morning call in preview mode. Nothing here is shown to followers or counted in analytics.",
+    "fill": "Exactly what your followers will hear.",
+    "stageAlt": "Illustration of a creator on a preview call with their own AI clone."
+  },
+  "control": {
+    "eyebrow": {
+      "num": "04",
+      "label": "Control"
+    },
+    "fill": "You always have the final say.",
+    "lead": "Grow facts, your profile, topics you’d rather avoid. You always decide.",
+    "cards": {
+      "grow": {
+        "title": "Grow is approval-based",
+        "body": "Approve or reject every fact followers propose, and reverse any decision later."
+      },
+      "ng": {
+        "title": "NG topics",
+        "body": "Topics you switch on get top priority across chat, calls, Stories and LIVE, and your clone is set to steer clear of them."
+      },
+      "profile": {
+        "title": "Your profile, your likeness",
+        "body": "Edit or hide anything on your public profile. You can turn off AI images of you made by followers."
+      },
+      "labels": {
+        "title": "Clearly labeled as AI",
+        "body": "Every image shared outside LinClone carries an “AI-generated / not the real person” label."
+      }
+    }
+  },
+  "real": {
+    "eyebrow": {
+      "num": "05",
+      "label": "The real you"
+    },
+    "title": "Step in as the real you.",
+    "officialBody": "Join any follower’s chat with an official reply. Official replies carry a verified badge and are shown apart from AI replies.",
+    "pauseBody": "You can also pause your clone’s replies in a single chat.",
+    "liveTitle": "Your clone hosts the LIVE show.",
+    "liveBody": "Your clone runs the show and reads comments aloud to answer them. You decide whether to accept follower requests. Archives save automatically and can be downloaded.",
+    "dropIn": "You can also drop into the show as yourself."
+  },
+  "voice": {
+    "eyebrow": {
+      "num": "06",
+      "label": "Voice"
+    },
+    "title": "Your voice, in your followers’ every day.",
+    "lead": "Voice messages on Home, morning-call first lines, even the little “hmm”s in a call. All in your clone’s voice.",
+    "lines": {
+      "l1": "Hmm, let me think",
+      "l2": "Mm-hm, got it",
+      "l3": "Morning. Time to get up",
+      "l4": "Thanks for coming by today",
+      "l5": "Want to listen to the rain with me?"
+    },
+    "cards": {
+      "homeVoice": {
+        "title": "Voice messages",
+        "body": "AI drafts them from your clone’s settings and the latest Grow facts. Your first one publishes automatically; after that, only what you confirm goes out."
+      },
+      "morning": {
+        "title": "Morning-call first lines",
+        "body": "Edit them per tone. Saving re-synthesizes them in your voice."
+      },
+      "fillers": {
+        "title": "Fillers",
+        "body": "The sounds that cover the moment your clone is thinking. Choose gentle or casual."
+      }
+    }
+  },
+  "insights": {
+    "eyebrow": {
+      "num": "07",
+      "label": "Insights & earnings"
+    },
+    "title": "Know your community.",
+    "analyticsBody": "See chats, images, voices, call time, coins received and LIVE shows charted over time.",
+    "privacy": "Individual follower data is shown inside LC Studio only and is never made public in the LinClone app.",
+    "earningsTitle": "Coin-based earnings.",
+    "earningsBody": "Each month’s earnings are finalized from the coins followers spend on your clone. No figures are shown while a month is being calculated. Statements come as CSV, and payouts go to your registered bank account. We’ll explain the details when we’re in touch."
+  },
+  "join": {
+    "eyebrow": {
+      "num": "08",
+      "label": "How to join"
+    },
+    "title": "It starts with an invitation.",
+    "steps": {
+      "request": {
+        "title": "Request an invitation",
+        "body": "Email us your name, social accounts, follower count and genre."
+      },
+      "contact": {
+        "title": "We get in touch",
+        "body": "We review your request and contact you."
+      },
+      "get": {
+        "title": "Get LC Studio",
+        "body": "Coming soon to the App Store and Google Play."
+      },
+      "getLive": {
+        "title": "Get LC Studio",
+        "body": "Download it from the App Store or Google Play."
+      },
+      "setup": {
+        "title": "Set up",
+        "body": "Open your studio with your invite code, then do everything in the app."
+      }
+    },
+    "ctaTitle": "Request an invitation",
+    "ctaBody": "This opens your email app. If it doesn’t, copy the address and send us a message.",
+    "emailLabel": "Send to",
+    "copyEmail": "Copy address",
+    "copied": "Copied",
+    "templateToggle": "See the email template",
+    "fine": "We’ll explain invitation details when we’re in touch."
+  },
+  "faq": {
+    "title": "Frequently asked questions",
+    "items": {
+      "what": {
+        "q": "What is LC Studio?",
+        "a": "The creator app for building your official AI clone and running its chats, calls, morning calls, LIVE shows, Grow and earnings from one place."
+      },
+      "who": {
+        "q": "Who can use it?",
+        "a": "It’s invitation-only for now, for creators, talent, voice actors, athletes, singers and their agencies, with an invite code."
+      },
+      "cost": {
+        "q": "What does it cost?",
+        "a": "We’ll go over costs and terms individually when we’re in touch."
+      },
+      "studio": {
+        "q": "Do I need a recording studio?",
+        "a": "No. Setup happens on your phone, and you can record your voice in the app or upload files."
+      },
+      "time": {
+        "q": "How long does it take?",
+        "a": "Voice cloning and personality tuning usually take a few minutes. The screen updates by itself."
+      },
+      "control": {
+        "q": "Can I control what my clone says?",
+        "a": "Set NG topics, approve or reject Grow facts, and check everything in preview mode. NG topics get top priority, so your clone is set to steer clear of them."
+      },
+      "label": {
+        "q": "Is it labeled as AI?",
+        "a": "Yes. Every creator profile on LinClone is shown as an AI clone, and images shared outside LinClone carry an “AI-generated / not the real person” label."
+      },
+      "agency": {
+        "q": "Can my agency team share access?",
+        "a": "Right now, each account is operated by one person. Agencies are welcome to contact us by email."
+      },
+      "stop": {
+        "q": "What if I want to stop?",
+        "a": "Delete your account in the app. Your clone is unpublished immediately, and your voice data and AI voice models are permanently deleted within a set period. See the Privacy Policy for details.",
+        "linkLabel": "Privacy Policy"
+      },
+      "legacy": {
+        "q": "I already have a clone on LinClone.",
+        "a": "You can build a draft from your existing LinClone character and personality analysis, and keep your current voice."
+      },
+      "release": {
+        "q": "When will it be on the stores?",
+        "a": "We’re preparing the store release. If you request an invitation, we’ll tell you how to get the app when we’re in touch."
+      },
+      "releaseLive": {
+        "q": "Where can I get it?",
+        "a": "On the App Store and Google Play. An invite code is required to open your studio."
+      }
+    }
+  },
+  "final": {
+    "title": "Go meet the other you.",
+    "sub": "Start by requesting an invitation. We’ll be in touch.",
+    "fanLink": "Here to talk with your favorites? Get the LinClone app"
+  },
+  "mailto": {
+    "subject": "LC Studio invitation request",
+    "body": "Hi LinClone team,\n\nI’d like an invitation to LC Studio.\n\nName (stage name):\nSocial account (URL):\nFollower count (main platform):\nGenre (idol / singer / actor or voice actor / streamer / athlete / other):\nAgency (optional):\nMessage (optional):\n\nThank you!"
+  }
+}

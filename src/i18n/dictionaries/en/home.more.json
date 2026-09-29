@@ -1,0 +1,110 @@
+{
+  "eyebrow": {
+    "num": "",
+    "label": "More"
+  },
+  "title": "So much more to do together.",
+  "lead": "Little things that make you want to open the app every day.",
+  "tiles": {
+    "modes": {
+      "title": "Pick how they treat you.",
+      "body": "Standard, Gentle, Best friend, Cheerleader, Tough love, Tsundere. Tap one and compare how they talk.",
+      "samples": {
+        "standard": "Good work today.",
+        "gentle": "Don’t push yourself. Are you getting enough rest?",
+        "bestFriend": "Okay okay, and then? Tell me more.",
+        "cheerleader": "You’ve got this. I’m always cheering for you.",
+        "toughLove": "No excuses. Just a little more, let’s go.",
+        "tsundere": "I-it’s not like I was waiting for you or anything."
+      },
+      "note": "Conversations are illustrative."
+    },
+    "reel": {
+      "title": "Meet them by voice.",
+      "body": "Swipe the Reel, hear their voice, then follow."
+    },
+    "quests": {
+      "title": "Play and earn coins.",
+      "body": "From your first meeting to LIVE with everyone. Clear quests and collect coins."
+    },
+    "bonus": {
+      "title": "Open daily, get a bonus.",
+      "body": "Claim your login bonus every day."
+    },
+    "invite": {
+      "title": "Invite a friend.",
+      "body": "When your friend clears every quest, you both get coins."
+    },
+    "plans": {
+      "title": "For days you want more.",
+      "body": "You can start free. Plans add more chats, monthly coins and LIVE tickets.",
+      "note": "Prices are shown in the app. Payment is through the App Store or Google Play.",
+      "cards": {
+        "free": {
+          "name": "Free",
+          "perk": "Daily chats included"
+        },
+        "basic": {
+          "name": "Basic",
+          "perk": "More chats · Monthly coins"
+        },
+        "premium": {
+          "name": "Premium",
+          "perk": "Even more chats · Monthly coins · LIVE tickets"
+        },
+        "super": {
+          "name": "Super",
+          "perk": "The most chats · Monthly coins · LIVE tickets"
+        }
+      }
+    },
+    "money": {
+      "title": "Money, handled honestly.",
+      "points": {
+        "confirm": "A confirm step before every spend",
+        "refund": "Coins for failed generations come back automatically",
+        "heard": "Calls you place are charged only for the time you could hear them",
+        "noConnect": "No charge if a call fails to connect",
+        "store": "Payments only through the App Store or Google Play"
+      }
+    },
+    "library": {
+      "title": "Everything you made together, in one place.",
+      "body": "Images, Stories, voices and LIVE archives all live in My Page."
+    },
+    "sleep": {
+      "title": "Mute notifications while you sleep.",
+      "body": "Morning calls still come through."
+    },
+    "signin": {
+      "title": "Sign in with Apple or Google.",
+      "body": "No password needed."
+    }
+  },
+  "indexTitle": "Everything in the app",
+  "indexToggle": "See all",
+  "index": {
+    "call": "Voice calls",
+    "chat": "Chat",
+    "imageVoice": "Make images & voices",
+    "stories": "Stories",
+    "morning": "Morning calls",
+    "voiceMessage": "Voice messages",
+    "memory": "Our bond & memories",
+    "nickname": "Nickname",
+    "modes": "Relationship modes",
+    "live": "LIVE",
+    "liveRequest": "Request a LIVE show",
+    "gifts": "Gifts & Super Chat",
+    "archive": "Archives",
+    "grow": "Grow",
+    "reel": "Reel",
+    "quests": "Quests",
+    "bonus": "Login bonus",
+    "invite": "Invite friends",
+    "wallet": "LinCoin Wallet",
+    "notifications": "Notification settings",
+    "signin": "Passwordless sign-in",
+    "languages": "日本語 · English"
+  }
+}

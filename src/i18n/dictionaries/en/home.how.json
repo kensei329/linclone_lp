@@ -1,0 +1,29 @@
+{
+  "eyebrow": {
+    "num": "06",
+    "label": "Getting started"
+  },
+  "title": "Your first 60 seconds are free.",
+  "lead": "Before you even sign up: hear them, then talk back.",
+  "steps": {
+    "download": {
+      "title": "Download for free",
+      "body": "From the App Store or Google Play."
+    },
+    "pick": {
+      "title": "Hear them, then follow",
+      "body": "Swipe the Reel and find your favorite."
+    },
+    "call": {
+      "title": "Talk free for your first 60 seconds",
+      "body": "Before you create an account, just try talking."
+    },
+    "signin": {
+      "title": "Continue with Apple or Google",
+      "body": "No password needed. Pick up the call in chat."
+    }
+  },
+  "ringLabel": "Free",
+  "ctaTitle": "That’s all it takes.",
+  "stageAlt": "Illustrations of getting started: welcome screen, Reel, the free first call and sign-in."
+}

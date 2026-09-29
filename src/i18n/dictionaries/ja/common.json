@@ -1,0 +1,46 @@
+{
+  "brand": "LinClone",
+  "studioBrand": "LC Studio",
+  "tagline": "かつてないほど近くに",
+  "disclosure": "クリエイターのプロフィールはすべてAIクローンです",
+  "disclosureOfficial": "クリエイターのプロフィールはすべて公式のAIクローンです",
+  "screenNote": "※画面・会話はイメージです。登場するクリエイターは架空です。",
+  "devNote": "※画面は開発中のものを含むイメージです。",
+  "freeWithIap": "ダウンロード無料・アプリ内課金あり",
+  "friction": {
+    "freeDownload": "ダウンロード無料",
+    "first60": "最初の60秒は無料",
+    "trialBeforeSignup": "登録前にお試し通話OK",
+    "noPassword": "パスワード不要"
+  },
+  "store": {
+    "appStoreBadgeAlt": "App Storeからダウンロード",
+    "googlePlayBadgeAlt": "Google Play で手に入れよう",
+    "appStoreName": "App Store",
+    "googlePlayName": "Google Play",
+    "otherStoreFromIos": "Androidの方はこちら",
+    "otherStoreFromAndroid": "iPhoneの方はこちら",
+    "qrCaption": "スマホのカメラで読み取って、アプリをダウンロード",
+    "qrAlt": "LinCloneアプリのダウンロード用QRコード",
+    "studioComingSoon": "LC Studioは近日公開",
+    "comingSoonSuffix": "近日公開"
+  },
+  "skip": {
+    "stage": "この演出をスキップ",
+    "toDownload": "ダウンロードへ移動",
+    "toContent": "本文へ移動"
+  },
+  "lang": {
+    "ja": "日本語",
+    "en": "English",
+    "switchLabel": "言語を切り替え",
+    "englishAvailable": "English available",
+    "japaneseAvailable": "日本語で見る",
+    "dismiss": "閉じる"
+  },
+  "demo": "デモ",
+  "copy": "コピー",
+  "copySelected": "アドレスを選択しました（⌘C・長押しでコピー）",
+  "copied": "コピーしました",
+  "close": "閉じる"
+}

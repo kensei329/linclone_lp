@@ -1,0 +1,22 @@
+{
+  "eyebrow": "The app for talking with your favorite’s AI clone",
+  "title": "Talk with your favorites, out loud.",
+  "lead": "Call, chat and join LIVE shows with official AI clones of the creators you love. Your first 60 seconds are free.",
+  "stickers": {
+    "official": "Official AI clones",
+    "first60": "First 60 seconds free",
+    "call": "Voice calls",
+    "live": "LIVE"
+  },
+  "chipsLabel": "What you can do",
+  "chips": {
+    "call": "Calls",
+    "morning": "Morning calls",
+    "voice": "Voice messages",
+    "chat": "Chat",
+    "live": "LIVE",
+    "grow": "Grow"
+  },
+  "phoneAlt": "Illustration of the free first call: Yuzu’s aura portrait and a “Tap to talk with Yuzu” button.",
+  "phoneLink": "See the call demo"
+}

@@ -1,0 +1,10 @@
+{
+  "phoneMockup": "Illustration of an app screen",
+  "carouselPrev": "Previous",
+  "carouselNext": "Next",
+  "carouselPosition": "{current} of {total}",
+  "pageProgress": "Page progress",
+  "opensStore": "Opens the store page",
+  "opensMail": "Opens your email app",
+  "decorative": "Decorative"
+}

@@ -1,0 +1,299 @@
+/* #hero (spec §5.1). Mobile first; the 390×664 acceptance wireframe drives
+   the vertical rhythm. Entrances are transform-only (opacity stays 1). */
+
+.hero {
+  padding-top: calc(var(--header-h) + 16px);
+  padding-bottom: 40px;
+  overflow: clip;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 0;
+}
+
+/* ── entrance: CSS only, transform only ── */
+@keyframes rise {
+  from { transform: translateY(var(--rise-y, 16px)); }
+  to { transform: none; }
+}
+@keyframes phoneIn {
+  from { transform: translateY(28px) rotate(2deg); }
+  to { transform: none; }
+}
+.enter { animation: rise .6s var(--ease-hero) var(--d, 0ms) both; }
+.title { --rise-y: 16px; animation: rise .6s var(--ease-hero) both; }
+
+.title {
+  margin: 12px 0 0;
+  color: var(--color-ink);
+  max-width: 11em;
+}
+.title:lang(en) { max-width: 9.5em; }
+
+.lead {
+  margin: 14px 0 0;
+  color: var(--color-ink-2);
+}
+/* each sentence starts its own line; JA breaks only between BudouX phrases */
+.leadLine { display: inline-block; text-wrap: balance; }
+.lead:lang(ja) { word-break: keep-all; overflow-wrap: anywhere; }
+
+.badges { margin-top: 20px; width: 100%; }
+.badges :global(.store-badges) { gap: 10px 24px; }
+.badges :global(.badges-meta) { margin-top: 2px; }
+
+.disclosure { margin-top: 6px; }
+
+/* ── section chips: x-scroll on mobile (bleeds to the screen edge), 3 + 3 on desktop ──
+   No data-lenis-prevent (and so no overscroll containment on y): the row only
+   scrolls on x, and a vertical swipe or wheel that starts on it scrolls the page. */
+.chips {
+  margin: 18px calc(var(--gutter) * -1) 0;
+  width: calc(100% + var(--gutter) * 2);
+  overflow-x: auto;
+  scroll-snap-type: x proximity;
+  scroll-padding-inline: var(--gutter);
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+}
+.chips::-webkit-scrollbar { display: none; }
+.chips ul {
+  display: flex;
+  gap: 10px;
+  width: max-content;
+  margin: 0;
+  padding: 6px var(--gutter) 10px;
+  list-style: none;
+}
+.chips li { scroll-snap-align: start; }
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  position: relative;
+  min-height: 44px;
+  padding: 0 16px 0 8px;
+  border-radius: 9999px;
+  color: var(--color-ink);
+  font: 600 13.5px/1 var(--font-sans);
+  text-decoration: none;
+  white-space: nowrap;
+  box-sizing: border-box;
+  transition: transform var(--dur-fast) var(--ease-reveal), box-shadow var(--dur-base) var(--ease-reveal);
+}
+.chip:lang(ja) { font-size: 13px; }
+.chipIcon {
+  display: inline-grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  flex: none;
+  color: var(--color-teal-text);
+  background: rgba(0, 196, 216, .12);
+  transition: background-color var(--dur-base), color var(--dur-base);
+}
+@media (hover: hover) {
+  .chip:hover { transform: translateY(-2px); box-shadow: 0 0 0 3px #fff, 0 12px 28px rgba(60, 55, 90, .18); }
+  .chip:hover .chipIcon { background: var(--grad-cta); color: var(--color-ink); }
+}
+.chip:active { transform: scale(.96); }
+
+/* ── visual: phone + orb + stickers ── */
+.visual {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 16px;
+  min-width: 0;
+}
+.orb {
+  position: absolute;
+  z-index: 0;
+  left: 50%;
+  top: 38%;
+  width: min(560px, 140vw);
+  aspect-ratio: 1;
+  translate: -50% -50%;
+  border-radius: 50%;
+  pointer-events: none;
+  background:
+    radial-gradient(closest-side, rgba(255, 209, 102, .35), rgba(255, 224, 235, .22) 55%, transparent),
+    radial-gradient(closest-side at 30% 70%, color-mix(in srgb, var(--oshi) 16%, transparent), transparent);
+}
+.phoneSlot {
+  position: relative;
+  z-index: 1;
+}
+.phoneRise { animation: phoneIn .7s var(--ease-hero) 80ms both; }
+/* the whole phone links to the call demo (its mock CTA looks tappable) */
+.phoneLink {
+  position: relative;
+  display: block;
+  border-radius: 52px;
+  transition: transform var(--dur-base) var(--ease-reveal);
+}
+.phoneHit {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border-radius: inherit;
+  -webkit-tap-highlight-color: transparent;
+}
+.phoneHit:focus-visible { outline: 3px solid var(--color-ink); outline-offset: 16px; }
+.srOnly { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+@media (hover: hover) { .phoneLink:has(> .phoneHit:hover) { transform: translateY(-4px); } }
+.phoneLink:has(> .phoneHit:active) { transform: scale(.985); }
+
+.sticker {
+  position: absolute;
+  z-index: 2;
+  display: block;
+  pointer-events: none;
+  will-change: transform;
+}
+.sticker:not([data-mobile]) { display: none; }
+/* mobile: `official` top-right of the phone, `first60` on the left, both over the
+   top of the screen, below its header row (「あとで」 / "Maybe later" stays readable) */
+.sticker[data-slot="official"] { right: -14px; top: 88px; }
+.sticker[data-slot="first60"] { left: -22px; top: 146px; }
+
+.note {
+  position: relative;
+  z-index: 1;
+  align-self: stretch;
+  text-align: center;
+}
+.note :global(.screen-note) { margin-top: 20px; }
+
+@media (max-width: 380px) {
+  .sticker[data-slot="official"] { right: -8px; }
+  .sticker[data-slot="first60"] { left: -8px; }
+}
+
+/* ── tablet ── */
+@media (min-width: 768px) and (max-width: 1023.98px) {
+  .copy { align-items: center; text-align: center; }
+  .title, .lead { margin-inline: auto; }
+  .badges :global(.store-badges), .badges :global(.badges-row) { justify-content: center; }
+  .chips { width: auto; margin-inline: 0; }
+  .chips ul { flex-wrap: wrap; justify-content: center; width: auto; }
+}
+
+/* ── desktop (≥1024): copy cols 1–6, phone cols 8–11 ── */
+@media (min-width: 1024px) {
+  .hero {
+    min-height: 100svh;
+    display: flex;
+    align-items: center;
+    padding-top: calc(var(--header-h) + 40px);
+    padding-bottom: 56px;
+  }
+  .grid {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: 20px;
+    align-items: center;
+  }
+  .copy { grid-column: 1 / span 6; container-type: inline-size; }
+  .title { margin-top: 20px; }
+  /* EN: two lines max (§5.1), "Talk with your favorites, / out loud.". The first
+     line is ~10.8em wide, so the H1 may run one column (+gap) past the copy
+     column (the phone and its stickers start after the next gap) and its size
+     follows that width. */
+  .title:lang(en) {
+    max-width: calc(100% + (100cqi + 20px) / 6);
+    width: max-content;
+    font-size: min(5rem, (100cqi + (100cqi + 20px) / 6) / 11.2);
+    text-wrap: wrap; /* break at the comma, not balanced into "your / favorites" */
+  }
+  .lead { margin-top: 22px; }
+  .badges { margin-top: 32px; }
+  /* badges + meta on the left, the scan-to-download QR on the right */
+  .badges :global(.store-badges) {
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: start;
+    align-items: center;
+    column-gap: 28px;
+    row-gap: 10px;
+  }
+  .badges :global(.store-badges) { grid-template-rows: 1fr 1fr; }
+  .badges :global(.badges-row) { grid-column: 1; grid-row: 1; align-self: end; }
+  .badges :global(.badges-meta) { grid-column: 1; grid-row: 2; align-self: start; margin: 0; }
+  .badges :global(.qr-block) {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    max-width: 150px;
+    padding-left: 24px;
+    border-left: 1px solid rgba(40, 39, 59, .1);
+  }
+  .badges :global(.qr-block .qr-card) { padding: 8px; border-radius: 14px; }
+  .badges :global(.qr-block figcaption) { font-size: 11.5px; line-height: 1.5; }
+  .disclosure { margin-top: 14px; }
+  .chips {
+    width: auto;
+    margin: 28px 0 0;
+    overflow: visible;
+  }
+  /* two rows of three, whatever the label lengths (never 4 + 2 or 5 + 1):
+     a full-width break item is ordered between the 3rd and 4th chip */
+  .chips ul { flex-wrap: wrap; width: auto; padding: 0; gap: 0 8px; }
+  .chips li:nth-child(-n + 3) { order: 1; }
+  .chips li:nth-child(n + 4) { order: 3; }
+  .chips ul::after { content: ""; order: 2; flex-basis: 100%; height: 8px; }
+  .chip { padding: 0 14px 0 8px; }
+
+  .visual { grid-column: 8 / span 4; margin-top: 0; }
+  .sticker:not([data-mobile]) { display: block; }
+  /* each sticker overlaps the bezel by a fixed amount and hangs outside, whatever its label length */
+  .sticker[data-slot="official"] { right: calc(100% - 44px); left: auto; top: 29%; }
+  /* out past the bezel and just under the screen's header row (「あとで」 /
+     "Maybe later" stays readable), below the language chip's corner */
+  .sticker[data-slot="live"] { left: calc(100% - 36px); right: auto; top: 14%; }
+  .sticker[data-slot="first60"] { left: calc(100% - 36px); right: auto; top: 50%; }
+  .sticker[data-slot="call"] { right: calc(100% - 40px); left: auto; bottom: 22%; top: auto; }
+  .sticker :global(.sticker):lang(en) { letter-spacing: .06em; font-size: 13px; }
+  .orb { width: 560px; top: 46%; }
+  .note { text-align: right; }
+}
+
+/* Shorter desktop viewports: keep the phone inside the first screen (layout zoom). */
+@media (min-width: 1024px) and (max-height: 980px) {
+  .phoneRise { zoom: .9; }
+}
+@media (min-width: 1024px) and (max-height: 860px) {
+  .phoneRise { zoom: .84; }
+}
+@media (min-width: 1024px) and (max-height: 760px) {
+  .phoneRise { zoom: .8; }
+  .hero { padding-top: calc(var(--header-h) + 24px); }
+  /* one row that scrolls on x, faded at the end so it reads as more */
+  .chips {
+    width: 100%;
+    margin-top: 20px;
+    overflow-x: auto;
+    -webkit-mask: linear-gradient(90deg, #000 calc(100% - 40px), transparent);
+    mask: linear-gradient(90deg, #000 calc(100% - 40px), transparent);
+  }
+  .chips ul { flex-wrap: nowrap; width: max-content; padding: 0 40px 0 0; gap: 8px; }
+  .chips ul::after { content: none; }
+}
+/* narrow desktop: stickers tuck in so they never leave the viewport */
+@media (min-width: 1024px) and (max-width: 1279.98px) {
+  .sticker[data-slot="first60"] { left: calc(100% - 110px); top: 64%; }
+  .sticker[data-slot="live"] { left: calc(100% - 72px); }
+  /* clear of the scan-to-download QR card in the copy column */
+  .sticker[data-slot="call"] { right: calc(100% - 100px); }
+}

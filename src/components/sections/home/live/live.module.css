@@ -1,0 +1,294 @@
+/* #live (spec §5.7): night intro → stage #2 → request row. */
+
+.section {
+  padding-block: var(--section-y) 0;
+  color: #fff;
+}
+
+/* ── intro ── */
+.intro {
+  position: relative;
+  isolation: isolate;
+  overflow: clip;
+  padding-bottom: 56px;
+}
+.glow {
+  position: absolute;
+  z-index: -1;
+  right: -25%;
+  /* an ellipse inscribed in the intro box: it fades out before the (clipped) edges */
+  top: 0;
+  bottom: 0;
+  width: min(120vw, 900px);
+  background: radial-gradient(closest-side, rgba(225, 75, 129, .26), rgba(139, 85, 214, .14) 48%, transparent 72%);
+  pointer-events: none;
+}
+.giant {
+  position: absolute;
+  z-index: -1;
+  right: -.04em;
+  bottom: 12px;
+  font: 700 min(34vw, 280px)/.8 var(--font-label);
+  letter-spacing: -.03em;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(255, 255, 255, .12);
+  white-space: nowrap;
+  pointer-events: none;
+  user-select: none;
+}
+.introInner { position: relative; }
+.titleRow {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  margin-top: 20px;
+}
+.title { margin: 0; color: #fff; }
+.audioChip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 36px;
+  margin: 0;
+  padding: 0 16px 0 12px;
+  border-radius: 9999px;
+  background: rgba(225, 75, 129, .16);
+  box-shadow: inset 0 0 0 1px rgba(225, 75, 129, .38);
+  color: #ffe0eb;
+  font: 700 13px/1 var(--font-sans);
+  white-space: nowrap;
+}
+.audioChip svg { flex: none; color: #ff9dbf; }
+.onAir {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex: none;
+  background: #e14b81;
+  box-shadow: 0 0 0 3px rgba(225, 75, 129, .25);
+  animation: var(--animate-live-dot);
+}
+.lead { margin: 20px 0 0; color: rgba(255, 255, 255, .78); }
+
+/* ── stage bits ── */
+.fill {
+  margin: 0;
+  text-align: center;
+  max-width: 15em;
+}
+.fill:lang(en) { max-width: 13em; }
+/* mobile: the phone rect runs to the viewport bottom, so the night fill continues the screen */
+.bezelFill {
+  position: absolute;
+  inset: 0;
+  background: #0f1018;
+}
+.bezelScreen {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 390px;
+  height: 844px;
+  transform-origin: 0 0;
+  transform: scale(var(--bs, .8205));
+}
+
+/* ── request row ── */
+.request {
+  position: relative;
+  padding: 56px 0 72px;
+  color: #fff;
+}
+.reqHead {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 720px;
+}
+.reqTitle { margin: 0; }
+.reqBody { margin: 0; color: rgba(255, 255, 255, .78); }
+
+.flow { display: none; }
+.connectorTrack,
+.connectorLine {
+  fill: none;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+}
+.connectorTrack { stroke: rgba(125, 244, 255, .1); }
+.connectorLine {
+  stroke: rgba(125, 244, 255, .4);
+  stroke-dasharray: 1;
+  stroke-dashoffset: 0;
+}
+
+.reqCarousel { margin-top: 28px; }
+.reqCarousel :global(.carousel-track) { align-items: center; }
+.reqCard,
+.archiveCard { width: 100%; }
+.reqSlice {
+  display: flex;
+  justify-content: center;
+}
+.reqSlice :global(.screen-slice) { box-shadow: 0 0 0 1px rgba(255, 255, 255, .1), var(--shadow-dark); }
+
+.archive {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 40px;
+}
+.archiveDesk { display: none; }
+.archiveKicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0;
+  color: #7df4ff;
+  font: 700 12px/1.3 var(--font-label);
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+.archiveKicker:lang(ja) { font-family: var(--font-sans); letter-spacing: 0; text-transform: none; }
+.archiveTitle { margin: 8px 0 0; }
+.archiveBody { margin: 8px 0 0; color: rgba(255, 255, 255, .78); }
+
+.notes {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 40px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255, 255, 255, .1);
+}
+.footnote { margin: 0; color: rgba(255, 255, 255, .72); max-width: 60em; }
+
+@media (min-width: 1024px) {
+  .intro { padding-bottom: 72px; }
+  .titleRow {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 16px 28px;
+  }
+  .giant { right: 0; bottom: 24px; }
+
+  .request { padding: 64px 0 64px; }
+  .flow {
+    display: block;
+    position: relative;
+    margin-top: 48px;
+  }
+  .connector {
+    display: block;
+    width: 100%;
+    height: auto;
+    overflow: visible;
+  }
+  .nodes {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    aspect-ratio: 1200 / 48;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    pointer-events: none;
+  }
+  .node {
+    position: absolute;
+    top: 50%;
+    width: 14px;
+    height: 14px;
+    margin: -7px 0 0 -7px;
+    border-radius: 50%;
+    background: #0f1018;
+    border: 2px solid #7df4ff;
+    box-shadow: 0 0 14px rgba(125, 244, 255, .55);
+  }
+  .cols {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+    align-items: center;
+    justify-items: center;
+    margin-top: 24px;
+  }
+  .col { display: flex; justify-content: center; width: 100%; }
+  .col .reqCard { max-width: 372px; }
+  .col :global(.phone) { box-shadow: 0 0 0 11px #0f1018, 0 0 0 12px rgba(255, 255, 255, .16), 0 40px 80px rgba(0, 0, 0, .45); }
+  .reqCarousel { display: none; }
+
+  .archive {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: 24px;
+    align-items: center;
+    margin-top: 64px;
+  }
+  .archiveDesk { display: block; grid-column: 1 / span 5; }
+  .archiveText { grid-column: 7 / span 6; }
+  .notes { margin-top: 48px; }
+}
+
+/* Phones in landscape (and other very short viewports): the player has no
+   room for the display line over the host, comments and composer, and the
+   section H2 already carries it, so the line is visually hidden (still read
+   by screen readers). The animator shows the end frame without scrubbing. */
+@media (max-width: 1023.98px) and (max-height: 500px) {
+  .section :global(.fm-lp-fill) {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+  /* the host (avatar + waveform) moves to the free lower right, clear of the
+     comments, the AI disclosure chip and the composer */
+  .section :global(.fm-lp-centre) {
+    top: auto;
+    bottom: 68px;
+    left: auto;
+    right: var(--lp-x, 24px);
+    translate: none;
+    scale: .6;
+    transform-origin: 100% 100%;
+  }
+}
+
+/* ── desktop with motion: the intro rides over the stage's first frame ──
+   The intro is a sticky, full-viewport layer above the stage (copy left, the
+   phone on the right), pulled over the stage start so both pin together; the
+   stage animator fades it out as the clip opens. Reduced motion / no JS keep
+   the intro in flow above the final full-bleed player. */
+.stageWrap { position: relative; }
+@media (min-width: 1024px) and (prefers-reduced-motion: no-preference) {
+  :global(html[data-js]) .section { padding-top: 0; }
+  :global(html[data-js]) .intro {
+    position: sticky;
+    top: 0;
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    height: 100svh;
+    padding: var(--header-h) 0 0;
+    pointer-events: none;
+  }
+  :global(html[data-js]) .introInner > * { max-width: min(740px, 52vw); }
+  :global(html[data-js]) .stageWrap > :global([data-stage]) { margin-top: -100svh; }
+  /* the phone owns the right half: the glow and the outlined word move left */
+  :global(html[data-js]) .glow { right: auto; left: -20%; }
+  :global(html[data-js]) .giant {
+    right: auto;
+    left: max(24px, (100vw - var(--container)) / 2 - .06em);
+    bottom: 6svh;
+    font-size: min(20vw, 240px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .onAir { animation: none; }
+}

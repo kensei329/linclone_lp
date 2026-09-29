@@ -1,0 +1,18 @@
+{
+  "eyebrow": {
+    "num": "05",
+    "label": "Grow"
+  },
+  "title": "Evenings are for Grow.",
+  "fill": "Help their AI learn who they really are.",
+  "lead": "Share what you know about your favorite, with a source. Submissions are reviewed by AI and the community, and the creator always has the final say.",
+  "pipeline": {
+    "submit": "Submit",
+    "ai": "AI review",
+    "community": "Community review",
+    "approved": "Approved"
+  },
+  "finalSay": "The creator has the final say",
+  "rules": "Politics, religion, family privacy, addresses and whereabouts, unannounced plans and sexual content can’t be submitted.",
+  "stageAlt": "Illustration of Grow: a creator’s fact sheet and a submission under review."
+}

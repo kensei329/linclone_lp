@@ -1,0 +1,28 @@
+{
+  "eyebrow": {
+    "num": "03",
+    "label": "Chat"
+  },
+  "title": "Lunch break? Pick up the chat.",
+  "lead": "Their AI clone remembers what you’ve talked about and what to call you. So every chat picks up right where you left off.",
+  "steps": {
+    "chat": {
+      "label": "Chat",
+      "title": "After the call, keep it going in chat.",
+      "body": "Calls are transcribed into your chat. They reply right away, in their own way of talking."
+    },
+    "stories": {
+      "label": "Stories",
+      "title": "Turn a reply into a picture and a voice.",
+      "body": "Make an image and a voice clip from one of their replies, then post both as a Story. Send hearts and replies to Stories others made.",
+      "footnote": "Stories carry an “AI-generated” label."
+    },
+    "memory": {
+      "label": "Our bond & memories",
+      "title": "Your nickname. Their tone. Your call.",
+      "body": "Choose what they call you and pick a relationship mode. See what they remember, lock the moments that matter, and edit or delete the rest."
+    }
+  },
+  "swipeHint": "Swipe for more",
+  "stageAlt": "Illustrations of chat, Stories and the bond & memories screen."
+}

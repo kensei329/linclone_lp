@@ -1,0 +1,34 @@
+{
+  "eyebrow": {
+    "num": "",
+    "label": "What is LinClone"
+  },
+  "title": "You’re talking to their official AI clone.",
+  "statement": "LinClone is where you talk with official AI clones of the creators you love. Their voice, their way of talking, and memories that grow every time you talk.",
+  "cards": {
+    "official": {
+      "title": "Official",
+      "body": "Every clone is an official AI clone, approved by the creator."
+    },
+    "labelled": {
+      "title": "Always labeled",
+      "body": "Every creator profile is an AI clone. LIVE shows and Stories are marked as AI-generated too."
+    },
+    "memory": {
+      "title": "Your memories, your call",
+      "body": "See, edit or delete what their AI remembers about you, anytime."
+    }
+  },
+  "oshiColor": {
+    "label": "Pick their color",
+    "hint": "The page glows in their color.",
+    "options": {
+      "rose": "Rose",
+      "teal": "Teal",
+      "lavender": "Lavender",
+      "amber": "Amber",
+      "sky": "Sky",
+      "mint": "Mint"
+    }
+  }
+}

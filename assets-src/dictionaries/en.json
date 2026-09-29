@@ -1,0 +1,1546 @@
+{
+  "meta": {
+    "home": {
+      "title": "LinClone – The AI clone app for talking to your favorites",
+      "description": "Call, chat, get morning calls and join audio LIVE shows with official AI clones. First 60 seconds free. iPhone & Android. All creator profiles are AI clones.",
+      "ogTitle": "Talk with your favorites, out loud | LinClone",
+      "ogDescription": "Call, chat and join LIVE shows with official AI clones. Your first 60 seconds are free.",
+      "ogImageAlt": "LinClone: “Talk with your favorites, out loud.” Aura portraits of official AI clones and a note that your first 60 seconds are free."
+    },
+    "creators": {
+      "title": "LC Studio – Build and run your official AI clone",
+      "description": "Create and manage an official AI clone from your own voice and words. Chats, calls, LIVE, Grow and earnings in one creator app. LC Studio is invitation-only.",
+      "ogTitle": "Build your official AI clone, right from your phone | LC Studio",
+      "ogDescription": "LC Studio, the creator app from LinClone. Invitation only for now.",
+      "ogImageAlt": "LC Studio: “Build your official AI clone, right from your phone.” An invitation-only label and a violet ring around an aura portrait.",
+      "ogPill": "Invitation-only",
+      "breadcrumbHome": "LinClone",
+      "breadcrumbCreators": "For creators"
+    },
+    "notFound": {
+      "title": "Page not found",
+      "body": "The page you’re looking for may have moved or been removed.",
+      "home": "Back to LinClone"
+    }
+  },
+  "common": {
+    "brand": "LinClone",
+    "studioBrand": "LC Studio",
+    "tagline": "Closer than ever",
+    "disclosure": "All creator profiles are AI clones",
+    "disclosureOfficial": "All creator profiles are official AI clones",
+    "screenNote": "Screens and conversations are illustrative. Creators shown are fictional.",
+    "devNote": "Screens are illustrative and may include features in development.",
+    "freeWithIap": "Free to download · In-app purchases",
+    "friction": {
+      "freeDownload": "Free to download",
+      "first60": "First 60 seconds free",
+      "trialBeforeSignup": "Try a call before signing up",
+      "noPassword": "No password needed"
+    },
+    "store": {
+      "appStoreBadgeAlt": "Download on the App Store",
+      "googlePlayBadgeAlt": "Get it on Google Play",
+      "appStoreName": "App Store",
+      "googlePlayName": "Google Play",
+      "otherStoreFromIos": "On Android? Get it here",
+      "otherStoreFromAndroid": "On iPhone? Get it here",
+      "qrCaption": "Scan with your phone camera to get the app",
+      "qrAlt": "QR code to download the LinClone app",
+      "studioComingSoon": "LC Studio: coming soon",
+      "comingSoonSuffix": "Coming soon"
+    },
+    "skip": {
+      "stage": "Skip this animation",
+      "toDownload": "Skip to download",
+      "toContent": "Skip to content"
+    },
+    "lang": {
+      "ja": "日本語",
+      "en": "English",
+      "switchLabel": "Change language",
+      "englishAvailable": "English available",
+      "japaneseAvailable": "日本語で見る",
+      "dismiss": "Dismiss"
+    },
+    "demo": "Demo",
+    "copy": "Copy",
+    "copySelected": "Address selected: press ⌘C or long-press to copy",
+    "copied": "Copied",
+    "close": "Close"
+  },
+  "a11y": {
+    "phoneMockup": "Illustration of an app screen",
+    "carouselPrev": "Previous",
+    "carouselNext": "Next",
+    "carouselPosition": "{current} of {total}",
+    "pageProgress": "Page progress",
+    "opensStore": "Opens the store page",
+    "opensMail": "Opens your email app",
+    "decorative": "Decorative"
+  },
+  "header": {
+    "homeLabel": "LinClone home",
+    "navLabel": "Chapters on this page",
+    "nav": {
+      "call": "Calls",
+      "morning": "Morning calls",
+      "chat": "Chat",
+      "live": "LIVE",
+      "grow": "Grow",
+      "faq": "FAQ"
+    },
+    "forCreators": "For creators",
+    "getApp": "Get the app",
+    "getAppShort": "Get",
+    "menuOpen": "Open menu",
+    "menuClose": "Close menu",
+    "qrPopoverTitle": "Get it on your phone",
+    "qrPopoverBody": "Scan with your camera to open the store page."
+  },
+  "stickyBar": {
+    "title": "LinClone",
+    "sub": "First 60 seconds free",
+    "cta": "Get",
+    "dismiss": "Dismiss"
+  },
+  "qrDock": {
+    "title": "Get it on your phone",
+    "caption": "Scan with your camera to download",
+    "collapse": "Collapse",
+    "expand": "Show QR code"
+  },
+  "footer": {
+    "tagline": "Closer than ever",
+    "columns": {
+      "app": "App",
+      "creators": "Creators",
+      "support": "Support",
+      "legal": "Legal"
+    },
+    "links": {
+      "call": "Calls",
+      "morning": "Morning calls",
+      "chat": "Chat",
+      "live": "LIVE",
+      "grow": "Grow",
+      "faq": "FAQ",
+      "fanApp": "The LinClone app",
+      "studio": "LC Studio",
+      "requestInvite": "Request an invitation",
+      "support": "Support",
+      "deleteUser": "Delete your account",
+      "privacy": "Privacy Policy",
+      "terms": "Terms of Service",
+      "cookies": "Cookie Policy",
+      "childSafety": "Child Protection Policy"
+    },
+    "copyright": "© LinClone K.K."
+  },
+  "personas": {
+    "yuzu": {
+      "name": "Yuzu",
+      "genre": "Idol",
+      "tags": "Dance · Sweets"
+    },
+    "ren": {
+      "name": "Ren",
+      "genre": "Athlete",
+      "tags": "Morning runs · Training"
+    },
+    "kai": {
+      "name": "Kai",
+      "genre": "Singer",
+      "tags": "Rainy-day songs · Piano"
+    },
+    "sora": {
+      "name": "Sora",
+      "genre": "Actor & voice actor",
+      "tags": "Board games · Hojicha"
+    },
+    "nagi": {
+      "name": "Nagi",
+      "genre": "Gaming streamer",
+      "tags": "Puzzles · Chit-chat"
+    },
+    "aoi": {
+      "name": "Aoi",
+      "genre": "Singer-songwriter",
+      "tags": "Cafés · Songwriting"
+    },
+    "fan": {
+      "name": "Hinata",
+      "nickname": "Hina"
+    }
+  },
+  "home": {
+    "hero": {
+      "eyebrow": "The app for talking with your favorite’s AI clone",
+      "title": "Talk with your favorites, out loud.",
+      "lead": "Call, chat and join LIVE shows with official AI clones of the creators you love. Your first 60 seconds are free.",
+      "stickers": {
+        "official": "Official AI clones",
+        "first60": "First 60 seconds free",
+        "call": "Voice calls",
+        "live": "LIVE"
+      },
+      "chipsLabel": "What you can do",
+      "chips": {
+        "call": "Calls",
+        "morning": "Morning calls",
+        "voice": "Voice messages",
+        "chat": "Chat",
+        "live": "LIVE",
+        "grow": "Grow"
+      },
+      "phoneAlt": "Illustration of the free first call: Yuzu’s aura portrait and a “Tap to talk with Yuzu” button.",
+      "phoneLink": "See the call demo"
+    },
+    "cast": {
+      "label": "Creators with official AI clones",
+      "badge": "Official AI clone",
+      "note": "Creators shown are fictional."
+    },
+    "about": {
+      "eyebrow": {
+        "num": "",
+        "label": "What is LinClone"
+      },
+      "title": "You’re talking to their official AI clone.",
+      "statement": "LinClone is where you talk with official AI clones of the creators you love. Their voice, their way of talking, and memories that grow every time you talk.",
+      "cards": {
+        "official": {
+          "title": "Official",
+          "body": "Every clone is an official AI clone, approved by the creator."
+        },
+        "labelled": {
+          "title": "Always labeled",
+          "body": "Every creator profile is an AI clone. LIVE shows and Stories are marked as AI-generated too."
+        },
+        "memory": {
+          "title": "Your memories, your call",
+          "body": "See, edit or delete what their AI remembers about you, anytime."
+        }
+      },
+      "oshiColor": {
+        "label": "Pick their color",
+        "hint": "The page glows in their color.",
+        "options": {
+          "rose": "Rose",
+          "teal": "Teal",
+          "lavender": "Lavender",
+          "amber": "Amber",
+          "sky": "Sky",
+          "mint": "Mint"
+        }
+      }
+    },
+    "call": {
+      "eyebrow": {
+        "num": "01",
+        "label": "Calls"
+      },
+      "title": "Hear their voice. Feel closer.",
+      "lead": "A real-time conversation in their voice. When it’s your turn, a light rises from the bottom of the screen; when they answer, it moves to them. Each call is transcribed into your chat, too.",
+      "fanCaption": "Guess what, something good happened today",
+      "oshiCaption": "Wait, what? Tell me everything, Hina.",
+      "routes": "Speaker · Bluetooth · CarPlay",
+      "trust": "No charge if a call fails to connect.",
+      "billing": "On calls you place, you’re only charged for the time you could hear them.",
+      "transcriptToast": "Transcribing your call…",
+      "stageAlt": "Illustration of a voice call with a creator’s AI clone. The light moves to whoever is speaking."
+    },
+    "demo": {
+      "button": "Tap to talk with Yuzu",
+      "tag": "Demo",
+      "startLabel": "Play the demo call (captions only, no sound)",
+      "captionsLabel": "Captions",
+      "lineOne": "Hey Hina, is that you? I’m so glad you called.",
+      "hint": "(In the app, this is where you talk.)",
+      "lineTwo": "Aw, you did great today. Let’s keep talking in the app.",
+      "doneTitle": "First call, done",
+      "doneBody": "Keep talking in the app. Your first 60 seconds are free.",
+      "note": "This is a demo with a fictional creator. It is not a real call.",
+      "replay": "Watch again",
+      "paused": "Paused"
+    },
+    "checkpoint": {
+      "title": "Keep talking in the app.",
+      "sub": "Try a call before you even create an account."
+    },
+    "morning": {
+      "eyebrow": {
+        "num": "02",
+        "label": "Morning calls"
+      },
+      "title": "Wake up to their voice.",
+      "captionLine": "Morning, Hina. Time to wake up.",
+      "lead": "You pick the time and how often, and their AI clone calls you then: every day, weekdays, weekends or just once. It rings on your lock screen like a real phone call.",
+      "note": "Depending on your phone’s Focus or Do Not Disturb settings, it may not ring.",
+      "costNote": "Each morning call uses coins when it’s placed, even if you don’t answer.",
+      "voiceEyebrow": "Voice messages",
+      "voiceTitle": "Open Home to their latest voice message.",
+      "voiceBody": "Play the latest voice message from their AI clone, right from Home. A NEW badge tells you it’s there.",
+      "stageAlt": "Illustration of a morning call ringing on a lock screen."
+    },
+    "chat": {
+      "eyebrow": {
+        "num": "03",
+        "label": "Chat"
+      },
+      "title": "Lunch break? Pick up the chat.",
+      "lead": "Their AI clone remembers what you’ve talked about and what to call you. So every chat picks up right where you left off.",
+      "steps": {
+        "chat": {
+          "label": "Chat",
+          "title": "After the call, keep it going in chat.",
+          "body": "Calls are transcribed into your chat. They reply right away, in their own way of talking."
+        },
+        "stories": {
+          "label": "Stories",
+          "title": "Turn a reply into a picture and a voice.",
+          "body": "Make an image and a voice clip from one of their replies, then post both as a Story. Send hearts and replies to Stories others made.",
+          "footnote": "Stories carry an “AI-generated” label."
+        },
+        "memory": {
+          "label": "Our bond & memories",
+          "title": "Your nickname. Their tone. Your call.",
+          "body": "Choose what they call you and pick a relationship mode. See what they remember, lock the moments that matter, and edit or delete the rest."
+        }
+      },
+      "swipeHint": "Swipe for more",
+      "stageAlt": "Illustrations of chat, Stories and the bond & memories screen."
+    },
+    "live": {
+      "eyebrow": {
+        "num": "04",
+        "label": "LIVE"
+      },
+      "title": "Tonight, they’re LIVE.",
+      "audioChip": "Audio-only LIVE",
+      "lead": "An audio-only LIVE show hosted by their AI clone. Send a comment and they may read it on air and answer. Cheer them on with gifts and Super Chat.",
+      "fill": "They read your comment, answer, and carry on.",
+      "requestTitle": "Pick a theme. Request a show in their voice.",
+      "requestBody": "The AI writes the rundown and their AI clone keeps talking, so there’s no dead air. Requests use a LIVE ticket, and first-timers get a trial.",
+      "archiveTitle": "Missed it? Catch the archive.",
+      "archiveBody": "Finished shows keep their recording, so you can listen back.",
+      "footnote": "LIVE shows are audio-only, AI-generated content. Whether requests are open depends on the creator. If a show can’t start, your ticket is returned.",
+      "stageAlt": "Illustration of an audio LIVE show with comments scrolling and a Super Chat marked as read on air."
+    },
+    "grow": {
+      "eyebrow": {
+        "num": "05",
+        "label": "Grow"
+      },
+      "title": "Evenings are for Grow.",
+      "fill": "Help their AI learn who they really are.",
+      "lead": "Share what you know about your favorite, with a source. Submissions are reviewed by AI and the community, and the creator always has the final say.",
+      "pipeline": {
+        "submit": "Submit",
+        "ai": "AI review",
+        "community": "Community review",
+        "approved": "Approved"
+      },
+      "finalSay": "The creator has the final say",
+      "rules": "Politics, religion, family privacy, addresses and whereabouts, unannounced plans and sexual content can’t be submitted.",
+      "stageAlt": "Illustration of Grow: a creator’s fact sheet and a submission under review."
+    },
+    "more": {
+      "eyebrow": {
+        "num": "",
+        "label": "More"
+      },
+      "title": "So much more to do together.",
+      "lead": "Little things that make you want to open the app every day.",
+      "tiles": {
+        "modes": {
+          "title": "Pick how they treat you.",
+          "body": "Standard, Gentle, Best friend, Cheerleader, Tough love, Tsundere. Tap one and compare how they talk.",
+          "samples": {
+            "standard": "Good work today.",
+            "gentle": "Don’t push yourself. Are you getting enough rest?",
+            "bestFriend": "Okay okay, and then? Tell me more.",
+            "cheerleader": "You’ve got this. I’m always cheering for you.",
+            "toughLove": "No excuses. Just a little more, let’s go.",
+            "tsundere": "I-it’s not like I was waiting for you or anything."
+          },
+          "note": "Conversations are illustrative."
+        },
+        "reel": {
+          "title": "Meet them by voice.",
+          "body": "Swipe the Reel, hear their voice, then follow."
+        },
+        "quests": {
+          "title": "Play and earn coins.",
+          "body": "From your first meeting to LIVE with everyone. Clear quests and collect coins."
+        },
+        "bonus": {
+          "title": "Open daily, get a bonus.",
+          "body": "Claim your login bonus every day."
+        },
+        "invite": {
+          "title": "Invite a friend.",
+          "body": "When your friend clears every quest, you both get coins."
+        },
+        "plans": {
+          "title": "For days you want more.",
+          "body": "You can start free. Plans add more chats, monthly coins and LIVE tickets.",
+          "note": "Prices are shown in the app. Payment is through the App Store or Google Play.",
+          "cards": {
+            "free": {
+              "name": "Free",
+              "perk": "Daily chats included"
+            },
+            "basic": {
+              "name": "Basic",
+              "perk": "More chats · Monthly coins"
+            },
+            "premium": {
+              "name": "Premium",
+              "perk": "Even more chats · Monthly coins · LIVE tickets"
+            },
+            "super": {
+              "name": "Super",
+              "perk": "The most chats · Monthly coins · LIVE tickets"
+            }
+          }
+        },
+        "money": {
+          "title": "Money, handled honestly.",
+          "points": {
+            "confirm": "A confirm step before every spend",
+            "refund": "Coins for failed generations come back automatically",
+            "heard": "Calls you place are charged only for the time you could hear them",
+            "noConnect": "No charge if a call fails to connect",
+            "store": "Payments only through the App Store or Google Play"
+          }
+        },
+        "library": {
+          "title": "Everything you made together, in one place.",
+          "body": "Images, Stories, voices and LIVE archives all live in My Page."
+        },
+        "sleep": {
+          "title": "Mute notifications while you sleep.",
+          "body": "Morning calls still come through."
+        },
+        "signin": {
+          "title": "Sign in with Apple or Google.",
+          "body": "No password needed."
+        }
+      },
+      "indexTitle": "Everything in the app",
+      "indexToggle": "See all",
+      "index": {
+        "call": "Voice calls",
+        "chat": "Chat",
+        "imageVoice": "Make images & voices",
+        "stories": "Stories",
+        "morning": "Morning calls",
+        "voiceMessage": "Voice messages",
+        "memory": "Our bond & memories",
+        "nickname": "Nickname",
+        "modes": "Relationship modes",
+        "live": "LIVE",
+        "liveRequest": "Request a LIVE show",
+        "gifts": "Gifts & Super Chat",
+        "archive": "Archives",
+        "grow": "Grow",
+        "reel": "Reel",
+        "quests": "Quests",
+        "bonus": "Login bonus",
+        "invite": "Invite friends",
+        "wallet": "LinCoin Wallet",
+        "notifications": "Notification settings",
+        "signin": "Passwordless sign-in",
+        "languages": "日本語 · English"
+      }
+    },
+    "how": {
+      "eyebrow": {
+        "num": "06",
+        "label": "Getting started"
+      },
+      "title": "Your first 60 seconds are free.",
+      "lead": "Before you even sign up: hear them, then talk back.",
+      "steps": {
+        "download": {
+          "title": "Download for free",
+          "body": "From the App Store or Google Play."
+        },
+        "pick": {
+          "title": "Hear them, then follow",
+          "body": "Swipe the Reel and find your favorite."
+        },
+        "call": {
+          "title": "Talk free for your first 60 seconds",
+          "body": "Before you create an account, just try talking."
+        },
+        "signin": {
+          "title": "Continue with Apple or Google",
+          "body": "No password needed. Pick up the call in chat."
+        }
+      },
+      "ringLabel": "Free",
+      "ctaTitle": "That’s all it takes.",
+      "stageAlt": "Illustrations of getting started: welcome screen, Reel, the free first call and sign-in."
+    },
+    "faq": {
+      "eyebrow": {
+        "num": "",
+        "label": "FAQ"
+      },
+      "title": "Frequently asked questions",
+      "lead": "Anything else? Contact us from the support page.",
+      "supportLink": "Support page",
+      "items": {
+        "what": {
+          "q": "What is LinClone?",
+          "a": "LinClone is an AI clone app for fans: AI chat, AI voice calls, morning calls and LIVE shows with official AI clones of your favorite creators. It works on iPhone and Android, in Japanese and English."
+        },
+        "real": {
+          "q": "Am I talking to the real creator?",
+          "a": "No. All creator profiles are AI clones. You talk with an official AI clone approved by the creator, and LIVE shows and Stories are marked as AI-generated."
+        },
+        "free": {
+          "q": "Is it free?",
+          "a": "The app is free to download and your first 60 seconds of calling are free. For more, you can buy coins or a plan in the app. See pricing in the app."
+        },
+        "account": {
+          "q": "Do I need an account?",
+          "a": "You can try your first call before creating an account. After that, just continue with Apple or Google. No password needed."
+        },
+        "video": {
+          "q": "Can I video call?",
+          "a": "No. Calls are voice-only, and LIVE shows are audio shows too."
+        },
+        "morning": {
+          "q": "Will a morning call always ring?",
+          "a": "It rings on your lock screen like a phone call, but your phone’s Focus or Do Not Disturb settings may stop it. The app shows you how to let it through."
+        },
+        "memory": {
+          "q": "Can I delete what they remember?",
+          "a": "Yes. In “Our bond & memories” you can see, edit or delete what they remember, anytime."
+        },
+        "payment": {
+          "q": "How do payments work?",
+          "a": "Only through App Store or Google Play in-app purchase. Every spend asks you to confirm first, and coins for failed generations are refunded automatically."
+        },
+        "oshikatsu": {
+          "q": "How does it fit into my day?",
+          "a": "A morning call to start the day, chat in the gaps, calls and LIVE at night. With Grow, you can even help their AI learn who they really are."
+        },
+        "delete": {
+          "q": "How do I delete my account?",
+          "a": "You can delete it from Settings in the app. See the account deletion page for details.",
+          "linkLabel": "Delete your account"
+        },
+        "creator": {
+          "q": "I’m a creator. How do I join?",
+          "a": "See the page for LC Studio, our app for creators.",
+          "linkLabel": "LC Studio"
+        }
+      }
+    },
+    "creatorsBand": {
+      "eyebrow": "For creators",
+      "title": "Create your own AI clone.",
+      "body": "LC Studio is the creator app for building and running your official AI clone. It’s invitation-only for now.",
+      "link": "Explore LC Studio",
+      "ringBuilding": "Building",
+      "ringReady": "Your clone is ready",
+      "alt": "Illustration of a clone being created in LC Studio."
+    },
+    "final": {
+      "eyebrow": "Closer than ever",
+      "title": "Go call your favorite.",
+      "sub": "Free to download. Your first 60 seconds are free.",
+      "qrCaption": "Scan to download",
+      "stageAlt": "Illustration of the call screen shrinking back into a phone in your hand."
+    }
+  },
+  "creators": {
+    "header": {
+      "homeLabel": "LC Studio home",
+      "lockup": "LC STUDIO",
+      "navLabel": "Chapters on this page",
+      "nav": {
+        "how": "How it works",
+        "setup": "Setup",
+        "control": "Control",
+        "earnings": "Earnings",
+        "faq": "FAQ"
+      },
+      "fanApp": "The LinClone app",
+      "requestInvite": "Request an invitation",
+      "requestShort": "Request"
+    },
+    "hero": {
+      "eyebrow": "LC Studio · The creator app · Invitation-only",
+      "title": "Build your official AI clone, right from your phone.",
+      "lead": "Create and manage an official AI clone from your own voice and words. Then look after its chats, calls, morning calls and LIVE shows from one app.",
+      "audience": "For creators, talent, voice actors, athletes, singers, and their agencies.",
+      "cta": "Request an invitation",
+      "copyEmail": "Copy email address",
+      "copied": "Copied",
+      "storePillIos": "App Store · Coming soon",
+      "storePillAndroid": "Google Play · Coming soon",
+      "note": "LC Studio is invitation-only. An invite code is required to open your studio.",
+      "disclosure": "Every creator profile on LinClone is shown to followers as an AI clone.",
+      "fanLink": "Want to talk with your favorites? Get the LinClone app",
+      "phoneAlt": "Illustration of a clone being created in LC Studio. When the ring fills, it’s ready."
+    },
+    "statement": {
+      "fill": "The you that never goes offline.",
+      "sub": "Chats in your words. Calls, morning calls and LIVE shows in your voice."
+    },
+    "home": {
+      "eyebrow": {
+        "num": "01",
+        "label": "How it works"
+      },
+      "fill": "Chats, LIVE and earnings. All from your phone.",
+      "lead": "LC Studio’s Home holds everything you need to run your clone. Tap a tile to jump to how it works.",
+      "tocLabel": "LC Studio features",
+      "tiles": {
+        "publicProfile": "Edit what followers see",
+        "fanContent": "Images and voices followers made with your clone",
+        "live": "Auto-hosted shows, settings and archives",
+        "homeVoice": "Voice messages followers hear on Home",
+        "morningCall": "Your clone’s first lines",
+        "fillers": "The sounds between thoughts",
+        "analytics": "Trends over time"
+      },
+      "stageAlt": "Illustration of LC Studio’s Home: your clone’s status and its feature tiles."
+    },
+    "setup": {
+      "eyebrow": {
+        "num": "02",
+        "label": "Setup"
+      },
+      "title": "Set up your clone, right from your phone.",
+      "lead": "Pick how you talk, write in your own words, add official photos and your voice. Don’t aim for perfect; you can change everything later.",
+      "trust": "Anything we read from your Wikipedia or YouTube links, or from files you upload, comes back as a suggestion. You decide what your clone keeps.",
+      "steps": {
+        "picks": {
+          "title": "Who you are",
+          "body": "Tap to pick how you refer to yourself, your dialect and your hobbies."
+        },
+        "words": {
+          "title": "In your own words",
+          "body": "Write freely: stories, catchphrases, what you’re up to."
+        },
+        "photos": {
+          "title": "Official photos",
+          "body": "Choose the photos followers will see."
+        },
+        "modes": {
+          "title": "Relationship modes",
+          "body": "Choose the ways followers can have you talk."
+        },
+        "ng": {
+          "title": "NG topics",
+          "body": "Decide up front what your clone should never get into."
+        },
+        "voice": {
+          "title": "Your voice",
+          "body": "Record in the app or upload files. The best material is you, talking naturally with someone."
+        }
+      },
+      "readyTitle": "Your clone is ready",
+      "readyBody": "Voice cloning and personality tuning usually take a few minutes.",
+      "stageAlt": "Illustrations of clone setup in LC Studio."
+    },
+    "check": {
+      "eyebrow": {
+        "num": "03",
+        "label": "Check"
+      },
+      "title": "Talk to it before your followers do.",
+      "lead": "Chat, voice-call and try a morning call in preview mode. Nothing here is shown to followers or counted in analytics.",
+      "fill": "Exactly what your followers will hear.",
+      "stageAlt": "Illustration of a creator on a preview call with their own AI clone."
+    },
+    "control": {
+      "eyebrow": {
+        "num": "04",
+        "label": "Control"
+      },
+      "fill": "You always have the final say.",
+      "lead": "Grow facts, your profile, topics you’d rather avoid. You always decide.",
+      "cards": {
+        "grow": {
+          "title": "Grow is approval-based",
+          "body": "Approve or reject every fact followers propose, and reverse any decision later."
+        },
+        "ng": {
+          "title": "NG topics",
+          "body": "Topics you switch on get top priority across chat, calls, Stories and LIVE, and your clone is set to steer clear of them."
+        },
+        "profile": {
+          "title": "Your profile, your likeness",
+          "body": "Edit or hide anything on your public profile. You can turn off AI images of you made by followers."
+        },
+        "labels": {
+          "title": "Clearly labeled as AI",
+          "body": "Every image shared outside LinClone carries an “AI-generated / not the real person” label."
+        }
+      }
+    },
+    "real": {
+      "eyebrow": {
+        "num": "05",
+        "label": "The real you"
+      },
+      "title": "Step in as the real you.",
+      "officialBody": "Join any follower’s chat with an official reply. Official replies carry a verified badge and are shown apart from AI replies.",
+      "pauseBody": "You can also pause your clone’s replies in a single chat.",
+      "liveTitle": "Your clone hosts the LIVE show.",
+      "liveBody": "Your clone runs the show and reads comments aloud to answer them. You decide whether to accept follower requests. Archives save automatically and can be downloaded.",
+      "dropIn": "You can also drop into the show as yourself."
+    },
+    "voice": {
+      "eyebrow": {
+        "num": "06",
+        "label": "Voice"
+      },
+      "title": "Your voice, in your followers’ every day.",
+      "lead": "Voice messages on Home, morning-call first lines, even the little “hmm”s in a call. All in your clone’s voice.",
+      "lines": {
+        "l1": "Hmm, let me think",
+        "l2": "Mm-hm, got it",
+        "l3": "Morning. Time to get up",
+        "l4": "Thanks for coming by today",
+        "l5": "Want to listen to the rain with me?"
+      },
+      "cards": {
+        "homeVoice": {
+          "title": "Voice messages",
+          "body": "AI drafts them from your clone’s settings and the latest Grow facts. Your first one publishes automatically; after that, only what you confirm goes out."
+        },
+        "morning": {
+          "title": "Morning-call first lines",
+          "body": "Edit them per tone. Saving re-synthesizes them in your voice."
+        },
+        "fillers": {
+          "title": "Fillers",
+          "body": "The sounds that cover the moment your clone is thinking. Choose gentle or casual."
+        }
+      }
+    },
+    "insights": {
+      "eyebrow": {
+        "num": "07",
+        "label": "Insights & earnings"
+      },
+      "title": "Know your community.",
+      "analyticsBody": "See chats, images, voices, call time, coins received and LIVE shows charted over time.",
+      "privacy": "Individual follower data is shown inside LC Studio only and is never made public in the LinClone app.",
+      "earningsTitle": "Coin-based earnings.",
+      "earningsBody": "Each month’s earnings are finalized from the coins followers spend on your clone. No figures are shown while a month is being calculated. Statements come as CSV, and payouts go to your registered bank account. We’ll explain the details when we’re in touch."
+    },
+    "join": {
+      "eyebrow": {
+        "num": "08",
+        "label": "How to join"
+      },
+      "title": "It starts with an invitation.",
+      "steps": {
+        "request": {
+          "title": "Request an invitation",
+          "body": "Email us your name, social accounts, follower count and genre."
+        },
+        "contact": {
+          "title": "We get in touch",
+          "body": "We review your request and contact you."
+        },
+        "get": {
+          "title": "Get LC Studio",
+          "body": "Coming soon to the App Store and Google Play."
+        },
+        "getLive": {
+          "title": "Get LC Studio",
+          "body": "Download it from the App Store or Google Play."
+        },
+        "setup": {
+          "title": "Set up",
+          "body": "Open your studio with your invite code, then do everything in the app."
+        }
+      },
+      "ctaTitle": "Request an invitation",
+      "ctaBody": "This opens your email app. If it doesn’t, copy the address and send us a message.",
+      "emailLabel": "Send to",
+      "copyEmail": "Copy address",
+      "copied": "Copied",
+      "templateToggle": "See the email template",
+      "fine": "We’ll explain invitation details when we’re in touch."
+    },
+    "faq": {
+      "title": "Frequently asked questions",
+      "items": {
+        "what": {
+          "q": "What is LC Studio?",
+          "a": "The creator app for building your official AI clone and running its chats, calls, morning calls, LIVE shows, Grow and earnings from one place."
+        },
+        "who": {
+          "q": "Who can use it?",
+          "a": "It’s invitation-only for now, for creators, talent, voice actors, athletes, singers and their agencies, with an invite code."
+        },
+        "cost": {
+          "q": "What does it cost?",
+          "a": "We’ll go over costs and terms individually when we’re in touch."
+        },
+        "studio": {
+          "q": "Do I need a recording studio?",
+          "a": "No. Setup happens on your phone, and you can record your voice in the app or upload files."
+        },
+        "time": {
+          "q": "How long does it take?",
+          "a": "Voice cloning and personality tuning usually take a few minutes. The screen updates by itself."
+        },
+        "control": {
+          "q": "Can I control what my clone says?",
+          "a": "Set NG topics, approve or reject Grow facts, and check everything in preview mode. NG topics get top priority, so your clone is set to steer clear of them."
+        },
+        "label": {
+          "q": "Is it labeled as AI?",
+          "a": "Yes. Every creator profile on LinClone is shown as an AI clone, and images shared outside LinClone carry an “AI-generated / not the real person” label."
+        },
+        "agency": {
+          "q": "Can my agency team share access?",
+          "a": "Right now, each account is operated by one person. Agencies are welcome to contact us by email."
+        },
+        "stop": {
+          "q": "What if I want to stop?",
+          "a": "Delete your account in the app. Your clone is unpublished immediately, and your voice data and AI voice models are permanently deleted within a set period. See the Privacy Policy for details.",
+          "linkLabel": "Privacy Policy"
+        },
+        "legacy": {
+          "q": "I already have a clone on LinClone.",
+          "a": "You can build a draft from your existing LinClone character and personality analysis, and keep your current voice."
+        },
+        "release": {
+          "q": "When will it be on the stores?",
+          "a": "We’re preparing the store release. If you request an invitation, we’ll tell you how to get the app when we’re in touch."
+        },
+        "releaseLive": {
+          "q": "Where can I get it?",
+          "a": "On the App Store and Google Play. An invite code is required to open your studio."
+        }
+      }
+    },
+    "final": {
+      "title": "Go meet the other you.",
+      "sub": "Start by requesting an invitation. We’ll be in touch.",
+      "fanLink": "Here to talk with your favorites? Get the LinClone app"
+    },
+    "mailto": {
+      "subject": "LC Studio invitation request",
+      "body": "Hi LinClone team,\n\nI’d like an invitation to LC Studio.\n\nName (stage name):\nSocial account (URL):\nFollower count (main platform):\nGenre (idol / singer / actor or voice actor / streamer / athlete / other):\nAgency (optional):\nMessage (optional):\n\nThank you!"
+    }
+  },
+  "mock": {
+    "fan": {
+      "common": {
+        "tabHome": "Home",
+        "tabChat": "Chat",
+        "tabGrow": "Grow",
+        "tabLive": "LIVE",
+        "tabMyPage": "My Page",
+        "verified": "Official",
+        "aiGenerated": "AI-generated",
+        "newBadge": "NEW",
+        "follow": "Follow",
+        "following": "Following",
+        "callNow": "Call now",
+        "chat": "Chat",
+        "liveBadge": "LIVE"
+      },
+      "firstCall": {
+        "sub": "Try a free 60-second call",
+        "tapToTalk": "Tap to talk with {name}",
+        "later": "Maybe later",
+        "freeLabel": "FREE",
+        "alt": "Illustration of the free first call screen."
+      },
+      "call": {
+        "connecting": "Connecting…",
+        "listening": "listening",
+        "thinking": "thinking…",
+        "speaking": "speaking",
+        "freeLabel": "FREE",
+        "mute": "Mute microphone",
+        "end": "End call",
+        "speaker": "Speaker",
+        "alt": "Illustration of a voice call with a creator’s AI clone."
+      },
+      "incoming": {
+        "weekday": "Wednesday",
+        "kicker": "Incoming call",
+        "subtitle": "Morning call",
+        "decline": "Decline",
+        "accept": "Accept",
+        "alt": "Illustration of a morning call ringing on a lock screen."
+      },
+      "morningSetup": {
+        "title": "Morning call",
+        "timeHint": "Tap to change the time",
+        "dateLabel": "DATE",
+        "dateValue": "Tomorrow",
+        "dateHint": "Tap to change the first morning",
+        "repeatLabel": "REPEAT",
+        "once": {
+          "title": "Once",
+          "sub": "Rings one morning"
+        },
+        "daily": {
+          "title": "Every day",
+          "sub": "Rings each morning"
+        },
+        "weekdays": {
+          "title": "Weekdays",
+          "sub": "Mon – Fri"
+        },
+        "weekends": {
+          "title": "Weekends",
+          "sub": "Sat & Sun"
+        },
+        "ringTitle": "Rings like a phone call",
+        "ringBody": "It won’t ring if Focus or Do Not Disturb blocks it.",
+        "seeHow": "See how",
+        "cta": "Schedule",
+        "alt": "Illustration of setting a morning call time and repeat."
+      },
+      "home": {
+        "greeting": "Good morning",
+        "followingLabel": "Following",
+        "seeAll": "See all",
+        "followNew": "Follow new",
+        "readyToTalk": "Available for calls",
+        "morningTitle": "Morning call",
+        "morningScheduled": "Calling at 7:00",
+        "morningRepeat": "Every day · Tap to change",
+        "voiceTitle": "Play their latest voice message",
+        "voiceQuote": "“Good work today. You did great.”",
+        "alt": "Illustration of Home with a morning call and the latest voice message."
+      },
+      "conversation": {
+        "dayLabel": "TODAY 12:30",
+        "callEnded": "Call ended",
+        "creator1": "Welcome back, Hina. Tell me how the rest of your morning went",
+        "fan1": "Test’s done. I think it went pretty well",
+        "creator2": "So proud of you. You were up studying so late last night",
+        "read": "Read",
+        "chipImage": "Image",
+        "chipVoice": "Voice",
+        "composer": "Message",
+        "alt": "Illustration of a chat with a creator’s AI clone."
+      },
+      "story": {
+        "generating": "Generating image…",
+        "postBoth": "Post image & voice to Story",
+        "posted": "Posted to Story ✓",
+        "chatTitle": "Chat",
+        "reactionsRow": "Story reactions",
+        "fanMade": "FAN-MADE WITH AI",
+        "replyPlaceholder": "Reply to Story…",
+        "storyTitle": "After-school treat",
+        "alt": "Illustration of making an image and voice from a reply and posting it as a Story."
+      },
+      "memory": {
+        "title": "Our bond & memories",
+        "nickHeading": "What {name} calls you",
+        "modesHeading": "Our relationship",
+        "modes": {
+          "standard": "Standard",
+          "gentle": "Gentle",
+          "bestFriend": "Best friend",
+          "cheerleader": "Cheerleader",
+          "toughLove": "Tough love",
+          "tsundere": "Tsundere"
+        },
+        "recentHeading": "Recent memories",
+        "memories": {
+          "m1": "Not a morning person",
+          "m2": "Exam week this week",
+          "m3": "Loves strawberry sweets"
+        },
+        "lock": "Lock",
+        "edit": "Edit",
+        "delete": "Delete",
+        "alt": "Illustration of the bond & memories screen: nickname, relationship mode and recent memories."
+      },
+      "liveFeed": {
+        "title": "LIVE",
+        "onAir": "On air",
+        "theme": "Theme: Rainy-day song talk",
+        "join": "Join LIVE",
+        "alt": "Illustration of the LIVE feed."
+      },
+      "livePlayer": {
+        "follow": "FOLLOW",
+        "onAir": "On air",
+        "theme": "Theme: Talking rainy-day songs",
+        "disclaimer": "LINCLONE AI · AI-GENERATED CONTENT",
+        "readOnAir": "Read on air",
+        "superChat": "Super Chat",
+        "superChatText": "Thanks for talking about my request",
+        "comments": {
+          "c1": {
+            "user": "mocha",
+            "text": "I love that song too"
+          },
+          "c2": {
+            "user": "rin.rin",
+            "text": "Perfect talk for a rainy night…"
+          },
+          "c3": {
+            "user": "hinata",
+            "text": "Next time I want to request something upbeat"
+          },
+          "c4": {
+            "user": "sakura",
+            "text": "Kai’s voice is so calming"
+          }
+        },
+        "gifts": {
+          "rose": "Magic Rose",
+          "star": "Neon Star",
+          "gem": "Cyber Gem",
+          "fireworks": "Fireworks",
+          "guitar": "Neon Guitar",
+          "nova": "Supernova"
+        },
+        "composer": "Add a comment…",
+        "gift": "Gift",
+        "alt": "Illustration of listening to an audio LIVE show."
+      },
+      "liveRequest": {
+        "title": "Request a LIVE show from your favorite",
+        "body": "Pick a theme and the show starts as soon as it’s ready. If it can’t start, your ticket is returned.",
+        "cta": "Request a LIVE show",
+        "alt": "Illustration of the card for requesting a LIVE show."
+      },
+      "liveSetup": {
+        "title": "Request a LIVE show",
+        "hostLabel": "HOST",
+        "hostRole": "Host · AI",
+        "topicLabel": "Show theme",
+        "topicValue": "Songs for a rainy day",
+        "commentsLabel": "Read comments aloud",
+        "commentsSub": "The AI may read comments aloud during the show",
+        "bgLabel": "Choose a background",
+        "next": "Next",
+        "alt": "Illustration of entering a theme for a LIVE show."
+      },
+      "showPreview": {
+        "title": "Show preview",
+        "showTitle": "{name}: Talking rainy-day songs",
+        "rundown": "Rundown",
+        "segments": {
+          "s1": {
+            "title": "Opening",
+            "desc": "Hellos and today’s theme"
+          },
+          "s2": {
+            "title": "Rainy-day song talk",
+            "desc": "Kai talks about a favorite song"
+          },
+          "s3": {
+            "title": "Comments & Super Chats",
+            "desc": "Your song recommendations, read aloud"
+          },
+          "s4": {
+            "title": "Ending",
+            "desc": "What’s next, and a good-night message"
+          }
+        },
+        "flowTitle": "How the show flows",
+        "flow1": "{name} keeps talking, so there’s no dead air",
+        "flow2": "When a comment arrives, the show pauses",
+        "flow3": "They read it, answer, then return to the rundown",
+        "start": "Start the show",
+        "alt": "Illustration of an AI-written rundown for a LIVE show."
+      },
+      "archive": {
+        "tag": "ARCHIVE",
+        "title": "Rainy-day song talk",
+        "play": "Play",
+        "recording": "Recording",
+        "alt": "Illustration of a LIVE archive."
+      },
+      "growPicker": {
+        "title": "Grow",
+        "subtitle": "Help your favorites learn who they really are.",
+        "cta": "Grow",
+        "alt": "Illustration of choosing a creator to grow."
+      },
+      "growProfile": {
+        "factSheet": "Fact sheet",
+        "rows": {
+          "drink": {
+            "label": "Favorite drink",
+            "value": "Hojicha latte"
+          },
+          "hobby": {
+            "label": "Into lately",
+            "value": "Board games"
+          },
+          "style": {
+            "label": "Speaking style",
+            "value": "Calm and polite"
+          },
+          "season": {
+            "label": "Favorite season",
+            "value": "Autumn. Going to see the autumn leaves is a yearly ritual"
+          }
+        },
+        "creatorBadge": "Creator",
+        "addedByCreator": "Added by {name}",
+        "cta": "Grow",
+        "alt": "Illustration of a creator’s fact sheet."
+      },
+      "growReview": {
+        "title": "Your submission",
+        "fact": "Favorite season is autumn. Going to see the autumn leaves is a yearly ritual",
+        "source": "Source URL",
+        "statusAi": "AI review",
+        "statusCommunity": "Community review",
+        "statusApproved": "Approved",
+        "note": "Submissions are reviewed by AI and the community",
+        "prohibitedTitle": "Topics you can’t submit",
+        "prohibited": {
+          "politics": "Politics",
+          "religion": "Religion",
+          "family": "Family privacy",
+          "address": "Address · Whereabouts",
+          "unannounced": "Unannounced plans",
+          "sexual": "Sexual content"
+        },
+        "alt": "Illustration of a Grow submission under review."
+      },
+      "welcome": {
+        "title": "Talk with your favorites,\nout loud",
+        "sub": "With official AI clones.\nYour first 60 seconds are free.",
+        "valueCalls": "Calls",
+        "valueChat": "Chat",
+        "valueLive": "LIVE",
+        "getStarted": "Get started",
+        "footnote": "ALL CREATOR PROFILES ARE AI CLONES",
+        "alt": "Illustration of the app’s welcome screen."
+      },
+      "reel": {
+        "tooltipTitle": "Follow a creator you like",
+        "tooltipSub": "Swipe up and down to see more",
+        "voiceQuote": "Can I tell you about dance practice today?",
+        "callCta": "Call {name}",
+        "alt": "Illustration of hearing a creator’s voice on the Reel."
+      },
+      "done": {
+        "title": "You’re all set",
+        "messageRow": "Message {name}",
+        "messageSub": "Pick up where the call left off",
+        "questsRow": "Earn coins with quests",
+        "questsSub": "Login bonuses and rewards",
+        "goHome": "Go to Home",
+        "alt": "Illustration of the “you’re all set” screen after the first call."
+      },
+      "gate": {
+        "title": "Welcome to LinClone",
+        "sub": "Your favorite is waiting",
+        "apple": "Continue with Apple",
+        "google": "Continue with Google",
+        "noPassword": "No password needed",
+        "alt": "Illustration of signing in with Apple or Google."
+      },
+      "quests": {
+        "title": "Quests",
+        "board": "Quest board",
+        "daily": "Daily quests",
+        "login": "Login bonus",
+        "shareX": "Share on X",
+        "invite": "Invite a friend",
+        "done": "Done",
+        "go": "GO",
+        "reward": "Quest complete!",
+        "chapters": {
+          "c1": "Chapter 1 · First contact",
+          "c2": "Chapter 2 · Chat & Stories",
+          "c3": "Chapter 3 · Closer by call",
+          "c4": "Chapter 4 · Our bond & memories",
+          "c5": "Chapter 5 · LIVE together"
+        },
+        "alt": "Illustration of the quest board."
+      },
+      "bonus": {
+        "title": "Login bonus",
+        "today": "Today",
+        "claim": "Claim",
+        "alt": "Illustration of the login bonus."
+      },
+      "invite": {
+        "title": "Invite a friend",
+        "codeLabel": "Invite code: ",
+        "code": "YUZUHINA",
+        "copy": "Copy",
+        "copied": "Copied",
+        "alt": "Illustration of an invite code."
+      },
+      "confirm": {
+        "title": "Generate an image?",
+        "body": "You always see what you’re spending on first",
+        "confirm": "Generate",
+        "cancel": "Cancel",
+        "refund": "Refunded automatically if it fails",
+        "alt": "Illustration of the confirm step before spending coins."
+      },
+      "myPage": {
+        "title": "My Page",
+        "tabs": {
+          "image": "IMAGE",
+          "stories": "STORIES",
+          "voice": "VOICE",
+          "archive": "LIVE ARCHIVE"
+        },
+        "alt": "Illustration of the My Page library."
+      },
+      "sleep": {
+        "title": "Notification settings",
+        "row": "Mute during sleep hours",
+        "sub": "Mute notifications while you sleep",
+        "morningStill": "Morning calls still come through",
+        "alt": "Illustration of notification settings."
+      },
+      "modeSampler": {
+        "alt": "Sample lines showing how each relationship mode changes the way they talk."
+      }
+    },
+    "studio": {
+      "common": {
+        "brand": "LC STUDIO",
+        "tabs": {
+          "chat": "Chat",
+          "grow": "Grow",
+          "home": "Home",
+          "earnings": "Earnings",
+          "me": "My Page"
+        },
+        "next": "Next",
+        "back": "Back",
+        "step": "CLONE SETUP"
+      },
+      "building": {
+        "building": "BUILDING",
+        "title": "Your clone is being born",
+        "sub": "Voice cloning and personality tuning take a little while — usually a few minutes. This screen updates by itself.",
+        "tourLabel": "MEANWHILE — A QUICK TOUR",
+        "tour": {
+          "reply": {
+            "title": "Reply as yourself",
+            "body": "Join any follower chat with an official badge"
+          },
+          "curate": {
+            "title": "Curate what followers teach",
+            "body": "Approve or hide Grow submissions anytime"
+          },
+          "voice": {
+            "title": "Home voice, AI-drafted",
+            "body": "Your first one publishes automatically; after that, only what you confirm"
+          }
+        },
+        "readyTitle": "Your clone is ready",
+        "readySub": "Your voice clone and personality are set.",
+        "cta": "Enter LC Studio",
+        "alt": "Illustration of a ring showing a clone being created."
+      },
+      "home": {
+        "welcome": "Welcome back",
+        "status": "Clone active",
+        "stats": {
+          "coins": "Coins consumed today",
+          "chats": "Chats today",
+          "callTime": "Call time today",
+          "estMonth": "Est. this month"
+        },
+        "checkTitle": "Check your AI clone",
+        "checkSub": "Chat and call it yourself, exactly as followers see it",
+        "tiles": {
+          "publicProfile": "Public profile",
+          "fanContent": "Follower content",
+          "live": "LIVE",
+          "homeVoice": "Home voice",
+          "morningCall": "Morning call",
+          "fillers": "Fillers",
+          "analytics": "Analytics"
+        },
+        "alt": "Illustration of LC Studio’s Home."
+      },
+      "picks": {
+        "title": "Who you are",
+        "sub": "Quick picks — tap what fits. You’ll write in your own words next.",
+        "pronounLabel": "How do you refer to yourself?",
+        "pronouns": {
+          "p1": "I",
+          "p2": "We",
+          "p3": "By my name"
+        },
+        "dialectLabel": "Dialect · speech style",
+        "dialects": {
+          "standard": "Standard",
+          "kansai": "Kansai",
+          "hakata": "Hakata",
+          "tsugaru": "Tsugaru",
+          "okinawa": "Okinawa",
+          "hokkaido": "Hokkaido"
+        },
+        "hobbyLabel": "Hobbies",
+        "hobbies": {
+          "game": "Gaming",
+          "music": "Music",
+          "karaoke": "Karaoke",
+          "cooking": "Cooking",
+          "travel": "Travel",
+          "anime": "Anime",
+          "sports": "Sports",
+          "reading": "Reading"
+        },
+        "alt": "Illustration of picking pronoun, dialect and hobbies."
+      },
+      "words": {
+        "title": "In your own words",
+        "coverTitle": "Good things to cover",
+        "cover": {
+          "c1": "Stories behind your picks on the last screen",
+          "c2": "What you do, and your latest activities",
+          "c3": "Catchphrases, what you’re great at"
+        },
+        "sample": "Casual, no formal speech. On days off I write songs in cafés. My catchphrase: “that’s the best.”",
+        "linksTitle": "Links about you",
+        "linkWiki": "Wikipedia",
+        "linkYoutube": "YouTube",
+        "analyzing": "Analyzing…",
+        "analyzed": "Analyzed ✓",
+        "proposalNote": "What we read comes back as suggestions. You decide what stays.",
+        "reassurance": "Don’t aim for perfect. You can change everything later.",
+        "alt": "Illustration of writing about yourself for your clone."
+      },
+      "photos": {
+        "title": "Official photos",
+        "main": "MAIN",
+        "guide": "Portrait photos look best",
+        "alt": "Illustration of choosing official photos."
+      },
+      "modes": {
+        "title": "Relationship modes",
+        "sub": "The ways followers can have you talk",
+        "alt": "Illustration of choosing relationship modes."
+      },
+      "ng": {
+        "title": "Topics your clone won’t touch",
+        "sub": "Applied with top priority in chat, calls, Stories and LIVE.",
+        "presets": {
+          "politics": {
+            "label": "Politics & religion",
+            "detail": "Deflects gently and changes the topic"
+          },
+          "romance": {
+            "label": "Real romance & relationships",
+            "detail": "Never confirms or denies"
+          },
+          "sexual": {
+            "label": "Sexual content",
+            "detail": "Set to avoid in every mode"
+          },
+          "war": {
+            "label": "War & conflicts",
+            "detail": "No takes on wars or conflicts"
+          },
+          "others": {
+            "label": "Other members & agencies",
+            "detail": "No comments on third parties"
+          }
+        },
+        "ngBadge": "NG",
+        "customLabel": "Custom NG topics",
+        "customChip": "My old band",
+        "nickname": "Auto-reject inappropriate nicknames",
+        "alt": "Illustration of setting NG topics."
+      },
+      "record": {
+        "title": "Record your voice",
+        "hint": "The best material is a real conversation",
+        "chip": "Talk with someone",
+        "recording": "Recording",
+        "alt": "Illustration of recording your voice in the app."
+      },
+      "check": {
+        "title": "{name} · your clone",
+        "online": "Online — answers like it does for followers",
+        "preview": "Preview mode — nothing here is shown to followers or counted in analytics.",
+        "clone1": "Hey, it’s me. Ask me anything, just like a follower would",
+        "me1": "How should we open today’s LIVE?",
+        "clone2": "Maybe start with the rain. And a tiny hint about the new song",
+        "voiceCall": "Voice call",
+        "morningCall": "Try a morning call",
+        "composer": "Message your clone…",
+        "alt": "Illustration of chatting with your own AI clone in preview mode."
+      },
+      "selfCall": {
+        "label": "On a call with your clone",
+        "state": "speaking",
+        "alt": "Illustration of a preview call with your own AI clone."
+      },
+      "thread": {
+        "handle": "@momo_pk",
+        "follower1": "Today’s LIVE was amazing",
+        "ai1": "Thank you for coming. I saw all your comments",
+        "aiLabel": "AI clone",
+        "follower2": "I’m definitely coming to the next one",
+        "officialLabel": "You · official reply",
+        "official": "Thank you for always showing up. From the real me",
+        "officialFoot": "Official replies appear to the follower with a verified badge",
+        "composer": "Reply as yourself — shown apart from AI replies",
+        "pauseTitle": "Clone replies in this chat",
+        "pauseOn": "Your clone answers this follower",
+        "pauseOff": "Paused. You can reply yourself",
+        "alt": "Illustration of an official reply in a follower chat."
+      },
+      "grow": {
+        "title": "Grow",
+        "sub": "Follower-submitted facts — you get the final say",
+        "pending": "Pending review",
+        "category": "FOOD",
+        "handle": "@yuki_nn",
+        "fact": "Always drinks honey lemon before a stream",
+        "aiReview": "Passed AI review",
+        "approve": "Approve",
+        "reject": "Reject",
+        "approved": "✓ Approved — now public",
+        "alt": "Illustration of approving a follower-submitted fact."
+      },
+      "profile": {
+        "title": "Public profile",
+        "licensed": "Officially licensed AI clone",
+        "bio": "A singer-songwriter who loves rainy days. Writes songs in cafés.",
+        "factsTitle": "Profile facts — grown by followers, curated by you",
+        "facts": {
+          "f1": {
+            "cat": "LIKES",
+            "text": "Honey lemon"
+          },
+          "f2": {
+            "cat": "MUSIC",
+            "text": "Often writes songs on rainy days"
+          }
+        },
+        "aiImages": "Allow AI images of you",
+        "aiImagesSub": "Turn this off and followers can’t make new AI images of you",
+        "alt": "Illustration of editing the profile followers see."
+      },
+      "homeVoice": {
+        "title": "Home voice",
+        "sub": "Your first one publishes automatically. After that, only what you confirm is synthesized and heard",
+        "draftsLabel": "AI drafts · from your persona + latest Grow",
+        "draft": "Thanks for coming by today. Let’s talk for a bit while we listen to the rain",
+        "pipeline": {
+          "draft": "Draft",
+          "synth": "Voice synthesized",
+          "published": "Published"
+        },
+        "confirm": "Confirm this text",
+        "publish": "Publish",
+        "alt": "Illustration of reviewing an AI-drafted voice message."
+      },
+      "morning": {
+        "title": "Morning call",
+        "sub": "Your clone’s first lines",
+        "gentle": "Gentle",
+        "casual": "Casual",
+        "linesGentle": {
+          "l1": "Good morning. It’s me — time to open your eyes",
+          "l2": "A new day is here. Let’s make it a good one",
+          "l3": "Good morning. Did you sleep well?"
+        },
+        "linesCasual": {
+          "l1": "Mornin’! Up, up, up",
+          "l2": "It’s morning. Let’s do our best today",
+          "l3": "Open the curtains. It’s a nice day out"
+        },
+        "alt": "Illustration of editing morning-call first lines per tone."
+      },
+      "fillers": {
+        "title": "Fillers",
+        "intro": "Fillers are the sounds that cover the moment your clone is thinking",
+        "gentle": "Gentle",
+        "gentleSample": "“Hmm, let me think”",
+        "casual": "Casual",
+        "casualSample": "“Mm-hm, got it”",
+        "alt": "Illustration of choosing the tone of in-call fillers."
+      },
+      "live": {
+        "title": "LIVE",
+        "liveNow": "LIVE NOW",
+        "autoHosting": "Auto-hosting",
+        "segment": "Rainy-day song talk",
+        "chat1": "Love this story",
+        "chat2": "Perfect for a rainy day",
+        "dropIn": "Drop in as the real you…",
+        "realLabel": "{name} (real)",
+        "dropInLine": "It’s really me. Thanks for being here today",
+        "settings": {
+          "readAloud": "Read viewer comments aloud",
+          "autoArchive": "Auto-save archives",
+          "acceptRequests": "Accept follower-requested shows"
+        },
+        "archivesTitle": "Archives",
+        "archiveItem": "Rainy-day song talk",
+        "download": "DL",
+        "alt": "Illustration of managing a LIVE show your clone hosts."
+      },
+      "analytics": {
+        "title": "Analytics",
+        "ranges": {
+          "d7": "7 days",
+          "d30": "30 days",
+          "d90": "90 days"
+        },
+        "metrics": {
+          "chats": "Chats",
+          "images": "Images",
+          "voices": "Voices",
+          "callTime": "Call time",
+          "coins": "Coins received",
+          "live": "LIVE"
+        },
+        "chartTitle": "Coins consumed this week",
+        "topTitle": "Top followers by Coins",
+        "topNote": "Handles visible in LC Studio only",
+        "privacy": "Individual follower data is shown inside LC Studio only and never disclosed in the LinClone app.",
+        "alt": "Illustration of Analytics. No figures are shown."
+      },
+      "earnings": {
+        "title": "Earnings",
+        "sub": "Coin-based",
+        "months": {
+          "prev": "Last month",
+          "current": "This month"
+        },
+        "calculatingTitle": "Calculating this month…",
+        "calculatingBody": "No figures are shown while calculation runs.",
+        "csv": "Statement (CSV)",
+        "bank": "Payout bank account",
+        "alt": "Illustration of earnings while the month is being calculated."
+      },
+      "content": {
+        "title": "Follower content",
+        "tabs": {
+          "images": "Images",
+          "voices": "Voices",
+          "stories": "Stories"
+        },
+        "labelNote": "Every image shared outside LinClone carries an “AI-generated / not the real person” label.",
+        "labelChip": "AI label on",
+        "alt": "Illustration of content followers made with your clone."
+      }
+    }
+  }
+}

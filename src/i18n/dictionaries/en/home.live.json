@@ -1,0 +1,16 @@
+{
+  "eyebrow": {
+    "num": "04",
+    "label": "LIVE"
+  },
+  "title": "Tonight, they’re LIVE.",
+  "audioChip": "Audio-only LIVE",
+  "lead": "An audio-only LIVE show hosted by their AI clone. Send a comment and they may read it on air and answer. Cheer them on with gifts and Super Chat.",
+  "fill": "They read your comment, answer, and carry on.",
+  "requestTitle": "Pick a theme. Request a show in their voice.",
+  "requestBody": "The AI writes the rundown and their AI clone keeps talking, so there’s no dead air. Requests use a LIVE ticket, and first-timers get a trial.",
+  "archiveTitle": "Missed it? Catch the archive.",
+  "archiveBody": "Finished shows keep their recording, so you can listen back.",
+  "footnote": "LIVE shows are audio-only, AI-generated content. Whether requests are open depends on the creator. If a show can’t start, your ticket is returned.",
+  "stageAlt": "Illustration of an audio LIVE show with comments scrolling and a Super Chat marked as read on air."
+}

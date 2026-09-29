@@ -1,0 +1,297 @@
+/* #morning-call (spec §5.5). The CSS default is the FINAL state:
+   cream dawn, stars hidden, 7:00, ink copy, phone in place. */
+
+.section {
+  padding-block: 0;
+  background: #f7f3ec;
+  color: var(--color-ink);
+}
+
+/* ── stage ── */
+.stage {
+  position: relative;
+  color: #fff;
+  /* mobile: a static night → cream sky; the turn happens behind the phone slice */
+  background: linear-gradient(180deg, #0f1018 0%, #0f1018 16%, #6f3fb8 40%, #e14b81 62%, #ffd166 84%, #f7f3ec 100%);
+}
+
+.surfDark,
+.surfLight {
+  position: absolute;
+  left: 0;
+  right: 0;
+  pointer-events: none;
+}
+.surfDark { top: 0; height: 56%; }
+.surfLight { top: 56%; bottom: 0; }
+
+.sticky {
+  position: relative;
+  padding-block: calc(var(--section-y) + 8px) 56px;
+}
+
+.dawn { display: none; }
+
+.stars {
+  position: absolute;
+  inset: 0 0 60% 0;
+  opacity: .7;
+  pointer-events: none;
+}
+.stars > span {
+  position: absolute;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 0 6px rgba(255, 255, 255, .7);
+  animation: twinkle 3.2s var(--ease-sine) infinite alternate;
+}
+@keyframes twinkle { from { opacity: .35; } to { opacity: 1; } }
+html[data-js] .stars > span { animation-play-state: paused; }
+html[data-js] :global(.is-inview) .stars > span { animation-play-state: running; }
+
+.stageGrid { position: relative; z-index: 1; }
+
+.copy {
+  --m-fg: #fff;
+  --m-fg2: rgba(255, 255, 255, .72);
+  display: flex;
+  flex-direction: column;
+  color: var(--m-fg);
+}
+.eyebrow :global(.eyebrow) { color: var(--m-fg2); }
+.title { margin: 20px 0 0; color: var(--m-fg); }
+
+.clock {
+  margin: 20px 0 8px;
+  color: var(--m-fg);
+  font-size: 26vw;
+  line-height: 1;
+}
+.clockWin {
+  display: block;
+  height: 1em;
+  overflow: clip;
+}
+.clockDigit {
+  display: block;
+  height: 1em;
+  line-height: 1em;
+  transform: translateY(-200%);
+}
+
+.caption { margin: 8px 0 0; max-width: 13em; }
+.caption:lang(en) { max-width: 11em; }
+
+.phoneCol { display: none; }
+
+.ringSlice {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+.ringSlice :global(.screen-slice) { box-shadow: var(--shadow-phone); }
+
+/* ringing ripples around the phone (loop only in view) */
+.ringPhone {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  place-items: center;
+}
+.ripple {
+  position: absolute;
+  z-index: -1;
+  left: 50%;
+  top: 38%;
+  width: 150%;
+  aspect-ratio: 1;
+  translate: -50% -50%;
+  border-radius: 50%;
+  border: 1.5px solid rgba(0, 196, 216, .55);
+  opacity: 0;
+  animation: ripple 2.8s var(--ease-reveal) infinite;
+}
+.ripple2 { animation-delay: 1.4s; }
+@keyframes ripple {
+  0% { transform: scale(.55); opacity: .7; }
+  100% { transform: scale(1.15); opacity: 0; }
+}
+
+/* ── grid (cream) ── */
+.grid {
+  position: relative;
+  background: #f7f3ec;
+  color: var(--color-ink);
+  /* bottom: #chat continues on the same cream, so it only needs half a gap here */
+  padding-block: 48px calc(var(--section-y) * .5);
+}
+.gridInner {
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+}
+.lead { margin: 0; color: var(--color-ink); }
+.note {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin: 16px 0 0;
+  max-width: 34em;
+}
+.note + .note { margin-top: 8px; }
+.note svg { flex: none; margin-top: .2em; color: var(--color-teal-text); }
+
+.setupPhone { display: none; }
+.setupSlice {
+  display: flex;
+  justify-content: center;
+  margin-top: 32px;
+}
+.setupGlow {
+  position: absolute;
+  z-index: -1;
+  left: 50%;
+  top: 45%;
+  width: 150%;
+  aspect-ratio: 1;
+  translate: -50% -50%;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(0, 196, 216, .20), rgba(216, 242, 245, .45) 45%, transparent 72%);
+  pointer-events: none;
+}
+
+.voiceCol { scroll-margin-top: calc(var(--header-h) + 16px); }
+.voiceCard {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 24px 20px 20px;
+}
+.voiceTitle { margin: 4px 0 0; }
+.voiceBody { margin: 0; color: var(--color-ink-2); }
+.voiceSlice {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+/* ── desktop: sticky dawn scrub ── */
+@media (min-width: 1024px) {
+  .stage {
+    height: 160svh;
+    background: none;
+  }
+  /* header turns light when the sky has turned (p = 0.45 → 27svh scrolled) */
+  .surfDark { height: calc(27svh + var(--header-h)); }
+  .surfLight { top: calc(27svh + var(--header-h)); }
+
+  .sticky {
+    position: sticky;
+    top: 0;
+    height: 100svh;
+    overflow: clip;
+    padding: 0;
+    background: #f7f3ec;
+  }
+  .dawn {
+    display: block;
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 500%;
+    background: var(--grad-dawn);
+    transform: translateY(-80%);
+    will-change: transform;
+  }
+  /* a soft sun painted into the same layer: it rises with the sky, no extra layer */
+  .sun {
+    position: absolute;
+    left: 72%;
+    top: 88.5%;
+    width: 90vmin;
+    aspect-ratio: 1;
+    translate: -50% -50%;
+    border-radius: 50%;
+    background: radial-gradient(closest-side, rgba(255, 209, 102, .55), rgba(255, 224, 235, .28) 55%, transparent);
+  }
+  .stars { inset: 0 0 35% 0; opacity: 0; }
+
+  .stageGrid {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: 24px;
+    align-items: center;
+    height: 100%;
+    padding-top: var(--header-h);
+  }
+  .copy {
+    --m-fg: var(--color-ink);
+    --m-fg2: var(--color-ink-2);
+    grid-column: 1 / span 6;
+  }
+  .clock { font-size: clamp(6rem, 2.5rem + 14vw, 10rem); margin: 12px 0 4px; }
+  .caption { max-width: 12em; }
+  .caption:lang(en) { max-width: 10em; }
+
+  /* Dawn scrub (MorningStageAnimator): each copy element steps white → ink at
+     its own luminance crossover; the short transition reads as a swap. */
+  .copy > [data-tone-state='night'] { --m-fg: #fff; --m-fg2: rgba(255, 255, 255, .72); }
+  .copy > [data-tone-state='day'] { --m-fg: var(--color-ink); --m-fg2: var(--color-ink); }
+  .title,
+  .clock,
+  .eyebrow :global(.eyebrow) { transition: color .16s linear; }
+  .caption[data-fill-tone] { --fill-off: rgba(154, 152, 171, .35); --fill-on: #28273b; }
+
+  .phoneCol {
+    display: flex;
+    justify-content: center;
+    grid-column: 8 / span 4;
+  }
+  .ringSlice { display: none; }
+
+  .grid { padding-block: clamp(40px, 6vw, 96px) calc(var(--section-y) * .5); }
+  .gridInner {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: 24px;
+    row-gap: 0;
+    align-items: start;
+  }
+  .setupCol { grid-column: 1 / span 5; }
+  .setupPhone {
+    position: relative;
+    isolation: isolate;
+    display: flex;
+    justify-content: center;
+    margin-top: 56px;
+  }
+  .setupSlice { display: none; }
+  .voiceCol { grid-column: 7 / span 6; margin-top: 120px; }
+  .voiceCard { padding: 40px 40px 36px; gap: 16px; }
+  .voiceSlice { margin-top: 16px; }
+}
+
+@media (min-width: 1024px) and (max-height: 860px) {
+  .ringPhone { scale: .86; }
+}
+@media (min-width: 1024px) and (max-height: 740px) {
+  .ringPhone { scale: .76; }
+  .clock { font-size: clamp(5rem, 1rem + 10vw, 8rem); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ripple { display: none; }
+}
+html[data-lite] .ripple { animation: none; opacity: 0; }
+
+/* The section is dark (header), so re-assert light-surface small text in the cream grid. */
+.grid :global(.t-small) { color: var(--color-ink-2); }
+
+/* No dawn scrub (reduced motion, lite): the stage is cream from the start, so the header stays light. */
+@media (min-width: 1024px) and (prefers-reduced-motion: reduce) {
+  .surfDark { display: none; }
+  .surfLight { top: 0; }
+}
+@media (min-width: 1024px) {
+  html[data-lite] .surfDark { display: none; }
+  html[data-lite] .surfLight { top: 0; }
+}
