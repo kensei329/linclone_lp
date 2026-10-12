@@ -36,7 +36,11 @@ export const viewport: Viewport = {
 export function generateStaticParams() {
   return LOCALES.map((lang) => ({ lang }));
 }
-export const dynamicParams = false;
+// No `dynamicParams = false` here: Next.js turns ANY segment's false into a
+// 404 for every route below it, and the DONE-C pages ([lang]/c/[slug],
+// [lang]/studio/invite/[code]) render their slugs on demand. Every other page
+// under [lang] declares `dynamicParams = false` itself, and an unknown locale
+// still 404s through isLocale() below.
 
 // Head script (spec §4.6): sets data-js, data-platform, data-inapp,
 // data-ios-safari, data-lite and the saved --oshi before first paint.

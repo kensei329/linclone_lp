@@ -1,0 +1,86 @@
+/* DONE-C pages: /c/<slug>, /studio/invite/<code> and their not-available
+   states (src/components/clone-pages/**). One focused card on the dawn
+   surface; on a computer a second glass panel with the QR and badges.
+   Unlayered on purpose (as legal.css): loads after site.css's layers.
+   Phone vs computer keys off html[data-platform] (layout head script). */
+
+.cp { position: relative; isolation: isolate; min-height: 100svh; overflow-x: clip; }
+.cp-frame {
+  width: min(100% - 2 * var(--gutter), 1040px); margin-inline: auto;
+  padding: max(16px, env(safe-area-inset-top)) 0 max(48px, env(safe-area-inset-bottom));
+  display: grid; gap: clamp(24px, 1rem + 3vw, 56px);
+}
+
+/* top bar */
+.cp-top { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 48px; }
+.cp-lockup { display: inline-flex; align-items: center; gap: 8px; color: var(--color-ink); text-decoration: none; min-height: 44px; }
+.cp-lockup .wordmark { font-size: 18px; }
+.cp-lang {
+  display: inline-flex; align-items: center; min-height: 44px; padding: 0 14px; border-radius: 999px;
+  color: var(--color-ink-2); font: 600 14px/1 var(--font-sans); text-decoration: none;
+}
+.cp-lang:hover { color: var(--color-ink); background: rgba(255, 255, 255, .6); }
+
+/* layout */
+.cp-grid { display: grid; gap: 24px; align-items: start; }
+@media (min-width: 900px) {
+  .cp-grid { grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: 32px; align-items: center; min-height: min(70svh, 640px); }
+}
+
+/* the card */
+.cp-card {
+  display: grid; justify-items: center; text-align: center; gap: 12px;
+  padding: clamp(28px, 1rem + 3vw, 48px) clamp(20px, .75rem + 2.5vw, 40px);
+}
+.cp-avatar {
+  width: 128px; height: 128px; border-radius: 50%; padding: 4px; margin-bottom: 8px;
+  background: var(--grad-story); box-shadow: var(--shadow-chip);
+}
+.cp-avatar img, .cp-avatar-initial {
+  display: grid; place-items: center; width: 100%; height: 100%; border-radius: 50%;
+  object-fit: cover; border: 3px solid #fff; background: var(--color-lavender);
+}
+.cp-avatar-initial { font: 800 48px/1 var(--font-sans); color: var(--color-purple-deep); }
+.cp-eyebrow { margin: 0; font: 700 12px/1 var(--font-label); letter-spacing: .08em; color: var(--color-purple-deep); text-transform: uppercase; }
+.cp-title {
+  margin: 0; font: 800 clamp(1.75rem, 1.3rem + 1.8vw, 2.5rem)/1.2 var(--font-sans); letter-spacing: -.01em;
+  overflow-wrap: anywhere; text-wrap: balance;
+}
+.cp-title:lang(ja) { letter-spacing: 0; line-height: 1.35; }
+.cp-username { margin: 0; color: var(--color-ink-2); font: 600 15px/1.4 var(--font-sans); overflow-wrap: anywhere; }
+.cp-bio { margin: 4px 0 0; max-width: 34em; white-space: pre-line; overflow-wrap: anywhere; }
+.cp-bio:lang(ja) { max-width: 30em; }
+
+/* invitation code */
+.cp-code {
+  width: 100%; max-width: 420px; margin-top: 8px; padding: 20px 16px; border-radius: var(--radius-xl);
+  background: rgba(255, 255, 255, .8); box-shadow: inset 0 0 0 1px rgba(40, 39, 59, .08);
+}
+.cp-code-label { margin: 0 0 8px; color: var(--color-ink-2); font: 600 13px/1.4 var(--font-sans); }
+.cp-code-value {
+  margin: 0; font: 700 clamp(1.9rem, 1.4rem + 2.4vw, 2.75rem)/1.15 ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  letter-spacing: .12em; color: var(--color-ink); overflow-wrap: anywhere; user-select: all;
+}
+
+/* phone: the one button (hidden on computers and without JS) */
+.cp-phone { display: none; width: 100%; max-width: 420px; margin-top: 12px; gap: 10px; justify-items: stretch; }
+html:is([data-platform="ios"], [data-platform="android"]) .cp-phone { display: grid; }
+.cp-cta { width: 100%; justify-content: center; text-align: center; }
+.cp-hint { margin: 0; text-align: center; }
+
+/* computer: QR + badges (hidden on phones) */
+html:is([data-platform="ios"], [data-platform="android"]) .cp-computer { display: none; }
+.cp-computer { display: grid; justify-items: center; text-align: center; gap: 20px; padding: clamp(24px, 1rem + 2vw, 40px); }
+.cp-computer-title { margin: 0; font: 700 clamp(1.15rem, 1rem + .6vw, 1.5rem)/1.4 var(--font-sans); }
+.cp-qr { max-width: 240px; }
+.cp-stores { display: grid; justify-items: center; gap: 10px; }
+.cp-stores-label { margin: 0; color: var(--color-ink-2); font: 600 13px/1.4 var(--font-sans); }
+.cp-badges { justify-content: center; }
+.cp-badges .badges-row { justify-content: center; }
+/* site.css shows one badge on phones; this panel only shows on computers, keep both. */
+.cp-badges .badge { display: inline-flex; }
+
+/* no-action states */
+.cp-state { max-width: 560px; justify-self: center; margin-top: clamp(24px, 6vh, 96px); }
+.cp-state-body { margin: 0; }
+.cp-state-home { margin: 12px 0 0; }
